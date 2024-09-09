@@ -191,7 +191,7 @@
 		</div>
 	</section>
 
-	<section class="best-services-wrapper section-padding">
+	{{-- <section class="best-services-wrapper section-padding">
 		<div class="container">
 			<div class="col-12 col-xl-6 offset-xl-3 text-center">
 				<div class="section-title">
@@ -277,9 +277,9 @@
 				<a href="services.html" class="theme-btn">All Services</a>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
-	<section class="project-carousel-wrapper pt-0 section-padding">
+	{{-- <section class="project-carousel-wrapper pt-0 section-padding">
 		<div class="container">
 			<div class="row align-center">
 				<div class="col-md-8 col-xl-6 text-center text-md-start">
@@ -341,9 +341,9 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
-	<section class="video-cta-wrapper bg-cover section-padding"
+	{{-- <section class="video-cta-wrapper bg-cover section-padding"
 		style="background-image: url('assets/img/video-cta-bg.jpeg')">
 		<div class="container">
 			<div class="col-12 offset-xl-2 col-xl-8 offset-md-1 col-md-10 text-center">
@@ -360,9 +360,9 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
-	<section class="fun-counter-wrapper text-white">
+	{{-- <section class="fun-counter-wrapper text-white">
 		<div class="container">
 			<div class="row ps-md-5 pe-md-5">
 				<div class="col-lg-6">
@@ -388,7 +388,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
 	<section class="testimonial-carousel-wrapper section-padding">
 		<div class="container">

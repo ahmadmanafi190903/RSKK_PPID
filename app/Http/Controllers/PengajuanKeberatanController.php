@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PengajuanKeberatan;
 use App\Models\AlasanPengajuan;
+use App\Events\PengajuanKeberatanEvent;
 
 class PengajuanKeberatanController extends Controller
 {
@@ -36,7 +37,6 @@ class PengajuanKeberatanController extends Controller
      */
     public function store(Request $request)
     {
-    //    @dd($request);
     $request->validate([
         'nama' => 'required|max:255',
         'email' => 'required|email:rfc,dns|max:255',
@@ -63,6 +63,8 @@ class PengajuanKeberatanController extends Controller
     ]);
 
     return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim');
+
+    // PengajuanKeberatanEvent::dispatch($request->nama, $request->email);
     }
 
     /**

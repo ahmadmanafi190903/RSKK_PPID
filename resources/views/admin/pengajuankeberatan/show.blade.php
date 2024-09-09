@@ -112,7 +112,7 @@
                 </div>
               @endif
               
-              @if ($submission->id_status == 4)
+              {{-- @if ($submission->id_status == 4)
                 @if ($submission->file_acc_pengajuan == null)
                   <div class="card-body table-responsive">
                     <div>
@@ -140,7 +140,7 @@
                     </a>
                   </div>
                 @endif
-              @endif
+              @endif --}}
             </div>
           </div>
         </div>

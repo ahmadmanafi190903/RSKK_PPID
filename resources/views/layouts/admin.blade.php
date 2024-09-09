@@ -107,7 +107,7 @@
         </div>
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
+        {{-- <div class="form-inline">
           <div class="input-group" data-widget="sidebar-search">
             <input class="form-control form-control-sidebar" type="search" placeholder="Search"
               aria-label="Search">
@@ -117,7 +117,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -154,20 +154,23 @@
             <li class="nav-item">
               <a href="iframe.html" class="nav-link">
                 <i class="nav-icon fas fa-ellipsis-h"></i>
-                <p>Petugas</p>
+                <p>Pengguna</p>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p>Pemohon</p>
               </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                <p>Logout</p>
-              </a>
+            </li> --}}
+            <li class="nav-item mt-4">
+              <form action="{{ route('logout') }}" method="post" >
+                @csrf
+                <button type="submit" class="nav-link" onclick="return confirm('Apakah anda yakin ingin logout?')">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Logout</p>
+                </button>
+              </form>
             </li>
           </ul>
         </nav>

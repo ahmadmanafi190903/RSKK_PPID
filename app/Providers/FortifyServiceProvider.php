@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -42,5 +45,37 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('nip', $request->nip)->first();
+    
+            if ($user && Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+        });
+
+        // Fortify::registerView(function(){
+        //     return view('auth.register');
+        // });
+
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        // Fortify::requestPasswordResetLinkView(function(){
+        //     return view('auth.reset');
+        // });
+
+        // Fortify::resetPasswordView(function (Request $request) {
+        //     return view('auth.reset-password', ['request' => $request]);
+        // });
+
+        // Fortify::confirmPasswordView(function () {
+        //     return view('auth.confirm-password');
+        // });
+
+        // Fortify::verifyEmailView(function () {
+        //     return view('auth.verify-email');
+        // });
     }
 }

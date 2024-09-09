@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             AlasanPengajuanSeeder::class,
             PermohonanInformasiSeeder::class,
             PengajuanKeberatanSeeder::class,
+            UserSeeder::class,
         ]);
 
         // User::factory()->create([

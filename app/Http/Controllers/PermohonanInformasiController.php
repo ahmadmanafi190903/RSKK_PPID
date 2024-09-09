@@ -9,6 +9,7 @@ use App\Models\PermohonanInformasi;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Events\PermohonanInformasiEvent;
 
 class PermohonanInformasiController extends Controller
 {
@@ -41,7 +42,6 @@ class PermohonanInformasiController extends Controller
      */
     public function store(Request $request)
     {
-        // @dd();
         $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email:rfc,dns|max:255',
@@ -88,6 +88,8 @@ class PermohonanInformasiController extends Controller
         ]);
 
         return redirect('/')->with('success', 'Permohonan berhasil dikirim');
+
+        // PermohonanInformasiEvent::dispatch( $request->all() );
     }
     
     /**

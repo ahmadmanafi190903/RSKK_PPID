@@ -14,28 +14,32 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('{{ asset('assets/img/rskk3.jpg') }}'); background-size: cover; background-position: center;">
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary" >
+  <div class="card card-outline card-primary " >
     <div class="card-header text-center" >
-      <a href="../../index2.html" class="h1">Login Admin</a>
+      <a href="#" class="h1">Login Admin</a>
     </div>
     <div class="card-body">
-      <form action="#" method="post">
+      <form action="{{ route('login') }}" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="NIP" inputmode="numeric" name="nip" id="nip" oninput="inputNip()">
+          <input type="text" class="form-control" placeholder="NIP" inputmode="numeric" name="nip" id="nip" oninput="inputNip()" value="{{ old('nip') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
+          @error('nip')
+            <span class="text-danger">{{ $message }}</span>
+          @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Masukan Email">
+          <input type="password" class="form-control" placeholder="Masukan Password" name="password" >
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
