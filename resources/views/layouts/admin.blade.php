@@ -34,9 +34,9 @@
   <div class="wrapper">
 
     <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+    {{-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> --}}
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -81,6 +81,14 @@
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
+        <li class="nav-item">
+          <form action="{{ route('logout') }}" method="post" class="">
+            @csrf
+            <button type="submit" class="nav-link bg-transparent border-0" onclick="return confirm('Apakah anda yakin ingin logout?')">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+            </button>
+          </form>
+        </li>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -102,7 +110,7 @@
             <img src="/dist/img/33.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Admin</a>
+            <a href="#" class="d-block">{{ Auth::user()->name }}</a>
           </div>
         </div>
 
@@ -150,10 +158,18 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="/admin/informasi_publik" class="nav-link">
+                <i class="nav-icon fas fa-triangle"></i>
+                <p>
+                  Informasi Publik
+                </p>
+              </a>
+            </li>
             <li class="nav-header">PENGGUNA</li>
             <li class="nav-item">
-              <a href="iframe.html" class="nav-link">
-                <i class="nav-icon fas fa-ellipsis-h"></i>
+              <a href="/admin/pengguna" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
                 <p>Pengguna</p>
               </a>
             </li>
@@ -163,15 +179,6 @@
                 <p>Pemohon</p>
               </a>
             </li> --}}
-            <li class="nav-item mt-4">
-              <form action="{{ route('logout') }}" method="post" >
-                @csrf
-                <button type="submit" class="nav-link" onclick="return confirm('Apakah anda yakin ingin logout?')">
-                  <i class="nav-icon fas fa-sign-out-alt"></i>
-                  <p>Logout</p>
-                </button>
-              </form>
-            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

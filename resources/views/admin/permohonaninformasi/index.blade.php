@@ -41,39 +41,31 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+              <table class="table table-hover text-center">
                 <thead>
                   <tr>
-                    <th>no</th>
-                    <th>Nama</th>
-                    <th>Informasi yang dibutuhkan</th>
-                    <th>Alasan penggunaan informasi</th>
-                    <th>Memperoleh informasi</th>
-                    <th>Mendapatkan salinan informasi</th>
-                    <th>Tanggal Permohonan</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
+                    <th class="align-middle">no</th>
+                    <th class="align-middle">Nama</th>
+                    <th class="align-middle">Informasi yang dibutuhkan</th>
+                    <th class="align-middle">Alasan penggunaan informasi</th>
+                    <th class="align-middle">Memperoleh informasi</th>
+                    <th class="align-middle">Mendapatkan salinan informasi</th>
+                    <th class="align-middle">Tanggal Permohonan</th>
+                    <th class="align-middle">Status</th>
+                    <th class="align-middle">Aksi</th>
                   </tr>
                 </thead>
                 <tbody id="contentArea">
                   @foreach ($information as $item)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $item->nama }}</td>
-                      <td>
-                        <div class="text-truncate" style="max-width: 500px;">
-                          {{ $item->informasi_yang_dibutuhkan }}
-                        </div>
-                      </td>
-                      <td>
-                        <div class="text-truncate" style="max-width: 500px;">
-                          {{ $item->alasan_penggunaan_informasi }}
-                        </div>
-                      </td>
-                      <td>{{ $item->memperolehinformasi->memperoleh_informasi }}</td>
-                      <td>{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}</td>
-                      <td>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</td>
-                      <td>
+                      <td class="align-middle">{{ $loop->iteration }}</td>
+                      <td class="align-middle">{{ $item->nama }}</td>
+                      <td class="align-middle">{{ $item->informasi_yang_dibutuhkan }}</td>
+                      <td class="align-middle">{{ $item->alasan_penggunaan_informasi }}</td>
+                      <td class="align-middle">{{ $item->memperolehinformasi->memperoleh_informasi }}</td>
+                      <td class="align-middle">{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}</td>
+                      <td class="align-middle">{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</td>
+                      <td class="align-middle">
                         @if ($item->id_status == 1)
                           <span class="badge bg-warning">belum dibuka</span>
                         @elseif ($item->id_status == 2)
@@ -84,23 +76,21 @@
                           <span class="badge bg-success">{{ $item->status->status }}</span>
                         @endif
                       </td>
-                      <td>
-                        <div class="d-flex flex-row">
+                      <td class="align-middle">
+                        <div class="">
                           <a href="/admin/permohonan_informasi/{{ $item->id }}" class="btn btn-primary">
                             @if ($item->id_status == 1)
-                              Process
+                              <i class="nav-icon fas fa-arrow-right"></i>
                             @else
-                              View
+                              <i class="nav-icon fas fa-eye"></i>
                             @endif
                           </a>
-                          <a href="/admin/permohonan_informasi/{{ $item->id }}/edit" class="btn btn-warning mx-2">
-                            edit
-                          </a>
+                          <a href="/admin/permohonan_informasi/{{ $item->id }}/edit" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
                           <form action="/admin/permohonan_informasi/{{ $item->id }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"
-                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">delete</button>
+                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="nav-icon fas fa-trash"></i></button>
                           </form>
                         </div>
                       </td>

@@ -30,9 +30,10 @@
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" id="searchInput" placeholder="Cari">
+                  <input type="text" name="table_search" class="form-control float-right" id="searchInput"
+                    placeholder="Cari">
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-default" >
+                    <button type="button" class="btn btn-default">
                       <i class="fas fa-search"></i>
                     </button>
                   </div>
@@ -41,35 +42,27 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+              <table class="table table-hover text-center">
                 <thead>
                   <tr>
-                    <th>no</th>
-                    <th>Nama</th>
-                    <th>Tujuan Penggunaan Informasi</th>
-                    <th>Alasan penggunaan informasi</th>
-                    <th>Tanggal Pengajuan</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
+                    <th class="align-middle">no</th>
+                    <th class="align-middle">Nama</th>
+                    <th class="align-middle">Tujuan Penggunaan Informasi</th>
+                    <th class="align-middle">Alasan penggunaan informasi</th>
+                    <th class="align-middle">Tanggal Pengajuan</th>
+                    <th class="align-middle">Status</th>
+                    <th class="align-middle">Aksi</th>
                   </tr>
                 </thead>
                 <tbody id="contentArea">
                   @foreach ($submission as $item)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $item->nama }}</td>
-                      <td>
-                        <div class="text-truncate" style="max-width: 500px;">
-                          {{ $item->tujuan_penggunaan_informasi }}
-                        </div>
-                      </td>
-                      <td>
-                        <div class="text-truncate" style="max-width: 500px;">
-                          {{ $item->alasan->alasan_pengajuan }}
-                        </div>
-                      </td>
-                      <td>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</td>
-                      <td>
+                      <td class="align-middle">{{ $loop->iteration }}</td>
+                      <td class="align-middle">{{ $item->nama }}</td>
+                      <td class="align-middle">{{ $item->tujuan_penggunaan_informasi }}</td>
+                      <td class="align-middle">{{ $item->alasan->alasan_pengajuan }} </td>
+                      <td class="align-middle">{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</td>
+                      <td class="align-middle">
                         @if ($item->id_status == 1)
                           <span class="badge bg-warning">belum dibuka</span>
                         @elseif ($item->id_status == 2)
@@ -80,23 +73,24 @@
                           <span class="badge bg-success">{{ $item->status->status }}</span>
                         @endif
                       </td>
-                      <td>
-                        <div class="d-flex flex-row">
+                      <td class="align-middle">
+                        <div class="">
                           <a href="/admin/pengajuan_keberatan/{{ $item->id }}" class="btn btn-primary">
                             @if ($item->id_status == 1)
-                              Process
+                              <i class="nav-icon fas fa-arrow-right"></i>
                             @else
-                              View
+                              <i class="nav-icon fas fa-eye"></i>
                             @endif
                           </a>
-                          <a href="/admin/pengajuan_keberatan/{{ $item->id }}/edit" class="btn btn-warning mx-2">
-                            edit
+                          <a href="/admin/pengajuan_keberatan/{{ $item->id }}/edit" class="btn btn-warning my-1">
+                            <i class="nav-icon fas fa-pencil"></i>
                           </a>
                           <form action="/admin/pengajuan_keberatan/{{ $item->id }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"
-                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">delete</button>
+                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
+                                class="nav-icon fas fa-trash"></i></button>
                           </form>
                         </div>
                       </td>
@@ -107,7 +101,7 @@
               <script>
                 $(document).ready(function() {
                   console.log("jQuery siap");
-              
+
                   function searchTable() {
                     console.log("Fungsi pencarian dipanggil");
                     var value = $("#searchInput").val().toLowerCase();
@@ -116,18 +110,18 @@
                       $(this).toggle(rowText.indexOf(value) > -1);
                     });
                   }
-              
+
                   $("#searchInput").on("input", function() {
                     console.log("Input berubah");
                     searchTable();
                   });
-              
+
                   $("#searchButton").on("click", function() {
                     console.log("Tombol diklik");
                     searchTable();
                   });
                 });
-                </script>
+              </script>
             </div>
             <!-- /.card-body -->
           </div>

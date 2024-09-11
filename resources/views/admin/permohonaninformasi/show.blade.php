@@ -102,14 +102,14 @@
                   @csrf
                   @method('patch')
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak">
-                    <i class="nav-icon fas fa-x"></i> Tolak
+                    Tolak <i class="nav-icon fas fa-window-close"></i> 
                   </button>
                 </form>
                 <form action="/admin/permohonan_informasi/{{ $item->id }}/terima" method="post" class="d-inline">
                   @csrf
                   @method('patch')
                   <button type="submit" class="btn btn-success"
-                    onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima</button>
+                    onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima<i class="nav-icon fas fa-check"></i></button>
                 </form>
               @endif
 

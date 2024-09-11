@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'super_admin'
         ]);
+
         User::create([
             'name' => 'admin',
             'nip' => '2222222222222',
@@ -28,12 +29,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'admin'
         ]);
+        
         User::create([
-            'name' => 'petugas',
+            'name' => 'operator',
             'nip' => '3333333333333',
             'email' => 'petugas@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'petugas'
+            'role' => 'operator'
         ]);
     }
 }

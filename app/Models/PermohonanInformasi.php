@@ -20,10 +20,12 @@ class PermohonanInformasi extends Model
     {
         return $this->belongsTo(MemperolehInformasi::class, 'id_memperoleh_informasi');
     }
+
     public function mendapatkansalinaninformasi(): BelongsTo
     {
         return $this->belongsTo(MendapatkanSalinanInformasi::class, 'id_mendapatkan_salinan_informasi');
     }
+    
     public function status(): BelongsTo
     {
         return $this->belongsTo(Status::class, 'id_status');

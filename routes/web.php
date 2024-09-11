@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermohonanInformasiController;
 use App\Http\Controllers\PengajuanKeberatanController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InformasiPublikController;
 use Illuminate\Support\Facades\Auth;
-
 
 Route::get('/', function () {
     return view('user.index');
@@ -49,6 +50,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/admin/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'update']);
     Route::delete('/admin/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'destroy']); 
 
+
+    Route::get('/admin/informasi_publik', [InformasiPublikController::class, 'index']);
+    Route::get('/admin/informasi_publik/create', [InformasiPublikController::class, 'create']);
+    Route::post('/admin/informasi_publik', [InformasiPublikController::class, 'store']);
+    Route::patch('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'edit']);
+    Route::patch('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'update']);
+    Route::delete('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'destroy']);
+
+    
+    Route::get('/admin/pengguna', [PenggunaController::class, 'index']);
 });
 
 
