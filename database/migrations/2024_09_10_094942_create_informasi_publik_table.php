@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('informasi_publik', function (Blueprint $table) {
             $table->id();
-            $table->string('ringkasan_informasi');
+            $table->text('ringkasan_informasi');
             $table->string('pejabat_penguasa_informasi');
             $table->string('penanggung_jawab_informasi');
             $table->boolean('bentuk_informasi_cetak')->default(false);

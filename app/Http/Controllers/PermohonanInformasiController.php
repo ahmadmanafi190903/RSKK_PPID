@@ -61,9 +61,9 @@ class PermohonanInformasiController extends Controller
             'numeric' => ':attribute harus berupa angka.',
             'unique' => ':attribute sudah terdaftar.',
             'file' => ':attribute harus berupa file.',
-            'image' => ':attribute harus berupa gambar.',
+            'image' => ':attribute harus berupa file.',
             'exists' => ':attribute tidak valid.',
-            'mimes' => ':attribute harus berupa gambar.',
+            'mimes' => ':attribute harus berupa file.',
             'email' => ':attribute harus berupa email yang valid.', 
         ]);
 
@@ -178,7 +178,7 @@ class PermohonanInformasiController extends Controller
      */
     public function update(Request $request, PermohonanInformasi $permohonaninformasi)
     {
-        // @dd($request->file_ktp);
+        // @dd($request);
         $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email:rfc,dns|max:255',
@@ -197,9 +197,9 @@ class PermohonanInformasiController extends Controller
             'digits' => ':attribute harus :digits digit.',
             'numeric' => ':attribute harus berupa angka.',
             'file' => ':attribute harus berupa file.',
-            'image' => ':attribute harus berupa gambar.',
+            'image' => ':attribute harus berupa file.',
             'exists' => ':attribute tidak valid.',
-            'mimes' => ':attribute harus berupa gambar.',
+            'mimes' => ':attribute harus berupa file.',
             'email' => ':attribute harus berupa email yang valid.',
         ]);
 
@@ -254,10 +254,4 @@ class PermohonanInformasiController extends Controller
         return view('user.formulir.riwayat-user', compact('information'));
     }
 
-    public function login()
-    {
-        return view('auth.login');
-    }
-
-    
 }

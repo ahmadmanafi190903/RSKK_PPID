@@ -8,13 +8,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">Permohonan Informasi</h1>
-          </div><!-- /.col -->
-          {{-- <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
-          </ol>
-        </div><!-- /.col --> --}}
+          </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -22,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/admin/pengajuan_keberatan/{{ $information->id }}" method="post" enctype="multipart/form-data">
+      <form action="/admin/permohonan_informasit/{{ $information->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
       <div class="row">
@@ -90,13 +84,21 @@
                   @enderror
                 </div>
                 <div class="mb-4">
-                  <label for="fktp">
+                  <label for="imageInput">
                     <h5 class="mb-0">Foto Ktp</h5>
                   </label>
                   <div> 
-                    <img src="{{ asset('storage/'.$information->file_ktp) }}" alt="{{ $information->file_ktp }}" width="200px">
+                    <img src="{{ asset('storage/'.$information->file_ktp) }}" alt="{{ $information->file_ktp }}" width="200px" id="previewImage">
                   </div>
-                  <input class="w-100 form-control" type="file" id="fktp" name="file_ktp">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="imageInput" name="file_ktp">
+                      <label class="custom-file-label" for="link">Pilih file</label>
+                    </div>
+                    <div class="input-group-append">
+                      <span class="input-group-text">Upload</span>
+                    </div>
+                  </div>
                   @error('file_ktp')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -133,9 +135,9 @@
                 </div>
                 <div class="mb-4">
                   <label for="memperoleh">
-                    <h5 class="mb-0">Memperoleh informaasi</h5>
+                    <h5 class="mb-0">Memperoleh informasi</h5>
                   </label>
-                  <select id="memperoleh" name="id_memperoleh_informasi" class="w-100 form-control">
+                  <select id="memperoleh" name="id_memperoleh_informasi" class="custom-select">
                     <option value=""></option>
                     @foreach ($get_information as $item)
                       <option value="{{ $item->id }}" {{ $item->id == $information->id_memperoleh_informasi ?'selected' : '' }}>{{ $item->memperoleh_informasi }}</option>
@@ -149,7 +151,7 @@
                   <label for="Mendapatkan">
                     <h5 class="mb-0">Mendapatkan salinan informasi</h5>
                   </label>
-                  <select id="Mendapatkan" name="id_mendapatkan_salinan_informasi" class="w-100 form-control">
+                  <select id="Mendapatkan" name="id_mendapatkan_salinan_informasi" class="custom-select">
                     <option value=""></option> 
                     @foreach ($get_copy as $item)        
                      <option value="{{ $item->id }}" {{ $item->id == $information->id_mendapatkan_salinan_informasi ?'selected' : '' }}>{{ $item->mendapatkan_salinan_informasi }}</option>

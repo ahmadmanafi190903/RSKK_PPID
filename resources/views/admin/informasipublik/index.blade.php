@@ -8,7 +8,7 @@
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Informasi Public</h1>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addUser"><i class="nav-icon fas fa-plus"></i></a>
+            <a href="/admin/informasi_publik/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
           </div>
         </div><!-- /.row -->
         @if (session('success'))
@@ -84,8 +84,8 @@
                       <td class="align-middle">
                         <div class="">
                           {{-- <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a> --}}
-                          <a href="#" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                          <form action="#" method="post">
+                          <a href="/admin/informasi_publik/{{ $item->id }}" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                          <form action="/admin/informasi_publik/{{ $item->id }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"

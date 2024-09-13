@@ -31,6 +31,7 @@ Route::post('/pengajuan/create',[PengajuanKeberatanController::class,'store']);
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
+    // permohonan informasi
     Route::get('/admin/permohonan_informasi', [PermohonanInformasiController::class, 'index']);
     Route::get('/admin/permohonan_informasi/{permohonaninformasi}', [PermohonanInformasiController::class, 'show']);
     Route::patch('/admin/permohonan_informasi/{permohonaninformasi}/tolak', [PermohonanInformasiController::class, 'reject']);
@@ -40,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/admin/permohonan_informasi/{permohonaninformasi}', [PermohonanInformasiController::class, 'update']);
     Route::delete('/admin/permohonan_informasi/{permohonaninformasi}', [PermohonanInformasiController::class, 'destroy']);
 
-
+    // pengajuan keberatan
     Route::get('/admin/pengajuan_keberatan', [PengajuanKeberatanController::class, 'index']);
     Route::get('/admin/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'show']);
     Route::patch('/admin/pengajuan_keberatan/{pengajuankeberatan}/tolak', [PengajuanKeberatanController::class, 'reject']);
@@ -50,15 +51,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/admin/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'update']);
     Route::delete('/admin/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'destroy']); 
 
-
+    // informasi publik
     Route::get('/admin/informasi_publik', [InformasiPublikController::class, 'index']);
     Route::get('/admin/informasi_publik/create', [InformasiPublikController::class, 'create']);
     Route::post('/admin/informasi_publik', [InformasiPublikController::class, 'store']);
-    Route::patch('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'edit']);
+    Route::get('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'edit']);
     Route::patch('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'update']);
     Route::delete('/admin/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'destroy']);
 
-    
+    // pengguna
     Route::get('/admin/pengguna', [PenggunaController::class, 'index']);
 });
 

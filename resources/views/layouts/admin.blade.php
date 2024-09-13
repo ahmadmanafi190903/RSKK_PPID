@@ -239,6 +239,34 @@
   <script src="/dist/js/pages/dashboard.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/dist/js/app.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- Page specific script -->
+  <script>
+  $(function () {
+    bsCustomFileInput.init();
+  });
+  </script>
+
+  {{-- ubah foto ketika di update  --}}
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+
+    imageInput.addEventListener('change', function(event) {
+      console.log(event.target.files[0])
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 </body>
 
 </html>
