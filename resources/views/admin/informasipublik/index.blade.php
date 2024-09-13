@@ -8,7 +8,9 @@
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Informasi Public</h1>
-            <a href="/admin/informasi_publik/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+            @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
+              <a href="/admin/informasi_publik/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+            @endif
           </div>
         </div><!-- /.row -->
         @if (session('success'))
@@ -54,7 +56,9 @@
                     <th class="align-middle">Jangka Waktu</th>
                     <th class="align-middle">Kategori</th>
                     <th class="align-middle">Link</th>
-                    <th class="align-middle">Action</th>
+                    @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
+                      <th class="align-middle">Action</th>
+                    @endif
                   </tr>
                 </thead>
                 <tbody id="contentArea">
@@ -84,13 +88,15 @@
                       <td class="align-middle">
                         <div class="">
                           {{-- <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a> --}}
-                          <a href="/admin/informasi_publik/{{ $item->id }}" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                          <form action="/admin/informasi_publik/{{ $item->id }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger"
-                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="nav-icon fas fa-trash"></i></button>
-                          </form>
+                          @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
+                            <a href="/admin/informasi_publik/{{ $item->id }}" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                            <form action="/admin/informasi_publik/{{ $item->id }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="nav-icon fas fa-trash"></i></button>
+                            </form>
+                          @endif
                         </div>
                       </td>
                     </tr>  

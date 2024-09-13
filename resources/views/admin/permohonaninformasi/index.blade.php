@@ -85,13 +85,15 @@
                               <i class="nav-icon fas fa-eye"></i>
                             @endif
                           </a>
-                          <a href="/admin/permohonan_informasi/{{ $item->id }}/edit" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                          <form action="/admin/permohonan_informasi/{{ $item->id }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger"
-                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="nav-icon fas fa-trash"></i></button>
-                          </form>
+                          @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
+                            <a href="/admin/permohonan_informasi/{{ $item->id }}/edit" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                            <form action="/admin/permohonan_informasi/{{ $item->id }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="nav-icon fas fa-trash"></i></button>
+                            </form>
+                          @endif
                         </div>
                       </td>
                     </tr>
