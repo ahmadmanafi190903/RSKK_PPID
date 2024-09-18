@@ -78,23 +78,33 @@
               @elseif ($submission->id_status == 3)
                 <div class="alert alert-danger text-uppercase text-center">Status {{ $submission->status->status }}</div>
               @elseif ($submission->id_status == 4)
-                <div class="alert alert-success text-uppercase text-center">Status {{ $submission->status->status }}</div>
+                <div class="alert alert-success text-uppercase text-center">Status {{ $submission->status->status }}
+                </div>
+              @endif
+
+              @if (session('success'))
+                <div class="alert alert-success">
+                  {{ session('success') }}
+                </div>
               @endif
 
               @if ($submission->id_status == 2)
-                <form action="/admin/pengajuan_keberatan/{{ $submission->id }}/tolak" method="post" class="d-inline">
-                  @csrf
-                  @method('patch')
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak">
-                   Tolak <i class="nav-icon fas fa-window-close"></i> 
-                  </button>
-                </form>
-                <form action="/admin/pengajuan_keberatan/{{ $submission->id }}/terima" method="post" class="d-inline">
-                  @csrf
-                  @method('patch')
-                  <button type="submit" class="btn btn-success"
-                    onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima <i class="nav-icon fas fa-check"></i></button>
-                </form>
+                @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
+                  <form action="/pengajuan_keberatan/{{ $submission->id }}/tolak" method="post" class="d-inline">
+                    @csrf
+                    @method('patch')
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak">
+                      Tolak <i class="nav-icon fas fa-window-close"></i>
+                    </button>
+                  </form>
+                  <form action="/pengajuan_keberatan/{{ $submission->id }}/terima" method="post" class="d-inline">
+                    @csrf
+                    @method('patch')
+                    <button type="submit" class="btn btn-success"
+                      onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima <i
+                        class="nav-icon fas fa-check"></i></button>
+                  </form>
+                @endif
               @endif
 
               @if ($submission->id_status == 3)
@@ -106,17 +116,11 @@
                 @endif
               @endif
 
-              @if (session('success'))
-                <div class="alert alert-success">
-                  {{ session('success') }}
-                </div>
-              @endif
-              
               {{-- @if ($submission->id_status == 4)
                 @if ($submission->file_acc_pengajuan == null)
                   <div class="card-body table-responsive">
                     <div>
-                      <form action="/admin/pengajuan_keberatan/{{ $submission->id }}/terima" method="post"
+                      <form action="/pengajuan_keberatan/{{ $submission->id }}/terima" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('patch')
@@ -159,7 +163,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/admin/pengajuan_keberatan/{{ $submission->id }}/tolak" method="post">
+        <form action="/pengajuan_keberatan/{{ $submission->id }}/tolak" method="post">
           <div class="modal-body">
             @csrf
             @method('patch')

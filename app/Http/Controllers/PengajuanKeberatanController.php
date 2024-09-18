@@ -97,7 +97,7 @@ class PengajuanKeberatanController extends Controller
             'pesan_ditolak' => $request->pesan_ditolak,
         ]);
 
-        return redirect('/admin/pengajuan_keberatan/' . $pengajuankeberatan->id)->with('success', 'Pengajuan keberatan berhasil ditolak');
+        return redirect('/pengajuan_keberatan/' . $pengajuankeberatan->id)->with('success', 'Pengajuan keberatan berhasil ditolak');
     }
 
     public function accept(Request $request, PengajuanKeberatan $pengajuankeberatan)
@@ -106,7 +106,7 @@ class PengajuanKeberatanController extends Controller
             'id_status' => '4',
         ]);
 
-        return redirect('/admin/pengajuan_keberatan/' . $pengajuankeberatan->id)->with('success', 'Pengajuan keberatan berhasil diterima');
+        return redirect('/pengajuan_keberatan/' . $pengajuankeberatan->id)->with('success', 'Pengajuan keberatan berhasil diterima');
     }
 
     /**
@@ -152,7 +152,7 @@ class PengajuanKeberatanController extends Controller
             'tujuan_penggunaan_informasi' => $request->tujuan_penggunaan_informasi,
         ]);
 
-        return redirect('/admin/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil diupdate');
+        return redirect('/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil diupdate');
     }
 
     /**
@@ -161,6 +161,6 @@ class PengajuanKeberatanController extends Controller
     public function destroy(PengajuanKeberatan $pengajuankeberatan)
     {
         $pengajuankeberatan->delete();
-        return redirect('/admin/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil dihapus');
+        return redirect('/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil dihapus');
     }
 }

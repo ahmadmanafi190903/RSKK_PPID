@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/admin/informasi_publik/{{ $info_public->id }}" method="post" enctype="multipart/form-data">
+      <form action="/informasi_publik/{{ $info_public->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div class="row">
@@ -136,8 +136,11 @@
                   <label for="link">
                     <h5 class="mb-0">Link</h5>
                   </label>
-                  <div class="mb-1">
+                  {{-- <div class="mb-1">
                     <a href="{{ asset('storage/' . $info_public->link) }}" target="_blank">Lihat File Sebelumnya</a>
+                  </div> --}}
+                  <div>
+                    <iframe src="{{ asset('storage/' . $info_public->link) }}" frameborder="0"></iframe>
                   </div>
                   <div class="input-group">
                     <div class="custom-file">
@@ -152,7 +155,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/admin/informasi_publik" class="btn btn-secondary">kembali</a>
+                <a href="/informasi_publik" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Ubah</button>
               </div>
             </div>
@@ -163,6 +166,3 @@
     <!-- /.content -->
   </div>
 @endsection
-
-<img src="foto.jpg" alt="">
-<input type="file" name="" id="">

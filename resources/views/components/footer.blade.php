@@ -2,11 +2,12 @@
   <div class="footer-widgets-wrapper text-white bg-cover"
     style="background-image: url('assets/img/footer-widgets-bg.png')">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-between">
+
         <div class="col-sm-6 col-xl-3">
           <div class="about-quantech pe-md-5 pe-xl-0">
             <a href="index.html">
-              <img src="assets/img/logo-footer.png" alt="quantech">
+              <img src="assets/img/rskk_trasparan.png" alt="quantech">
             </a>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate iure tempora quasi consectetur quae
               eveniet dolor quos, eius cupiditate quia. Distinctio iste fuga aspernatur doloremque aut laborum modi
@@ -14,7 +15,7 @@
           </div>
         </div>
 
-        <div class="col-sm-6 col-xl-3">
+        {{-- <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid ps-xl-5">
             <div class="wid-title">
               <h3>Information</h3>
@@ -28,25 +29,23 @@
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
           </div>
-        </div>
+        </div> --}}
 
         <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid ps-xl-2">
             <div class="wid-title">
-              <h3>Our Services</h3>
+              <h3>Media Sosial</h3>
             </div>
             <ul>
-              <li><a href="#">IT Solutions</a></li>
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">WordPress Theme</a></li>
-              <li><a href="#">digital marketing</a></li>
-              <li><a href="#">Tech consultant</a></li>
-              <li><a href="#">web agency</a></li>
+              <li><a href="#">WhatsApp</a></li>
+              <li><a href="https://youtube.com/@rskkjabar3910?si=Ij_PJHEWoQDMfh8n" target="_blank">Youtube</a></li>
+              <li><a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ==" target="_blank">Instagram</a></li>
+              <li><a href="https://www.facebook.com/RSUDKK?mibextid=ZbWKwL" target="_blank">Facebook</a></li>
             </ul>
           </div>
         </div>
 
-        <div class="col-sm-6 col-xl-3">
+        {{-- <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid site-info-widget">
             <div class="wid-title">
               <h3>Get In Touch</h3>
@@ -87,7 +86,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
     </div>

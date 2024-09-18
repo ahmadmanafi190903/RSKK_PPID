@@ -23,7 +23,7 @@ class InformasiPublikFactory extends Factory
             'bentuk_informasi_cetak' => $this->faker->boolean,
             'bentuk_informasi_digital' => $this->faker->boolean,
             'jangka_waktu_penyimpanan' => $this->faker->randomElement(['1 tahun', '5 tahun', '10 tahun', 'Permanen']),
-            'link' => $this->faker->optional()->url,
+            'link' => $this->faker->url,
             'kategori_id' => $this->faker->numberBetween(1, 3),
         ];
     }

@@ -51,9 +51,10 @@ class InformasiPublikController extends Controller
         ]);
 
         $link = $request->file('link');
-        $extension = $link->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $file_name = $randomName . '.' . $extension;
+        // $extension = $link->getClientOriginalExtension();
+        $file_org =  $link->getClientOriginalName();
+        $randomName = Str::random(5);
+        $file_name = $randomName . '.' . $file_org;
         $file_path = $link->storeAs('link', $file_name, 'public');
 
         InformasiPublik::create([
@@ -67,7 +68,7 @@ class InformasiPublikController extends Controller
             'link' => $file_path
         ]);
 
-        return redirect('/admin/informasi_publik')->with('success', 'Informasi Publik berhasil dibuat');
+        return redirect('/informasi_publik')->with('success', 'Informasi Publik berhasil dibuat');
     }
 
     /**
@@ -114,9 +115,9 @@ class InformasiPublikController extends Controller
 
         if ($request->link) {
             $link = $request->file('link');
-            $extension = $link->getClientOriginalExtension();
-            $randomName = Str::random(10);
-            $file_name = $randomName . '.' . $extension;
+            $file_org =  $link->getClientOriginalName();
+            $randomName = Str::random(5);
+            $file_name = $randomName . '.' . $file_org;
             $file_path = $link->storeAs('link', $file_name, 'public');
             Storage::disk('public')->delete($informasipublik->link);
         } else {
@@ -134,7 +135,7 @@ class InformasiPublikController extends Controller
             'link' => $file_path
         ]);
 
-        return redirect('/admin/informasi_publik')->with('success', 'Informasi Publik berhasil diubah');
+        return redirect('/informasi_publik')->with('success', 'Informasi Publik berhasil diubah');
     }
 
     /**
@@ -147,6 +148,6 @@ class InformasiPublikController extends Controller
             Storage::disk('public')->delete($file_name);
         }
         $informasipublik->delete();
-        return redirect('/admin/informasi_publik')->with('success', 'Data berhasil dihapus');
+        return redirect('/informasi_publik')->with('success', 'Data berhasil dihapus');
     }
 }

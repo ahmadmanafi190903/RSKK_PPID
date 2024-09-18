@@ -97,16 +97,22 @@
                 <div class="alert alert-success text-uppercase text-center">Status {{ $item->status->status }}</div>
               @endif
 
+              @if (session('success'))
+                <div class="alert alert-success">
+                  {{ session('success') }}
+                </div>
+              @endif
+
               @if ($item->id_status == 2)
                 @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                  <form action="/admin/permohonan_informasi/{{ $item->id }}/tolak" method="post" class="d-inline">
+                  <form action="/permohonan_informasi/{{ $item->id }}/tolak" method="post" class="d-inline">
                     @csrf
                     @method('patch')
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak">
                       Tolak <i class="nav-icon fas fa-window-close"></i> 
                     </button>
                   </form>
-                  <form action="/admin/permohonan_informasi/{{ $item->id }}/terima" method="post" class="d-inline">
+                  <form action="/permohonan_informasi/{{ $item->id }}/terima" method="post" class="d-inline">
                     @csrf
                     @method('patch')
                     <button type="submit" class="btn btn-success"
@@ -123,18 +129,12 @@
                   </div>
                 @endif
               @endif
-
-              @if (session('success'))
-                <div class="alert alert-success">
-                  {{ session('success') }}
-                </div>
-              @endif
               
               @if ($item->id_status == 4)
                 @if ($item->file_acc_permohonan == null)
                   <div class="card-body table-responsive p-3">
                     <div>
-                      <form action="/admin/permohonan_informasi/{{ $item->id }}/upload" method="post"
+                      <form action="/permohonan_informasi/{{ $item->id }}/upload" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('patch')
@@ -177,7 +177,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/admin/permohonan_informasi/{{ $item->id }}/tolak" method="post">
+        <form action="/permohonan_informasi/{{ $item->id }}/tolak" method="post">
           <div class="modal-body">
             @csrf
             @method('patch')

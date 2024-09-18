@@ -22,10 +22,10 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/admin/pengajuan_keberatan/{{ $submission->id }}" method="post">
+      <form action="/pengajuan_keberatan/{{ $submission->id }}" method="post">
         @csrf
         @method('PATCH')
-      <div class="row">
+        <div class="row">
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-header">
@@ -39,7 +39,8 @@
                   <label for="nama_lengkap">
                     <h5 class="mb-0">Nama Lengkap</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $submission->nama }} " id="nama_lengkap" name="nama">
+                  <input class="w-100 form-control" type="text" value="{{ $submission->nama }} " id="nama_lengkap"
+                    name="nama">
                   @error('nama')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -48,7 +49,8 @@
                   <label for="email">
                     <h5 class="mb-0">Email</h5>
                   </label>
-                  <input class="w-100 form-control" type="email" value="{{ $submission->email }}" id="email" name="email">
+                  <input class="w-100 form-control" type="email" value="{{ $submission->email }}" id="email"
+                    name="email">
                   @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -57,7 +59,8 @@
                   <label for="phone">
                     <h5 class="mb-0">Telepon</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $submission->no_telepon }}" id="phone" name="no_telepon" inputmode="numeric" oninput="inputPhone()">
+                  <input class="w-100 form-control" type="text" value="{{ $submission->no_telepon }}" id="phone"
+                    name="no_telepon" inputmode="numeric" oninput="inputPhone()">
                   @error('no_telepon')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -66,16 +69,17 @@
                   <label for="pekerjaan">
                     <h5 class="mb-0">Pekerjaan</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $submission->pekerjaan }}" id="pekerjaan" name="pekerjaan">
+                  <input class="w-100 form-control" type="text" value="{{ $submission->pekerjaan }}" id="pekerjaan"
+                    name="pekerjaan">
                   @error('pekerjaan')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
                 <div class="mb-4">
-                  <label  for="alamat">
+                  <label for="alamat">
                     <h5 class="mb-0">Alamat</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="alamat"  cols="30" id="alamat">{{ $submission->alamat }}</textarea>
+                  <textarea class="w-100 form-control" name="alamat" cols="30" id="alamat">{{ $submission->alamat }}</textarea>
                   @error('alamat')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -108,14 +112,16 @@
                   <select id="alasan" name="id_alasan_pengajuan" class="w-100 form-control">
                     <option value=""></option>
                     @foreach ($reason as $item)
-                      <option value="{{ $item->id }}" {{ $item->id == $submission->id_alasan_pengajuan ?'selected' : '' }}>{{ $item->alasan_pengajuan}}</option>
+                      <option value="{{ $item->id }}"
+                        {{ $item->id == $submission->id_alasan_pengajuan ? 'selected' : '' }}>
+                        {{ $item->alasan_pengajuan }}</option>
                     @endforeach
                   </select>
                   @error('id_alasan_pengajuan')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/admin/permohonan_informasi" class="btn btn-secondary">kembali</a>
+                <a href="/permohonan_informasi" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">update</button>
               </div>
             </div>

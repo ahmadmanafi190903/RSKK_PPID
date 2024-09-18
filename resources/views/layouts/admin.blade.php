@@ -33,11 +33,6 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 
-    <!-- Preloader -->
-    {{-- <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div> --}}
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
@@ -143,7 +138,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/admin/permohonan_informasi" class="nav-link">
+              <a href="/permohonan_informasi" class="nav-link">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>
                   Permohonan Informasi
@@ -151,7 +146,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/admin/pengajuan_keberatan" class="nav-link">
+              <a href="/pengajuan_keberatan" class="nav-link">
                 <i class="nav-icon fas fa-engine-warning"></i>
                 <p>
                   Pengajuan Keberatan
@@ -159,7 +154,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/admin/informasi_publik" class="nav-link">
+              <a href="/informasi_publik" class="nav-link">
                 <i class="nav-icon fas fa-triangle"></i>
                 <p>
                   Informasi Publik
@@ -168,9 +163,22 @@
             </li>
             <li class="nav-header">PENGGUNA</li>
             <li class="nav-item">
-              <a href="/admin/pengguna" class="nav-link">
+              <a href="/pengguna" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>Pengguna</p>
+              </a>
+            </li>
+            <li class="nav-header">KONFIGURASI</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-bars"></i>
+                <p>Menu</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-bars"></i>
+                <p>Sub Menu</p>
               </a>
             </li>
             {{-- <li class="nav-item">

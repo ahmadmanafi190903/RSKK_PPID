@@ -15,11 +15,9 @@
             {{ session('success') }}
           </div>
         @endif
-
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -27,7 +25,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Pengajuan Keberatan</h3>
-
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control float-right" id="searchInput"
@@ -75,7 +72,7 @@
                       </td>
                       <td class="align-middle">
                         <div class="">
-                          <a href="/admin/pengajuan_keberatan/{{ $item->id }}" class="btn btn-primary">
+                          <a href="/pengajuan_keberatan/{{ $item->id }}" class="btn btn-primary">
                             @if ($item->id_status == 1)
                               <i class="nav-icon fas fa-arrow-right"></i>
                             @else
@@ -83,10 +80,10 @@
                             @endif
                           </a>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                            <a href="/admin/pengajuan_keberatan/{{ $item->id }}/edit" class="btn btn-warning my-1">
+                            <a href="/pengajuan_keberatan/{{ $item->id }}/edit" class="btn btn-warning my-1">
                               <i class="nav-icon fas fa-pencil"></i>
                             </a>
-                            <form action="/admin/pengajuan_keberatan/{{ $item->id }}" method="post">
+                            <form action="/pengajuan_keberatan/{{ $item->id }}" method="post">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"
@@ -103,7 +100,6 @@
               <script>
                 $(document).ready(function() {
                   console.log("jQuery siap");
-
                   function searchTable() {
                     console.log("Fungsi pencarian dipanggil");
                     var value = $("#searchInput").val().toLowerCase();

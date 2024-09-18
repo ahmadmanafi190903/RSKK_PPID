@@ -30,9 +30,10 @@
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" id="searchInput" placeholder="Cari">
+                  <input type="text" name="table_search" class="form-control float-right" id="searchInput"
+                    placeholder="Cari">
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-default" >
+                    <button type="button" class="btn btn-default">
                       <i class="fas fa-search"></i>
                     </button>
                   </div>
@@ -63,8 +64,10 @@
                       <td class="align-middle">{{ $item->informasi_yang_dibutuhkan }}</td>
                       <td class="align-middle">{{ $item->alasan_penggunaan_informasi }}</td>
                       <td class="align-middle">{{ $item->memperolehinformasi->memperoleh_informasi }}</td>
-                      <td class="align-middle">{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}</td>
-                      <td class="align-middle">{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</td>
+                      <td class="align-middle">{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}
+                      </td>
+                      <td class="align-middle">{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}
+                      </td>
                       <td class="align-middle">
                         @if ($item->id_status == 1)
                           <span class="badge bg-warning">belum dibuka</span>
@@ -78,7 +81,7 @@
                       </td>
                       <td class="align-middle">
                         <div class="">
-                          <a href="/admin/permohonan_informasi/{{ $item->id }}" class="btn btn-primary">
+                          <a href="/permohonan_informasi/{{ $item->id }}" class="btn btn-primary">
                             @if ($item->id_status == 1)
                               <i class="nav-icon fas fa-arrow-right"></i>
                             @else
@@ -86,12 +89,14 @@
                             @endif
                           </a>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                            <a href="/admin/permohonan_informasi/{{ $item->id }}/edit" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                            <form action="/admin/permohonan_informasi/{{ $item->id }}" method="post">
+                            <a href="/permohonan_informasi/{{ $item->id }}/edit"
+                              class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                            <form action="/permohonan_informasi/{{ $item->id }}" method="post">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="nav-icon fas fa-trash"></i></button>
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
+                                  class="nav-icon fas fa-trash"></i></button>
                             </form>
                           @endif
                         </div>
@@ -103,7 +108,7 @@
               <script>
                 $(document).ready(function() {
                   console.log("jQuery siap");
-              
+
                   function searchTable() {
                     console.log("Fungsi pencarian dipanggil");
                     var value = $("#searchInput").val().toLowerCase();
@@ -112,21 +117,22 @@
                       $(this).toggle(rowText.indexOf(value) > -1);
                     });
                   }
-              
+
                   $("#searchInput").on("input", function() {
                     console.log("Input berubah");
                     searchTable();
                   });
-              
+
                   $("#searchButton").on("click", function() {
                     console.log("Tombol diklik");
                     searchTable();
                   });
                 });
-                </script>
+              </script>
             </div>
             <!-- /.card-body -->
           </div>
+          
           {{ $information->links('pagination::bootstrap-5') }}
           <!-- /.card -->
         </div>
@@ -134,4 +140,6 @@
     </section>
     <!-- /.content -->
   </div>
+
+  
 @endsection

@@ -20,11 +20,12 @@ class DatabaseSeeder extends Seeder
             MendapatkanSalinanInformasiSeeder::class,
             StatusSeeder::class,
             AlasanPengajuanSeeder::class,
-            PermohonanInformasiSeeder::class,
-            PengajuanKeberatanSeeder::class,
+            // PermohonanInformasiSeeder::class,
+            // PengajuanKeberatanSeeder::class,
             UserSeeder::class,
             KategoriSeeder::class,
         ]);
+
         InformasiPublik::factory()->count(50)->create();        
     }
 }

@@ -68,9 +68,9 @@ class PermohonanInformasiController extends Controller
         ]);
 
         $ktp = $request->file('file_ktp');
-        $extension = $ktp->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $file_name = $randomName . '.' . $extension;
+        $file_org =  $link->getClientOriginalName();
+        $randomName = Str::random(5);
+        $file_name = $randomName . '.' . $file_org;
         $file_path = $ktp->storeAs('ktp', $file_name, 'public');
 
         PermohonanInformasi::create([
@@ -123,7 +123,7 @@ class PermohonanInformasiController extends Controller
             'id_status' => '3',
             'pesan_ditolak' => $request->pesan_ditolak
         ]);
-        return redirect('/admin/permohonan_informasi/'.$permohonaninformasi->id)->with('success', 'Permohonan berhasil ditolak');
+        return redirect('/permohonan_informasi/'.$permohonaninformasi->id)->with('success', 'Permohonan berhasil ditolak');
     }
     public function accept(Request $request, PermohonanInformasi $permohonaninformasi)
     {
@@ -131,7 +131,7 @@ class PermohonanInformasiController extends Controller
             'id_status' => '4',
         ]);
 
-        return redirect('/admin/permohonan_informasi/'.$permohonaninformasi->id)->with('success', 'Permohonan berhasil diterima');
+        return redirect('/permohonan_informasi/'.$permohonaninformasi->id)->with('success', 'Permohonan berhasil diterima');
     }
 
     public function upload(Request $request, PermohonanInformasi $permohonaninformasi)
@@ -146,16 +146,16 @@ class PermohonanInformasiController extends Controller
         ]);
 
         $file = $request->file('file_acc_permohonan');
-        $extension = $file->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $file_name = $randomName . '.' . $extension;
+        $file_org =  $file->getClientOriginalName();
+        $randomName = Str::random(5);
+        $file_name = $randomName . '.' . $file_org;
         $file_path = $file->storeAs('file_acc', $file_name, 'public');
 
         $permohonaninformasi->update([
             'file_acc_permohonan' => $file_path
         ]);
 
-        return redirect('/admin/permohonan_informasi/'.$permohonaninformasi->id)->with('success', 'File berhasil diupload');
+        return redirect('/permohonan_informasi/'.$permohonaninformasi->id)->with('success', 'File berhasil diupload');
     }
 
     /**
@@ -205,9 +205,9 @@ class PermohonanInformasiController extends Controller
 
         if ($request->file_ktp) {
             $ktp = $request->file('file_ktp');
-            $extension = $ktp->getClientOriginalExtension();
-            $randomName = Str::random(10);
-            $file_name = $randomName . '.' . $extension;
+            $file_org =  $link->getClientOriginalName();
+            $randomName = Str::random(5);
+            $file_name = $randomName . '.' . $file_org;
             $file_path = $ktp->storeAs('ktp', $file_name, 'public');
             Storage::disk('public')->delete($permohonaninformasi->file_ktp);
         } else {
@@ -228,7 +228,7 @@ class PermohonanInformasiController extends Controller
             'file_ktp' => $file_path
         ]);
 
-        return redirect('/admin/permohonan_informasi')->with('success', 'Data berhasil diubah');
+        return redirect('/permohonan_informasi')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -241,7 +241,7 @@ class PermohonanInformasiController extends Controller
             Storage::disk('public')->delete($file_name);
         }
         $permohonaninformasi->delete();
-        return redirect('/admin/permohonan_informasi')->with('success', 'Data berhasil dihapus');
+        return redirect('/permohonan_informasi')->with('success', 'Data berhasil dihapus');
     }
 
     public function riwayat()

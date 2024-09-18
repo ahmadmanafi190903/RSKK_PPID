@@ -6,12 +6,12 @@
 
 	<section class="our-service-wrapper section-padding">
 		<div class="container">
-			<div class="col-12 col-xl-6 offset-xl-3 text-center">
+			{{-- <div class="col-12 col-xl-6 offset-xl-3 text-center">
 				<div class="section-title">
 					<span>Our Feature</span>
 					<h2>We Help you Build and Grow Business</h2>
 				</div>
-			</div>
+			</div> --}}
 			<div class="row ps-xl-5 pe-xl-5">
 				<div class="col-xl-3 col-md-6 col-12">
 					<div class="single-service-box">
@@ -20,8 +20,8 @@
 
 						</div>
 						<h4><a href="services-details.html">Informasi Publik Berkala</a></h4>
-						<p>Sale and buy are the central strategies of trade. </p>
-						<a href="services-details.html" class="read-more-link">Read More</a>
+						<p>Informasi yang rutin diterbitkan oleh RSUD Kesehatan Kerja Provinsi Jawa Barat. Termasuk laporan tahunan, rencana strategis, dan kegiatan rutin lainnya.</p>
+						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6 col-12">
@@ -30,8 +30,8 @@
 							<img src="assets/img/icons/coding.svg" alt="">
 						</div>
 						<h4><a href="services-details.html">Informasi Publik Setiap Saat</a></h4>
-						<p>Develop amazing web and app experiences.</p>
-						<a href="services-details.html" class="read-more-link">Read More</a>
+						<p>Informasi yang selalu tersedia dan dapat diakses oleh masyarakat, seperti peraturan, prosedur pelayanan, dan tarif layanan kesehatan.</p>
+						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6 col-12">
@@ -40,8 +40,8 @@
 							<img src="assets/img/icons/ux-design.svg" alt="">
 						</div>
 						<h4><a href="services-details.html">Informasi Publik dikecualikan</a></h4>
-						<p>Looking For Website Design Services? Browse.</p>
-						<a href="services-details.html" class="read-more-link">Read More</a>
+						<p>Informasi yang tidak dapat disebarluaskan secara umum sesuai dengan ketentuan perundang-undangan, seperti data pasien dan informasi yang bersifat rahasia.</p>
+						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6 col-12">
@@ -50,8 +50,8 @@
 							<img src="assets/img/icons/database.svg" alt="">
 						</div>
 						<h4><a href="services-details.html">Informasi Serta Merta</a></h4>
-						<p>A software engineer is a person applies.</p>
-						<a href="services-details.html" class="read-more-link">Read More</a>
+						<p> Informasi yang harus segera disampaikan kepada masyarakat, terutama dalam situasi darurat atau bencana yang memerlukan tindakan segera.</p>
+						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
 					</div>
 				</div>
 			</div>
@@ -74,11 +74,9 @@
 				</div>
 				<div class="col-xl-6 col-12 ps-xl-5">
 					<div class="section-title">
-						<span>25 Years of Experience</span>
-						<h2>Your Partner for Software Innovation</h2>
-						<p>Quantech is the partner of choice for many of the world’s leading enterprises,
-							SMEs and technology challengers. We help businesses elevate their value through custom
-							software development, product design.</p>
+						{{-- <span>25 Years of Experience</span> --}}
+						<h2>Mitra Anda dalam Inovasi Pelayanan Publik</h2>
+						<p>RSUD Kesehatan Kerja Provinsi Jawa Barat berkomitmen untuk memberikan layanan yang inovatif dan mudah diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk meningkatkan transparansi dan kualitas layanan.</p>
 					</div>
 
 					<div class="row">
@@ -86,16 +84,16 @@
 							<div class="info-icon-item">
 								<img src="assets/img/icons/experiance.svg" alt="">
 								<h3>Form Permohonan Informasi</h3>
-								<p>Our great team of more than 1400 software experts.</p>
-								<a href="form-permohonan.html" class="theme-btn mt-30">klik untuk detail</a>
+								<p>Ajukan permohonan informasi publik yang Anda butuhkan dengan mudah dan cepat.</p>
+								<a href="form-permohonan.html" class="theme-btn mt-30">Ajukan Permohonan</a>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="info-icon-item">
 								<img src="assets/img/icons/settings.svg" alt="">
 								<h3>Form Permohonan Keberatan Informasi</h3>
-								<p>Our great team of more than 1400 software experts.</p>
-								<a href="form-pengajuan.html" class="theme-btn mt-30">klik untuk detail</a>
+								<p>Jika Anda merasa ada informasi yang kurang jelas atau permohonan informasi tidak terpenuhi, ajukan keberatan Anda melalui form ini.</p>
+								<a href="form-pengajuan.html" class="theme-btn mt-30">Ajukan Keberatan</a>
 							</div>
 						</div>
 					</div>
