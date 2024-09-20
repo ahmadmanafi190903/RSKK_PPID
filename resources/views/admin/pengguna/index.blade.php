@@ -61,13 +61,14 @@
                     <td class="text-center align-middle text-wrap">{{ $user->role }}</td>
                     @if ($user->role != 'super_admin')
                       <td>
-                        <div class="d-flex flex-row">
-                          <a href="#" class="btn btn-warning mx-2">edit</a>
+                        <div class="">
+                          <a href="#" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
                           <form action="#" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"
-                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">delete</button>
+                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
+                              class="nav-icon fas fa-trash"></i></button></button>
                           </form>
                         </div>
                       </td>

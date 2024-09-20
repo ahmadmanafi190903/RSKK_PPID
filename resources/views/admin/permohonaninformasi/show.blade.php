@@ -109,14 +109,15 @@
                     @csrf
                     @method('patch')
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tolak">
-                      Tolak <i class="nav-icon fas fa-window-close"></i> 
+                      Tolak <i class="nav-icon fas fa-window-close"></i>
                     </button>
                   </form>
                   <form action="/permohonan_informasi/{{ $item->id }}/terima" method="post" class="d-inline">
                     @csrf
                     @method('patch')
                     <button type="submit" class="btn btn-success"
-                      onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima<i class="nav-icon fas fa-check"></i></button>
+                      onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima<i
+                        class="nav-icon fas fa-check"></i></button>
                   </form>
                 @endif
               @endif
@@ -129,7 +130,7 @@
                   </div>
                 @endif
               @endif
-              
+
               @if ($item->id_status == 4)
                 @if ($item->file_acc_permohonan == null)
                   <div class="card-body table-responsive p-3">
@@ -152,10 +153,32 @@
                 @else
                   <div>
                     <h5 class="mb-0">File</h5>
-                    <a href="{{ asset('storage/' . $item->file_acc_permohonan) }}" target="_blank">
+                    {{-- <a href="{{ asset('storage/' . $item->file_acc_permohonan) }}" target="_blank">
                       <img src="{{ asset('storage/' . $item->file_acc_permohonan) }}"
                         alt="{{ $item->file_acc_permohonan }}" width="250">
-                    </a>
+                    </a> --}}
+                    <button type="button" class="btn btn-info" data-toggle="modal"
+                      data-target="#modal-xl{{ $item->id }}">
+                      Klik Disini <i class="nav-icon fas fa-download"></i>
+                    </button>
+                  </div>
+
+                  {{-- modal --}}
+                  <div class="modal fade" id="modal-xl{{ $item->id }}">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          {{-- <h4 class="modal-title">Extra Large Modal</h4> --}}
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <iframe id="pdfViewer" src="{{ asset('storage/' . $item->file_acc_permohonan) }}" frameborder="0"
+                          style="width: 100%; height: 600px;"></iframe>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
                   </div>
                 @endif
               @endif

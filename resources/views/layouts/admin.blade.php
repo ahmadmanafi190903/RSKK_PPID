@@ -34,180 +34,17 @@
   <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-      </ul>
-
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <form action="{{ route('logout') }}" method="post" class="">
-            @csrf
-            <button type="submit" class="nav-link bg-transparent border-0" onclick="return confirm('Apakah anda yakin ingin logout?')">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-            </button>
-          </form>
-        </li>
-      </ul>
-    </nav>
+    @include('components.nav-admin')
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        <img src="/assets/img/icons/Logo-RSKK-2.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light">PPID RSKK</span>
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="/dist/img/33.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-          </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        {{-- <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-              aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div> --}}
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-            data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            <li class="nav-header">MENU UTAMA</li>
-            <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Dashboard
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/permohonan_informasi" class="nav-link">
-                <i class="nav-icon fas fa-file-alt"></i>
-                <p>
-                  Permohonan Informasi
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/pengajuan_keberatan" class="nav-link">
-                <i class="nav-icon fas fa-engine-warning"></i>
-                <p>
-                  Pengajuan Keberatan
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/informasi_publik" class="nav-link">
-                <i class="nav-icon fas fa-triangle"></i>
-                <p>
-                  Informasi Publik
-                </p>
-              </a>
-            </li>
-            <li class="nav-header">PENGGUNA</li>
-            <li class="nav-item">
-              <a href="/pengguna" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>Pengguna</p>
-              </a>
-            </li>
-            <li class="nav-header">KONFIGURASI</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-bars"></i>
-                <p>Menu</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-bars"></i>
-                <p>Sub Menu</p>
-              </a>
-            </li>
-            {{-- <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Pemohon</p>
-              </a>
-            </li> --}}
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
+    @include('components.sidebar-admin')
 
     <!-- Content Wrapper. Contains page content -->
     @yield('content')
-    <!-- /.content-wrapper -->
 
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2024-2025</strong>
-      Fikri | Ahmad | Randi
-    </footer>
+    @include('components.footer-admin')
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
 
@@ -251,9 +88,9 @@
   <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
   <!-- Page specific script -->
   <script>
-  $(function () {
-    bsCustomFileInput.init();
-  });
+    $(function() {
+      bsCustomFileInput.init();
+    });
   </script>
 
   {{-- ubah foto ketika di update  --}}
@@ -263,18 +100,18 @@
 
     imageInput.addEventListener('change', function(event) {
       console.log(event.target.files[0])
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
 
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-            };
+        reader.onload = function(e) {
+          previewImage.src = e.target.result;
+        };
 
-            reader.readAsDataURL(file);
-        }
+        reader.readAsDataURL(file);
+      }
     });
-</script>
+  </script>
 </body>
 
 </html>

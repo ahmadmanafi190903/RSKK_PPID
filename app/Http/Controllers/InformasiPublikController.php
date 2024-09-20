@@ -54,7 +54,7 @@ class InformasiPublikController extends Controller
         // $extension = $link->getClientOriginalExtension();
         $file_org =  $link->getClientOriginalName();
         $randomName = Str::random(5);
-        $file_name = $randomName . '.' . $file_org;
+        $file_name = $randomName . '-' . $file_org;
         $file_path = $link->storeAs('link', $file_name, 'public');
 
         InformasiPublik::create([
@@ -117,7 +117,7 @@ class InformasiPublikController extends Controller
             $link = $request->file('link');
             $file_org =  $link->getClientOriginalName();
             $randomName = Str::random(5);
-            $file_name = $randomName . '.' . $file_org;
+            $file_name = $randomName . '-' . $file_org;
             $file_path = $link->storeAs('link', $file_name, 'public');
             Storage::disk('public')->delete($informasipublik->link);
         } else {

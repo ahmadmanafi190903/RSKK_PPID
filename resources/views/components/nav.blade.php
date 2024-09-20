@@ -13,12 +13,9 @@
         <div class="menu-wrap">
           <div class="main-menu">
             <ul>
-              <li><a href="#">Profil <i class="fas fa-angle-down"></i></a>
-                <ul class="sub-menu">
-                  <li><a href="/">Beranda</a></li>
-                  <li><a href="/">Visi Misi</a></li>
-                  <li><a href="/">Struktur Organisasi</a></li>
-                </ul>
+              <li><a href="#">Beranda</a>
+              </li>
+              <li><a href="#">Profil</a>
               </li>
               <li><a href="#">Informasi Publik <i class="fas fa-angle-down"></i></a>
                 <ul class="sub-menu">
@@ -34,7 +31,7 @@
                   <li><a href="/pengajuan">Pengajuan Keberatan Informasi</a></li>
                   <li><a href="/riwayat">Riwayat Permohonan</a></li>
                 </ul>
-              </li>
+              {{-- </li>
               <li><a href="#">projects</a></li>
               <li><a href="#">Pages <i class="fas fa-angle-down"></i></a>
                 <ul class="sub-menu">
@@ -45,12 +42,12 @@
                 </ul>
               </li>
               <li><a href="#">News</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Contact</a></li> --}}
             </ul>
           </div>
         </div>
         <div class="header-right-element">
-          <a href="/login" class="theme-btn">Sign In</a>
+          <a href="/login" class="theme-btn">Log In</a>
         </div>
       </div>
       <div class="d-block d-lg-none col-sm-1 col-md-8 col-6">

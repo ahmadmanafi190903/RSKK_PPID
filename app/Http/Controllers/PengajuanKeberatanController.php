@@ -14,7 +14,6 @@ class PengajuanKeberatanController extends Controller
      */
     public function index()
     {
-        
         $submission = PengajuanKeberatan::latest()->paginate(5);
         return view('admin.pengajuankeberatan.index', [
             'submission' => $submission
@@ -85,7 +84,6 @@ class PengajuanKeberatanController extends Controller
 
     public function reject(Request $request, PengajuanKeberatan $pengajuankeberatan)
     {
-        // @dd($request);
         $request->validate([
             'pesan_ditolak' => 'required',
         ],[
@@ -114,7 +112,6 @@ class PengajuanKeberatanController extends Controller
      */
     public function edit(PengajuanKeberatan $pengajuankeberatan)
     {
-        // @dd($pengajuankeberatan);
         $reason = AlasanPengajuan::all();
         return view('admin.pengajuankeberatan.edit', [
             'submission' => $pengajuankeberatan,

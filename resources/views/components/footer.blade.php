@@ -39,7 +39,8 @@
             <ul>
               <li><a href="#">WhatsApp</a></li>
               <li><a href="https://youtube.com/@rskkjabar3910?si=Ij_PJHEWoQDMfh8n" target="_blank">Youtube</a></li>
-              <li><a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ==" target="_blank">Instagram</a></li>
+              <li><a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ=="
+                  target="_blank">Instagram</a></li>
               <li><a href="https://www.facebook.com/RSUDKK?mibextid=ZbWKwL" target="_blank">Facebook</a></li>
             </ul>
           </div>
@@ -103,11 +104,13 @@
           </div>
           <div class="col-md-6 mt-2 mt-md-0 col-12 text-md-end">
             <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="https://www.facebook.com/RSUDKK?mibextid=ZbWKwL" target="_blank"><i
+                  class="fab fa-facebook-square" aria-hidden="true"></i></a>
+              <a href="https://youtube.com/@rskkjabar3910?si=Ij_PJHEWoQDMfh8n" target="_blank"><i class="fab fa-youtube"
+                  aria-hidden="true"></i></a>
+              <a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ==" target="_blank"><i
+                  class="fab fa-instagram" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>

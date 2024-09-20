@@ -19,7 +19,6 @@ class PermohonanInformasiController extends Controller
     public function index()
     {
         $information = PermohonanInformasi::latest()->paginate(5);
-        // @dd($information);
         return view('admin.permohonaninformasi.index', [
             'information' => $information
         ]);
@@ -68,9 +67,9 @@ class PermohonanInformasiController extends Controller
         ]);
 
         $ktp = $request->file('file_ktp');
-        $file_org =  $link->getClientOriginalName();
+        $file_org =  $ktp->getClientOriginalName();
         $randomName = Str::random(5);
-        $file_name = $randomName . '.' . $file_org;
+        $file_name = $randomName . '-' . $file_org;
         $file_path = $ktp->storeAs('ktp', $file_name, 'public');
 
         PermohonanInformasi::create([
@@ -97,7 +96,6 @@ class PermohonanInformasiController extends Controller
      */
     public function show(PermohonanInformasi $permohonaninformasi)
     {
-        // @dd($permohonaninformasi);
         $id = PermohonanInformasi::find($permohonaninformasi->id);
         if ($permohonaninformasi->id_status == 1) {
             $id->update([
@@ -112,7 +110,6 @@ class PermohonanInformasiController extends Controller
 
     public function reject(Request $request, PermohonanInformasi $permohonaninformasi)
     {
-        // @dd($request);
         $request->validate([
             'pesan_ditolak' => 'required',
         ],[
@@ -148,7 +145,7 @@ class PermohonanInformasiController extends Controller
         $file = $request->file('file_acc_permohonan');
         $file_org =  $file->getClientOriginalName();
         $randomName = Str::random(5);
-        $file_name = $randomName . '.' . $file_org;
+        $file_name = $randomName . '-' . $file_org;
         $file_path = $file->storeAs('file_acc', $file_name, 'public');
 
         $permohonaninformasi->update([
@@ -163,7 +160,6 @@ class PermohonanInformasiController extends Controller
      */
     public function edit(PermohonanInformasi $permohonaninformasi)
     {
-        // @dd($permohonaninformasi);
         $get_information = MemperolehInformasi::all();
         $get_copy = MendapatkanSalinanInformasi::all();
        return view('admin.permohonaninformasi.edit', [
@@ -178,7 +174,6 @@ class PermohonanInformasiController extends Controller
      */
     public function update(Request $request, PermohonanInformasi $permohonaninformasi)
     {
-        // @dd($request);
         $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email:rfc,dns|max:255',
@@ -205,9 +200,9 @@ class PermohonanInformasiController extends Controller
 
         if ($request->file_ktp) {
             $ktp = $request->file('file_ktp');
-            $file_org =  $link->getClientOriginalName();
+            $file_org =  $ktp->getClientOriginalName();
             $randomName = Str::random(5);
-            $file_name = $randomName . '.' . $file_org;
+            $file_name = $randomName . '-' . $file_org;
             $file_path = $ktp->storeAs('ktp', $file_name, 'public');
             Storage::disk('public')->delete($permohonaninformasi->file_ktp);
         } else {
