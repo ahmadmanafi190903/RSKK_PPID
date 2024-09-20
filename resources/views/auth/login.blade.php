@@ -31,10 +31,12 @@
               <span class="fas fa-user"></span>
             </div>
           </div>
-          @error('nip')
-            <span class="text-danger">{{ $message }}</span>
-          @enderror
         </div>
+        @error('nip')
+        <div>
+          <span class="text-danger">{{ $message }}</span>
+        </div>
+        @enderror
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Masukan Password" name="password" >
           <div class="input-group-append">

@@ -142,6 +142,15 @@
                         <div>
                           <h5 class="mb-2">File</h5>
                           <input type="file" name="file_acc_permohonan" class="form-control mb-2">
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="imageInput" name="file_acc_permohonan">
+                              <label class="custom-file-label" for="link">{{ $information->file_ktp }}</label>
+                            </div>
+                            <div class="input-group-append">
+                              <span class="input-group-text">Upload</span>
+                            </div>
+                          </div>
                           @error('file_acc_permohonan')
                             <div class="alert alert-danger">{{ $message }}</div>
                           @enderror

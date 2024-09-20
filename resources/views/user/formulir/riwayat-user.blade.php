@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+  <style>
+     
+  </style>
   <div class="col-12 col-lg-6 offset-lg-3 pt-5 mt-5 mb-5 ">
     <div class="main-sidebar">
       <div class="single-sidebar-widget ">
@@ -117,6 +121,38 @@
                         </div>
                       @endif
 
+                      <div class="ms-3">
+                        <ul class="timeline-list">
+                          <li class="circle @if ($item->id_status) active @endif">
+                            <div class="content ">
+                              <h4>Terkirim</h4>
+                              <p>
+                                Permohonan informasi telah berhasil dikirim dan diterima oleh PPID. Verifikasi data pemohon sedang dilakukan
+                                untuk memulai proses.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="circle @if ($item->id_status != 1) active @endif">
+                            <div class="content">
+                              <h4>Diproses</h4>
+                              <p>
+                                PPID sedang meninjau permohonan dan memverifikasi informasi yang dapat diberikan. Jika diperlukan, klarifikasi
+                                tambahan akan dilakukan.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="circle @if ($item->id_status == 3 || $item->id_status == 4) active @endif">
+                            <div class="content">
+                              <h4>Selesai</h4>
+                              <p>
+                                Proses permohonan telah selesai, dan informasi yang diminta sudah disiapkan. Pemohon akan segera menerima hasil sesuai dengan ketentuan.
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      
+
                       @if ($item->id_status == 3)
                         <div class="mb-3">
                           <h5 class="mb-0">Alasan Ditolak</h5>
@@ -126,7 +162,7 @@
                         @if ($item->file_acc_permohonan)
                           <div class="mb-3">
                             <h5 class="mb-0">Pesan Diterima</h5>
-                            <a href="{{ asset('storage/' . $item->file_acc_permohonan) }}" target="_blank">click link: {{  $item->file_acc_permohonan }}</a>
+                            <a href="{{ asset('storage/' . $item->file_acc_permohonan) }}" target="_blank" class="btn btn-primary">Lihat</a>
                           </div>
                         @endif
                       @endif

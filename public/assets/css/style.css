@@ -9312,3 +9312,53 @@ footer .footer-bottom .social-links a:last-of-type {
   background-color: #256ad7;
   color: #fff;
 }
+
+.content{
+  color:black;
+ }
+
+.content h3 {
+  font-size: 1.2em;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.timeline-list {
+  padding-bottom: 1em;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.timeline-list:before {
+  content: "";
+  border-left: 5px solid #CCC;
+  left: -0.25em;
+  top: 2em;
+  height: 66%;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+}
+
+.circle {
+  margin: 0 0 3em 0;
+  padding: 0 2em 0em 2em;
+  position: relative;
+  color: white;
+}
+
+.circle:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -1em;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none repeat scroll 0% 0% #dddddd;
+}
+
+.active:before{
+  background: none repeat scroll 0% 0% var(--colorblue2);
+}
