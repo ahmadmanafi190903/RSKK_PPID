@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Menu;
+use Illuminate\Support\Facades\Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // view()->composer ('*', function($view) {
+        //     $menus = Menu::with('child')->where('status', true)->get();
+        //     $view->with('menus',$menus);
+        // });
+
+        view()->composer ('*', function($view) {
+            $menus = Cache::remember('menus', 60, function() {
+                return Menu::with('child')->where('status', true)->get();
+            });
+
+            $view->with('menus', $menus);
+        });
     }
 }

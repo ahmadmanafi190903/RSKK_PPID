@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             PengajuanKeberatanSeeder::class,
             UserSeeder::class,
             KategoriSeeder::class,
+            MenuSeeder::class,
+            SubmenuSeeder::class
         ]);
 
         InformasiPublik::factory()->count(50)->create();        

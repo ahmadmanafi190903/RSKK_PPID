@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('submenus', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('url');
+            $table->boolean('status');
+            $table->foreignId('menu_id');
             $table->timestamps();
         });
     }

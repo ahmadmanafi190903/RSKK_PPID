@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('url')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

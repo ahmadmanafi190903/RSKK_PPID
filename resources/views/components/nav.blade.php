@@ -13,11 +13,20 @@
         <div class="menu-wrap">
           <div class="main-menu">
             <ul>
-              <li><a href="#">Beranda</a>
+              @foreach ($menus as $menu)
+                <li><a href="#">{{$menu->nama}}@if ( $menu->child->count() > 0 )<i class="fas fa-angle-down"></i></a>@endif</a>
+                  @if ( $menu->child->count() > 0 )
+                    <ul class="sub-menu">
+                      @foreach ( $menu->child as $submenu )
+                        <li><a href="{{ $submenu->url }}">{{ $submenu->nama }}</a></li>
+                      @endforeach
+                    </ul>
+                  @endif
+                </li>
+              @endforeach
+              {{-- <li><a href="#">Profil</a>
               </li>
-              <li><a href="#">Profil</a>
-              </li>
-              <li><a href="#">Informasi Publik <i class="fas fa-angle-down"></i></a>
+              <li><a href="#">Informasi Publik @if ( $menu->child->count() > 0 )<i class="fas fa-angle-down"></i></a>@endif 
                 <ul class="sub-menu">
                   <li><a href="#">Informasi Publik Berkala </a></li>
                   <li><a href="#">Informasi Publik Setiap Saat</a></li>
@@ -30,7 +39,7 @@
                   <li><a href="/permohonan">Permohonan Informasi </a></li>
                   <li><a href="/pengajuan">Pengajuan Keberatan Informasi</a></li>
                   <li><a href="/riwayat">Riwayat Permohonan</a></li>
-                </ul>
+                </ul> --}}
               {{-- </li>
               <li><a href="#">projects</a></li>
               <li><a href="#">Pages <i class="fas fa-angle-down"></i></a>

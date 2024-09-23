@@ -1,197 +1,208 @@
 @extends('layouts.app')
 
-@section("content")
+@section('content')
+  @include('components.hero')
 
-	
-
-	@include("components.hero")
-
-	<section class="our-service-wrapper section-padding">
-		<div class="container">
-			{{-- <div class="col-12 col-xl-6 offset-xl-3 text-center">
+  <section class="our-service-wrapper section-padding">
+    <div class="container">
+      {{-- <div class="col-12 col-xl-6 offset-xl-3 text-center">
 				<div class="section-title">
 					<span>Our Feature</span>
 					<h2>We Help you Build and Grow Business</h2>
 				</div>
 			</div> --}}
-			<div class="row ps-xl-5 pe-xl-5">
-				<div class="col-xl-3 col-md-6 col-12">
-					<div class="single-service-box">
-						<div class="icon">
-							<img src="assets/img/icons/solution.svg" alt="">
+      <div class="row ps-xl-5 pe-xl-5">
+        <div class="col-xl-3 col-md-6 col-12">
+          <div class="single-service-box">
+            <div class="icon">
+              <img src="assets/img/icons/solution.svg" alt="">
 
-						</div>
-						<h4><a href="services-details.html">Informasi Publik Berkala</a></h4>
-						<p>Informasi yang rutin diterbitkan oleh RSUD Kesehatan Kerja Provinsi Jawa Barat. Termasuk laporan tahunan, rencana strategis, dan kegiatan rutin lainnya.</p>
-						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
-					</div>
-				</div>
-				<div class="col-xl-3 col-md-6 col-12">
-					<div class="single-service-box">
-						<div class="icon">
-							<img src="assets/img/icons/coding.svg" alt="">
-						</div>
-						<h4><a href="services-details.html">Informasi Publik Setiap Saat</a></h4>
-						<p>Informasi yang selalu tersedia dan dapat diakses oleh masyarakat, seperti peraturan, prosedur pelayanan, dan tarif layanan kesehatan.</p>
-						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
-					</div>
-				</div>
-				<div class="col-xl-3 col-md-6 col-12">
-					<div class="single-service-box">
-						<div class="icon">
-							<img src="assets/img/icons/ux-design.svg" alt="">
-						</div>
-						<h4><a href="services-details.html">Informasi Publik dikecualikan</a></h4>
-						<p>Informasi yang tidak dapat disebarluaskan secara umum sesuai dengan ketentuan perundang-undangan, seperti data pasien dan informasi yang bersifat rahasia.</p>
-						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
-					</div>
-				</div>
-				<div class="col-xl-3 col-md-6 col-12">
-					<div class="single-service-box">
-						<div class="icon">
-							<img src="assets/img/icons/database.svg" alt="">
-						</div>
-						<h4><a href="services-details.html">Informasi Serta Merta</a></h4>
-						<p> Informasi yang harus segera disampaikan kepada masyarakat, terutama dalam situasi darurat atau bencana yang memerlukan tindakan segera.</p>
-						<a href="services-details.html" class="read-more-link">Selengkapnya</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            </div>
+            <h4><a href="services-details.html">Informasi Publik Berkala</a></h4>
+            <p>Informasi yang rutin diterbitkan oleh RSUD Kesehatan Kerja Provinsi Jawa Barat. Termasuk laporan tahunan,
+              rencana strategis, dan kegiatan rutin lainnya.</p>
+            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-12">
+          <div class="single-service-box">
+            <div class="icon">
+              <img src="assets/img/icons/coding.svg" alt="">
+            </div>
+            <h4><a href="services-details.html">Informasi Publik Setiap Saat</a></h4>
+            <p>Informasi yang selalu tersedia dan dapat diakses oleh masyarakat, seperti peraturan, prosedur pelayanan,
+              dan tarif layanan kesehatan.</p>
+            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-12">
+          <div class="single-service-box">
+            <div class="icon">
+              <img src="assets/img/icons/ux-design.svg" alt="">
+            </div>
+            <h4><a href="services-details.html">Informasi Publik dikecualikan</a></h4>
+            <p>Informasi yang tidak dapat disebarluaskan secara umum sesuai dengan ketentuan perundang-undangan, seperti
+              data pasien dan informasi yang bersifat rahasia.</p>
+            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-12">
+          <div class="single-service-box">
+            <div class="icon">
+              <img src="assets/img/icons/database.svg" alt="">
+            </div>
+            <h4><a href="services-details.html">Informasi Serta Merta</a></h4>
+            <p> Informasi yang harus segera disampaikan kepada masyarakat, terutama dalam situasi darurat atau bencana
+              yang memerlukan tindakan segera.</p>
+            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="about-wrapper section-padding pt-0">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-6 col-12">
-					<div class="about-images-video-popup mb-5 mb-md-0">
-						<img src="assets/img/home1/about1.jpg" alt="">
-						<img src="assets/img/home1/about2.jpg" alt="">
+  <section class="about-wrapper section-padding pt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-12">
+          <div class="about-images-video-popup mb-5 mb-md-0">
+            <img src="assets/img/home1/about1.jpg" alt="">
+            <img src="assets/img/home1/about2.jpg" alt="">
 
-						<div class="video-play-btn">
-							<a href="https://www.youtube.com/watch?v=K02pM-yQLGE" class="popup-video play-video"><i
-									class="fas fa-play"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-6 col-12 ps-xl-5">
-					<div class="section-title">
-						{{-- <span>25 Years of Experience</span> --}}
-						<h2>Mitra Anda dalam Inovasi Pelayanan Publik</h2>
-						<p>RSUD Kesehatan Kerja Provinsi Jawa Barat berkomitmen untuk memberikan layanan yang inovatif dan mudah diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk meningkatkan transparansi dan kualitas layanan.</p>
-					</div>
+            <div class="video-play-btn">
+              <a href="https://www.youtube.com/watch?v=K02pM-yQLGE" class="popup-video play-video"><i
+                  class="fas fa-play"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-12 ps-xl-5">
+          <div class="section-title">
+            {{-- <span>25 Years of Experience</span> --}}
+            <h2>Mitra Anda dalam Inovasi Pelayanan Publik</h2>
+            <p>RSUD Kesehatan Kerja Provinsi Jawa Barat berkomitmen untuk memberikan layanan yang inovatif dan mudah
+              diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk
+              meningkatkan transparansi dan kualitas layanan.</p>
+          </div>
 
-					<div class="row">
-						<div class="col-md-6 col-sm-6">
-							<div class="info-icon-item">
-								<img src="assets/img/icons/experiance.svg" alt="">
-								<h3>Form Permohonan Informasi</h3>
-								<p>Ajukan permohonan informasi publik yang Anda butuhkan dengan mudah dan cepat.</p>
-								<a href="form-permohonan.html" class="theme-btn mt-30">Ajukan Permohonan</a>
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<div class="info-icon-item">
-								<img src="assets/img/icons/settings.svg" alt="">
-								<h3>Form Permohonan Keberatan Informasi</h3>
-								<p>Jika Anda merasa ada informasi yang kurang jelas atau permohonan informasi tidak terpenuhi, ajukan keberatan Anda melalui form ini.</p>
-								<a href="form-pengajuan.html" class="theme-btn mt-30">Ajukan Keberatan</a>
-							</div>
-						</div>
-					</div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="info-icon-item">
+                <img src="assets/img/icons/experiance.svg" alt="">
+                <h3>Form Permohonan Informasi</h3>
+                <p>Ajukan permohonan informasi publik yang Anda butuhkan dengan mudah dan cepat.</p>
+                <a href="form-permohonan.html" class="theme-btn mt-30">Ajukan Permohonan</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="info-icon-item">
+                <img src="assets/img/icons/settings.svg" alt="">
+                <h3>Form Permohonan Keberatan Informasi</h3>
+                <p>Jika Anda merasa ada informasi yang kurang jelas atau permohonan informasi tidak terpenuhi, ajukan
+                  keberatan Anda melalui form ini.</p>
+                <a href="form-pengajuan.html" class="theme-btn mt-30">Ajukan Keberatan</a>
+              </div>
+            </div>
+          </div>
 
-				</div>
-			</div>
-		</div>
-	</section>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="faq-wrapper left-bg-overlay section-padding bg-gradient">
-		<div class="shape-top"><img src="assets/img/top-shape.png" alt=""></div>
-		<div class="shape-bottom"><img src="assets/img/left-bottom-shape.png" alt=""></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-6 col-12 mb-5 mb-xl-0">
-					<div class="faq-img">
-						<img src="assets/img/home1/faq.jpg" alt="">
-					</div>
-				</div>
-				<div class="col-xl-6 col-12 ps-xl-5">
-					<div class="section-title">
-						<span>faq</span>
-						<h2>Frequntly Asked Any Questions</h2>
-					</div>
+  <section class="faq-wrapper left-bg-overlay section-padding bg-gradient">
+    <div class="shape-top"><img src="assets/img/top-shape.png" alt=""></div>
+    <div class="shape-bottom"><img src="assets/img/left-bottom-shape.png" alt=""></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
+          <div class="faq-img">
+            <img src="assets/img/home1/faq.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-xl-6 col-12 ps-xl-5">
+          <div class="section-title">
+            <h2>Pejebat Pengelolaan Informasi dan Dokumentasi </h2>
+          </div>
 
-					<div class="faq-accordion">
-						<div class="accordion" id="accordion">
+          <div class="faq-accordion">
+            <div class="accordion" id="accordion">
 
-							<div class="accordion-item">
-								<h4 class="accordion-header">
-									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-										data-bs-target="#faq1" aria-controls="faq1">
-										What Is IT Consulting?
-									</button>
-								</h4>
-								<div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordion">
-									<div class="accordion-body">
-										We help our clients succeed by creating brand, digital xperiences, and print
-										materials.
-									</div>
-								</div>
-							</div>
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq1" aria-controls="faq1">
+                    Apa itu ppid?
+                  </button>
+                </h4>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                  <div class="accordion-body">
+                    PPID atau Pejabat Pengelola Informasi dan Dokumentasi adalah pejabat yang bertanggung jawab dalam
+                    pengelolaan informasi publik di instansi pemerintah. PPID bertugas untuk mengumpulkan,
+                    mendokumentasikan, menyediakan, dan/atau menyebarluaskan informasi publik sesuai dengan peraturan
+                    perundang-undangan.
+                  </div>
+                </div>
+              </div>
 
-							<div class="accordion-item">
-								<h4 class="accordion-header">
-									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
-										aria-controls="faq2">
-										Can I Get Internet in My Area ?
-									</button>
-								</h4>
-								<div id="faq2" class="accordion-collapse collapse show" data-bs-parent="#accordion">
-									<div class="accordion-body">
-										We help our clients succeed by creating brand, digital xperiences, and print
-										materials.
-									</div>
-								</div>
-							</div>
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                    aria-controls="faq2">
+                    Apa saja informasi yang dapat diakses melalui PPID?
+                  </button>
+                </h4>
+                <div id="faq2" class="accordion-collapse collapse show" data-bs-parent="#accordion">
+                  <div class="accordion-body">
+                    Informasi yang dapat diakses melalui PPID meliputi informasi yang bersifat terbuka untuk publik,
+                    seperti laporan keuangan, laporan tahunan, program dan kegiatan instansi, serta informasi lainnya yang
+                    terkait dengan layanan publik. Namun, beberapa informasi yang bersifat rahasia, seperti data pribadi
+                    dan informasi yang dapat membahayakan keamanan negara, tidak dapat diakses.
+                  </div>
+                </div>
+              </div>
 
-							<div class="accordion-item">
-								<h4 class="accordion-header">
-									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-										data-bs-target="#faq3" aria-controls="faq3">
-										Software Development?
-									</button>
-								</h4>
-								<div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordion">
-									<div class="accordion-body">
-										We help our clients succeed by creating brand, digital xperiences, and print
-										materials.
-									</div>
-								</div>
-							</div>
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq3" aria-controls="faq3">
+                    Bagaimana cara mengajukan permohonan informasi ke PPID?
+                  </button>
+                </h4>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                  <div class="accordion-body">
+                    Pemohon dapat mengajukan permohonan informasi melalui portal resmi PPID, dengan mengisi formulir
+                    permohonan yang disediakan. Permohonan juga dapat diajukan secara langsung ke kantor PPID terkait.
+                    Dalam permohonan, pemohon harus mencantumkan identitas lengkap dan jenis informasi yang ingin
+                    diperoleh.
+                  </div>
+                </div>
+              </div>
 
-							<div class="accordion-item">
-								<h4 class="accordion-header">
-									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-										data-bs-target="#faq4" aria-controls="faq4">
-										What is Business Development?
-									</button>
-								</h4>
-								<div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordion">
-									<div class="accordion-body">
-										We help our clients succeed by creating brand, digital xperiences, and print
-										materials.
-									</div>
-								</div>
-							</div>
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq4" aria-controls="faq4">
+                    Berapa lama proses penyampaian informasi oleh PPID?
+                  </button>
+                </h4>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                  <div class="accordion-body">
+										Setelah menerima permohonan informasi, PPID memiliki waktu maksimal 10 hari kerja untuk
+                    memberikan tanggapan. Jika dibutuhkan waktu tambahan, PPID dapat memperpanjang waktu tersebut hingga 7
+                    hari kerja berikutnya, dengan memberikan pemberitahuan resmi kepada pemohon mengenai alasan
+                    perpanjangan waktu tersebut.
+                  </div>
+                </div>
+              </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	{{-- <section class="best-services-wrapper section-padding">
+  {{-- <section class="best-services-wrapper section-padding">
 		<div class="container">
 			<div class="col-12 col-xl-6 offset-xl-3 text-center">
 				<div class="section-title">
@@ -279,7 +290,7 @@
 		</div>
 	</section> --}}
 
-	{{-- <section class="project-carousel-wrapper pt-0 section-padding">
+  {{-- <section class="project-carousel-wrapper pt-0 section-padding">
 		<div class="container">
 			<div class="row align-center">
 				<div class="col-md-8 col-xl-6 text-center text-md-start">
@@ -343,7 +354,7 @@
 		</div>
 	</section> --}}
 
-	{{-- <section class="video-cta-wrapper bg-cover section-padding"
+  {{-- <section class="video-cta-wrapper bg-cover section-padding"
 		style="background-image: url('assets/img/video-cta-bg.jpeg')">
 		<div class="container">
 			<div class="col-12 offset-xl-2 col-xl-8 offset-md-1 col-md-10 text-center">
@@ -362,7 +373,7 @@
 		</div>
 	</section> --}}
 
-	{{-- <section class="fun-counter-wrapper text-white">
+  {{-- <section class="fun-counter-wrapper text-white">
 		<div class="container">
 			<div class="row ps-md-5 pe-md-5">
 				<div class="col-lg-6">
@@ -390,258 +401,257 @@
 		</div>
 	</section> --}}
 
-	<section class="testimonial-carousel-wrapper section-padding">
-		<div class="container">
-			<div class="col-12 col-xl-8 offset-xl-2 text-center">
-				<div class="section-title">
-					<span>Testimonials</span>
-					<h2>Here's What Our Customer Say</h2>
-				</div>
-			</div>
+  <section class="testimonial-carousel-wrapper section-padding">
+    <div class="container">
+      <div class="col-12 col-xl-8 offset-xl-2 text-center">
+        <div class="section-title">
+          <span>Testimonials</span>
+          <h2>Here's What Our Customer Say</h2>
+        </div>
+      </div>
 
-			<div class="testimonial-carousel-grid-active">
-				<div class="single-testimonial-card">
-					<div class="client-img bg-cover" style="background-image: url('assets/img/client1.jpg')"></div>
-					<div class="content">
-						<p>IT Solutions provides me day to day challenges and variety
-							in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
-						<div class="client-rating mt-15">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</div>
-						<h4>Nicholas R.Gomez</h4>
-						<span>IT Manager, IT Solutions Ltd.</span>
-					</div>
-				</div>
-				<div class="single-testimonial-card">
-					<div class="client-img bg-cover" style="background-image: url('assets/img/client2.jpg')"></div>
-					<div class="content">
-						<p>IT Solutions provides me day to day challenges and variety
-							in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
-						<div class="client-rating mt-15">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</div>
-						<h4>James R Lawrence</h4>
-						<span>IT Manager, IT Solutions Ltd.</span>
-					</div>
-				</div>
-				<div class="single-testimonial-card">
-					<div class="client-img bg-cover" style="background-image: url('assets/img/client1.jpg')"></div>
-					<div class="content">
-						<p>IT Solutions provides me day to day challenges and variety
-							in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
-						<div class="client-rating mt-15">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</div>
-						<h4>Nicholas R.Gomez</h4>
-						<span>IT Manager, IT Solutions Ltd.</span>
-					</div>
-				</div>
-				<div class="single-testimonial-card">
-					<div class="client-img bg-cover" style="background-image: url('assets/img/client2.jpg')"></div>
-					<div class="content">
-						<p>IT Solutions provides me day to day challenges and variety
-							in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
-						<div class="client-rating mt-15">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</div>
-						<h4>James R Lawrence</h4>
-						<span>IT Manager, IT Solutions Ltd.</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+      <div class="testimonial-carousel-grid-active">
+        <div class="single-testimonial-card">
+          <div class="client-img bg-cover" style="background-image: url('assets/img/client1.jpg')"></div>
+          <div class="content">
+            <p>IT Solutions provides me day to day challenges and variety
+              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <div class="client-rating mt-15">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>Nicholas R.Gomez</h4>
+            <span>IT Manager, IT Solutions Ltd.</span>
+          </div>
+        </div>
+        <div class="single-testimonial-card">
+          <div class="client-img bg-cover" style="background-image: url('assets/img/client2.jpg')"></div>
+          <div class="content">
+            <p>IT Solutions provides me day to day challenges and variety
+              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <div class="client-rating mt-15">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>James R Lawrence</h4>
+            <span>IT Manager, IT Solutions Ltd.</span>
+          </div>
+        </div>
+        <div class="single-testimonial-card">
+          <div class="client-img bg-cover" style="background-image: url('assets/img/client1.jpg')"></div>
+          <div class="content">
+            <p>IT Solutions provides me day to day challenges and variety
+              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <div class="client-rating mt-15">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>Nicholas R.Gomez</h4>
+            <span>IT Manager, IT Solutions Ltd.</span>
+          </div>
+        </div>
+        <div class="single-testimonial-card">
+          <div class="client-img bg-cover" style="background-image: url('assets/img/client2.jpg')"></div>
+          <div class="content">
+            <p>IT Solutions provides me day to day challenges and variety
+              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <div class="client-rating mt-15">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>James R Lawrence</h4>
+            <span>IT Manager, IT Solutions Ltd.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="team-experts-wrapper section-padding section-bg">
-		<div class="container">
-			<div class="col-12 col-xl-6 offset-xl-3 col-md-8 offset-md-2 text-center">
-				<div class="section-title">
-					<span>Our Amazing Team</span>
-					<h2>We have Well Experience
-						Team Members</h2>
-				</div>
-			</div>
+  <section class="team-experts-wrapper section-padding section-bg">
+    <div class="container">
+      <div class="col-12 col-xl-6 offset-xl-3 col-md-8 offset-md-2 text-center">
+        <div class="section-title">
+          <span>Our Amazing Team</span>
+          <h2>We have Well Experience
+            Team Members</h2>
+        </div>
+      </div>
 
-			<div class="row">
-				<div class="col-md-6 col-xl-3">
-					<div class="single-team-member text-white bg-cover" style="background-image: url('assets/img/team/5.jpg')">
-						<div class="member-info">
-							<h4><a href="team-details.html">Asish Patil</a></h4>
-							<p>Founder & Ceo</p>
-							<div class="social-links">
-								<a href="#"><i class="fab fa-facebook-f"></i></a>
-								<a href="#"><i class="fab fa-twitter"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-linkedin"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-xl-3">
-					<div class="single-team-member text-white bg-cover" style="background-image: url('assets/img/team/2.jpg')">
-						<div class="member-info">
-							<h4><a href="team-details.html">D. Maria Poddar</a></h4>
-							<p>Designer</p>
-							<div class="social-links">
-								<a href="#"><i class="fab fa-facebook-f"></i></a>
-								<a href="#"><i class="fab fa-twitter"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-linkedin"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-xl-3">
-					<div class="single-team-member active text-white bg-cover"
-						style="background-image: url('assets/img/team/3.jpg')">
-						<div class="member-info">
-							<h4><a href="team-details.html">Salman Ahmed</a></h4>
-							<p>Developer</p>
-							<div class="social-links">
-								<a href="#"><i class="fab fa-facebook-f"></i></a>
-								<a href="#"><i class="fab fa-twitter"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-linkedin"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-xl-3">
-					<div class="single-team-member text-white bg-cover" style="background-image: url('assets/img/team/4.jpg')">
-						<div class="member-info">
-							<h4><a href="team-details.html">RS Rahul</a></h4>
-							<p>Marketer</p>
-							<div class="social-links">
-								<a href="#"><i class="fab fa-facebook-f"></i></a>
-								<a href="#"><i class="fab fa-twitter"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-linkedin"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+      <div class="row">
+        <div class="col-md-6 col-xl-3">
+          <div class="single-team-member text-white bg-cover" style="background-image: url('assets/img/team/5.jpg')">
+            <div class="member-info">
+              <h4><a href="team-details.html">Asish Patil</a></h4>
+              <p>Founder & Ceo</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="single-team-member text-white bg-cover" style="background-image: url('assets/img/team/2.jpg')">
+            <div class="member-info">
+              <h4><a href="team-details.html">D. Maria Poddar</a></h4>
+              <p>Designer</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="single-team-member active text-white bg-cover"
+            style="background-image: url('assets/img/team/3.jpg')">
+            <div class="member-info">
+              <h4><a href="team-details.html">Salman Ahmed</a></h4>
+              <p>Developer</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="single-team-member text-white bg-cover" style="background-image: url('assets/img/team/4.jpg')">
+            <div class="member-info">
+              <h4><a href="team-details.html">RS Rahul</a></h4>
+              <p>Marketer</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="our-news-section section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 text-center">
-					<div class="section-title">
-						<span>news</span>
-						<h2>Our Latest News</h2>
-					</div>
-				</div>
-			</div>
+  <section class="our-news-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="section-title">
+            <span>news</span>
+            <h2>Our Latest News</h2>
+          </div>
+        </div>
+      </div>
 
-			<div class="row">
-				<div class="col-xl-4 col-md-6">
-					<div class="single-blog-item">
-						<div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b1.jpg')">
-							<div class="post-cat">
-								<a href="news.html">App Design</a>
-							</div>
-						</div>
-						<div class="content">
-							<h3><a href="news-details.html">Technology allows profit to serve the community</a></h3>
-							<p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
-								enjoy the view of the ocean</p>
+      <div class="row">
+        <div class="col-xl-4 col-md-6">
+          <div class="single-blog-item">
+            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b1.jpg')">
+              <div class="post-cat">
+                <a href="news.html">App Design</a>
+              </div>
+            </div>
+            <div class="content">
+              <h3><a href="news-details.html">Technology allows profit to serve the community</a></h3>
+              <p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
+                enjoy the view of the ocean</p>
 
-							<div class="post-meta d-flex align-items-center">
-								<div class="post-date">
-									<i class="fal fa-calendar-alt"></i>Dec 6, 2021
-								</div>
-								<div class="post-author">
-									<i class="fal fa-user-alt"></i> by <a href="#">admin</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single-blog-item">
-						<div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b2.jpg')">
-							<div class="post-cat">
-								<a href="news.html">Web Development</a>
-							</div>
-						</div>
-						<div class="content">
-							<h3><a href="news-details.html">Tips to Lowering Freight Shipping Costs</a></h3>
-							<p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
-								enjoy the view of the ocean</p>
+              <div class="post-meta d-flex align-items-center">
+                <div class="post-date">
+                  <i class="fal fa-calendar-alt"></i>Dec 6, 2021
+                </div>
+                <div class="post-author">
+                  <i class="fal fa-user-alt"></i> by <a href="#">admin</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="single-blog-item">
+            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b2.jpg')">
+              <div class="post-cat">
+                <a href="news.html">Web Development</a>
+              </div>
+            </div>
+            <div class="content">
+              <h3><a href="news-details.html">Tips to Lowering Freight Shipping Costs</a></h3>
+              <p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
+                enjoy the view of the ocean</p>
 
-							<div class="post-meta d-flex align-items-center">
-								<div class="post-date">
-									<i class="fal fa-calendar-alt"></i>Jan 25, 2023
-								</div>
-								<div class="post-author">
-									<i class="fal fa-user-alt"></i> by <a href="#">admin</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single-blog-item">
-						<div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b3.jpg')">
-							<div class="post-cat">
-								<a href="news.html">IT Services</a>
-							</div>
-						</div>
-						<div class="content">
-							<h3><a href="news-details.html">10 Best IT Technology Solution Agency 2023</a></h3>
-							<p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
-								enjoy the view of the ocean</p>
+              <div class="post-meta d-flex align-items-center">
+                <div class="post-date">
+                  <i class="fal fa-calendar-alt"></i>Jan 25, 2023
+                </div>
+                <div class="post-author">
+                  <i class="fal fa-user-alt"></i> by <a href="#">admin</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="single-blog-item">
+            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b3.jpg')">
+              <div class="post-cat">
+                <a href="news.html">IT Services</a>
+              </div>
+            </div>
+            <div class="content">
+              <h3><a href="news-details.html">10 Best IT Technology Solution Agency 2023</a></h3>
+              <p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
+                enjoy the view of the ocean</p>
 
-							<div class="post-meta d-flex align-items-center">
-								<div class="post-date">
-									<i class="fal fa-calendar-alt"></i>Feb 14, 2023
-								</div>
-								<div class="post-author">
-									<i class="fal fa-user-alt"></i> by <a href="#">admin</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+              <div class="post-meta d-flex align-items-center">
+                <div class="post-date">
+                  <i class="fal fa-calendar-alt"></i>Feb 14, 2023
+                </div>
+                <div class="post-author">
+                  <i class="fal fa-user-alt"></i> by <a href="#">admin</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="cta-banner-wrapper">
-		<div class="container">
-			<div class="cta-banner-box section-padding bg-cover"
-				style="background-image: url('assets/img/cta-banner-bg.jpeg')">
-				<div class="row align-center">
-					<div class="col-xl-7 text-center text-xl-start offset-xl-1 offset-xl-1">
-						<div class="section-title mb-0">
-							<span>Get A Quote</span>
-							<h2 class="mb-md-0">Need Any Consultations or <br> Work Next Projects</h2>
-						</div>
-					</div>
-					<div class="col-xl-4 mt-4 mt-xl-0 text-center">
-						<a href="contact.html" class="theme-btn">Contact Us</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+  <section class="cta-banner-wrapper">
+    <div class="container">
+      <div class="cta-banner-box section-padding bg-cover"
+        style="background-image: url('assets/img/cta-banner-bg.jpeg')">
+        <div class="row align-center">
+          <div class="col-xl-7 text-center text-xl-start offset-xl-1 offset-xl-1">
+            <div class="section-title mb-0">
+              <span>Get A Quote</span>
+              <h2 class="mb-md-0">Need Any Consultations or <br> Work Next Projects</h2>
+            </div>
+          </div>
+          <div class="col-xl-4 mt-4 mt-xl-0 text-center">
+            <a href="contact.html" class="theme-btn">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 @endsection
