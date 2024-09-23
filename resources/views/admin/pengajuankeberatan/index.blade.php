@@ -10,11 +10,6 @@
             <h1 class="m-0">Pengajuan Keberatan</h1>
           </div>
         </div><!-- /.row -->
-        @if (session('success'))
-          <div class="alert alert-success ">
-            {{ session('success') }}
-          </div>
-        @endif
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->

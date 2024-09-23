@@ -97,12 +97,6 @@
                 <div class="alert alert-success text-uppercase text-center">Status {{ $item->status->status }}</div>
               @endif
 
-              @if (session('success'))
-                <div class="alert alert-success">
-                  {{ session('success') }}
-                </div>
-              @endif
-
               @if ($item->id_status == 2)
                 @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
                   <form action="/permohonan_informasi/{{ $item->id }}/tolak" method="post" class="d-inline">
@@ -120,18 +114,14 @@
                         class="nav-icon fas fa-check"></i></button>
                   </form>
                 @endif
-              @endif
-
-              @if ($item->id_status == 3)
+              @elseif($item->id_status == 3)
                 @if ($item->pesan_ditolak)
                   <div>
                     <h5 class="mb-0">Alasan Ditolak</h5>
                     <p>{{ $item->pesan_ditolak }}</p>
                   </div>
                 @endif
-              @endif
-
-              @if ($item->id_status == 4)
+              @elseif ($item->id_status == 4)
                 @if ($item->file_acc_permohonan == null)
                   <div class="card-body table-responsive p-3">
                     <div>
@@ -141,11 +131,11 @@
                         @method('patch')
                         <div>
                           <h5 class="mb-2">File</h5>
-                          <input type="file" name="file_acc_permohonan" class="form-control mb-2">
+                          {{-- <input type="file" name="file_acc_permohonan" class="form-control mb-2"> --}}
                           <div class="input-group">
                             <div class="custom-file">
                               <input type="file" class="custom-file-input" id="imageInput" name="file_acc_permohonan">
-                              <label class="custom-file-label" for="link">{{ $information->file_ktp }}</label>
+                              <label class="custom-file-label" for="link">Upload File</label>
                             </div>
                             <div class="input-group-append">
                               <span class="input-group-text">Upload</span>
@@ -162,10 +152,6 @@
                 @else
                   <div>
                     <h5 class="mb-0">File</h5>
-                    {{-- <a href="{{ asset('storage/' . $item->file_acc_permohonan) }}" target="_blank">
-                      <img src="{{ asset('storage/' . $item->file_acc_permohonan) }}"
-                        alt="{{ $item->file_acc_permohonan }}" width="250">
-                    </a> --}}
                     <button type="button" class="btn btn-info" data-toggle="modal"
                       data-target="#modal-xl{{ $item->id }}">
                       Klik Disini <i class="nav-icon fas fa-download"></i>

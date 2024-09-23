@@ -36,7 +36,7 @@
             <div class="icon">
               <i class="fas fa-file-alt"></i>
             </div>
-            <a href="/admin/permohonan_informasi" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/permohonan_informasi" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -51,7 +51,7 @@
             <div class="icon">
               <i class="fas fa-engine-warning"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/pengajuan_keberatan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -64,9 +64,9 @@
               <p>Jumlah Informasi Publik</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="nav-icon fas fa-triangle"></i>
             </div>
-            <a href="/admin/informasi_publik" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/informasi_publik" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

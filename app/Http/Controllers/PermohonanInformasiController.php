@@ -243,7 +243,7 @@ class PermohonanInformasiController extends Controller
     {
         $information = [];
         if (request('email')) {
-            $information = PermohonanInformasi::where('email', request('email'))->get();
+            $information = PermohonanInformasi::where('email', request('email'))->latest()->get();
         }
   
         return view('user.formulir.riwayat-user', compact('information'));

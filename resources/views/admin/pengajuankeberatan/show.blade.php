@@ -82,12 +82,6 @@
                 </div>
               @endif
 
-              @if (session('success'))
-                <div class="alert alert-success">
-                  {{ session('success') }}
-                </div>
-              @endif
-
               @if ($submission->id_status == 2)
                 @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
                   <form action="/pengajuan_keberatan/{{ $submission->id }}/tolak" method="post" class="d-inline">
@@ -105,9 +99,7 @@
                         class="nav-icon fas fa-check"></i></button>
                   </form>
                 @endif
-              @endif
-
-              @if ($submission->id_status == 3)
+              @elseif ($submission->id_status == 3)
                 @if ($submission->pesan_ditolak)
                   <div>
                     <h5 class="mb-0">Alasan Ditolak</h5>

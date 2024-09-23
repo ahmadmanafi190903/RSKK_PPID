@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/admin/informasi_publik/{{ $info_public->id }}" method="post" enctype="multipart/form-data">
+      <form action="/informasi_publik/{{ $info_public->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div class="row">
@@ -155,7 +155,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/admin/informasi_publik" class="btn btn-secondary">kembali</a>
+                <a href="/informasi_publik" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Ubah</button>
               </div>
             </div>

@@ -62,6 +62,3 @@ Route::middleware(['auth'])->group(function () {
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');
 });
-Route::prefix('admin')->group(function () {
-    
-});

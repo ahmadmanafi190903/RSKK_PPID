@@ -2,6 +2,8 @@
 
 @section("content")
 
+	
+
 	@include("components.hero")
 
 	<section class="our-service-wrapper section-padding">
@@ -265,7 +267,7 @@
 						</div>
 						<div class="content">
 							<h4><a href="services-details.html">Dedicated Team</a></h4>
-							<p>Over the past decade, our customers succeeded by leveraging Intellect soft’s process of
+							<p>Over the past decade, our customers succeeded by leveraging Intellect soft's process of
 								building, motivating.</p>
 						</div>
 					</div>
@@ -393,7 +395,7 @@
 			<div class="col-12 col-xl-8 offset-xl-2 text-center">
 				<div class="section-title">
 					<span>Testimonials</span>
-					<h2>Here’s What Our Customer Say</h2>
+					<h2>Here's What Our Customer Say</h2>
 				</div>
 			</div>
 

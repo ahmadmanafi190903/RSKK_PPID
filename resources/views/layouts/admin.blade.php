@@ -31,6 +31,18 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
+  {{-- session success --}}
+  @if (session('success'))
+    <div class="toasts-top-right fixed">
+      <div class="toast bg-success fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header"><strong class="mr-auto"> <i class="nav-icon fas fa-check mr-2"></i>
+            {{ session('success') }}</strong><button data-dismiss="toast" type="button" class="ml-2 mb-1 close"
+            aria-label="Close"><span aria-hidden="true">×</span></button></div>
+      </div>
+    </div>
+  @endif
+
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -110,6 +122,16 @@
 
         reader.readAsDataURL(file);
       }
+    });
+  </script>
+
+  {{-- tutup success --}}
+  <script>
+    $(document).ready(function() {
+      // Menutup toast saat tombol "x" diklik
+      $('.toast').on('click', '.close', function() {
+        $(this).closest('.toast').fadeOut();
+      });
     });
   </script>
 </body>
