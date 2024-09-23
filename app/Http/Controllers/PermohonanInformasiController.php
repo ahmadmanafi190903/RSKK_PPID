@@ -53,18 +53,7 @@ class PermohonanInformasiController extends Controller
             'alasan_penggunaan_informasi' => 'required',
             'id_memperoleh_informasi' => 'required',
             'id_mendapatkan_salinan_informasi' => 'required',
-        ],[
-            'required' => 'Data harus diisi.',
-            'max' => 'Karakter :attribute maksimal :max.',
-            'digits' => ':attribute harus :digits digit.',
-            'numeric' => ':attribute harus berupa angka.',
-            'unique' => ':attribute sudah terdaftar.',
-            'file' => ':attribute harus berupa file.',
-            'image' => ':attribute harus berupa file.',
-            'exists' => ':attribute tidak valid.',
-            'mimes' => ':attribute harus berupa file.',
-            'email' => ':attribute harus berupa email yang valid.', 
-        ]);
+        ],$this->feedback_validate);
 
         $ktp = $request->file('file_ktp');
         $file_org =  $ktp->getClientOriginalName();
@@ -186,17 +175,7 @@ class PermohonanInformasiController extends Controller
             'file_ktp' => 'file|mimes:jpg,png,jpeg,pdf|max:2048',
             'id_memperoleh_informasi' => 'required',
             'id_mendapatkan_salinan_informasi' => 'required',
-        ],[
-            'required' => 'Data harus diisi.',
-            'max' => 'Karakter :attribute maksimal :max.',
-            'digits' => ':attribute harus :digits digit.',
-            'numeric' => ':attribute harus berupa angka.',
-            'file' => ':attribute harus berupa file.',
-            'image' => ':attribute harus berupa file.',
-            'exists' => ':attribute tidak valid.',
-            'mimes' => ':attribute harus berupa file.',
-            'email' => ':attribute harus berupa email yang valid.',
-        ]);
+        ],$this->feedback_validate);
 
         if ($request->file_ktp) {
             $ktp = $request->file('file_ktp');

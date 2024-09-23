@@ -33,6 +33,7 @@ class InformasiPublikController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'ringkasan_informasi' => 'required',
             'pejabat_penguasa_informasi' => 'required|max:255',
@@ -42,13 +43,7 @@ class InformasiPublikController extends Controller
             'jangka_waktu_penyimpanan' => 'required|max:255',
             'kategori_id' => 'required',
             'link' => 'required|file|mimes:jpg,png,jpeg,pdf|max:2048',
-        ],[
-            'required' => 'Data harus diisi.',
-            'max' => 'Karakter :attribute maksimal :max.',
-            'file' => ':attribute harus berupa file jpg, png, jpeg, atau pdf.',
-            'exists' => ':attribute tidak valid.',
-            'mimes' => ':attribute harus berupa file jpg, png, jpeg, atau pdf.',
-        ]);
+        ], $this->feedback_validate );
 
         $link = $request->file('link');
         // $extension = $link->getClientOriginalExtension();
@@ -96,6 +91,8 @@ class InformasiPublikController extends Controller
      */
     public function update(Request $request, InformasiPublik $informasipublik)
     {
+        $messages = $this->feedback_validate;
+        
         $request->validate([
             'ringkasan_informasi' => 'required',
             'pejabat_penguasa_informasi' => 'required|max:255',
@@ -105,13 +102,7 @@ class InformasiPublikController extends Controller
             'jangka_waktu_penyimpanan' => 'required|max:255',
             'kategori_id' => 'required',
             'link' => 'file|mimes:jpg,png,jpeg,pdf|max:2048',
-        ],[
-            'required' => 'Data harus diisi.',
-            'max' => 'Karakter :attribute maksimal :max.',
-            'file' => ':attribute harus berupa file jpg, png, jpeg, atau pdf.',
-            'exists' => ':attribute tidak valid.',
-            'mimes' => ':attribute harus berupa file jpg, png, jpeg, atau pdf.',
-        ]);
+        ],$this->feedback_validate);
 
         if ($request->link) {
             $link = $request->file('link');

@@ -44,12 +44,7 @@ class PengajuanKeberatanController extends Controller
         'alamat' => 'required|max:255',
         'id_alasan_pengajuan' => 'required',
         'tujuan_penggunaan_informasi' => 'required',
-    ],[
-        'required' => 'Data harus diisi.',
-        'max' => 'Karakter :attribute maksimal :max.',
-        'numeric' => ':attribute harus berupa angka.',
-        'email' => ':attribute harus berupa email yang valid.',
-    ]);
+    ],$this->feedback_validate);
 
     PengajuanKeberatan::create([
         'nama' => $request->nama,
@@ -132,12 +127,7 @@ class PengajuanKeberatanController extends Controller
             'alamat' => 'required|max:255',
             'id_alasan_pengajuan' => 'required',
             'tujuan_penggunaan_informasi' => 'required|max:255',
-        ],[
-            'required' => 'Data harus diisi.',
-            'max' => 'Karakter :attribute maksimal :max.',
-            'numeric' => ':attribute harus berupa angka.',
-            'email' => ':attribute harus berupa email yang valid.',
-        ]);
+        ],$this->feedback_validate);
 
         $pengajuankeberatan->update([
             'nama' => $request->nama,
