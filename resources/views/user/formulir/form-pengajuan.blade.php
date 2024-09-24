@@ -3,9 +3,9 @@
 @section('content')
   <div class="container">
     <div class="row pt-5">
-      <div class="col-12 col-xl-8 offset-xl-2 text-center">
+      <div class="col-12 text-center">
         <div class="section-title">
-          <h2>Formulir Pengajuan Keberatan</h2>
+          <h2>Formulir Pengajuan Keberatan Informasi</h2>
         </div>
       </div>
 

@@ -7,11 +7,11 @@
         <div class="col-sm-6 col-xl-3">
           <div class="about-quantech pe-md-5 pe-xl-0">
             <a href="index.html">
-              <img src="assets/img/rskk_trasparan.png" alt="quantech">
+              <img src="assets/img/icons/LOGO-RSKK-2.ico" alt="quantech">
             </a>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate iure tempora quasi consectetur quae
-              eveniet dolor quos, eius cupiditate quia. Distinctio iste fuga aspernatur doloremque aut laborum modi
-              reiciendis, inventore non rerum praesentium enim. Enim aut minima nobis delectus commodi.</p>
+            <p>PPID, memastikan
+              keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
+              transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah.</p>
           </div>
         </div>
 
@@ -99,7 +99,7 @@
         <div class="row">
           <div class="col-md-6 col-12">
             <div class="copy-rights">
-              <p>&copy;2023 <strong>quantech</strong>, All Rights Reserved</p>
+              <p>&copy;2024 <strong>RSUD</strong> Kesehatan Kerja</p>
             </div>
           </div>
           <div class="col-md-6 mt-2 mt-md-0 col-12 text-md-end">

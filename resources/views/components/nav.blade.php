@@ -4,7 +4,6 @@
       <div class="col-lg-3 col-sm-5 col-md-4 col-6 pr-lg-5">
         <div class="logo">
           <a href="#">
-            {{-- <img src="assets/img/logo.svg" alt="quantech"> --}}
             <img src="assets/img/rebb (1).jpeg" alt="quantech" width="100">
           </a>
         </div>
@@ -14,7 +13,7 @@
           <div class="main-menu">
             <ul>
               @foreach ($menus as $menu)
-                <li><a href="#">{{$menu->nama}}@if ( $menu->child->count() > 0 )<i class="fas fa-angle-down"></i></a>@endif</a>
+                <li><a href="{{$menu->url}}">{{$menu->nama}}@if ( $menu->child->count() > 0 ) <i class="fas fa-angle-down"></i></a>@endif</a>
                   @if ( $menu->child->count() > 0 )
                     <ul class="sub-menu">
                       @foreach ( $menu->child as $submenu )
@@ -24,34 +23,6 @@
                   @endif
                 </li>
               @endforeach
-              {{-- <li><a href="#">Profil</a>
-              </li>
-              <li><a href="#">Informasi Publik @if ( $menu->child->count() > 0 )<i class="fas fa-angle-down"></i></a>@endif 
-                <ul class="sub-menu">
-                  <li><a href="#">Informasi Publik Berkala </a></li>
-                  <li><a href="#">Informasi Publik Setiap Saat</a></li>
-                  <li><a href="#">Informasi Publik Dikecualikan</a></li>
-                  <li><a href="#">Informasi Serta Merta</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Formulir <i class="fas fa-angle-down"></i></a>
-                <ul class="sub-menu">
-                  <li><a href="/permohonan">Permohonan Informasi </a></li>
-                  <li><a href="/pengajuan">Pengajuan Keberatan Informasi</a></li>
-                  <li><a href="/riwayat">Riwayat Permohonan</a></li>
-                </ul> --}}
-              {{-- </li>
-              <li><a href="#">projects</a></li>
-              <li><a href="#">Pages <i class="fas fa-angle-down"></i></a>
-                <ul class="sub-menu">
-                  <li><a href="#">faq</a></li>
-                  <li><a href="#">team</a></li>
-                  <li><a href="#">pricing</a></li>
-                  <li><a href="#">404</a></li>
-                </ul>
-              </li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Contact</a></li> --}}
             </ul>
           </div>
         </div>
@@ -69,42 +40,20 @@
             </button>
             <nav class="sidebar-nav">
               <ul class="metismenu" id="mobile-menu">
-                <li><a class="has-arrow" href="#">Profil</a>
-                  <ul class="sub-menu">
-                    <li><a href="#">Homepage 1</a></li>
-                    <li><a href="#">Homepage 2</a></li>
-                    <li><a href="#">Homepage 3</a></li>
-                  </ul>
-                </li>
-                <li><a class="has-arrow" href="#">Informasi Publik</a>
-                  <ul class="sub-menu">
-                    <li><a href="#">Informasi Publik Berkala</a></li>
-                    <li><a href="#">Informasi Publik Setiap Saat</a></li>
-                    <li><a href="#">Informasi Publik Dikecualikan</a></li>
-                    <li><a href="#">Informasi Serta Merta</a></li>
-                  </ul>
-                </li>
-                <li><a class="has-arrow" href="#">Formulir</a>
-                  <ul class="sub-menu">
-                    <li><a href="/permohonan">Permohonan Informasi</a></li>
-                    <li><a href="/pengajuan">Pengajuan Keberatan Informasi</a></li>
-                    <li><a href="/riwayat">Pengajuan Keberatan Informasi</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">projects</a></li>
-                <li>
-                  <a class="has-arrow" href="#">Pages</a>
-                  <ul class="sub-menu">
-                    <li><a href="#">faq</a></li>
-                    <li><a href="#">services details</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">404</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Contact</a></li>
+                @foreach ($menus as $menu)
+                  <li><a @if ( $menu->child->count() > 0 )  class="has-arrow" @endif href="{{$menu->url}}">{{$menu->nama}}</a>
+                    @if ( $menu->child->count() > 0 )
+                      <ul class="sub-menu">
+                        @foreach ( $menu->child as $submenu )
+                          <li><a href="{{ $submenu->url }}">{{ $submenu->nama }}</a></li>
+                        @endforeach
+                      </ul>
+                    @endif
+                  </li>
+                @endforeach
               </ul>
             </nav>
+            
 
             <div class="action-bar text-white">
               <div class="single-info-element">
@@ -112,17 +61,8 @@
                   <i class="fal fa-map-marked-alt"></i>
                 </div>
                 <div class="text">
-                  <h5>visit our location:</h5>
-                  <span>West Jakarta City, UK</span>
-                </div>
-              </div>
-              <div class="single-info-element">
-                <div class="icon">
-                  <i class="fal fa-clock"></i>
-                </div>
-                <div class="text">
-                  <h5>Opening Hours:</h5>
-                  <span>Mon-Fri 8am-5pm</span>
+                  <a href="https://maps.app.goo.gl/W9ruT9ZWGBh6242R6" target="_blank" style="color: white !important">Jl.Rancaekek
+                    No.Km.27</a>
                 </div>
               </div>
               <div class="single-info-element">
@@ -130,8 +70,7 @@
                   <i class="fal fa-envelope"></i>
                 </div>
                 <div class="text">
-                  <h5>Send us mail</h5>
-                  <span>info@example.com</span>
+                  <a href="mailto:info@example.com" style="color: white !important">rskk@jabarprov.go.id</a>
                 </div>
               </div>
               <div class="call-us">
@@ -139,11 +78,10 @@
                   <i class="fal fa-phone-volume"></i>
                 </div>
                 <div class="text">
-                  <h5>Phone Number</h5>
-                  <span>+09 949 858327</span>
+                  <a href="tel:987-098-098-09" style="color: white !important">(022)7798778</a>
                 </div>
               </div>
-              <a href="#" class="theme-btn mt-4">Free Consulting</a>
+              <a href="/login" class="theme-btn mt-4">login</a>
             </div>
           </div>
         </div>

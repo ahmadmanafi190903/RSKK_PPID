@@ -16,7 +16,7 @@ class MenuSeeder extends Seeder
         DB::table('menus')->insert([
             [
                 'nama' => 'Beranda',
-                'url' => '#',
+                'url' => '/',
                 'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),

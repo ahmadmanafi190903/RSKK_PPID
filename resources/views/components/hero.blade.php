@@ -8,14 +8,15 @@
           <div class="col-12 col-xxl-8 col-lg-9 col-sm-10">
             <div class="hero-contents pe-lg-3 text-white">
               {{-- <h6 class="animated" data-animation-in="fadeInDown">QuanTech IT Systems</h6> --}}
-              <h1 class="fs-lg animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight" data-delay-in="0.3">RSUD <br>Kesehatan Kerja
+              <h1 class="fs-lg animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight"
+                data-delay-in="0.3">RSUD <br>Kesehatan Kerja
               </h1>
-              <p class="pe-lg-5 mb-4 animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight" data-delay-in="0.6">"PPID, memastikan
+              <p class="pe-lg-5 mb-4 animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight"
+                data-delay-in="0.6">"PPID, memastikan
                 keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
-                transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah" transparan
-                Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah"F
+                transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah.
               </p>
-              <a href="contact.html" data-animation-in="fadeInRight" data-delay-in="0.9"
+              <a href="/permohonan" data-animation-in="fadeInRight" data-delay-in="0.9"
                 class="theme-btn me-sm-4 mt-4 animated">Ajukan Permohonan</a>
             </div>
           </div>
@@ -30,14 +31,15 @@
           <div class="col-12 col-xxl-8 col-lg-9 col-sm-10">
             <div class="hero-contents pe-lg-3 text-white">
               {{-- <h6 class="animated" data-animation-in="fadeInDown">Quan Tech IT Systems</h6> --}}
-              <h1 class="fs-lg animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight" data-delay-in="0.3">RSUD <br>Kesehatan Kerja
+              <h1 class="fs-lg animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight"
+                data-delay-in="0.3">RSUD <br>Kesehatan Kerja
               </h1>
-              <p class="pe-lg-5 mb-4 animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight" data-delay-in="0.6">PPID, memastikan
+              <p class="pe-lg-5 mb-4 animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight"
+                data-delay-in="0.6">PPID, memastikan
                 keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
-                transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah" transparan
-                Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah"F
+                transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah.
               </p>
-              <a href="contact.html" data-animation-in="fadeInRight" data-delay-in="0.9"
+              <a href="/permohonan" data-animation-in="fadeInRight" data-delay-in="0.9"
                 class="theme-btn me-sm-4 mt-4 animated">Ajukan Permohonan</a>
             </div>
           </div>
@@ -52,14 +54,15 @@
           <div class="col-12 col-xxl-8 col-lg-9 col-sm-10">
             <div class="hero-contents pe-lg-3 text-white">
               {{-- <h6 class="animated" data-animation-in="fadeInDown">Quan Tech IT Systems</h6> --}}
-              <h1 class="fs-lg animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight" data-delay-in="0.3">RSUD <br> Kesehatan Kerja
+              <h1 class="fs-lg animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight"
+                data-delay-in="0.3">RSUD <br> Kesehatan Kerja
               </h1>
-              <p class="pe-lg-5 mb-4 animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight" data-delay-in="0.6">PPID, memastikan
+              <p class="pe-lg-5 mb-4 animated" style="text-shadow: 2px 2px 5px black" data-animation-in="fadeInRight"
+                data-delay-in="0.6">PPID, memastikan
                 keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
-                transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah" transparan
-                Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah"F
+                transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah.
               </p>
-              <a href="contact.html" data-animation-in="fadeInRight" data-delay-in="0.9"
+              <a href="/permohonan" data-animation-in="fadeInRight" data-delay-in="0.9"
                 class="theme-btn me-sm-4 mt-4 animated">Ajukan Permohonan</a>
             </div>
           </div>

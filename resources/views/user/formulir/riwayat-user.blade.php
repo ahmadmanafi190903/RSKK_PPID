@@ -2,10 +2,12 @@
 
 @section('content')
 
-  <style>
-     
-  </style>
+<div class="section-title text-center pt-5">
+  <h2>Riwayat Permohonan Informasi</h2>
+</div>
+
   <div class="col-12 col-lg-6 offset-lg-3 pt-5 mt-5 mb-5 ">
+    
     <div class="main-sidebar">
       <div class="single-sidebar-widget ">
         <div class="text-center">
@@ -29,7 +31,7 @@
               <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapse{{ $key }}" aria-expanded="false"
                 aria-controls="collapse{{ $key }}">
-                {{ $key + 1 }} {{ Str::limit($item->informasi_yang_dibutuhkan, 50, '...') }}
+                {{ $key + 1 }}. {{ Str::limit($item->informasi_yang_dibutuhkan, 50, '...') }}
               </button>
             </h2>
             <div id="collapse{{ $key }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -54,7 +56,7 @@
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Telepon</h5>
-                        <p>{{ $item->telepon }}</p>
+                        <p>{{ substr_replace($item->no_telepon, str_repeat('*', strlen($item->no_telepon) - 8), 4, strlen($item->no_telepon) - 8) }}</p>
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Pekerjaan</h5>
@@ -65,12 +67,8 @@
                         <p>{{ $item->alamat }}</p>
                       </div>
                       <div class="mb-3">
-                        <h5 class="mb-0">Nik</h5>
-                        <p>{{ $item->nik }}</p>
-                      </div>
-                      <div class="mb-3">
-                        <h5 class="mb-0">Foto KTP</h5>
-                        <img src="{{ asset('storage/' . $item->file_ktp) }}" alt="{{ $item->file_ktp }}" width="250">
+                        <h5 class="mb-0">NIK</h5>
+                        <p>{{ substr_replace($item->nik, str_repeat('*', strlen($item->nik) - 8), 4, strlen($item->nik) - 8) }}</p>
                       </div>
                     </div>
                   </div>
@@ -91,7 +89,7 @@
                         <p>{{ $item->informasi_yang_dibutuhkan }}</p>
                       </div>
                       <div class="mb-3">
-                        <h5 class="mb-0">Alassan Penggunaan Informasi</h5>
+                        <h5 class="mb-0">Alasan Penggunaan Informasi</h5>
                         <p> {{ $item->alasan_penggunaan_informasi }}</p>
                       </div>
                       <div class="mb-3">

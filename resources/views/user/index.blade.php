@@ -66,8 +66,8 @@
       <div class="row">
         <div class="col-xl-6 col-12">
           <div class="about-images-video-popup mb-5 mb-md-0">
-            <img src="assets/img/home1/about1.jpg" alt="">
-            <img src="assets/img/home1/about2.jpg" alt="">
+            <img src="assets/img/video2.png" alt="" width="600">
+            <img src="assets/img/video1.png" alt="" width="380">
 
             <div class="video-play-btn">
               <a href="https://www.youtube.com/watch?v=K02pM-yQLGE" class="popup-video play-video"><i
@@ -116,7 +116,7 @@
       <div class="row">
         <div class="col-xl-6 col-12 mb-5 mb-xl-0">
           <div class="faq-img">
-            <img src="assets/img/home1/faq.jpg" alt="">
+            <img src="assets/img/3.jpg" alt="">
           </div>
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
@@ -144,14 +144,16 @@
                 </div>
               </div>
 
+              
+
               <div class="accordion-item">
                 <h4 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
                     aria-controls="faq2">
                     Apa saja informasi yang dapat diakses melalui PPID?
                   </button>
                 </h4>
-                <div id="faq2" class="accordion-collapse collapse show" data-bs-parent="#accordion">
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordion">
                   <div class="accordion-body">
                     Informasi yang dapat diakses melalui PPID meliputi informasi yang bersifat terbuka untuk publik,
                     seperti laporan keuangan, laporan tahunan, program dan kegiatan instansi, serta informasi lainnya yang
@@ -405,17 +407,15 @@
     <div class="container">
       <div class="col-12 col-xl-8 offset-xl-2 text-center">
         <div class="section-title">
-          <span>Testimonials</span>
-          <h2>Here's What Our Customer Say</h2>
+          <h2>Rating</h2>
         </div>
       </div>
 
       <div class="testimonial-carousel-grid-active">
         <div class="single-testimonial-card">
-          <div class="client-img bg-cover" style="background-image: url('assets/img/client1.jpg')"></div>
+          <div class="client-img bg-cover" style="background-image: url('assets/img/33.jpg')"></div>
           <div class="content">
-            <p>IT Solutions provides me day to day challenges and variety
-              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <p>Pelayanan sangat cepat dan profesional. Informasi yang saya butuhkan disampaikan dengan jelas dan tepat waktu.</p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -423,15 +423,14 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </div>
-            <h4>Nicholas R.Gomez</h4>
-            <span>IT Manager, IT Solutions Ltd.</span>
+            <h4>Ahmad Manafi</h4>
+            <span>UI UX, Frontend.</span>
           </div>
         </div>
         <div class="single-testimonial-card">
-          <div class="client-img bg-cover" style="background-image: url('assets/img/client2.jpg')"></div>
+          <div class="client-img bg-cover" style="background-image: url('assets/img/36.jpg')"></div>
           <div class="content">
-            <p>IT Solutions provides me day to day challenges and variety
-              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <p>Sangat puas dengan sistem yang transparan dan mudah diakses. Setiap pertanyaan saya ditanggapi dengan ramah dan informatif.</p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -439,15 +438,14 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </div>
-            <h4>James R Lawrence</h4>
-            <span>IT Manager, IT Solutions Ltd.</span>
+            <h4>Fikri Amrullah</h4>
+            <span>Developer, Backend.</span>
           </div>
         </div>
         <div class="single-testimonial-card">
-          <div class="client-img bg-cover" style="background-image: url('assets/img/client1.jpg')"></div>
+          <div class="client-img bg-cover" style="background-image: url('assets/img/35.jpg')"></div>
           <div class="content">
-            <p>IT Solutions provides me day to day challenges and variety
-              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <p>Pelayanan bagus, meskipun ada sedikit keterlambatan dalam merespon. Namun, informasi yang diberikan akurat.</p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -455,15 +453,14 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </div>
-            <h4>Nicholas R.Gomez</h4>
-            <span>IT Manager, IT Solutions Ltd.</span>
+            <h4>Randy Fajar</h4>
+            <span>UI UX, Entrepreneur.</span>
           </div>
         </div>
         <div class="single-testimonial-card">
-          <div class="client-img bg-cover" style="background-image: url('assets/img/client2.jpg')"></div>
+          <div class="client-img bg-cover" style="background-image: url('assets/img/37.jpg')"></div>
           <div class="content">
-            <p>IT Solutions provides me day to day challenges and variety
-              in my work that keeps me engaged and interested. There is a strong work ethic culture.</p>
+            <p>Sistem PPID sangat membantu dalam mendapatkan informasi yang saya perlukan. Prosesnya mudah dan cepat.</p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -471,15 +468,46 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </div>
-            <h4>James R Lawrence</h4>
-            <span>IT Manager, IT Solutions Ltd.</span>
+            <h4>Nida Adawiah</h4>
+            <span>Founder, CEO.</span>
           </div>
         </div>
+        <div class="single-testimonial-card">
+          <div class="client-img bg-cover" style="background-image: url('assets/img/38.jpg')"></div>
+          <div class="content">
+            <p>Pelayanan cukup baik, tetapi ada ruang untuk peningkatan terutama dalam hal kecepatan respon.</p>
+            <div class="client-rating mt-15">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>Aulia</h4>
+            <span>Public Relations.</span>
+          </div>
+        </div>
+        <div class="single-testimonial-card">
+          <div class="client-img bg-cover" style="background-image: url('assets/img/icons/Logo-RSKK-2.ico')"></div>
+          <div class="content">
+            <p>Sangat puas! Layanan informasi yang disediakan sangat transparan dan mudah dipahami. Stafnya juga sangat membantu.</p>
+            <div class="client-rating mt-15">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>RSUD KK</h4>
+            <span>RS kesehatan Kerja JABAR.</span>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
 
-  <section class="team-experts-wrapper section-padding section-bg">
+  {{-- <section class="team-experts-wrapper section-padding section-bg">
     <div class="container">
       <div class="col-12 col-xl-6 offset-xl-3 col-md-8 offset-md-2 text-center">
         <div class="section-title">
@@ -549,15 +577,14 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <section class="our-news-section section-padding">
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
           <div class="section-title">
-            <span>news</span>
-            <h2>Our Latest News</h2>
+            <h2>Berita</h2>
           </div>
         </div>
       </div>
@@ -565,7 +592,7 @@
       <div class="row">
         <div class="col-xl-4 col-md-6">
           <div class="single-blog-item">
-            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b1.jpg')">
+            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/RSKK-Jabar.jpg')">
               <div class="post-cat">
                 <a href="news.html">App Design</a>
               </div>
@@ -588,7 +615,7 @@
         </div>
         <div class="col-xl-4 col-md-6">
           <div class="single-blog-item">
-            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b2.jpg')">
+            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/RSKK-Jabar.jpg')">
               <div class="post-cat">
                 <a href="news.html">Web Development</a>
               </div>
@@ -611,7 +638,7 @@
         </div>
         <div class="col-xl-4 col-md-6">
           <div class="single-blog-item">
-            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/blog/b3.jpg')">
+            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/RSKK-Jabar.jpg')">
               <div class="post-cat">
                 <a href="news.html">IT Services</a>
               </div>
@@ -636,7 +663,7 @@
     </div>
   </section>
 
-  <section class="cta-banner-wrapper">
+  {{-- <section class="cta-banner-wrapper">
     <div class="container">
       <div class="cta-banner-box section-padding bg-cover"
         style="background-image: url('assets/img/cta-banner-bg.jpeg')">
@@ -653,5 +680,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 @endsection
