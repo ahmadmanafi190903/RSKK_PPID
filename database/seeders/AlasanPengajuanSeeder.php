@@ -17,10 +17,10 @@ class AlasanPengajuanSeeder extends Seeder
             ['alasan_pengajuan' => 'permohonan informasi ditolak'],
             ['alasan_pengajuan' => 'informasi berkala tidak disediakan '],
             ['alasan_pengajuan' => 'permintaan informasi tidak ditanggapi'],
-            ['alasan_pengajuan' => 'permintaan informasi ditanggapi tidak sebagiamana yang diminta'],
-            ['alasan_pengajuan' => 'perintaan informasi tidak dipenuhi'],
-            ['alasan_pengajuan' => 'biaaya yang dikenakan tidak wajar'],
-            ['alasan_pengajuan' => 'informasi disampaikan melebihi jangka waktu yang di tentukan'],
+            ['alasan_pengajuan' => 'permintaan informasi ditanggapi tidak sebagaimana yang diminta'],
+            ['alasan_pengajuan' => 'permintaan informasi tidak dipenuhi'],
+            ['alasan_pengajuan' => 'biaya yang dikenakan tidak wajar'],
+            ['alasan_pengajuan' => 'informasi disampaikan melebihi jangka waktu yang ditentukan'],
         ];
     
         foreach ($data as &$item) {

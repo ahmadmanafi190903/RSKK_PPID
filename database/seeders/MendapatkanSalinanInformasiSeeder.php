@@ -15,9 +15,7 @@ class MendapatkanSalinanInformasiSeeder extends Seeder
     {
         $data = [
             ['mendapatkan_salinan_informasi' => 'mengambil langsung'],
-            ['mendapatkan_salinan_informasi' => 'email'],
-            ['mendapatkan_salinan_informasi' => 'kurir/pos'],
-            ['mendapatkan_salinan_informasi' => 'faksimil'],
+            ['mendapatkan_salinan_informasi' => 'email']
         ];
     
         foreach ($data as &$item) {
