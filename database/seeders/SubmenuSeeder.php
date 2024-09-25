@@ -63,7 +63,7 @@ class SubmenuSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'nama' => 'Riwayat Pemohonan',
+                'nama' => 'Riwayat Permohonan',
                 'url' => '/riwayat',
                 'status' => '1',
                 'menu_id' => '4',

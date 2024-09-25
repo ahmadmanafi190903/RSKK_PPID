@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PengajuanKeberatan;
+use App\Models\PermohonanInformasi;
 use App\Models\AlasanPengajuan;
 use App\Events\PengajuanKeberatanEvent;
+use Illuminate\Support\Facades\Crypt;
 
 class PengajuanKeberatanController extends Controller
 {
@@ -26,8 +28,30 @@ class PengajuanKeberatanController extends Controller
     public function create()
     {
         $reason = AlasanPengajuan::all();
+        if (request('pemohon')) {
+            $dekripsi = Crypt::decrypt(request('pemohon'));
+            $applicant = PermohonanInformasi::where('id', $dekripsi)->first();
+            return view('user.formulir.form-pengajuan2', [
+                'reason' => $reason,
+                'applicant' => $applicant 
+            ]);
+        } else {
+            return view('user.formulir.form-pengajuan', [
+                'reason' => $reason,
+            ]);
+        }
+    }
+
+    public function create2()
+    {
+        $applicant = [];
+        if (request('pemohon')) {
+            $applicant = PermohonanInformasi::where('id', request('pemohon'))->first();
+        }
+        $reason = AlasanPengajuan::all();
         return view('user.formulir.form-pengajuan', [
-            'reason' => $reason
+            'reason' => $reason,
+            'applicant' => $applicant 
         ]);
     }
 

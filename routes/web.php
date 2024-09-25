@@ -25,6 +25,7 @@ Route::post('/permohonan/create', [PermohonanInformasiController::class, 'store'
 Route::get('/riwayat', [PermohonanInformasiController::class, 'riwayat'])->name('riwayat');
 
 Route::get('/pengajuan',[PengajuanKeberatanController::class,'create']);
+// Route::get('/pengajuan/{permohonaninformasi}',[PengajuanKeberatanController::class,'create2']);
 Route::post('/pengajuan/create',[PengajuanKeberatanController::class,'store']);
 
 //admin

@@ -149,12 +149,17 @@
                           </li>
                         </ul>
                       </div>
-                      
 
                       @if ($item->id_status == 3)
                         <div class="mb-3">
                           <h5 class="mb-0">Alasan Ditolak</h5>
                           <p>{{ $item->pesan_ditolak }}</p>
+                          <form action="/pengajuan">
+                            {{-- @csrf --}}
+                            <input type="hidden" name="pemohon" value="{{ encrypt($item->id) }}">
+                            <button type="submit" class="btn btn-primary">Ajukan Keberatan</button>
+                          </form>
+                          {{-- <a href="/pengajuan" class="btn btn-primary">Ajukan Keberatan</a> --}}
                         </div>
                       @elseif ($item->id_status == 4)
                         @if ($item->file_acc_permohonan)
@@ -164,8 +169,6 @@
                           </div>
                         @endif
                       @endif
-
-                      
 
                     </div>
                   </div>

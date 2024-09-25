@@ -1,13 +1,13 @@
 <footer class="footer-1 footer-wrap">
   <div class="footer-widgets-wrapper text-white bg-cover"
-    style="background-image: url('assets/img/footer-widgets-bg.png')">
+    style="background-image: url('/assets/img/footer-widgets-bg.png')">
     <div class="container">
       <div class="row justify-content-between">
 
         <div class="col-sm-6 col-xl-3">
           <div class="about-quantech pe-md-5 pe-xl-0">
             <a href="index.html">
-              <img src="assets/img/icons/LOGO-RSKK-2.ico" alt="quantech">
+              <img src="/assets/img/icons/LOGO-RSKK-2.ico" alt="quantech">
             </a>
             <p>PPID, memastikan
               keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
