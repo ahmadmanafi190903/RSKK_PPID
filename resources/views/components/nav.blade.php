@@ -12,7 +12,7 @@
         <div class="menu-wrap">
           <div class="main-menu">
             <ul>
-              @foreach ($menus as $menu)
+              @foreach (App\Models\Menu::all() as $menu)
                 <li><a href="{{$menu->url}}">{{$menu->nama}}@if ( $menu->child->count() > 0 ) <i class="fas fa-angle-down"></i></a>@endif</a>
                   @if ( $menu->child->count() > 0 )
                     <ul class="sub-menu">
@@ -40,7 +40,7 @@
             </button>
             <nav class="sidebar-nav">
               <ul class="metismenu" id="mobile-menu">
-                @foreach ($menus as $menu)
+                @foreach (App\Models\Menu::all() as $menu)
                   <li><a @if ( $menu->child->count() > 0 )  class="has-arrow" @endif href="{{$menu->url}}">{{$menu->nama}}</a>
                     @if ( $menu->child->count() > 0 )
                       <ul class="sub-menu">

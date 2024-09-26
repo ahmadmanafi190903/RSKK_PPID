@@ -79,13 +79,13 @@
         </li>
         <li class="nav-header">KONFIGURASI</li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/menu" class="nav-link">
             <i class="nav-icon fas fa-bars"></i>
             <p>Menu</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/submenu" class="nav-link">
             <i class="nav-icon fas fa-bars"></i>
             <p>Sub Menu</p>
           </a>

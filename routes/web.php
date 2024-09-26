@@ -6,6 +6,8 @@ use App\Http\Controllers\PengajuanKeberatanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InformasiPublikController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SubmenuController;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\Information;
 use Illuminate\Support\Facades\Mail;
@@ -66,4 +68,20 @@ Route::middleware(['auth'])->group(function () {
 
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');
+
+    // menus
+    Route::get('/menu', [MenuController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/menu/create', [MenuController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/menu', [MenuController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/menu/{menu}/edit', [MenuController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/menu/{menu}', [MenuController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->middleware('role:super_admin');
+
+    //submenu
+    Route::get('/submenu', [SubmenuController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/submenu/create', [SubmenuController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/submenu', [SubmenuController::class, 'store'])->middleware('role:super_admin');
+    Route::delete('/submenu/{submenu}', [SubmenuController::class, 'destroy'])->middleware('role:super_admin');
+    Route::get('/submenu/{submenu}/edit', [SubmenuController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/submenu/{submenu}', [SubmenuController::class, 'update'])->middleware('role:super_admin');
 });

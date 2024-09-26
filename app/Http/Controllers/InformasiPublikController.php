@@ -115,7 +115,7 @@ class InformasiPublikController extends Controller
             $file_path = $informasipublik->link;
         }
 
-        InformasiPublik::create([
+        $informasipublik->update([
             'ringkasan_informasi' => $request->ringkasan_informasi,
             'pejabat_penguasa_informasi' => $request->pejabat_penguasa_informasi,
             'penanggung_jawab_informasi' => $request->penanggung_jawab_informasi,

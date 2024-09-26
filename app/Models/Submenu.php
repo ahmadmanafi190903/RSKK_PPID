@@ -12,11 +12,11 @@ class Submenu extends Model
 
     protected $table = 'submenus';
 
-    protected $with = ['parent'];
+    // protected $with = 'menu';
 
     protected $guarded = ['id'];
 
-    public function parent(): BelongsTo
+    public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
     }

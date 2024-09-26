@@ -17,28 +17,24 @@ class MenuSeeder extends Seeder
             [
                 'nama' => 'Beranda',
                 'url' => '/',
-                'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Profil',
                 'url' => '#',
-                'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Informasi Publik',
                 'url' => '#',
-                'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Formulir',
                 'url' => '#',
-                'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

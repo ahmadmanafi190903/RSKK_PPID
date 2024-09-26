@@ -17,7 +17,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Informasi Berkala',
                 'url' => '#',
-                'status' => '1',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -25,7 +24,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Informasi Setiap Saat',
                 'url' => '#',
-                'status' => '1',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -33,7 +31,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Informasi Serta Merta',
                 'url' => '#',
-                'status' => '1',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -41,7 +38,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Informasi Dikecualikan',
                 'url' => '#',
-                'status' => '1',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -49,7 +45,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Permohonan Informasi',
                 'url' => '/permohonan',
-                'status' => '1',
                 'menu_id' => '4',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -57,7 +52,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Pengajuan Keberatan',
                 'url' => '/pengajuan',
-                'status' => '1',
                 'menu_id' => '4',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -65,7 +59,6 @@ class SubmenuSeeder extends Seeder
             [
                 'nama' => 'Riwayat Permohonan',
                 'url' => '/riwayat',
-                'status' => '1',
                 'menu_id' => '4',
                 'created_at' => now(),
                 'updated_at' => now(),
