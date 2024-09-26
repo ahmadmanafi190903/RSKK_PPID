@@ -7,6 +7,8 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InformasiPublikController;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Information;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('user.index');
@@ -17,7 +19,10 @@ Route::get('/testing', function () {
     return view('testing');
 });
 
-
+Route::post('/kirim', function () {
+    Mail::send(new Information());
+    return 'berhasil';
+});
 
 //user
 Route::get('/permohonan', [PermohonanInformasiController::class, 'create']);
@@ -25,7 +30,6 @@ Route::post('/permohonan/create', [PermohonanInformasiController::class, 'store'
 Route::get('/riwayat', [PermohonanInformasiController::class, 'riwayat'])->name('riwayat');
 
 Route::get('/pengajuan',[PengajuanKeberatanController::class,'create']);
-// Route::get('/pengajuan/{permohonaninformasi}',[PengajuanKeberatanController::class,'create2']);
 Route::post('/pengajuan/create',[PengajuanKeberatanController::class,'store']);
 
 //admin

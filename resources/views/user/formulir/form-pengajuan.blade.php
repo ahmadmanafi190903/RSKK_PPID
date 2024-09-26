@@ -16,7 +16,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" placeholder="Masukan Nama Lengkap" name="nama" value="{{ old('nama') }}">
+                <input type="text" id="name" placeholder="Masukan Nama Lengkap" name="nama" value="{{ isset($applicant->nama) ? $applicant->nama : '' }}{{ old('nama') }}">
                 @error('nama')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -25,7 +25,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="email">Alamat Email</label>
-                <input type="email" id="email" placeholder="Masukan Alamat Email" name="email" value="{{ old('email') }}">
+                <input type="email" id="email" placeholder="Masukan Alamat Email" name="email" value="{{ isset($applicant->email) ? $applicant->email : '' }}{{ old('email') }}">
                 @error('email')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror 
@@ -34,7 +34,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="phone">No Telepon</label>
-                <input type="text" id="phone" placeholder="Masuk no telepon" name="no_telepon" value="{{ old('no_telepon') }}" oninput="inputPhone()">
+                <input type="text" id="phone" placeholder="Masuk no telepon" name="no_telepon" value="{{ isset($applicant->no_telepon) ? $applicant->no_telepon : '' }}{{ old('no_telepon') }}" oninput="inputPhone()">
                 @error('no_telepon')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -43,7 +43,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="work">Pekerjaan</label>
-                  <input type="text" id="work" placeholder="Masukan Pekerjaan" name="pekerjaan" value="{{ old('pekerjaan') }}">
+                  <input type="text" id="work" placeholder="Masukan Pekerjaan" name="pekerjaan" value="{{ isset($applicant->pekerjaan) ? $applicant->pekerjaan : '' }}{{ old('pekerjaan') }}">
                   @error('pekerjaan')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -52,7 +52,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-0">
                 <label for="address">Alamat</label>
-                <textarea id="address" placeholder="Masukan Alamat" name="alamat" >{{ old('alamat') }}</textarea>
+                <textarea id="address" placeholder="Masukan Alamat" name="alamat" >{{ isset($applicant->alamat) ? $applicant->alamat : '' }}{{ old('alamat') }}</textarea>
                 @error('alamat')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

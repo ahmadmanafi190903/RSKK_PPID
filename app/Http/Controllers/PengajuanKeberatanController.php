@@ -31,29 +31,31 @@ class PengajuanKeberatanController extends Controller
         if (request('pemohon')) {
             $dekripsi = Crypt::decrypt(request('pemohon'));
             $applicant = PermohonanInformasi::where('id', $dekripsi)->first();
-            return view('user.formulir.form-pengajuan2', [
+            return view('user.formulir.form-pengajuan', [
                 'reason' => $reason,
                 'applicant' => $applicant 
             ]);
         } else {
+            $applicant = [];
             return view('user.formulir.form-pengajuan', [
                 'reason' => $reason,
+                'applicant' => $applicant 
             ]);
         }
     }
 
-    public function create2()
-    {
-        $applicant = [];
-        if (request('pemohon')) {
-            $applicant = PermohonanInformasi::where('id', request('pemohon'))->first();
-        }
-        $reason = AlasanPengajuan::all();
-        return view('user.formulir.form-pengajuan', [
-            'reason' => $reason,
-            'applicant' => $applicant 
-        ]);
-    }
+    // public function create2()
+    // {
+    //     $applicant = [];
+    //     if (request('pemohon')) {
+    //         $applicant = PermohonanInformasi::where('id', request('pemohon'))->first();
+    //     }
+    //     $reason = AlasanPengajuan::all();
+    //     return view('user.formulir.form-pengajuan', [
+    //         'reason' => $reason,
+    //         'applicant' => $applicant 
+    //     ]);
+    // }
 
     /**
      * Store a newly created resource in storage.
