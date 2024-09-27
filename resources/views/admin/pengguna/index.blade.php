@@ -6,15 +6,13 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Pengguna <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addUser">+ pengguna</a></h1>
+          <div class="col-12 d-flex justify-content-between">
+            <h1 class="m-0">Pengguna</h1>
+            @if (Auth::user()->role == 'super_admin')
+              <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+            @endif
           </div>
         </div><!-- /.row -->
-        @if (session('success'))
-          <div class="alert alert-success ">
-            {{ session('success') }}
-          </div>
-        @endif
 
       </div><!-- /.container-fluid -->
     </div>
@@ -39,8 +37,8 @@
               </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+            <div class="card-body table-responsive p-0 text-center">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th class="align-middle" >no</th>

@@ -141,4 +141,11 @@ class InformasiPublikController extends Controller
         $informasipublik->delete();
         return redirect('/informasi_publik')->with('success', 'Data berhasil dihapus');
     }
+
+
+    public function information(string $kategori_id)
+    {
+        $informations = InformasiPublik::where('kategori_id', $kategori_id)->latest()->get();
+        return view('user.informasipublik.index', ['informations' => $informations]);
+    }
 }

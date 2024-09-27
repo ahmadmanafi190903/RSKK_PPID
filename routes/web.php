@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('user.index');
 });
 
+Route::get('/informasipublik', function () {
+    return view('user.informasipublik.index');
+});
+
 
 Route::get('/testing', function () {
     return view('testing');
@@ -33,6 +37,14 @@ Route::get('/riwayat', [PermohonanInformasiController::class, 'riwayat'])->name(
 
 Route::get('/pengajuan',[PengajuanKeberatanController::class,'create']);
 Route::post('/pengajuan/create',[PengajuanKeberatanController::class,'store']);
+
+
+Route::get('/informasi-publik/{katagori_id}', [InformasiPublikController::class, 'information']);
+
+
+Route::get('/informasipublik/berkala', [InformasiPublikController::class, 'berkala']);
+Route::get('/informasipublik/setiapsaat', [InformasiPublikController::class, 'setiapsaat']);
+Route::get('/informasipublik/sertamerta', [InformasiPublikController::class, 'sertamerta']);
 
 //admin
 Route::middleware(['auth'])->group(function () {
