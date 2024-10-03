@@ -18,10 +18,10 @@
               <img src="assets/img/icons/solution.svg" alt="">
 
             </div>
-            <h4><a href="services-details.html">Informasi Publik Berkala</a></h4>
+            <h4><a href="/informasi-publik/1">Informasi Publik Berkala</a></h4>
             <p>Informasi yang rutin diterbitkan oleh RSUD Kesehatan Kerja Provinsi Jawa Barat. Termasuk laporan tahunan,
               rencana strategis, dan kegiatan rutin lainnya.</p>
-            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+            <a href="/informasi-publik/1" class="read-more-link">Selengkapnya</a>
           </div>
         </div>
         <div class="col-xl-3 col-md-6 col-12">
@@ -29,10 +29,10 @@
             <div class="icon">
               <img src="assets/img/icons/coding.svg" alt="">
             </div>
-            <h4><a href="services-details.html">Informasi Publik Setiap Saat</a></h4>
+            <h4><a href="/informasi-publik/3">Informasi Publik Setiap Saat</a></h4>
             <p>Informasi yang selalu tersedia dan dapat diakses oleh masyarakat, seperti peraturan, prosedur pelayanan,
               dan tarif layanan kesehatan.</p>
-            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+            <a href="/informasi-publik/3" class="read-more-link">Selengkapnya</a>
           </div>
         </div>
         <div class="col-xl-3 col-md-6 col-12">
@@ -40,10 +40,10 @@
             <div class="icon">
               <img src="assets/img/icons/ux-design.svg" alt="">
             </div>
-            <h4><a href="services-details.html">Informasi Publik dikecualikan</a></h4>
+            <h4><a href="#">Informasi Publik dikecualikan</a></h4>
             <p>Informasi yang tidak dapat disebarluaskan secara umum sesuai dengan ketentuan perundang-undangan, seperti
               data pasien dan informasi yang bersifat rahasia.</p>
-            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+            <a href="#" class="read-more-link">Selengkapnya</a>
           </div>
         </div>
         <div class="col-xl-3 col-md-6 col-12">
@@ -51,10 +51,10 @@
             <div class="icon">
               <img src="assets/img/icons/database.svg" alt="">
             </div>
-            <h4><a href="services-details.html">Informasi Serta Merta</a></h4>
+            <h4><a href="/informasi-publik/2">Informasi Serta Merta</a></h4>
             <p> Informasi yang harus segera disampaikan kepada masyarakat, terutama dalam situasi darurat atau bencana
               yang memerlukan tindakan segera.</p>
-            <a href="services-details.html" class="read-more-link">Selengkapnya</a>
+            <a href="/informasi-publik/2" class="read-more-link">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -144,12 +144,12 @@
                 </div>
               </div>
 
-              
+
 
               <div class="accordion-item">
                 <h4 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
-                    aria-controls="faq2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq2" aria-controls="faq2">
                     Apa saja informasi yang dapat diakses melalui PPID?
                   </button>
                 </h4>
@@ -189,7 +189,7 @@
                 </h4>
                 <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordion">
                   <div class="accordion-body">
-										Setelah menerima permohonan informasi, PPID memiliki waktu maksimal 10 hari kerja untuk
+                    Setelah menerima permohonan informasi, PPID memiliki waktu maksimal 10 hari kerja untuk
                     memberikan tanggapan. Jika dibutuhkan waktu tambahan, PPID dapat memperpanjang waktu tersebut hingga 7
                     hari kerja berikutnya, dengan memberikan pemberitahuan resmi kepada pemohon mengenai alasan
                     perpanjangan waktu tersebut.
@@ -412,25 +412,26 @@
       </div>
 
       <div class="testimonial-carousel-grid-active">
-        <div class="single-testimonial-card">
-          <div class="client-img bg-cover" style="background-image: url('assets/img/33.jpg')"></div>
-          <div class="content">
-            <p>Pelayanan sangat cepat dan profesional. Informasi yang saya butuhkan disampaikan dengan jelas dan tepat waktu.</p>
-            <div class="client-rating mt-15">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+        @foreach ($ratings as $item)
+          <div class="single-testimonial-card">
+            <div class="client-img bg-cover" style="background-image: url('assets/img/33.jpg')"></div>
+            <div class="content">
+              <p>{{ $item->comment }}</p>
+              <div class="client-rating mt-15">
+                @for ($i = 0; $i < $item->star; $i++)
+                  <i class="fas fa-star"></i>
+                @endfor
+              </div>
+              <h4>{{ $item->pemohon->nama }}</h4> {{-- Nama--}}
+              <span>{{ $item->pemohon->pekerjaan }}</span> {{-- pekerjaan--}}
             </div>
-            <h4>Ahmad Manafi</h4>
-            <span>UI UX, Frontend.</span>
           </div>
-        </div>
-        <div class="single-testimonial-card">
+        @endforeach
+        {{-- <div class="single-testimonial-card">
           <div class="client-img bg-cover" style="background-image: url('assets/img/36.jpg')"></div>
           <div class="content">
-            <p>Sangat puas dengan sistem yang transparan dan mudah diakses. Setiap pertanyaan saya ditanggapi dengan ramah dan informatif.</p>
+            <p>Sangat puas dengan sistem yang transparan dan mudah diakses. Setiap pertanyaan saya ditanggapi dengan ramah
+              dan informatif.</p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -445,7 +446,8 @@
         <div class="single-testimonial-card">
           <div class="client-img bg-cover" style="background-image: url('assets/img/35.jpg')"></div>
           <div class="content">
-            <p>Pelayanan bagus, meskipun ada sedikit keterlambatan dalam merespon. Namun, informasi yang diberikan akurat.</p>
+            <p>Pelayanan bagus, meskipun ada sedikit keterlambatan dalam merespon. Namun, informasi yang diberikan akurat.
+            </p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -490,7 +492,8 @@
         <div class="single-testimonial-card">
           <div class="client-img bg-cover" style="background-image: url('assets/img/icons/Logo-RSKK-2.ico')"></div>
           <div class="content">
-            <p>Sangat puas! Layanan informasi yang disediakan sangat transparan dan mudah dipahami. Stafnya juga sangat membantu.</p>
+            <p>Sangat puas! Layanan informasi yang disediakan sangat transparan dan mudah dipahami. Stafnya juga sangat
+              membantu.</p>
             <div class="client-rating mt-15">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -501,8 +504,8 @@
             <h4>RSUD KK</h4>
             <span>RS kesehatan Kerja JABAR.</span>
           </div>
-        </div>
-        
+        </div> --}}
+
       </div>
     </div>
   </section>

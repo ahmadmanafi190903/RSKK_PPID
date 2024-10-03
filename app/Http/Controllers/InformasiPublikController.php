@@ -145,7 +145,7 @@ class InformasiPublikController extends Controller
 
     public function information(string $kategori_id)
     {
-        $informations = InformasiPublik::where('kategori_id', $kategori_id)->latest()->get();
+        $informations = InformasiPublik::where('kategori_id', $kategori_id)->latest()->paginate(10);
         return view('user.informasipublik.index', ['informations' => $informations]);
     }
 }

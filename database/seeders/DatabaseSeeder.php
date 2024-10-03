@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\InformasiPublik;
+use App\Models\Rating;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             SubmenuSeeder::class
         ]);
 
-        InformasiPublik::factory()->count(50)->create();        
+        InformasiPublik::factory()->count(50)->create();
+        Rating::factory()->count(2)->create();
     }
 }

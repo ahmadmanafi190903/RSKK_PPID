@@ -32,3 +32,22 @@ function inputNik() {
     }
   });
 }
+
+function downloadFile() {
+  const iframe = document.getElementById('fileFrame');
+  const src = iframe.src;
+  const link = document.createElement('a');
+  link.href = src;
+  link.download = ''; // Nama file bisa ditentukan di sini
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function setRating(rating) {
+  document.getElementById('ratingValue').value = rating;
+  const stars = document.querySelectorAll('.star');
+  stars.forEach((star, index) => {
+    star.style.color = index < rating ? 'gold' : 'gray';
+  });
+}

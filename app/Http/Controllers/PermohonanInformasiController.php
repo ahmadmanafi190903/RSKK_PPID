@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Events\PermohonanInformasiEvent;
+use App\Models\Rating;
+use Illuminate\Auth\Events\Validated;
 
 class PermohonanInformasiController extends Controller
 {
@@ -228,4 +230,51 @@ class PermohonanInformasiController extends Controller
         return view('user.formulir.riwayat-user', compact('information'));
     }
 
+    public function form(string $id)
+    {
+        return view('user.verifikasidata.index', [
+            'id' => $id
+        ]);
+    }
+
+    public function get(Request $request, PermohonanInformasi $permohonaninformasi)
+    {
+        $request->validate([
+            'email' => 'required|email:rfc,dns|max:255',
+            'nik' => 'required|digits:16|numeric',
+        ],$this->feedback_validate);
+
+        if ($request->nik == $permohonaninformasi->nik && $request->email == $permohonaninformasi->email) {
+            return redirect('/permohonan-informasi/'.$permohonaninformasi->id.'/download');
+        } else {
+            return redirect()->back()->with('failed', 'NIK dan Email salah');
+        }
+    }
+
+    public function download(string $id)
+    {
+        $information = PermohonanInformasi::where('id', $id)->select(['id','file_acc_permohonan'])->first();
+        $rating = Rating::where('permohonan_informasi_id', $information->id)->first();
+        // dd($rating);
+        return view('user.download.index', [
+            'information' => $information,
+            'rating' => $rating
+        ]);
+    }
+
+    public function rating(Request $request, Rating $rating)
+    {
+        $request->validate([
+            'star' => 'required|numeric',
+            'comment' => 'required|max:255'
+        ], $this->feedback_validate);
+
+        $rating->create([
+            'star' => $request->star,
+            'comment' => $request->comment,
+            'permohonan_informasi_id' => $request->id
+        ]);
+
+        return redirect()->back()->with('success', 'Terima kasih atas ulasannya');
+    }
 }

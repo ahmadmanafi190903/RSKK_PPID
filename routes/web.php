@@ -5,46 +5,26 @@ use App\Http\Controllers\PermohonanInformasiController;
 use App\Http\Controllers\PengajuanKeberatanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\InformasiPublikController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
-use Illuminate\Support\Facades\Auth;
-use App\Mail\Information;
-use Illuminate\Support\Facades\Mail;
-
-Route::get('/', function () {
-    return view('user.index');
-});
-
-Route::get('/informasipublik', function () {
-    return view('user.informasipublik.index');
-});
-
-
-Route::get('/testing', function () {
-    return view('testing');
-});
-
-Route::post('/kirim', function () {
-    Mail::send(new Information());
-    return 'berhasil';
-});
 
 //user
+
+Route::get('/',[DashboardController::class, 'home']);
+Route::get('/permohonan-informasi/{permohonaninformasi}/download', [PermohonanInformasiController::class, 'download']);
+Route::post('/rating', [PermohonanInformasiController::class, 'rating']);
+
 Route::get('/permohonan', [PermohonanInformasiController::class, 'create']);
 Route::post('/permohonan/create', [PermohonanInformasiController::class, 'store']);
 Route::get('/riwayat', [PermohonanInformasiController::class, 'riwayat'])->name('riwayat');
 
-Route::get('/pengajuan',[PengajuanKeberatanController::class,'create']);
-Route::post('/pengajuan/create',[PengajuanKeberatanController::class,'store']);
+Route::get('/pengajuan', [PengajuanKeberatanController::class, 'create']);
+Route::post('/pengajuan/create', [PengajuanKeberatanController::class, 'store']);
 
 
 Route::get('/informasi-publik/{katagori_id}', [InformasiPublikController::class, 'information']);
-
-
-Route::get('/informasipublik/berkala', [InformasiPublikController::class, 'berkala']);
-Route::get('/informasipublik/setiapsaat', [InformasiPublikController::class, 'setiapsaat']);
-Route::get('/informasipublik/sertamerta', [InformasiPublikController::class, 'sertamerta']);
 
 //admin
 Route::middleware(['auth'])->group(function () {
@@ -68,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/pengajuan_keberatan/{pengajuankeberatan}/upload', [PengajuanKeberatanController::class, 'upload'])->middleware('role:super_admin,admin');
     Route::get('/pengajuan_keberatan/{pengajuankeberatan}/edit', [PengajuanKeberatanController::class, 'edit'])->middleware('role:super_admin,admin');
     Route::patch('/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'update'])->middleware('role:super_admin,admin');
-    Route::delete('/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'destroy'])->middleware('role:super_admin,admin'); 
+    Route::delete('/pengajuan_keberatan/{pengajuankeberatan}', [PengajuanKeberatanController::class, 'destroy'])->middleware('role:super_admin,admin');
 
     // informasi publik
     Route::get('/informasi_publik', [InformasiPublikController::class, 'index'])->middleware('role:super_admin,admin,operator');
@@ -77,6 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'edit'])->middleware('role:super_admin,operator');
     Route::patch('/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'update'])->middleware('role:super_admin,operator');
     Route::delete('/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'destroy'])->middleware('role:super_admin,operator');
+    
+    // Email
+    Route::get('/email', [EmailController::class, 'index'])->middleware('role:super_admin,admin');
+    Route::get('/email/{permohonaninformasi}/send', [EmailController::class, 'send'])->middleware('role:super_admin,admin');
 
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');

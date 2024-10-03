@@ -13,12 +13,13 @@ class Information extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -27,7 +28,7 @@ class Information extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Information',
+            subject: $this->data['informasi_yang_dibutuhkan'],
         );
     }
 
@@ -37,7 +38,11 @@ class Information extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.testing',
+            markdown: 'mail.index',
+            with:[
+                'nama' => $this->data['nama'],
+                'id' => $this->data['id']
+            ]
         );
     }
 

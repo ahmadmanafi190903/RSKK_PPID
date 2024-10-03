@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-    <div class="card-body table-responsive p-0">
+    <div class="card-body table-responsive p-0 mb-3">
       <table class="table text-center border">
         <thead class="table-dark">
           <tr>
@@ -53,7 +53,7 @@
           @endforeach
         </tbody>
       </table>
+      {{ $informations->links('pagination::bootstrap-5') }}
     </div>
-
   </div>
 @endsection

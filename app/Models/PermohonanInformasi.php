@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PermohonanInformasi extends Model
 {
@@ -31,4 +32,8 @@ class PermohonanInformasi extends Model
         return $this->belongsTo(Status::class, 'id_status');
     }
 
+    public function rating(): HasOne
+    {
+        return $this->hasOne(Rating::class);
+    }
 }

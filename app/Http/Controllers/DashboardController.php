@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PermohonanInformasi;
 use App\Models\PengajuanKeberatan;
 use App\Models\InformasiPublik;
-
+use App\Models\Rating;
 
 class DashboardController extends Controller
 {
@@ -18,7 +18,15 @@ class DashboardController extends Controller
         return view('admin.dashboard', [
             'information' => $information,
             'submission' => $submission,
-            'public'=> $public
+            'public' => $public
+        ]);
+    }
+
+    public function home()
+    {
+        $ratings = Rating::take(6)->latest()->get();
+        return view('user.index', [
+            'ratings' => $ratings
         ]);
     }
 }

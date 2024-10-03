@@ -70,11 +70,21 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="/email" class="nav-link">
+            <i class="nav-icon fas fa-mail-bulk"></i>
+            <p>
+              Kirim Email
+            </p>
+          </a>
+        </li>
         <li class="nav-header">PENGGUNA</li>
         <li class="nav-item">
           <a href="/pengguna" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
-            <p>Pengguna</p>
+            <p>
+              Pengguna
+            </p>
           </a>
         </li>
         <li class="nav-header">KONFIGURASI</li>

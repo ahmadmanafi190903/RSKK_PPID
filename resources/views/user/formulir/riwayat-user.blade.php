@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="section-title text-center pt-5">
-  <h2>Riwayat Permohonan Informasi</h2>
-</div>
+  <div class="section-title text-center pt-5">
+    <h2>Riwayat Permohonan Informasi</h2>
+  </div>
 
   <div class="col-12 col-lg-6 offset-lg-3 pt-5 mt-5 mb-5 ">
-    
+
     <div class="main-sidebar">
       <div class="single-sidebar-widget ">
         <div class="text-center">
@@ -56,7 +56,9 @@
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Telepon</h5>
-                        <p>{{ substr_replace($item->no_telepon, str_repeat('*', strlen($item->no_telepon) - 8), 4, strlen($item->no_telepon) - 8) }}</p>
+                        <p>
+                          {{ substr_replace($item->no_telepon, str_repeat('*', strlen($item->no_telepon) - 8), 4, strlen($item->no_telepon) - 8) }}
+                        </p>
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Pekerjaan</h5>
@@ -68,7 +70,9 @@
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">NIK</h5>
-                        <p>{{ substr_replace($item->nik, str_repeat('*', strlen($item->nik) - 8), 4, strlen($item->nik) - 8) }}</p>
+                        <p>
+                          {{ substr_replace($item->nik, str_repeat('*', strlen($item->nik) - 8), 4, strlen($item->nik) - 8) }}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -125,7 +129,8 @@
                             <div class="content ">
                               <h4>Terkirim</h4>
                               <p>
-                                Permohonan informasi telah berhasil dikirim dan diterima oleh PPID. Verifikasi data pemohon sedang dilakukan
+                                Permohonan informasi telah berhasil dikirim dan diterima oleh PPID. Verifikasi data
+                                pemohon sedang dilakukan
                                 untuk memulai proses.
                               </p>
                             </div>
@@ -134,7 +139,8 @@
                             <div class="content">
                               <h4>Diproses</h4>
                               <p>
-                                PPID sedang meninjau permohonan dan memverifikasi informasi yang dapat diberikan. Jika diperlukan, klarifikasi
+                                PPID sedang meninjau permohonan dan memverifikasi informasi yang dapat diberikan. Jika
+                                diperlukan, klarifikasi
                                 tambahan akan dilakukan.
                               </p>
                             </div>
@@ -143,7 +149,8 @@
                             <div class="content">
                               <h4>Selesai</h4>
                               <p>
-                                Proses permohonan telah selesai, dan informasi yang diminta sudah disiapkan. Pemohon akan segera menerima hasil sesuai dengan ketentuan.
+                                Proses permohonan telah selesai, dan informasi yang diminta sudah disiapkan. Pemohon akan
+                                segera menerima hasil sesuai dengan ketentuan.
                               </p>
                             </div>
                           </li>
@@ -155,21 +162,80 @@
                           <h5 class="mb-0">Alasan Ditolak</h5>
                           <p>{{ $item->pesan_ditolak }}</p>
                           <form action="/pengajuan">
-                            {{-- @csrf --}}
                             <input type="hidden" name="pemohon" value="{{ encrypt($item->id) }}">
                             <button type="submit" class="btn btn-primary">Ajukan Keberatan</button>
                           </form>
-                          {{-- <a href="/pengajuan" class="btn btn-primary">Ajukan Keberatan</a> --}}
                         </div>
                       @elseif ($item->id_status == 4)
                         @if ($item->file_acc_permohonan)
                           <div class="mb-3">
-                            <h5 class="mb-0">Pesan Diterima</h5>
-                            <a href="{{ asset('storage/' . $item->file_acc_permohonan) }}" target="_blank" class="btn btn-primary">Lihat</a>
+                            <h5 class="mb-0">Permohonan Diterima</h5>
+                            <p>File permohonan telah berhasil dikirim, silahkan periksa email anda.</p>
+                          </div>
+                        @else
+                          <div class="mb-3">
+                            <h5 class="mb-0">Permohonan Diterima</h5>
+                            <p>Silahkan berikan ulasan sebelum pengambilan berkas.</p>
+                            {{-- @dd(
+                                App\Models\Rating::where('permohonan_informasi_id', $item->id)->latest()->first()
+                            ) --}}
+                            @if (App\Models\Rating::where('permohonan_informasi_id', $item->id)->latest()->first())
+                              <button class="btn btn-primary w-100">Terima kasih</button>
+                            @else
+                              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                data-bs-target="#rating">
+                                Masuk ulasan
+                              </button>
+
+                              {{-- modal --}}
+                              <div class="modal fade" id="rating" tabindex="-1" aria-labelledby="ModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="ModalLabel">Berikan ulasan</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    </div>
+                                    <form action="/rating" method="post">
+                                      @csrf
+                                      <div class="modal-body text-center">
+                                        <div class="rating">
+                                          <span class="star" style="font-size: 36px; cursor: pointer;"
+                                            onclick="setRating(1)">&#9733;</span>
+                                          <span class="star" style="font-size: 36px; cursor: pointer;"
+                                            onclick="setRating(2)">&#9733;</span>
+                                          <span class="star" style="font-size: 36px; cursor: pointer;"
+                                            onclick="setRating(3)">&#9733;</span>
+                                          <span class="star" style="font-size: 36px; cursor: pointer;"
+                                            onclick="setRating(4)">&#9733;</span>
+                                          <span class="star" style="font-size: 36px; cursor: pointer;"
+                                            onclick="setRating(5)">&#9733;</span>
+                                        </div>
+                                        <input type="hidden" id="ratingValue" value="{{ old('star') }}"
+                                          name="star" name="star">
+                                        @error('star')
+                                          <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                        <textarea id="reviewText" rows="4" class="form-control mt-3" placeholder="Tulis ulasan Anda di sini..."
+                                          name="comment">{{ old('comment') }}</textarea>
+                                        @error('comment')
+                                          <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="sumbit" class="btn btn-primary">Posting</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            @endif
+
                           </div>
                         @endif
                       @endif
-
                     </div>
                   </div>
                 </div>
@@ -186,5 +252,5 @@
     </div>
   </div>
 
-  
+
 @endsection

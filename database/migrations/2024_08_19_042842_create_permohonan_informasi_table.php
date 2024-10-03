@@ -28,6 +28,7 @@ return new class extends Migration
             $table->timestamps();
             $table->text('pesan_ditolak')->nullable();
             $table->string('file_acc_permohonan')->nullable();
+            $table->boolean('status_pengiriman')->default(0);
         });
     }
 
