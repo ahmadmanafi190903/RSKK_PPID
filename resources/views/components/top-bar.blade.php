@@ -8,13 +8,9 @@
     </div>
     <div class="top-right d-none d-md-block">
       <div class="social-pages">
-        <a href="https://www.facebook.com/RSUDKK?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-square"
-            aria-hidden="true"></i></a>
-        <a href="https://youtube.com/@rskkjabar3910?si=Ij_PJHEWoQDMfh8n" target="_blank"><i class="fab fa-youtube"
-            aria-hidden="true"></i></a>
-        <a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-        <a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ==" target="_blank"><i
-            class="fab fa-instagram" aria-hidden="true"></i></a>
+        @foreach (App\Models\Sosmed::all() as $item)
+          <a href="{{ $item->link }}" target="_blank">{!! $item->icon !!}</a>
+        @endforeach
       </div>
     </div>
   </div>

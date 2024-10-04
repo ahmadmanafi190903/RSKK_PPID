@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <h1 class="m-0">Informasi Public</h1>
+            <h1 class="m-0">Informasi Publik</h1>
             @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
               <a href="/informasi_publik/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif

@@ -132,7 +132,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <div class="mb-4">
+                {{-- <div class="mb-4">
                   <label for="memperoleh">
                     <h5 class="mb-0">Tahun</h5>
                   </label>
@@ -147,7 +147,7 @@
                   @error('kategori_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
-                </div>
+                </div> --}}
                 <div class="mb-4">
                   <label for="link">
                     <h5 class="mb-0">PDF</h5>

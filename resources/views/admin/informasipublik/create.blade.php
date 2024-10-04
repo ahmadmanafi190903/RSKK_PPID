@@ -137,6 +137,12 @@
                   <label for="jangka_waktu_penyimpanan">
                     <h5 class="mb-0">Jangka waktu penyimpanan</h5>
                   </label>
+                  {{-- <select class="custom-select" id="jangka_waktu_penyimpanan" name="jangka_waktu_penyimpanan">
+                    <option value=""></option>
+                    @foreach ($waktu as $item)
+                      <option value="{{ $item->id }}" {{ old('jangka_waktu_penyimpanan') == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                    @endforeach
+                  </select> --}}
                   <input class="w-100 form-control" type="text" value="{{ old('jangka_waktu_penyimpanan') }}" id="jangka_waktu_penyimpanan" name="jangka_waktu_penyimpanan">
                   @error('jangka_waktu_penyimpanan')
                     <div class="alert alert-danger">{{ $message }}</div>

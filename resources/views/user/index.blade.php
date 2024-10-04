@@ -66,9 +66,8 @@
       <div class="row">
         <div class="col-xl-6 col-12">
           <div class="about-images-video-popup mb-5 mb-md-0">
-            <img src="assets/img/video2.png" alt="" width="600">
-            <img src="assets/img/video1.png" alt="" width="380">
-
+            <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'thumbnail')->latest()->first()->image }}" alt="" width="600">
+            <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'thumbnail')->latest()->skip(1)->first()->image }}" alt="" width="380">
             <div class="video-play-btn">
               <a href="https://www.youtube.com/watch?v=K02pM-yQLGE" class="popup-video play-video"><i
                   class="fas fa-play"></i></a>
@@ -77,7 +76,6 @@
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
           <div class="section-title">
-            {{-- <span>25 Years of Experience</span> --}}
             <h2>Mitra Anda dalam Inovasi Pelayanan Publik</h2>
             <p>RSUD Kesehatan Kerja Provinsi Jawa Barat berkomitmen untuk memberikan layanan yang inovatif dan mudah
               diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk
@@ -103,7 +101,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -116,7 +113,7 @@
       <div class="row">
         <div class="col-xl-6 col-12 mb-5 mb-xl-0">
           <div class="faq-img">
-            <img src="assets/img/3.jpg" alt="">
+            <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'q&a')->latest()->first()->image }}" alt="q&a">
           </div>
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
@@ -126,27 +123,6 @@
           <div class="faq-accordion">
             <div class="accordion" id="accordion">
               @foreach (App\Models\QuestAnswar::all() as $key => $item)
-                {{-- <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapse{{ $key }}" aria-expanded="false"
-                      aria-controls="collapse{{ $key }}">
-                      {{ $key + 1 }} wbwbbwbwb
-                    </button>
-                  </h2>
-                  <div id="collapse{{ $key }}" class="accordion-collapse collapse"
-                    data-bs-parent="#accordionExample">
-                    <div class="row">
-                        <div class="accordion-body">
-                          PPID atau Pejabat Pengelola Informasi dan Dokumentasi adalah pejabat yang bertanggung jawab dalam
-                          pengelolaan informasi publik di instansi pemerintah. PPID bertugas untuk mengumpulkan,
-                          mendokumentasikan, menyediakan, dan/atau menyebarluaskan informasi publik sesuai dengan peraturan
-                          perundang-undangan.
-                      </div>
-                    </div>
-                  </div>
-                </div> --}}
-
                 <div class="accordion-item">
                   <h4 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -161,23 +137,6 @@
                   </div>
                 </div>
               @endforeach
-
-              {{-- <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq1" aria-controls="faq1">
-                    Apa itu ppid?
-                  </button>
-                </h4>
-                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordion">
-                  <div class="accordion-body">
-                    PPID atau Pejabat Pengelola Informasi dan Dokumentasi adalah pejabat yang bertanggung jawab dalam
-                    pengelolaan informasi publik di instansi pemerintah. PPID bertugas untuk mengumpulkan,
-                    mendokumentasikan, menyediakan, dan/atau menyebarluaskan informasi publik sesuai dengan peraturan
-                    perundang-undangan.
-                  </div>
-                </div>
-              </div> --}}
             </div>
           </div>
         </div>

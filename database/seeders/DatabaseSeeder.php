@@ -27,7 +27,10 @@ class DatabaseSeeder extends Seeder
             KategoriSeeder::class,
             MenuSeeder::class,
             SubmenuSeeder::class,
-            QuestAnswarSeeder::class
+            QuestAnswarSeeder::class,
+            ReferencesSeeder::class,
+            SosmedSeeder::class,
+            BackgroundImageSeeder::class
         ]);
 
         InformasiPublik::factory()->count(50)->create();

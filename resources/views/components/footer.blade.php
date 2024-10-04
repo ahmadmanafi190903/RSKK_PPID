@@ -7,7 +7,7 @@
         <div class="col-sm-6 col-xl-3">
           <div class="about-quantech pe-md-5 pe-xl-0">
             <a href="index.html">
-              <img src="/assets/img/icons/LOGO-RSKK-2.ico" alt="quantech">
+              <img src="{{ '/storage/' . App\Models\BackgroundImage::where('slug', 'logo')->latest()->first()->image }}" alt="quantech">
             </a>
             <p>PPID, memastikan
               keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
@@ -37,11 +37,9 @@
               <h3>Media Sosial</h3>
             </div>
             <ul>
-              <li><a href="#">WhatsApp</a></li>
-              <li><a href="https://youtube.com/@rskkjabar3910?si=Ij_PJHEWoQDMfh8n" target="_blank">Youtube</a></li>
-              <li><a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ=="
-                  target="_blank">Instagram</a></li>
-              <li><a href="https://www.facebook.com/RSUDKK?mibextid=ZbWKwL" target="_blank">Facebook</a></li>
+              @foreach (App\Models\Sosmed::all() as $item)
+                <li><a href="{{ $item->link }}" target="_black">{{ $item->nama }}</a></li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -104,13 +102,9 @@
           </div>
           <div class="col-md-6 mt-2 mt-md-0 col-12 text-md-end">
             <div class="social-links">
-              <a href="https://www.facebook.com/RSUDKK?mibextid=ZbWKwL" target="_blank"><i
-                  class="fab fa-facebook-square" aria-hidden="true"></i></a>
-              <a href="https://youtube.com/@rskkjabar3910?si=Ij_PJHEWoQDMfh8n" target="_blank"><i class="fab fa-youtube"
-                  aria-hidden="true"></i></a>
-              <a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-              <a href="https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ==" target="_blank"><i
-                  class="fab fa-instagram" aria-hidden="true"></i></a>
+              @foreach (App\Models\Sosmed::all() as $item)
+                <a href="{{ $item->link }}" target="_blank">{!! $item->icon !!}</a>
+              @endforeach
             </div>
           </div>
         </div>

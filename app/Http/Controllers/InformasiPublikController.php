@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\InformasiPublik;
 use App\Models\Kategori;
+use App\Models\Reference;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,8 @@ class InformasiPublikController extends Controller
     public function create()
     {
         $categories = Kategori::all();
-        return view('admin.informasipublik.create', ['categories' => $categories]);
+        $waktu = Reference::where('slug', 'waktu')->get();
+        return view('admin.informasipublik.create', compact(['categories', 'waktu']));
     }
 
     /**

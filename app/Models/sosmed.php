@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Background_image extends Model
+class sosmed extends Model
 {
     use HasFactory;
+
+    protected $table = 'sosmeds';
+
+    protected $guarded = ['id'];
 }
