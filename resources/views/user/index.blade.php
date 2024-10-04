@@ -90,7 +90,7 @@
                 <img src="assets/img/icons/experiance.svg" alt="">
                 <h3>Form Permohonan Informasi</h3>
                 <p>Ajukan permohonan informasi publik yang Anda butuhkan dengan mudah dan cepat.</p>
-                <a href="form-permohonan.html" class="theme-btn mt-30">Ajukan Permohonan</a>
+                <a href="/permohonan" class="theme-btn mt-30">Ajukan Permohonan</a>
               </div>
             </div>
             <div class="col-md-6 col-sm-6">
@@ -99,7 +99,7 @@
                 <h3>Form Permohonan Keberatan Informasi</h3>
                 <p>Jika Anda merasa ada informasi yang kurang jelas atau permohonan informasi tidak terpenuhi, ajukan
                   keberatan Anda melalui form ini.</p>
-                <a href="form-pengajuan.html" class="theme-btn mt-30">Ajukan Keberatan</a>
+                <a href="/pengajuan" class="theme-btn mt-30">Ajukan Keberatan</a>
               </div>
             </div>
           </div>
@@ -123,11 +123,46 @@
           <div class="section-title">
             <h2>Pejebat Pengelolaan Informasi dan Dokumentasi </h2>
           </div>
-
           <div class="faq-accordion">
             <div class="accordion" id="accordion">
+              @foreach (App\Models\QuestAnswar::all() as $key => $item)
+                {{-- <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapse{{ $key }}" aria-expanded="false"
+                      aria-controls="collapse{{ $key }}">
+                      {{ $key + 1 }} wbwbbwbwb
+                    </button>
+                  </h2>
+                  <div id="collapse{{ $key }}" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample">
+                    <div class="row">
+                        <div class="accordion-body">
+                          PPID atau Pejabat Pengelola Informasi dan Dokumentasi adalah pejabat yang bertanggung jawab dalam
+                          pengelolaan informasi publik di instansi pemerintah. PPID bertugas untuk mengumpulkan,
+                          mendokumentasikan, menyediakan, dan/atau menyebarluaskan informasi publik sesuai dengan peraturan
+                          perundang-undangan.
+                      </div>
+                    </div>
+                  </div>
+                </div> --}}
 
-              <div class="accordion-item">
+                <div class="accordion-item">
+                  <h4 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq{{ $key }}" aria-controls="faq{{ $key }}">
+                      {{ $item->judul }}
+                    </button>
+                  </h4>
+                  <div id="faq{{ $key }}" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      {{ $item->deskripsi }}
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+
+              {{-- <div class="accordion-item">
                 <h4 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#faq1" aria-controls="faq1">
@@ -142,61 +177,7 @@
                     perundang-undangan.
                   </div>
                 </div>
-              </div>
-
-
-
-              <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq2" aria-controls="faq2">
-                    Apa saja informasi yang dapat diakses melalui PPID?
-                  </button>
-                </h4>
-                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordion">
-                  <div class="accordion-body">
-                    Informasi yang dapat diakses melalui PPID meliputi informasi yang bersifat terbuka untuk publik,
-                    seperti laporan keuangan, laporan tahunan, program dan kegiatan instansi, serta informasi lainnya yang
-                    terkait dengan layanan publik. Namun, beberapa informasi yang bersifat rahasia, seperti data pribadi
-                    dan informasi yang dapat membahayakan keamanan negara, tidak dapat diakses.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq3" aria-controls="faq3">
-                    Bagaimana cara mengajukan permohonan informasi ke PPID?
-                  </button>
-                </h4>
-                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordion">
-                  <div class="accordion-body">
-                    Pemohon dapat mengajukan permohonan informasi melalui portal resmi PPID, dengan mengisi formulir
-                    permohonan yang disediakan. Permohonan juga dapat diajukan secara langsung ke kantor PPID terkait.
-                    Dalam permohonan, pemohon harus mencantumkan identitas lengkap dan jenis informasi yang ingin
-                    diperoleh.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faq4" aria-controls="faq4">
-                    Berapa lama proses penyampaian informasi oleh PPID?
-                  </button>
-                </h4>
-                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordion">
-                  <div class="accordion-body">
-                    Setelah menerima permohonan informasi, PPID memiliki waktu maksimal 10 hari kerja untuk
-                    memberikan tanggapan. Jika dibutuhkan waktu tambahan, PPID dapat memperpanjang waktu tersebut hingga 7
-                    hari kerja berikutnya, dengan memberikan pemberitahuan resmi kepada pemohon mengenai alasan
-                    perpanjangan waktu tersebut.
-                  </div>
-                </div>
-              </div>
-
+              </div> --}}
             </div>
           </div>
         </div>
@@ -414,7 +395,7 @@
       <div class="testimonial-carousel-grid-active">
         @foreach ($ratings as $item)
           <div class="single-testimonial-card">
-            <div class="client-img bg-cover" style="background-image: url('assets/img/33.jpg')"></div>
+            <div class="client-img bg-cover" style="background-image: url('assets/img/pp_rating.webp')"></div>
             <div class="content">
               <p>{{ $item->comment }}</p>
               <div class="client-rating mt-15">
@@ -422,8 +403,8 @@
                   <i class="fas fa-star"></i>
                 @endfor
               </div>
-              <h4>{{ $item->pemohon->nama }}</h4> {{-- Nama--}}
-              <span>{{ $item->pemohon->pekerjaan }}</span> {{-- pekerjaan--}}
+              <h4>{{ $item->pemohon->nama }}</h4> {{-- Nama --}}
+              <span>{{ $item->pemohon->pekerjaan }}</span> {{-- pekerjaan --}}
             </div>
           </div>
         @endforeach

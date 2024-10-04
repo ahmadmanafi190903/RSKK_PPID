@@ -100,6 +100,30 @@
             <p>Sub Menu</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="/image/logo" class="nav-link">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>Image Logo</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/image" class="nav-link">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>Image Carousel</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/image" class="nav-link">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>Image Thumbnail</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/image" class="nav-link">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>Image Q&A</p>
+          </a>
+        </li>
         {{-- <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-file"></i>

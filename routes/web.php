@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackgroundImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermohonanInformasiController;
 use App\Http\Controllers\PengajuanKeberatanController;
@@ -73,11 +74,14 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/menu/{menu}', [MenuController::class, 'update'])->middleware('role:super_admin');
     Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->middleware('role:super_admin');
 
-    //submenu
+    // submenu
     Route::get('/submenu', [SubmenuController::class, 'index'])->middleware('role:super_admin');
     Route::get('/submenu/create', [SubmenuController::class, 'create'])->middleware('role:super_admin');
     Route::post('/submenu', [SubmenuController::class, 'store'])->middleware('role:super_admin');
     Route::delete('/submenu/{submenu}', [SubmenuController::class, 'destroy'])->middleware('role:super_admin');
     Route::get('/submenu/{submenu}/edit', [SubmenuController::class, 'edit'])->middleware('role:super_admin');
     Route::patch('/submenu/{submenu}', [SubmenuController::class, 'update'])->middleware('role:super_admin');
+
+    // image
+    Route::get('/image/{slug}',[BackgroundImageController::class, 'index'])->middleware('role:super_admin');
 });

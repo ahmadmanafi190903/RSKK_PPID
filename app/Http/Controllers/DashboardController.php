@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PermohonanInformasi;
 use App\Models\PengajuanKeberatan;
 use App\Models\InformasiPublik;
+use App\Models\QuestAnswar;
 use App\Models\Rating;
 
 class DashboardController extends Controller

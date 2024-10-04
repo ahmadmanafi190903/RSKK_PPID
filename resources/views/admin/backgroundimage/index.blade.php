@@ -7,9 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <h1 class="m-0">Email</h1>
-            {{-- @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-              <a href="/email/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+            <h1 class="m-0">Image</h1>
+            {{-- @if (Auth::user()->role == 'super_admin')
+              <a href="/menu/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif --}}
           </div>
         </div><!-- /.row -->
@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Email</h3>
+              <h3 class="card-title">Data Background Image</h3>
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -42,57 +42,47 @@
               <table class="table table-hover text-center">
                 <thead>
                   <tr>
-                    <th class="align-middle">No</th>
-                    <th class="align-middle">ID - Nama</th>
-                    <th class="align-middle">Email</th>
-                    <th class="align-middle">Informasi</th>
-                    <th class="align-middle">Salinan Informasi</th>
-                    <th class="align-middle">Status Pengiriman</th>
+                    <th class="align-middle">no</th>
+                    <th class="align-middle">image</th>
                     <th class="align-middle">Aksi</th>
                   </tr>
                 </thead>
                 <tbody id="contentArea">
-                  @foreach ($informations as $item)
+                  {{-- @foreach ($menus as $item)
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
-                      <td class="align-middle">{{ $item->id }} - {{ $item->nama }}</td>
-                      <td class="align-middle">{{ $item->email }}</td>
-                      <td class="align-middle">{{ $item->informasi_yang_dibutuhkan }}</td>
-                      <td class="align-middle">{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}</td>
-                      <td class="align-middle">
-                        {{-- @if ($item->id_status == 1) --}}
-
-                        @if ($item->status_pengiriman == 1)
-                          <span class="badge bg-success">terkirim</span>
-                        @else
-                          <span class="badge bg-warning">belum terkirim</span>
-                        @endif
-
-                        {{-- @elseif ($item->id_status == 4) --}}
-                        {{-- <span class="badge bg-success">{{ $item->status->status }}</span> --}}
-                        {{-- @endif --}}
-                      </td>
+                      <td class="align-middle">{{ $item->nama }}</td>
+                      <td class="align-middle">{{ $item->url }}</td>
                       <td class="align-middle">
                         <div>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                            <a href="/email/{{ $item->id }}/send" class="btn btn-primary my-1"><i
-                                class="nav-icon fas flaticon-mail"></i></a>
+                            <a href="/menu/{{ $item->id }}/edit"
+                              class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                            <form action="/menu/{{ $item->id }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
+                                  class="nav-icon fas fa-trash"></i></button>
+                            </form>
                           @endif
                         </div>
                       </td>
                     </tr>
-                  @endforeach
+                  @endforeach --}}
                 </tbody>
               </table>
             </div>
             <!-- /.card-body -->
           </div>
-
-          {{ $informations->links('pagination::bootstrap-5') }}
+          
+          {{-- {{ $information->links('pagination::bootstrap-5') }} --}}
           <!-- /.card -->
         </div>
       </div>
     </section>
     <!-- /.content -->
   </div>
+
+  
 @endsection

@@ -167,27 +167,20 @@
                           </form>
                         </div>
                       @elseif ($item->id_status == 4)
-                        @if ($item->file_acc_permohonan)
-                          <div class="mb-3">
-                            <h5 class="mb-0">Permohonan Diterima</h5>
-                            <p>File permohonan telah berhasil dikirim, silahkan periksa email anda.</p>
-                          </div>
-                        @else
-                          <div class="mb-3">
-                            <h5 class="mb-0">Permohonan Diterima</h5>
-                            <p>Silahkan berikan ulasan sebelum pengambilan berkas.</p>
-                            {{-- @dd(
-                                App\Models\Rating::where('permohonan_informasi_id', $item->id)->latest()->first()
-                            ) --}}
-                            @if (App\Models\Rating::where('permohonan_informasi_id', $item->id)->latest()->first())
-                              <button class="btn btn-primary w-100">Terima kasih</button>
+                        <div class="mb-3">
+                          <h5 class="mb-0">Permohonan Diterima</h5>
+                          @if ($item->id_mendapatkan_salinan_informasi == 1 && $item->file_acc_permohonan == null)
+                            <p>Mohon menunggu untuk pembuatan file PDF</p>
+                          @elseif ($item->id_mendapatkan_salinan_informasi == 1 && $item->file_acc_permohonan)
+                            @if (App\Models\Rating::where('permohonan_informasi_id', $item->id)->first())
+                              <p>Terima kasih sudah memberikan ulasan</p>
                             @else
+                              <p>Berikan rating sebelum mengambil</p>
                               <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
                                 data-bs-target="#rating">
                                 Masuk ulasan
                               </button>
-
-                              {{-- modal --}}
+                              {{-- Modal --}}
                               <div class="modal fade" id="rating" tabindex="-1" aria-labelledby="ModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
@@ -232,9 +225,16 @@
                                 </div>
                               </div>
                             @endif
-
-                          </div>
-                        @endif
+                          @elseif ($item->id_mendapatkan_salinan_informasi == 2 && $item->file_acc_permohonan == null)
+                            <p>Mohon menunggu untuk pembuatan file PDF</p>
+                          @elseif ($item->id_mendapatkan_salinan_informasi == 2 && $item->file_acc_permohonan)
+                            @if ($item->status_pengiriman)
+                              <p>File sudah dikirim ke alamat email anda.</p>
+                            @else
+                              <p>File masih dalam proses pengiriman ke email anda.</p>
+                            @endif
+                          @endif
+                        </div>
                       @endif
                     </div>
                   </div>

@@ -118,7 +118,23 @@
                 </div>
                 <div class="mb-4">
                   <label for="memperoleh">
-                    <h5 class="mb-0">Kategori</h5>
+                    <h5 class="mb-0">Kategori Informasi</h5>
+                  </label>
+                  <select class="custom-select" id="kategori_id" name="kategori_id">
+                    <option></option>
+                    @foreach ($categories as $item)
+                      <option value="{{ $item->id }}" {{ old('kategori_id') == $item->id ? 'selected' : '' }}
+                        {{ $item->id }}" {{ $item->id == $info_public->kategori_id ? 'selected' : '' }}>
+                        {{ $item->kategori }}</option>
+                    @endforeach
+                  </select>
+                  @error('kategori_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="mb-4">
+                  <label for="memperoleh">
+                    <h5 class="mb-0">Tahun</h5>
                   </label>
                   <select class="custom-select" id="kategori_id" name="kategori_id">
                     <option></option>
@@ -134,7 +150,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="link">
-                    <h5 class="mb-0">Link</h5>
+                    <h5 class="mb-0">PDF</h5>
                   </label>
                   {{-- <div class="mb-1">
                     <a href="{{ asset('storage/' . $info_public->link) }}" target="_blank">Lihat File Sebelumnya</a>
