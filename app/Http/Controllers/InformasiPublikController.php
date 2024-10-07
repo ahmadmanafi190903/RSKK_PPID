@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\InformasiPublik;
-use App\Models\Kategori;
+use App\Models\InformasiPublikDetail;
+use App\Models\KategoriInformasi;
 use App\Models\Reference;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ class InformasiPublikController extends Controller
      */
     public function create()
     {
-        $categories = Kategori::all();
+        $categories = KategoriInformasi::all();
         $waktu = Reference::where('slug', 'waktu')->get();
         return view('admin.informasipublik.create', compact(['categories', 'waktu']));
     }
@@ -81,7 +82,7 @@ class InformasiPublikController extends Controller
      */
     public function edit(InformasiPublik $informasipublik)
     {
-        $categories = Kategori::all();
+        $categories = KategoriInformasi::all();
         return view('admin.informasipublik.edit', [
             'categories' => $categories,
             'info_public' => $informasipublik
@@ -145,9 +146,19 @@ class InformasiPublikController extends Controller
     }
 
 
-    public function information(string $kategori_id)
+    public function information(string $id)
     {
-        $informations = InformasiPublik::where('kategori_id', $kategori_id)->latest()->paginate(10);
-        return view('user.informasipublik.index', ['informations' => $informations]);
+        $informations = InformasiPublik::where('kategori_informasi_id', $id)
+            ->latest()
+            ->paginate(10);
+        return view('user.informasipublik.index', compact('informations'));
+    }
+
+    public function detail(string $id)
+    {
+        $information = InformasiPublik::find($id);
+        // dd($information);
+        $details = InformasiPublikDetail::where('informasi_publik_id', $id)->latest()->paginate(10);
+        return view('user.informasipublik.detail', compact(['details', 'information']));
     }
 }

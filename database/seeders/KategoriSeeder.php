@@ -16,7 +16,8 @@ class KategoriSeeder extends Seeder
         $data = [
             ['kategori' => 'Berkala'],
             ['kategori' => 'Serta Merta'],
-            ['kategori' => 'Setiap Saat']
+            ['kategori' => 'Setiap Saat'],
+            ['kategori' => 'Dikecualikan'],
         ];
     
         foreach ($data as &$item) {
@@ -24,6 +25,6 @@ class KategoriSeeder extends Seeder
             $item['updated_at'] = now();
         }
     
-        DB::table('kategori')->insert($data);
+        DB::table('kategori_informasi')->insert($data);
     }
 }

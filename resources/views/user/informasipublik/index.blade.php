@@ -5,7 +5,7 @@
     <div class="row pt-5">
       <div class="col-12 text-center">
         <div class="section-title">
-          <h2>Informasi {{ $informations->first()->kategori->kategori ?? '' }}</h2>
+          <h2>Informasi {{ $informations->first()->kategori->kategori  ?? '' }}</h2>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           @foreach ($informations as $item)
             <tr>
               <td class="align-middle border">{{ $loop->iteration }}</td>
-              <td class="align-middle border">{{ $item->ringkasan_informasi }}</td>
+              <td class="text-start align-middle border">{{ $item->ringkasan_informasi }}</td>
               <td class="align-middle border">{{ $item->pejabat_penguasa_informasi }}</td>
               <td class="align-middle border">{{ $item->penanggung_jawab_informasi }}</td>
               <td class="align-middle border">
@@ -45,9 +45,12 @@
               </td>
               <td class="align-middle border">{{ $item->jangka_waktu_penyimpanan }}</td>
               <td class="align-middle border">
-                <a href="/storage/{{ $item->link }}" class="btn btn-info" target="_black">
+                <a href="/informasi-publik/{{ $item->id }}/details" class="btn btn-info">
                   <i class="nav-icon fas fa-download"></i>
                 </a>
+                {{-- <a href="/storage/{{ $item->link }}" class="btn btn-info" target="_black">
+                  <i class="nav-icon fas fa-download"></i>
+                </a> --}}
               </td>
             </tr>
           @endforeach

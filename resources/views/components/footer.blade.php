@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        {{-- <div class="col-sm-6 col-xl-3">
+        <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid ps-xl-5">
             <div class="wid-title">
               <h3>Information</h3>
@@ -29,7 +29,7 @@
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
           </div>
-        </div> --}}
+        </div>
 
         <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid ps-xl-2">
@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        {{-- <div class="col-sm-6 col-xl-3">
+        <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid site-info-widget">
             <div class="wid-title">
               <h3>Get In Touch</h3>
@@ -85,7 +85,7 @@
               </div>
             </div>
           </div>
-        </div> --}}
+        </div>
 
       </div>
     </div>

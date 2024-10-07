@@ -6,6 +6,9 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\InformasiPublik;
+use App\Models\InformasiPublikDetail;
+use App\Models\Kategori;
+use App\Models\KategoriInformasi;
 use App\Models\Rating;
 
 class DatabaseSeeder extends Seeder
@@ -28,12 +31,14 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             SubmenuSeeder::class,
             QuestAnswarSeeder::class,
-            ReferencesSeeder::class,
             SosmedSeeder::class,
-            BackgroundImageSeeder::class
+            BackgroundImageSeeder::class,
+            ReferencesSeeder::class
         ]);
 
-        InformasiPublik::factory()->count(50)->create();
+        InformasiPublik::factory(50)->create();
+        InformasiPublikDetail::factory(250)->recycle(InformasiPublik::all())->create();
         Rating::factory()->count(2)->create();
+        // InformasiPublikDetail::factory()->count(100)->create();
     }
 }

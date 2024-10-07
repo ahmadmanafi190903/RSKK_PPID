@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Kategori extends Model
+class KategoriInformasi extends Model
 {
     use HasFactory;
 
-    protected $table = 'kategori';
+    protected $table = 'kategori_informasi';
 
     public function informasipublik(): HasMany
     {

@@ -8,6 +8,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\InformasiPublikController;
+use App\Http\Controllers\InformasiPublikDetailController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
 
@@ -25,7 +26,9 @@ Route::get('/pengajuan', [PengajuanKeberatanController::class, 'create']);
 Route::post('/pengajuan/create', [PengajuanKeberatanController::class, 'store']);
 
 
-Route::get('/informasi-publik/{katagori_id}', [InformasiPublikController::class, 'information']);
+Route::get('/informasi-publik/{id}', [InformasiPublikController::class, 'information']);
+
+Route::get('/informasi-publik/{id}/details', [InformasiPublikController::class, 'detail']);
 
 //admin
 Route::middleware(['auth'])->group(function () {

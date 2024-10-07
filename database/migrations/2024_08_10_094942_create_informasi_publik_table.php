@@ -19,8 +19,9 @@ return new class extends Migration
             $table->boolean('bentuk_informasi_cetak')->default(false);
             $table->boolean('bentuk_informasi_digital')->default(false);
             $table->string('jangka_waktu_penyimpanan');
-            $table->string('link')->nullable();
-            $table->foreignId('kategori_id');
+            $table->foreignId('kategori_informasi_id')->constrained(
+                table: 'kategori_informasi', indexName: 'kategori_informasi'
+            );
             $table->timestamps();
         });
     }
