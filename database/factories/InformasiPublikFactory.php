@@ -24,8 +24,8 @@ class InformasiPublikFactory extends Factory
             'penanggung_jawab_informasi' => $this->faker->name,
             'bentuk_informasi_cetak' => $this->faker->boolean,
             'bentuk_informasi_digital' => $this->faker->boolean,
-            'jangka_waktu_penyimpanan' => $this->faker->randomElement(['1 tahun', '5 tahun', '10 tahun', 'Permanen']),
-            'kategori_informasi_id' => $this->faker->numberBetween(1, 4),
+            'waktu_penyimpanan_id' => 21,
+            'kategori_informasi_id' => $this->faker->numberBetween(17, 20),
         ];
     }
 }

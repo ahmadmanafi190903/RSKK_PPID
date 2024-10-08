@@ -6,7 +6,7 @@
       <div class="col-12 text-center">
         <div class="section-title">
           {{-- <h2>Informasi {{ $informations->first()->kategori->kategori  ?? '' }}</h2> --}}
-          <h2>Detail Informasi {{ $information->kategori->kategori }}</h2>
+          <h2>Detail Informasi {{ $information->informasi->nama ?? '' }}</h2>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
       <div class="col-12">
         <div class="p-4 border border-dark-subtle">
           <h3>Ringkasan</h3>
-          <p>{{ $information->ringkasan_informasi }}</p>
+          <p>{{ $information->ringkasan_informasi ?? '' }}</p>
         </div>
       </div>
     </div>

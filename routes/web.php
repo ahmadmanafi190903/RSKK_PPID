@@ -11,6 +11,7 @@ use App\Http\Controllers\InformasiPublikController;
 use App\Http\Controllers\InformasiPublikDetailController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
+use App\Models\InformasiPublikDetail;
 
 //user
 
@@ -61,7 +62,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'edit'])->middleware('role:super_admin,operator');
     Route::patch('/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'update'])->middleware('role:super_admin,operator');
     Route::delete('/informasi_publik/{informasipublik}', [InformasiPublikController::class, 'destroy'])->middleware('role:super_admin,operator');
-    
+
+    // informasi publik detail
+    Route::get('/informasi_publik/{informasipublikid}/detail', [InformasiPublikDetailController::class, 'index'])->middleware('role:super_admin,admin,operator');
+    Route::get('/informasi_publik/{informasipublikid}/detail/create', [InformasiPublikDetailController::class, 'create'])->middleware('role:super_admin,operator');
+    Route::post('/informasi_publik/{informasipublikid}/detail', [InformasiPublikDetailController::class, 'store'])->middleware('role:super_admin,operator');
+    Route::get('/informasi_publik/{informasipublikid}/{informasiPublikDetail}/detail', [InformasiPublikDetailController::class, 'edit'])->middleware('role:super_admin,operator');
+    Route::patch('/informasi_publik/{informasiPublikDetail}/detail', [InformasiPublikDetailController::class, 'update'])->middleware('role:super_admin,operator');
+    Route::delete('/informasi_publik/{informasiPublikDetail}/detail', [InformasiPublikDetailController::class, 'destroy'])->middleware('role:super_admin,operator');
+
     // Email
     Route::get('/email', [EmailController::class, 'index'])->middleware('role:super_admin,admin');
     Route::get('/email/{permohonaninformasi}/send', [EmailController::class, 'send'])->middleware('role:super_admin,admin');

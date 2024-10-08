@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('penanggung_jawab_informasi');
             $table->boolean('bentuk_informasi_cetak')->default(false);
             $table->boolean('bentuk_informasi_digital')->default(false);
-            $table->string('jangka_waktu_penyimpanan');
+            $table->foreignId('waktu_penyimpanan_id')->constrained(
+                table: 'references', indexName: 'kategori_penyimpanan'
+            );
             $table->foreignId('kategori_informasi_id')->constrained(
-                table: 'kategori_informasi', indexName: 'kategori_informasi'
+                table: 'references', indexName: 'kategori_informasi'
             );
             $table->timestamps();
         });

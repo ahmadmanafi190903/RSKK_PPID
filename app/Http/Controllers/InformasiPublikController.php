@@ -18,7 +18,7 @@ class InformasiPublikController extends Controller
     public function index()
     {
         $information_public = InformasiPublik::latest()->paginate(5);
-        return view('admin.informasipublik.index', ['information_public' => $information_public]);
+        return view('admin.informasipublik.index', compact('information_public'));
     }
 
     /**
@@ -26,9 +26,9 @@ class InformasiPublikController extends Controller
      */
     public function create()
     {
-        $categories = KategoriInformasi::all();
-        $waktu = Reference::where('slug', 'waktu')->get();
-        return view('admin.informasipublik.create', compact(['categories', 'waktu']));
+        $categories = Reference::where('slug', 'informasi')->get();
+        $storages = Reference::where('slug', 'penyimpanan')->get();
+        return view('admin.informasipublik.create', compact(['categories', 'storages']));
     }
 
     /**
@@ -36,24 +36,23 @@ class InformasiPublikController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // dd($request);
         $request->validate([
             'ringkasan_informasi' => 'required',
             'pejabat_penguasa_informasi' => 'required|max:255',
             'penanggung_jawab_informasi' => 'required|max:255',
             'bentuk_informasi_cetak' => 'required|max:255',
             'bentuk_informasi_digital' => 'required|max:255',
-            'jangka_waktu_penyimpanan' => 'required|max:255',
-            'kategori_id' => 'required',
-            'link' => 'required|file|mimes:jpg,png,jpeg,pdf|max:2048',
+            'waktu_penyimpanan_id' => 'required',
+            'kategori_informasi_id' => 'required',
+            // 'link' => 'required|file|mimes:jpg,png,jpeg,pdf|max:2048',
         ], $this->feedback_validate );
 
-        $link = $request->file('link');
-        // $extension = $link->getClientOriginalExtension();
-        $file_org =  $link->getClientOriginalName();
-        $randomName = Str::random(5);
-        $file_name = $randomName . '-' . $file_org;
-        $file_path = $link->storeAs('link', $file_name, 'public');
+        // $link = $request->file('link');
+        // $file_org =  $link->getClientOriginalName();
+        // $randomName = Str::random(5);
+        // $file_name = $randomName . '-' . $file_org;
+        // $file_path = $link->storeAs('link', $file_name, 'public');
 
         InformasiPublik::create([
             'ringkasan_informasi' => $request->ringkasan_informasi,
@@ -61,12 +60,11 @@ class InformasiPublikController extends Controller
             'penanggung_jawab_informasi' => $request->penanggung_jawab_informasi,
             'bentuk_informasi_cetak' => $request->bentuk_informasi_cetak,
             'bentuk_informasi_digital' => $request->bentuk_informasi_digital,
-            'jangka_waktu_penyimpanan' => $request->jangka_waktu_penyimpanan,
-            'kategori_id' => $request->kategori_id,
-            'link' => $file_path
+            'waktu_penyimpanan_id' => $request->waktu_penyimpanan_id,
+            'kategori_informasi_id' => $request->kategori_informasi_id,
         ]);
 
-        return redirect('/informasi_publik')->with('success', 'Informasi Publik berhasil dibuat');
+        return redirect('/informasi_publik')->with('success', 'Informasi publik berhasil dibuat');
     }
 
     /**
@@ -82,11 +80,9 @@ class InformasiPublikController extends Controller
      */
     public function edit(InformasiPublik $informasipublik)
     {
-        $categories = KategoriInformasi::all();
-        return view('admin.informasipublik.edit', [
-            'categories' => $categories,
-            'info_public' => $informasipublik
-        ]);
+        $categories = Reference::where('slug', 'informasi')->get();
+        $storages = Reference::where('slug', 'penyimpanan')->get();
+        return view('admin.informasipublik.edit', compact(['informasipublik','categories', 'storages']));
     }
 
     /**
@@ -94,29 +90,27 @@ class InformasiPublikController extends Controller
      */
     public function update(Request $request, InformasiPublik $informasipublik)
     {
-        $messages = $this->feedback_validate;
-        
         $request->validate([
             'ringkasan_informasi' => 'required',
             'pejabat_penguasa_informasi' => 'required|max:255',
             'penanggung_jawab_informasi' => 'required|max:255',
             'bentuk_informasi_cetak' => 'required|max:255',
             'bentuk_informasi_digital' => 'required|max:255',
-            'jangka_waktu_penyimpanan' => 'required|max:255',
-            'kategori_id' => 'required',
-            'link' => 'file|mimes:jpg,png,jpeg,pdf|max:2048',
-        ],$this->feedback_validate);
+            'waktu_penyimpanan_id' => 'required',
+            'kategori_informasi_id' => 'required',
+        ], $this->feedback_validate );
 
-        if ($request->link) {
-            $link = $request->file('link');
-            $file_org =  $link->getClientOriginalName();
-            $randomName = Str::random(5);
-            $file_name = $randomName . '-' . $file_org;
-            $file_path = $link->storeAs('link', $file_name, 'public');
-            Storage::disk('public')->delete($informasipublik->link);
-        } else {
-            $file_path = $informasipublik->link;
-        }
+        // dd($request);
+        // if ($request->link) {
+        //     $link = $request->file('link');
+        //     $file_org =  $link->getClientOriginalName();
+        //     $randomName = Str::random(5);
+        //     $file_name = $randomName . '-' . $file_org;
+        //     $file_path = $link->storeAs('link', $file_name, 'public');
+        //     Storage::disk('public')->delete($informasipublik->link);
+        // } else {
+        //     $file_path = $informasipublik->link;
+        // }
 
         $informasipublik->update([
             'ringkasan_informasi' => $request->ringkasan_informasi,
@@ -124,12 +118,11 @@ class InformasiPublikController extends Controller
             'penanggung_jawab_informasi' => $request->penanggung_jawab_informasi,
             'bentuk_informasi_cetak' => $request->bentuk_informasi_cetak,
             'bentuk_informasi_digital' => $request->bentuk_informasi_digital,
-            'jangka_waktu_penyimpanan' => $request->jangka_waktu_penyimpanan,
-            'kategori_id' => $request->kategori_id,
-            'link' => $file_path
+            'waktu_penyimpanan_id' => $request->waktu_penyimpanan_id,
+            'kategori_informasi_id' => $request->kategori_informasi_id,
         ]);
 
-        return redirect('/informasi_publik')->with('success', 'Informasi Publik berhasil diubah');
+        return redirect('/informasi_publik')->with('success', 'Informasi publik berhasil diubah');
     }
 
     /**
@@ -137,12 +130,12 @@ class InformasiPublikController extends Controller
      */
     public function destroy(InformasiPublik $informasipublik)
     {
-        $file_name = $informasipublik->link;
-        if ($file_name && Storage::disk('public')->exists($file_name)) {
-            Storage::disk('public')->delete($file_name);
-        }
-        $informasipublik->delete();
+        if($informasipublik->infopubdet->count() > 0){
+            return redirect('/informasi_publik')->with('failed', 'Tidak bisa dihapus, karena masih ada informasi publik detail');
+        } else {
+            $informasipublik->delete();
         return redirect('/informasi_publik')->with('success', 'Data berhasil dihapus');
+        }
     }
 
 
@@ -157,7 +150,6 @@ class InformasiPublikController extends Controller
     public function detail(string $id)
     {
         $information = InformasiPublik::find($id);
-        // dd($information);
         $details = InformasiPublikDetail::where('informasi_publik_id', $id)->latest()->paginate(10);
         return view('user.informasipublik.detail', compact(['details', 'information']));
     }

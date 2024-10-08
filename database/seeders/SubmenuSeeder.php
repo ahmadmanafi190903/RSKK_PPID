@@ -16,28 +16,28 @@ class SubmenuSeeder extends Seeder
         DB::table('submenus')->insert([
             [
                 'nama' => 'Informasi Berkala',
-                'url' => '/informasi-publik/1',
+                'url' => '/informasi-publik/17',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Informasi Serta Merta',
-                'url' => '/informasi-publik/2',
+                'url' => '/informasi-publik/18',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Informasi Setiap Saat',
-                'url' => '/informasi-publik/3',
+                'url' => '/informasi-publik/19',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Informasi Dikecualikan',
-                'url' => '#',
+                'url' => '/informasi-publik/20',
                 'menu_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),

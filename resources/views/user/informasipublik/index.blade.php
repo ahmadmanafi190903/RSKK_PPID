@@ -5,7 +5,7 @@
     <div class="row pt-5">
       <div class="col-12 text-center">
         <div class="section-title">
-          <h2>Informasi {{ $informations->first()->kategori->kategori  ?? '' }}</h2>
+          <h2>Informasi {{ $informations->first()->informasi->nama  ?? '' }}</h2>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
                   <i class="nav-icon fas fa-check"></i>
                 @endif
               </td>
-              <td class="align-middle border">{{ $item->jangka_waktu_penyimpanan }}</td>
+              <td class="align-middle border">{{ $item->penyimpanan->nama }}</td>
               <td class="align-middle border">
                 <a href="/informasi-publik/{{ $item->id }}/details" class="btn btn-info">
                   <i class="nav-icon fas fa-download"></i>

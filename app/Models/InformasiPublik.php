@@ -15,11 +15,16 @@ class InformasiPublik extends Model
 
     protected $guarded = ['id'];
 
-    protected $with = ['kategori', 'infopubdet'];
+    protected $with = ['informasi', 'penyimpanan','infopubdet'];
 
-    public function kategori(): BelongsTo
+    public function informasi(): BelongsTo
     {
-        return $this->belongsTo(KategoriInformasi::class, 'kategori_informasi_id');
+        return $this->belongsTo(Reference::class, 'kategori_informasi_id');
+    }
+
+    public function penyimpanan(): BelongsTo
+    {
+        return $this->belongsTo(Reference::class, 'waktu_penyimpanan_id');
     }
 
     public function infopubdet(): HasMany

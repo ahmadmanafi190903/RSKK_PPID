@@ -7,9 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <h1 class="m-0">Informasi Publik</h1>
+            <h1 class="m-0">Informasi Publik Detail</h1>
             @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
-              <a href="/informasi_publik/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/informasi_publik/{{ $informasipublikid }}/detail/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -23,8 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Informasi Publik</h3>
-
+              <h3 class="card-title">Data Informasi Publik Detail</h3>
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control float-right" id="searchInput"
@@ -43,50 +42,32 @@
                 <thead>
                   <tr class="text-center">
                     <th class="align-middle">No</th>
-                    <th class="align-middle">Ringkasan</th>
-                    <th class="align-middle">Pejabat</th>
-                    <th class="align-middle">Penanggung Jawab</th>
-                    <th class="align-middle">Bentuk Informasi Cetak</th>
-                    <th class="align-middle">Bentuk Informasi Digital</th>
-                    <th class="align-middle">Jangka Waktu</th>
-                    <th class="align-middle">Kategori</th>
+                    <th class="align-middle">Informasi</th>
+                    <th class="align-middle">Tahun</th>
+                    <th class="align-middle">PDF</th>
                     @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
                       <th class="align-middle">Action</th>
                     @endif
                   </tr>
                 </thead>
                 <tbody id="contentArea">
-                  @foreach ($information_public as $item)
+                  @foreach ($details as $item)
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
-                      <td class="text-left align-middle">{{ $item->ringkasan_informasi }}</td>
-                      <td class="align-middle">{{ $item->pejabat_penguasa_informasi }}</td>
-                      <td class="align-middle">{{ $item->penanggung_jawab_informasi }}</td>
+                      <td class="text-left align-middle">{{ $item->informasi }}</td>
+                      <td class="align-middle">{{ $item->tahun }}</td>
                       <td class="align-middle">
-                        @if ($item->bentuk_informasi_cetak == 1)
-                          <i class="nav-icon fas fa-check"></i>
-                        @endif
-                      </td>
-                      <td class="align-middle">
-                        @if ($item->bentuk_informasi_digital == 1)
-                          <i class="nav-icon fas fa-check"></i>
-                        @endif
-                      </td>
-                      <td class="align-middle">{{ $item->penyimpanan->nama }}</td>
-                      <td class="align-middle">{{ $item->informasi->nama }}</td>
-                      {{-- <td class="align-middle">
                         <button type="button" class="btn btn-info" data-toggle="modal"
                           data-target="#modal-xl{{ $item->id }}">
                           <i class="nav-icon fas fa-download"></i>
                         </button>
-                      </td> --}}
+                      </td>
+                      
                       <td class="align-middle">
                         <div>
-                          <a href="/informasi_publik/{{ $item->id }}/detail" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
-                            <a href="/informasi_publik/{{ $item->id }}" class="btn btn-warning my-1"><i
-                                class="nav-icon fas fa-pencil"></i></a>
-                            <form action="/informasi_publik/{{ $item->id }}" method="post">
+                            <a href="/informasi_publik/{{ $informasipublikid }}/{{ $item->id }}/detail" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                            <form action="/informasi_publik/{{ $item->id }}/detail" method="post">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"
@@ -99,7 +80,7 @@
                     </tr>
 
                     {{-- modal --}}
-                    {{-- <div class="modal fade" id="modal-xl{{ $item->id }}">
+                    <div class="modal fade" id="modal-xl{{ $item->id }}">
                       <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -111,7 +92,7 @@
                             style="width: 100%; height: 600px;"></iframe>
                         </div>
                       </div>
-                    </div> --}}
+                    </div>
 
                   @endforeach
                 </tbody>
@@ -119,7 +100,7 @@
             </div>
             <!-- /.card-body -->
           </div>
-          {{ $information_public->links('pagination::bootstrap-5') }}
+          {{ $details->links('pagination::bootstrap-5') }}
           <!-- /.card -->
         </div>
       </div>
