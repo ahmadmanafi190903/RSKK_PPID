@@ -20,8 +20,9 @@
             @csrf
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="nama" placeholder="Masukan Nama Lengkap" value="{{ old('nama') }}">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap"
+                  value="{{ old('nama') }}" required>
                 @error('nama')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -30,7 +31,8 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Masukan Alamat Email" value="{{ old('email') }}">
+                <input type="email" id="email" name="email" placeholder="Masukan Alamat Email"
+                  value="{{ old('email') }}" required>
                 @error('email')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -39,7 +41,8 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="phone">No Telepon</label>
-                <input type="text" id="phone" name="no_telepon" placeholder="Masuk no telepon" inputmode="numeric" value="{{ old('no_telepon') }}" oninput="inputPhone()">
+                <input type="text" id="phone" name="no_telepon" placeholder="Masuk no telepon" inputmode="numeric"
+                  value="{{ old('no_telepon') }}" oninput="inputPhone()" required>
                 @error('no_telepon')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -48,7 +51,8 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="work">Pekerjaan</label>
-                <input type="text" id="work" name="pekerjaan" placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan') }}">
+                <input type="text" id="work" name="pekerjaan" placeholder="Masukan Pekerjaan"
+                  value="{{ old('pekerjaan') }}" required>
                 @error('pekerjaan')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -57,7 +61,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-0">
                 <label for="address">Alamat</label>
-                <textarea id="address" name="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea >
+                <textarea id="address" name="alamat" placeholder="Masukan Alamat" required>{{ old('alamat') }}</textarea>
                 @error('alamat')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -66,7 +70,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="nik">NIK</label>
-                <input type="text" id="nik" name="nik" placeholder="Masukan identitas" value="{{ old('nik') }}" inputmode="numeric" oninput="inputNik()" >
+                <input type="text" id="nik" name="nik" placeholder="Masukan identitas" value="{{ old('nik') }}" inputmode="numeric" oninput="inputNik()" required>
                 @error('nik')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -75,7 +79,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="formFile" class="form-label">Upload KTP</label>
-                <input class="form-control" name="file_ktp" type="file" id="formFile" value="{{ old('file_ktp') }}">
+                <input class="form-control" name="file_ktp" type="file" id="formFile" value="{{ old('file_ktp') }}" required>
                 @error('file_ktp')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -84,7 +88,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-0">
                 <label for="information1">Informasi Yang Dibutuhkan</label>
-                <textarea id="information1" name="informasi_yang_dibutuhkan" placeholder="Masukan Informasi yang dibutuhkan" >{{ old('informasi_yang_dibutuhkan') }}</textarea>
+                <textarea id="information1" name="informasi_yang_dibutuhkan" placeholder="Masukan Informasi yang dibutuhkan" required>{{ old('informasi_yang_dibutuhkan') }}</textarea>
                 @error('informasi_yang_dibutuhkan')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -93,7 +97,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-0">
                 <label for="information2">Alasan Penggunaan Informasi</label>
-                <textarea id="information2" name="alasan_penggunaan_informasi" placeholder="Masukan Alasan Pengguna Informasi">{{ old('alasan_penggunaan_informasi') }}</textarea>
+                <textarea id="information2" name="alasan_penggunaan_informasi" placeholder="Masukan Alasan Pengguna Informasi" required>{{ old('alasan_penggunaan_informasi') }}</textarea>
                 @error('alasan_penggunaan_informasi')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -102,13 +106,15 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="information3">cara memperoleh informasi</label>
-                <select id="information3" name="id_memperoleh_informasi">
+                <select id="information3" name="memperoleh_informasi_id" required>
                   <option value=""></option>
-                  @foreach ($get_information as $item)
-                    <option value="{{ $item->id }}" {{ old('id_memperoleh_informasi') == $item->id ? 'selected' : '' }}>{{ $item->memperoleh_informasi }}</option>
+                  @foreach ($getInformation as $item)
+                    <option value="{{ $item->id }}" {{ old('memperoleh_informasi_id') == $item->id ? 'selected' : '' }}>
+                      {{ $item->nama }}
+                    </option>
                   @endforeach
                 </select>
-                @error('id_memperoleh_informasi')
+                @error('memperoleh_informasi_id')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
               </div>
@@ -116,15 +122,17 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="information4">cara mendapat informasi</label>
-                <select id="information4" name="id_mendapatkan_salinan_informasi">
+                <select id="information4" name="mendapatkan_salinan_informasi_id" required>
                   <option></option>
-                  @foreach ($get_copy as $item)
-                    <option value="{{ $item->id }}" {{ old('id_mendapatkan_salinan_informasi') == $item->id ? 'selected' : '' }}>{{ $item->mendapatkan_salinan_informasi }}</option>
+                  @foreach ($copyInformation as $item)
+                    <option value="{{ $item->id }}" {{ old('mendapatkan_salinan_informasi_id') == $item->id ? 'selected' : '' }}>
+                      {{ $item->nama }}
+                    </option>
                   @endforeach
                 </select>
-                @error('id_mendapatkan_salinan_informasi')
-                <div class="alert alert-danger">{{ $message }}</div>
-                 @enderror
+                @error('mendapatkan_salinan_informasi_id')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="col-md-12 col-12 text-center">
@@ -136,4 +144,3 @@
     </div>
   </div>
 @endsection
-

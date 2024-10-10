@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/informasi_publik/{{ $informasipublik->id }}" method="post">
+      <form action="/informasi_publik/{{ $informasiPublik->id }}" method="post">
         @csrf
         @method('patch')
         <div class="row">
@@ -27,7 +27,7 @@
                   <label for="ringkasan_informasi">
                     <h5 class="mb-0">Ringkasan</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="ringkasan_informasi" cols="30" id="ringkasan_informasi">{{ old('ringkasan_informasi') ?? $informasipublik->ringkasan_informasi }}</textarea>
+                  <textarea class="w-100 form-control" name="ringkasan_informasi" cols="30" id="ringkasan_informasi">{{ old('ringkasan_informasi') ?? $informasiPublik->ringkasan_informasi }}</textarea>
                   @error('ringkasan_informasi')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -36,7 +36,7 @@
                   <label for="pejabat_penguasa_informasi">
                     <h5 class="mb-0">Pejabat Penguasa Informasi</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ old('pejabat_penguasa_informasi') ?? $informasipublik->pejabat_penguasa_informasi }}"
+                  <input class="w-100 form-control" type="text" value="{{ old('pejabat_penguasa_informasi') ?? $informasiPublik->pejabat_penguasa_informasi }}"
                     id="pejabat_penguasa_informasi" name="pejabat_penguasa_informasi">
                   @error('pejabat_penguasa_informasi')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -46,7 +46,7 @@
                   <label for="penanggung_jawab_informasi">
                     <h5 class="mb-0">Penanggung Jawab Informasi</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ old('penanggung_jawab_informasi') ?? $informasipublik->penanggung_jawab_informasi }}"
+                  <input class="w-100 form-control" type="text" value="{{ old('penanggung_jawab_informasi') ?? $informasiPublik->penanggung_jawab_informasi }}"
                     id="penanggung_jawab_informasi" name="penanggung_jawab_informasi">
                   @error('penanggung_jawab_informasi')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -65,12 +65,12 @@
                   <div class="form-group">
                     <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" id="cetak_ya" name="bentuk_informasi_cetak"
-                        value="1" {{ $informasipublik->bentuk_informasi_cetak == '1' ? 'checked' : '' }}>
+                        value="1" {{ $informasiPublik->bentuk_informasi_cetak == '1' ? 'checked' : '' }}>
                       <label for="cetak_ya" class="custom-control-label form-check-label">Ya</label>
                     </div>
                     <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" id="cetak_tidak" name="bentuk_informasi_cetak"
-                        value="0" {{ $informasipublik->bentuk_informasi_cetak == '0' ? 'checked' : '' }}>
+                        value="0" {{ $informasiPublik->bentuk_informasi_cetak == '0' ? 'checked' : '' }}>
                       <label for="cetak_tidak" class="custom-control-label form-check-label">Tidak</label>
                     </div>
                   </div>
@@ -85,13 +85,13 @@
                   <div class="form-group">
                     <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" id="digital_ya" name="bentuk_informasi_digital"
-                        value="1" {{ $informasipublik->bentuk_informasi_digital == '1' ? 'checked' : '' }}>
+                        value="1" {{ $informasiPublik->bentuk_informasi_digital == '1' ? 'checked' : '' }}>
                       <label for="digital_ya" class="custom-control-label form-check-label">Ya</label>
                     </div>
                     <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" id="digital_tidak"
                         name="bentuk_informasi_digital" value="0"
-                        {{ $informasipublik->bentuk_informasi_digital == '0' ? 'checked' : '' }}>
+                        {{ $informasiPublik->bentuk_informasi_digital == '0' ? 'checked' : '' }}>
                       <label for="digital_tidak" class="custom-control-label form-check-label">Tidak</label>
                     </div>
                   </div>
@@ -107,7 +107,7 @@
                     <option></option>
                     @foreach ($storages as $item)
                       <option value="{{ $item->id }}"
-                        {{ (old('waktu_penyimpanan_id') == $item->id) ? 'selected' : ($informasipublik->waktu_penyimpanan_id == $item->id ? 'selected' : '') }}>
+                        {{ (old('waktu_penyimpanan_id') == $item->id) ? 'selected' : ($informasiPublik->waktu_penyimpanan_id == $item->id ? 'selected' : '') }}>
                         {{ $item->nama }}
                       </option>
                     @endforeach
@@ -124,7 +124,7 @@
                     <option></option>
                     @foreach ($categories as $item)
                       <option value="{{ $item->id }}"
-                        {{ $informasipublik->kategori_informasi_id == $item->id ? 'selected' : '' }}>
+                        {{ $informasiPublik->kategori_informasi_id == $item->id ? 'selected' : '' }}>
                         {{ $item->nama }}
                       </option>
                     @endforeach

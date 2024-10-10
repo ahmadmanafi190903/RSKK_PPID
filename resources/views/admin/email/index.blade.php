@@ -58,19 +58,13 @@
                       <td class="align-middle">{{ $item->id }} - {{ $item->nama }}</td>
                       <td class="align-middle">{{ $item->email }}</td>
                       <td class="align-middle">{{ $item->informasi_yang_dibutuhkan }}</td>
-                      <td class="align-middle">{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}</td>
+                      <td class="align-middle">{{ $item->mendapat->nama }}</td>
                       <td class="align-middle">
-                        {{-- @if ($item->id_status == 1) --}}
-
                         @if ($item->status_pengiriman == 1)
                           <span class="badge bg-success">terkirim</span>
                         @else
                           <span class="badge bg-warning">belum terkirim</span>
                         @endif
-
-                        {{-- @elseif ($item->id_status == 4) --}}
-                        {{-- <span class="badge bg-success">{{ $item->status->status }}</span> --}}
-                        {{-- @endif --}}
                       </td>
                       <td class="align-middle">
                         <div>

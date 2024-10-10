@@ -12,17 +12,22 @@ class PengajuanKeberatan extends Model
 
     protected $table = 'pengajuan_keberatan';
 
-    protected $with = ['status', 'alasan'];
+    protected $with = ['status', 'pengajuan'];
 
     protected $guarded = ['id'];
 
     public function status(): BelongsTo
     {
-        return $this->belongsTo(Status::class, 'id_status');
+        return $this->belongsTo(Status::class, 'status_id');
     }
 
-    public function alasan(): BelongsTo
+    public function pengajuan(): BelongsTo
     {
-        return $this->belongsTo(AlasanPengajuan::class, 'id_alasan_pengajuan');
+        return $this->belongsTo(Reference::class, 'alasan_pengajuan_id');
     }
+
+    // public function alasan(): BelongsTo
+    // {
+    //     return $this->belongsTo(AlasanPengajuan::class, 'id_alasan_pengajuan');
+    // }
 }

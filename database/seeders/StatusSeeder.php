@@ -14,10 +14,22 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['status' => 'dikirim'],
-            ['status' => 'diproses'],
-            ['status' => 'ditolak'],
-            ['status' => 'diterima'],
+            [   
+                'id' => 0,
+                'status' => 'ditolak'
+            ],
+            [
+                'id' => 1,
+                'status' => 'diterima'
+            ],
+            [
+                'id' => 2,
+                'status' => 'dikirim'
+            ],
+            [
+                'id' => 3,
+                'status' => 'diproses'
+            ],
         ];
     
         foreach ($data as &$item) {

@@ -49,7 +49,7 @@
                     <th class="align-middle">Bentuk Informasi Cetak</th>
                     <th class="align-middle">Bentuk Informasi Digital</th>
                     <th class="align-middle">Jangka Waktu</th>
-                    <th class="align-middle">Kategori</th>
+                    <th class="align-middle">Kategori Informasi</th>
                     @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
                       <th class="align-middle">Action</th>
                     @endif
@@ -74,12 +74,6 @@
                       </td>
                       <td class="align-middle">{{ $item->penyimpanan->nama }}</td>
                       <td class="align-middle">{{ $item->informasi->nama }}</td>
-                      {{-- <td class="align-middle">
-                        <button type="button" class="btn btn-info" data-toggle="modal"
-                          data-target="#modal-xl{{ $item->id }}">
-                          <i class="nav-icon fas fa-download"></i>
-                        </button>
-                      </td> --}}
                       <td class="align-middle">
                         <div>
                           <a href="/informasi_publik/{{ $item->id }}/detail" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
@@ -97,22 +91,6 @@
                         </div>
                       </td>
                     </tr>
-
-                    {{-- modal --}}
-                    {{-- <div class="modal fade" id="modal-xl{{ $item->id }}">
-                      <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <iframe id="pdfViewer" src="{{ asset('storage/' . $item->link) }}" frameborder="0"
-                            style="width: 100%; height: 600px;"></iframe>
-                        </div>
-                      </div>
-                    </div> --}}
-
                   @endforeach
                 </tbody>
               </table>

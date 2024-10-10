@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Permohonan Informasi</h1>
+            <h1 class="m-0">Pengajuan Keberatan Edit</h1>
           </div><!-- /.col -->
           {{-- <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -22,7 +22,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/pengajuan_keberatan/{{ $submission->id }}" method="post">
+      <form action="/pengajuan_keberatan/{{ $pengajuanKeberatan->id }}" method="post">
         @csrf
         @method('PATCH')
         <div class="row">
@@ -39,8 +39,8 @@
                   <label for="nama_lengkap">
                     <h5 class="mb-0">Nama Lengkap</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $submission->nama }} " id="nama_lengkap"
-                    name="nama">
+                  <input class="w-100 form-control" type="text" value="{{ old('nama') ?? $pengajuanKeberatan->nama }} "
+                    id="nama_lengkap" name="nama" required>
                   @error('nama')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -49,8 +49,8 @@
                   <label for="email">
                     <h5 class="mb-0">Email</h5>
                   </label>
-                  <input class="w-100 form-control" type="email" value="{{ $submission->email }}" id="email"
-                    name="email">
+                  <input class="w-100 form-control" type="email"
+                    value="{{ old('email') ?? $pengajuanKeberatan->email }}" id="email" name="email" required>
                   @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -59,8 +59,9 @@
                   <label for="phone">
                     <h5 class="mb-0">Telepon</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $submission->no_telepon }}" id="phone"
-                    name="no_telepon" inputmode="numeric" oninput="inputPhone()">
+                  <input class="w-100 form-control" type="text"
+                    value="{{ old('no_telepon') ?? $pengajuanKeberatan->no_telepon }}" id="phone" name="no_telepon"
+                    inputmode="numeric" oninput="inputPhone()" required>
                   @error('no_telepon')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -69,8 +70,9 @@
                   <label for="pekerjaan">
                     <h5 class="mb-0">Pekerjaan</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $submission->pekerjaan }}" id="pekerjaan"
-                    name="pekerjaan">
+                  <input class="w-100 form-control" type="text"
+                    value="{{ old('pekerjaan') ?? $pengajuanKeberatan->pekerjaan }}" id="pekerjaan" name="pekerjaan"
+                    required>
                   @error('pekerjaan')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -79,7 +81,7 @@
                   <label for="alamat">
                     <h5 class="mb-0">Alamat</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="alamat" cols="30" id="alamat">{{ $submission->alamat }}</textarea>
+                  <textarea class="w-100 form-control" name="alamat" cols="30" id="alamat" required>{{ old('alamat') ?? $pengajuanKeberatan->alamat }}</textarea>
                   @error('alamat')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -100,7 +102,7 @@
                   <label for="informasi">
                     <h5 class="mb-0">tujuan penggunaan informasi</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="tujuan_penggunaan_informasi" id="informasi" cols="30">{{ $submission->tujuan_penggunaan_informasi }}</textarea>
+                  <textarea class="w-100 form-control" name="tujuan_penggunaan_informasi" id="informasi" cols="30" required>{{ old('tujuan_penggunaan_informasi') ?? $pengajuanKeberatan->tujuan_penggunaan_informasi }}</textarea>
                   @error('tujuan_penggunaan_informasi')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -109,19 +111,19 @@
                   <label for="memperoleh">
                     <h5 class="mb-0">Alasan pengajuan keberatan</h5>
                   </label>
-                  <select id="alasan" name="id_alasan_pengajuan" class="w-100 form-control">
+                  <select id="alasan" name="alasan_pengajuan_id" class="w-100 form-control" required>
                     <option value=""></option>
                     @foreach ($reason as $item)
                       <option value="{{ $item->id }}"
-                        {{ $item->id == $submission->id_alasan_pengajuan ? 'selected' : '' }}>
-                        {{ $item->alasan_pengajuan }}</option>
+                        {{ $item->id == $pengajuanKeberatan->alasan_pengajuan_id ? 'selected' : '' }}>
+                        {{ $item->nama }}</option>
                     @endforeach
                   </select>
-                  @error('id_alasan_pengajuan')
+                  @error('alasan_pengajuan_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/permohonan_informasi" class="btn btn-secondary">kembali</a>
+                <a href="/pengajuan_keberatan" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">update</button>
               </div>
             </div>

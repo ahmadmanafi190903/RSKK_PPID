@@ -20,20 +20,20 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            MemperolehInformasiSeeder::class,
-            MendapatkanSalinanInformasiSeeder::class,
+            // MemperolehInformasiSeeder::class,
+            // MendapatkanSalinanInformasiSeeder::class,
             StatusSeeder::class,
-            AlasanPengajuanSeeder::class,
-            PermohonanInformasiSeeder::class,
-            PengajuanKeberatanSeeder::class,
+            // AlasanPengajuanSeeder::class,
             UserSeeder::class,
-            KategoriSeeder::class,
+            // KategoriSeeder::class,
             MenuSeeder::class,
             SubmenuSeeder::class,
             QuestAnswarSeeder::class,
             SosmedSeeder::class,
             BackgroundImageSeeder::class,
-            ReferencesSeeder::class
+            ReferencesSeeder::class,
+            PengajuanKeberatanSeeder::class,
+            PermohonanInformasiSeeder::class,
         ]);
 
         InformasiPublik::factory(50)->create();

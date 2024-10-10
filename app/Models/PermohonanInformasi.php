@@ -13,23 +13,33 @@ class PermohonanInformasi extends Model
 
     protected $table = 'permohonan_informasi';
 
-    protected $with = ['memperolehinformasi','mendapatkansalinaninformasi','status'];
+    protected $with = ['status', 'memperoleh', 'mendapat'];
 
     protected $guarded = ['id'];
     
-    public function memperolehinformasi(): BelongsTo
-    {
-        return $this->belongsTo(MemperolehInformasi::class, 'id_memperoleh_informasi');
-    }
+    // public function memperolehinformasi(): BelongsTo
+    // {
+    //     return $this->belongsTo(MemperolehInformasi::class, 'id_memperoleh_informasi');
+    // }
 
-    public function mendapatkansalinaninformasi(): BelongsTo
-    {
-        return $this->belongsTo(MendapatkanSalinanInformasi::class, 'id_mendapatkan_salinan_informasi');
-    }
-    
+    // public function mendapatkansalinaninformasi(): BelongsTo
+    // {
+    //     return $this->belongsTo(MendapatkanSalinanInformasi::class, 'id_mendapatkan_salinan_informasi');
+    // }
+
     public function status(): BelongsTo
     {
-        return $this->belongsTo(Status::class, 'id_status');
+        return $this->belongsTo(Status::class, 'status_id');
+    }
+
+    public function memperoleh(): BelongsTo
+    {
+        return $this->belongsTo(Reference::class, 'memperoleh_informasi_id');
+    }
+    
+    public function mendapat(): BelongsTo
+    {
+        return $this->belongsTo(Reference::class, 'mendapatkan_salinan_informasi_id');
     }
 
     public function rating(): HasOne

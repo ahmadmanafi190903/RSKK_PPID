@@ -22,13 +22,19 @@ return new class extends Migration
             $table->string('file_ktp');
             $table->text('informasi_yang_dibutuhkan');
             $table->text('alasan_penggunaan_informasi');
-            $table->foreignId('id_memperoleh_informasi');
-            $table->foreignId('id_mendapatkan_salinan_informasi');
-            $table->foreignId('id_status')->default(1);
-            $table->timestamps();
+            $table->foreignId('memperoleh_informasi_id')->constrained(
+                table: 'references', indexName: 'memperoleh'
+            );
+            $table->foreignId('mendapatkan_salinan_informasi_id')->constrained(
+                table: 'references', indexName: 'mendapat'
+            );
+            $table->foreignId('status_id')->default(2)->constrained(
+                table: 'status', indexName: 'permohonan_status'
+            );
             $table->text('pesan_ditolak')->nullable();
             $table->string('file_acc_permohonan')->nullable();
             $table->boolean('status_pengiriman')->default(0);
+            $table->timestamps();
         });
     }
 

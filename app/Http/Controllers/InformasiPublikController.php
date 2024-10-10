@@ -78,17 +78,17 @@ class InformasiPublikController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InformasiPublik $informasipublik)
+    public function edit(InformasiPublik $informasiPublik)
     {
         $categories = Reference::where('slug', 'informasi')->get();
         $storages = Reference::where('slug', 'penyimpanan')->get();
-        return view('admin.informasipublik.edit', compact(['informasipublik','categories', 'storages']));
+        return view('admin.informasipublik.edit', compact(['informasiPublik','categories', 'storages']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, InformasiPublik $informasipublik)
+    public function update(Request $request, InformasiPublik $informasiPublik)
     {
         $request->validate([
             'ringkasan_informasi' => 'required',
@@ -100,19 +100,7 @@ class InformasiPublikController extends Controller
             'kategori_informasi_id' => 'required',
         ], $this->feedback_validate );
 
-        // dd($request);
-        // if ($request->link) {
-        //     $link = $request->file('link');
-        //     $file_org =  $link->getClientOriginalName();
-        //     $randomName = Str::random(5);
-        //     $file_name = $randomName . '-' . $file_org;
-        //     $file_path = $link->storeAs('link', $file_name, 'public');
-        //     Storage::disk('public')->delete($informasipublik->link);
-        // } else {
-        //     $file_path = $informasipublik->link;
-        // }
-
-        $informasipublik->update([
+        $informasiPublik->update([
             'ringkasan_informasi' => $request->ringkasan_informasi,
             'pejabat_penguasa_informasi' => $request->pejabat_penguasa_informasi,
             'penanggung_jawab_informasi' => $request->penanggung_jawab_informasi,
@@ -128,12 +116,12 @@ class InformasiPublikController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(InformasiPublik $informasipublik)
+    public function destroy(InformasiPublik $informasiPublik)
     {
-        if($informasipublik->infopubdet->count() > 0){
+        if($informasiPublik->infopubdet->count() > 0){
             return redirect('/informasi_publik')->with('failed', 'Tidak bisa dihapus, karena masih ada informasi publik detail');
         } else {
-            $informasipublik->delete();
+            $informasiPublik->delete();
         return redirect('/informasi_publik')->with('success', 'Data berhasil dihapus');
         }
     }

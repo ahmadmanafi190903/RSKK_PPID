@@ -12,13 +12,13 @@ class InformasiPublikDetail extends Model
 
     protected $table = 'informasi_publik_details';
 
-    protected $with = ['infopub'];
+    // protected $with = ['infopub'];
 
     protected $guarded = ['id'];
 
     // function di bawah masih null
     public function infopub(): BelongsTo
     {
-        return $this->belongsTo(InformasiPublik::class);
+        return $this->belongsTo(InformasiPublik::class, 'id');
     }
 }

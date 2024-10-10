@@ -14,82 +14,96 @@ class ReferencesSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            [                'slug' => 'status',
-                'nama' => 'ditolak' 
+            [
+                'slug' => 'memperoleh',
+                'nama' => 'melihat/membaca/mendengar'
             ],
-            [                'slug' => 'status',
-                'nama' => 'dikirim' 
+            [
+                'slug' => 'memperoleh',
+                'nama' => 'mendapatkan salinan informasi sofcopy'
             ],
-            [                'slug' => 'status',
-                'nama' => 'diproses' 
+            [
+                'slug' => 'memperoleh',
+                'nama' => 'mendapatkan salinan informasi hardcopy'
             ],
-            [                'slug' => 'status',
-                'nama' => 'diterima' 
+            [
+                'slug' => 'mendapat',
+                'nama' => 'mengambil langsung'
             ],
-            [                'slug' => 'memperoleh',
-                'nama' => 'melihat/membaca/mendengar' 
-            ],
-            [                'slug' => 'memperoleh',
-                'nama' => 'mendapatkan salinan informasi sofcopy' 
-            ],
-            [                'slug' => 'memperoleh',
-                'nama' => 'mendapatkan salinan informasi hardcopy' 
-            ],
-            [                'slug' => 'mendapat',
-                'nama' => 'mengambil langsung' 
-            ],
-            [                'slug' => 'mendapat',
-                'nama' => 'email' 
-            ],
-            [                'slug' => 'pengajuan',
-                'nama' => 'permohonan informasi ditolak' 
+            [
+                'slug' => 'mendapat',
+                'nama' => 'email'
             ],
             [
                 'slug' => 'pengajuan',
-                'nama' => 'informasi berkala tidak disediakan ' 
+                'nama' => 'permohonan informasi ditolak'
             ],
             [
                 'slug' => 'pengajuan',
-                'nama' => 'permintaan informasi tidak ditanggapi' 
+                'nama' => 'informasi berkala tidak disediakan '
             ],
             [
                 'slug' => 'pengajuan',
-                'nama' => 'ermintaan informasi ditanggapi tidak sebagaimana yang diminta' 
+                'nama' => 'permintaan informasi tidak ditanggapi'
             ],
             [
                 'slug' => 'pengajuan',
-                'nama' => 'permintaan informasi tidak dipenuhi' 
+                'nama' => 'permintaan informasi ditanggapi tidak sebagaimana yang diminta'
             ],
             [
                 'slug' => 'pengajuan',
-                'nama' => 'biaya yang dikenakan tidak wajar' 
+                'nama' => 'permintaan informasi tidak dipenuhi'
             ],
             [
                 'slug' => 'pengajuan',
-                'nama' => 'informasi disampaikan melebihi jangka waktu yang ditentukan' 
+                'nama' => 'biaya yang dikenakan tidak wajar'
+            ],
+            [
+                'slug' => 'pengajuan',
+                'nama' => 'informasi disampaikan melebihi jangka waktu yang ditentukan'
             ],
             [
                 'slug' => 'informasi',
-                'nama' => 'Berkala' 
+                'nama' => 'Berkala'
             ],
             [
                 'slug' => 'informasi',
-                'nama' => 'Serta Merta' 
+                'nama' => 'Serta Merta'
             ],
             [
                 'slug' => 'informasi',
-                'nama' => 'Setiap Saat' 
+                'nama' => 'Setiap Saat'
             ],
             [
                 'slug' => 'informasi',
-                'nama' => 'Dikecualikan' 
+                'nama' => 'Dikecualikan'
             ],
             [
                 'slug' => 'penyimpanan',
-                'nama' => 'selama masih berlaku' 
+                'nama' => '5 tahun'
+            ],
+            [
+                'slug' => 'penyimpanan',
+                'nama' => '4 tahun'
+            ],
+            [
+                'slug' => 'penyimpanan',
+                'nama' => '3 tahun'
+            ],
+            [
+                'slug' => 'penyimpanan',
+                'nama' => '2 tahun'
+            ],
+            [
+                'slug' => 'penyimpanan',
+                'nama' => '1 tahun'
+            ],
+            [
+                'slug' => 'penyimpanan',
+                'nama' => 'selama masih berlaku'
             ],
         ];
-    
+
         foreach ($data as &$item) {
             $item['created_at'] = now();
             $item['updated_at'] = now();

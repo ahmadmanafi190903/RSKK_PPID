@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('url');
-            $table->foreignId('menu_id');
+            $table->foreignId('menu_id')->constrained(
+                table: 'menus', indexName: 'submenu_menu'
+            );
             $table->timestamps();
         });
     }

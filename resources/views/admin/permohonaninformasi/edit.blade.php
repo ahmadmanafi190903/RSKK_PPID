@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Permohonan Informasi</h1>
+            <h1 class="m-0">Permohonan Informasi Edit</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/permohonan_informasi/{{ $information->id }}" method="post" enctype="multipart/form-data">
+      <form action="/permohonan_informasi/{{ $permohonanInformasi->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
       <div class="row">
@@ -33,7 +33,7 @@
                   <label for="nama_lengkap">
                     <h5 class="mb-0">Nama Lengkap</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $information->nama }} {{ old('nama') }}" id="nama_lengkap" name="nama">
+                  <input class="w-100 form-control" type="text" value="{{ old('nama') ?? $permohonanInformasi->nama }}" id="nama_lengkap" name="nama" required>
                   @error('nama')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -42,7 +42,7 @@
                   <label for="email">
                     <h5 class="mb-0">Email</h5>
                   </label>
-                  <input class="w-100 form-control" type="email" value="{{ $information->email }}" id="email" name="email">
+                  <input class="w-100 form-control" type="email" value="{{ old('email') ?? $permohonanInformasi->email }}" id="email" name="email" required>
                   @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -51,7 +51,7 @@
                   <label for="phone">
                     <h5 class="mb-0">Telepon</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $information->no_telepon }}" id="phone" name="no_telepon" inputmode="numeric" oninput="inputPhone()">
+                  <input class="w-100 form-control" type="text" value="{{ old('no_telepon') ?? $permohonanInformasi->no_telepon }}" id="phone" name="no_telepon" inputmode="numeric" oninput="inputPhone()" required>
                   @error('no_telepon')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -60,7 +60,7 @@
                   <label for="pekerjaan">
                     <h5 class="mb-0">Pekerjaan</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $information->pekerjaan }}" id="pekerjaan" name="pekerjaan">
+                  <input class="w-100 form-control" type="text" value="{{ old('pekerjaan') ?? $permohonanInformasi->pekerjaan }}" id="pekerjaan" name="pekerjaan" required>
                   @error('pekerjaan')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -69,7 +69,7 @@
                   <label  for="alamat">
                     <h5 class="mb-0">Alamat</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="alamat"  cols="30" id="alamat">{{ $information->alamat }}</textarea>
+                  <textarea class="w-100 form-control" name="alamat" cols="30" id="alamat" required>{{ old('alamat') ?? $permohonanInformasi->alamat }}</textarea>
                   @error('alamat')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -78,7 +78,7 @@
                   <label for="nik">
                     <h5 class="mb-0">Nik</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" value="{{ $information->nik }}" id="nik" name="nik" inputmode="numeric" oninput="inputNik()">
+                  <input class="w-100 form-control" type="text" value="{{ old('nik') ?? $permohonanInformasi->nik }}" id="nik" name="nik" inputmode="numeric" oninput="inputNik()" required>
                   @error('nik')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -88,12 +88,12 @@
                     <h5 class="mb-0">Foto Ktp</h5>
                   </label>
                   <div> 
-                    <img src="{{ asset('storage/'.$information->file_ktp) }}" alt="{{ $information->file_ktp }}" width="200px" id="previewImage">
+                    <img src="{{ asset('storage/'.$permohonanInformasi->file_ktp) }}" alt="{{ $permohonanInformasi->file_ktp }}" width="200px" id="previewImage">
                   </div>
                   <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="imageInput" name="file_ktp">
-                      <label class="custom-file-label" for="link">{{ $information->file_ktp }}</label>
+                      <label class="custom-file-label" for="link">{{ $permohonanInformasi->file_ktp }}</label>
                     </div>
                     <div class="input-group-append">
                       <span class="input-group-text">Upload</span>
@@ -119,7 +119,7 @@
                   <label for="informasi">
                     <h5 class="mb-0">Informasi yang dibutuhkan</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="informasi_yang_dibutuhkan" id="informasi" cols="30">{{ $information->informasi_yang_dibutuhkan }}</textarea>
+                  <textarea class="w-100 form-control" name="informasi_yang_dibutuhkan" id="informasi" cols="30" required>{{ old('nama') ?? $permohonanInformasi->informasi_yang_dibutuhkan }}</textarea>
                   @error('informasi_yang_dibutuhkan')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -128,7 +128,7 @@
                   <label for="alasan">
                     <h5 class="mb-0">Alasan pengguna Informasi</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="alasan_penggunaan_informasi" id="alasan" cols="30">{{ $information->alasan_penggunaan_informasi }}</textarea>
+                  <textarea class="w-100 form-control" name="alasan_penggunaan_informasi" id="alasan" cols="30" required>{{ old('nama') ?? $permohonanInformasi->alasan_penggunaan_informasi }}</textarea>
                   @error('alasan_penggunaan_informasi')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -137,13 +137,13 @@
                   <label for="memperoleh">
                     <h5 class="mb-0">Memperoleh informasi</h5>
                   </label>
-                  <select id="memperoleh" name="id_memperoleh_informasi" class="custom-select">
+                  <select id="memperoleh" name="memperoleh_informasi_id" class="custom-select" required>
                     <option value=""></option>
-                    @foreach ($get_information as $item)
-                      <option value="{{ $item->id }}" {{ $item->id == $information->id_memperoleh_informasi ?'selected' : '' }}>{{ $item->memperoleh_informasi }}</option>
+                    @foreach ($getInformation as $item)
+                      <option value="{{ $item->id }}" {{ $item->id == $permohonanInformasi->memperoleh_informasi_id ?'selected' : '' }}>{{ $item->nama }}</option>
                     @endforeach
                   </select>
-                  @error('id_memperoleh_informasi')
+                  @error('memperoleh_informasi_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
@@ -151,13 +151,13 @@
                   <label for="Mendapatkan">
                     <h5 class="mb-0">Mendapatkan salinan informasi</h5>
                   </label>
-                  <select id="Mendapatkan" name="id_mendapatkan_salinan_informasi" class="custom-select">
+                  <select id="Mendapatkan" name="mendapatkan_salinan_informasi_id" class="custom-select" required>
                     <option value=""></option> 
-                    @foreach ($get_copy as $item)        
-                     <option value="{{ $item->id }}" {{ $item->id == $information->id_mendapatkan_salinan_informasi ?'selected' : '' }}>{{ $item->mendapatkan_salinan_informasi }}</option>
+                    @foreach ($copyInformation as $item)        
+                     <option value="{{ $item->id }}" {{ $item->id == $permohonanInformasi->mendapatkan_salinan_informasi_id ?'selected' : '' }}>{{ $item->nama }}</option>
                     @endforeach
                   </select>
-                  @error('id_mendapatkan_salinan_informasi')
+                  @error('mendapatkan_salinan_informasi_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>

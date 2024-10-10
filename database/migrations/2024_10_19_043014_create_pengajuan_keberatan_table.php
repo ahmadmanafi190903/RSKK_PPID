@@ -19,11 +19,13 @@ return new class extends Migration
             $table->string('pekerjaan');
             $table->text('alamat');
             $table->text('tujuan_penggunaan_informasi');
-            $table->foreignId('id_alasan_pengajuan');
-            $table->foreignId('id_status')->default(1);
+            $table->foreignId('alasan_pengajuan_id')->constrained(
+                table: 'references', indexName: 'pengajuan'
+            );
+            $table->foreignId('status_id')->default(2)->constrained(
+                table: 'status', indexName: 'pengajuan_status'
+            );
             $table->timestamps();
-            $table->text('pesan_ditolak')->nullable();
-            $table->string('file_acc_pengajuan')->nullable();
         });
     }
 

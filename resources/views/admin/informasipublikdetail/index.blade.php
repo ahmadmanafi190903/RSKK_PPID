@@ -9,7 +9,7 @@
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Informasi Publik Detail</h1>
             @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
-              <a href="/informasi_publik/{{ $informasipublikid }}/detail/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/informasi_publik/{{ $informasiPublikId }}/detail/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -38,6 +38,10 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
+              <div class="card-tools">
+                <p class="p-3 mb-0"><strong>Ringkasan: </strong>{{ $infoPublik->ringkasan_informasi ?? '' }}</p>
+              </div>
+              </div>
               <table class="table table-hover text-center">
                 <thead>
                   <tr class="text-center">
@@ -66,7 +70,7 @@
                       <td class="align-middle">
                         <div>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
-                            <a href="/informasi_publik/{{ $informasipublikid }}/{{ $item->id }}/detail" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                            <a href="/informasi_publik/{{ $informasiPublikId }}/{{ $item->id }}/detail" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
                             <form action="/informasi_publik/{{ $item->id }}/detail" method="post">
                               @csrf
                               @method('delete')

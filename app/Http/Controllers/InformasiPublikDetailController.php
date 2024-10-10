@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InformasiPublik;
 use App\Models\InformasiPublikDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,18 +13,19 @@ class InformasiPublikDetailController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(string $informasipublikid)
+    public function index(string $informasiPublikId)
     {
-        $details = InformasiPublikDetail::where('informasi_publik_id', $informasipublikid)->latest()->paginate(10);
-        return view('admin.informasipublikdetail.index', compact('details', 'informasipublikid'));
+        $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->latest()->paginate(10);
+        $infoPublik = InformasiPublik::select('ringkasan_informasi')->where('id', $informasiPublikId)->first();
+        return view('admin.informasipublikdetail.index', compact('details', 'informasiPublikId', 'infoPublik'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(string $informasipublikid)
+    public function create(string $informasiPublikId)
     {
-        return view('admin.informasipublikdetail.create', compact('informasipublikid'));
+        return view('admin.informasipublikdetail.create', compact('informasiPublikId'));
     }
 
     /**
@@ -65,9 +67,9 @@ class InformasiPublikDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $informasipublikid, InformasiPublikDetail $informasiPublikDetail)
+    public function edit(string $informasiPublikId, InformasiPublikDetail $informasiPublikDetail)
     {
-        return view('admin.informasipublikdetail.edit', compact('informasipublikid','informasiPublikDetail'));
+        return view('admin.informasipublikdetail.edit', compact('informasiPublikId','informasiPublikDetail'));
     }
 
     /**

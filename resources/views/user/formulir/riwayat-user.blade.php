@@ -98,34 +98,34 @@
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Memperoleh Informasi</h5>
-                        <p>{{ $item->memperolehinformasi->memperoleh_informasi }}</p>
+                        <p>{{ $item->memperoleh->nama }}</p>
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Mendapatkan Salinan Informasi</h5>
-                        <p>{{ $item->mendapatkansalinaninformasi->mendapatkan_salinan_informasi }}</p>
+                        <p>{{ $item->mendapat->nama }}</p>
                       </div>
                       <div class="mb-3">
                         <h5 class="mb-0">Tanggal Permohonan</h5>
                         <p>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</p>
                       </div>
 
-                      @if ($item->id_status == 1)
+                      @if ($item->status_id == 2)
                         <div class="alert alert-secondary text-uppercase text-center">Status {{ $item->status->status }}
                         </div>
-                      @elseif ($item->id_status == 2)
+                      @elseif ($item->status_id == 3)
                         <div class="alert alert-primary text-uppercase text-center">Status {{ $item->status->status }}
                         </div>
-                      @elseif ($item->id_status == 3)
+                      @elseif ($item->status_id == 0)
                         <div class="alert alert-danger text-uppercase text-center">Status {{ $item->status->status }}
                         </div>
-                      @elseif ($item->id_status == 4)
+                      @elseif ($item->status_id == 1)
                         <div class="alert alert-success text-uppercase text-center">Status {{ $item->status->status }}
                         </div>
                       @endif
 
                       <div class="ms-3">
                         <ul class="timeline-list">
-                          <li class="circle @if ($item->id_status) active @endif">
+                          <li class="circle active">
                             <div class="content ">
                               <h4>Terkirim</h4>
                               <p>
@@ -135,7 +135,7 @@
                               </p>
                             </div>
                           </li>
-                          <li class="circle @if ($item->id_status != 1) active @endif">
+                          <li class="circle @if ($item->status_id != 2) active @endif">
                             <div class="content">
                               <h4>Diproses</h4>
                               <p>
@@ -145,7 +145,7 @@
                               </p>
                             </div>
                           </li>
-                          <li class="circle @if ($item->id_status == 3 || $item->id_status == 4) active @endif">
+                          <li class="circle @if ($item->status_id == 0 || $item->status_id == 1) active @endif">
                             <div class="content">
                               <h4>Selesai</h4>
                               <p>
@@ -157,7 +157,7 @@
                         </ul>
                       </div>
 
-                      @if ($item->id_status == 3)
+                      @if ($item->status_id == 0)
                         <div class="mb-3">
                           <h5 class="mb-0">Alasan Ditolak</h5>
                           <p>{{ $item->pesan_ditolak }}</p>
@@ -166,7 +166,7 @@
                             <button type="submit" class="btn btn-primary">Ajukan Keberatan</button>
                           </form>
                         </div>
-                      @elseif ($item->id_status == 4)
+                      @elseif ($item->status_id == 1)
                         <div class="mb-3">
                           <h5 class="mb-0">Permohonan Diterima</h5>
                           @if ($item->id_mendapatkan_salinan_informasi == 1 && $item->file_acc_permohonan == null)

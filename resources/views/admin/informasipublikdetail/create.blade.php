@@ -62,12 +62,12 @@
                     <h5 class="mb-0">PDF</h5>
                   </label>
                   <div class="input-group">
-                    <div> 
+                    <div id="iframeContainer" style="display: none;"> 
                       <iframe src="" frameborder="0" id="previewImage"></iframe>
                     </div>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="imageInput" name="link">
+                        <input type="file" class="custom-file-input" id="imageInput" name="link" onchange="showIframe()">
                         <label class="custom-file-label" for="link">Pilih file</label>
                       </div>
                       <div class="input-group-append">

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('star');
             $table->string('comment');
-            $table->foreignId('permohonan_informasi_id');
+            $table->foreignId('permohonan_informasi_id')->constrained(
+                table: 'permohonan_informasi', indexName: 'rating'
+            );
             $table->timestamps();
         });
     }

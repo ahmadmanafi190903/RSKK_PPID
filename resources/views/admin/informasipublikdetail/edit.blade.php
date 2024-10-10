@@ -23,7 +23,7 @@
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-body table-responsive p-3">
-                <input type="hidden" value="{{ $informasipublikid }}" name="informasi_publik_id">
+                <input type="hidden" value="{{ $informasiPublikId }}" name="informasi_publik_id">
                 <div class="mb-4">
                   <label for="tahun">
                     <h5 class="mb-0">Tahun</h5>
@@ -69,7 +69,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="imageInput" name="link">
-                        <label class="custom-file-label" for="link">Pilih file</label>
+                        <label class="custom-file-label" for="link">{{ $informasiPublikDetail->link }}</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text">Upload PDF</span>
@@ -81,7 +81,7 @@
                   @enderror
                 </div>
                 
-                <a href="/informasi_publik/{{ $informasipublikid }}/detail" class="btn btn-secondary">kembali</a>
+                <a href="/informasi_publik/{{ $informasiPublikId }}/detail" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Ubah</button>
               </div>
             </div>

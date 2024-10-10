@@ -116,7 +116,7 @@
     });
   </script>
 
-  {{-- ubah foto ketika di update  --}}
+  {{-- ubah foto ketika di update dan ifrmae --}}
   <script>
     const imageInput = document.getElementById('imageInput');
     const previewImage = document.getElementById('previewImage');
@@ -134,6 +134,10 @@
         reader.readAsDataURL(file);
       }
     });
+
+    function showIframe() {
+      document.getElementById('iframeContainer').style.display = 'block';
+    }
   </script>
 
   {{-- tutup success --}}

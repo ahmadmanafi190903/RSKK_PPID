@@ -52,23 +52,23 @@
                       <td class="align-middle">{{ $loop->iteration }}</td>
                       <td class="align-middle">{{ $item->nama }}</td>
                       <td class="align-middle">{{ $item->tujuan_penggunaan_informasi }}</td>
-                      <td class="align-middle">{{ $item->alasan->alasan_pengajuan }} </td>
+                      <td class="align-middle">{{ $item->pengajuan->nama }} </td>
                       <td class="align-middle">{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</td>
                       <td class="align-middle">
-                        @if ($item->id_status == 1)
+                        @if ($item->status_id == 2)
                           <span class="badge bg-warning">belum dibuka</span>
-                        @elseif ($item->id_status == 2)
+                        @elseif ($item->status_id == 3)
                           <span class="badge bg-info">{{ $item->status->status }}</span>
-                        @elseif ($item->id_status == 3)
+                        @elseif ($item->status_id == 0)
                           <span class="badge bg-danger">{{ $item->status->status }}</span>
-                        @elseif ($item->id_status == 4)
+                        @elseif ($item->status_id == 1)
                           <span class="badge bg-success">{{ $item->status->status }}</span>
                         @endif
                       </td>
                       <td class="align-middle">
                         <div class="">
                           <a href="/pengajuan_keberatan/{{ $item->id }}" class="btn btn-primary">
-                            @if ($item->id_status == 1)
+                            @if ($item->status_id == 2)
                               <i class="nav-icon fas fa-arrow-right"></i>
                             @else
                               <i class="nav-icon fas fa-eye"></i>

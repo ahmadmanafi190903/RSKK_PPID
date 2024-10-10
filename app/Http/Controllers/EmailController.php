@@ -11,20 +11,15 @@ class EmailController extends Controller
 {
     public function index()
     {
-        $informations = PermohonanInformasi::where('id_status', 4)->latest()->paginate(5); 
-        // $data = [
-        //     'nama'=>'Fikri'
-        // ];
-        // Mail::to('fikri.amrulloh15@gmail.com')->send(new Information($data));
-        // return redirect()->back();
+        $informations = PermohonanInformasi::where('status_id', 1)->latest()->paginate(5); 
         return view('admin.email.index', [
             'informations' => $informations
         ]);
     }
 
-    public function send(PermohonanInformasi $permohonaninformasi){
+    public function send(PermohonanInformasi $permohonanInformasi){
 
-        $data = $permohonaninformasi;
+        $data = $permohonanInformasi;
         $data->update([
             'status_pengiriman' => true
         ]);

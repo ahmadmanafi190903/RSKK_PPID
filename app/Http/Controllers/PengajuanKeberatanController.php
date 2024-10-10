@@ -7,6 +7,7 @@ use App\Models\PengajuanKeberatan;
 use App\Models\PermohonanInformasi;
 use App\Models\AlasanPengajuan;
 use App\Events\PengajuanKeberatanEvent;
+use App\Models\Reference;
 use Illuminate\Support\Facades\Crypt;
 
 class PengajuanKeberatanController extends Controller
@@ -17,9 +18,7 @@ class PengajuanKeberatanController extends Controller
     public function index()
     {
         $submission = PengajuanKeberatan::latest()->paginate(5);
-        return view('admin.pengajuankeberatan.index', [
-            'submission' => $submission
-        ]);
+        return view('admin.pengajuankeberatan.index', compact('submission'));
     }
     
     /**
@@ -27,35 +26,16 @@ class PengajuanKeberatanController extends Controller
      */
     public function create()
     {
-        $reason = AlasanPengajuan::all();
+        $reason = Reference::where('slug', 'pengajuan')->get();
         if (request('pemohon')) {
             $dekripsi = Crypt::decrypt(request('pemohon'));
             $applicant = PermohonanInformasi::where('id', $dekripsi)->first();
-            return view('user.formulir.form-pengajuan', [
-                'reason' => $reason,
-                'applicant' => $applicant 
-            ]);
+            return view('user.formulir.form-pengajuan', compact('reason', 'applicant'));
         } else {
             $applicant = [];
-            return view('user.formulir.form-pengajuan', [
-                'reason' => $reason,
-                'applicant' => $applicant 
-            ]);
+            return view('user.formulir.form-pengajuan', compact('reason', 'applicant'));
         }
     }
-
-    // public function create2()
-    // {
-    //     $applicant = [];
-    //     if (request('pemohon')) {
-    //         $applicant = PermohonanInformasi::where('id', request('pemohon'))->first();
-    //     }
-    //     $reason = AlasanPengajuan::all();
-    //     return view('user.formulir.form-pengajuan', [
-    //         'reason' => $reason,
-    //         'applicant' => $applicant 
-    //     ]);
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -68,7 +48,7 @@ class PengajuanKeberatanController extends Controller
         'no_telepon' => 'required|numeric',
         'pekerjaan' => 'required|max:255',
         'alamat' => 'required|max:255',
-        'id_alasan_pengajuan' => 'required',
+        'alasan_pengajuan_id' => 'required',
         'tujuan_penggunaan_informasi' => 'required',
     ],$this->feedback_validate);
 
@@ -78,72 +58,60 @@ class PengajuanKeberatanController extends Controller
         'no_telepon' => $request->no_telepon,
         'pekerjaan' => $request->pekerjaan,
         'alamat' => $request->alamat,
-        'id_alasan_pengajuan' => $request->id_alasan_pengajuan,
+        'alasan_pengajuan_id' => $request->alasan_pengajuan_id,
         'tujuan_penggunaan_informasi' => $request->tujuan_penggunaan_informasi,
     ]);
 
     return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim');
-
-    // PengajuanKeberatanEvent::dispatch($request->nama, $request->email);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(PengajuanKeberatan $pengajuankeberatan)
+    public function show(PengajuanKeberatan $pengajuanKeberatan)
     {
-        if ($pengajuankeberatan->id_status == 1) {
-            $pengajuankeberatan->update([
-                'id_status' => '2'
+        if ($pengajuanKeberatan->status_id == 2) {
+            $pengajuanKeberatan->update([
+                'status_id' => '3'
             ]);
-            $pengajuankeberatan->refresh();
+            $pengajuanKeberatan->refresh();
         }
         return view('admin.pengajuankeberatan.show', [
-            'submission' => $pengajuankeberatan
+            'item' => $pengajuanKeberatan
         ]);
     }
 
-    public function reject(Request $request, PengajuanKeberatan $pengajuankeberatan)
+    public function reject(Request $request, PengajuanKeberatan $pengajuanKeberatan)
     {
-        $request->validate([
-            'pesan_ditolak' => 'required',
-        ],[
-            'required' => 'Data harus diisi.'
+        $pengajuanKeberatan->update([
+            'status_id' => '0'
         ]);
 
-        $pengajuankeberatan->update([
-            'id_status' => '3',
-            'pesan_ditolak' => $request->pesan_ditolak,
-        ]);
-
-        return redirect('/pengajuan_keberatan/' . $pengajuankeberatan->id)->with('success', 'Pengajuan keberatan berhasil ditolak');
+        return redirect('/pengajuan_keberatan/' . $pengajuanKeberatan->id)->with('success', 'Pengajuan keberatan berhasil ditolak');
     }
 
-    public function accept(Request $request, PengajuanKeberatan $pengajuankeberatan)
+    public function accept(Request $request, PengajuanKeberatan $pengajuanKeberatan)
     {
-        $pengajuankeberatan->update([
-            'id_status' => '4',
+        $pengajuanKeberatan->update([
+            'status_id' => '1',
         ]);
 
-        return redirect('/pengajuan_keberatan/' . $pengajuankeberatan->id)->with('success', 'Pengajuan keberatan berhasil diterima');
+        return redirect('/pengajuan_keberatan/' . $pengajuanKeberatan->id)->with('success', 'Pengajuan keberatan berhasil diterima');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PengajuanKeberatan $pengajuankeberatan)
+    public function edit(PengajuanKeberatan $pengajuanKeberatan)
     {
-        $reason = AlasanPengajuan::all();
-        return view('admin.pengajuankeberatan.edit', [
-            'submission' => $pengajuankeberatan,
-            'reason' => $reason
-        ]);
+        $reason = Reference::where('slug', 'pengajuan')->get();
+        return view('admin.pengajuankeberatan.edit', compact('reason', 'pengajuanKeberatan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PengajuanKeberatan $pengajuankeberatan)
+    public function update(Request $request, PengajuanKeberatan $pengajuanKeberatan)
     {
         $request->validate([
             'nama' => 'required|max:255',
@@ -151,17 +119,17 @@ class PengajuanKeberatanController extends Controller
             'no_telepon' => 'required|numeric',
             'pekerjaan' => 'required|max:255',
             'alamat' => 'required|max:255',
-            'id_alasan_pengajuan' => 'required',
+            'alasan_pengajuan_id' => 'required',
             'tujuan_penggunaan_informasi' => 'required|max:255',
         ],$this->feedback_validate);
 
-        $pengajuankeberatan->update([
+        $pengajuanKeberatan->update([
             'nama' => $request->nama,
             'email' => $request->email,
             'no_telepon' => $request->no_telepon,
             'pekerjaan' => $request->pekerjaan,
             'alamat' => $request->alamat,
-            'id_alasan_pengajuan' => $request->id_alasan_pengajuan,
+            'alasan_pengajuan_id' => $request->alasan_pengajuan_id,
             'tujuan_penggunaan_informasi' => $request->tujuan_penggunaan_informasi,
         ]);
 
@@ -171,9 +139,9 @@ class PengajuanKeberatanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PengajuanKeberatan $pengajuankeberatan)
+    public function destroy(PengajuanKeberatan $pengajuanKeberatan)
     {
-        $pengajuankeberatan->delete();
+        $pengajuanKeberatan->delete();
         return redirect('/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil dihapus');
     }
 }
