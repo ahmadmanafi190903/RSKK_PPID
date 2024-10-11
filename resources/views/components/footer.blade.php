@@ -1,6 +1,6 @@
 <footer class="footer-1 footer-wrap">
   <div class="footer-widgets-wrapper text-white bg-cover"
-    style="background-image: url('/assets/img/footer-widgets-bg.png')">
+    style="background-image: url('/assets/img/footer-widgets-bg.png'); padding: 70px 0">
     <div class="container">
       <div class="row justify-content-between">
 
@@ -18,15 +18,12 @@
         <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid ps-xl-5">
             <div class="wid-title">
-              <h3>Information</h3>
+              <h3>Informasi</h3>
             </div>
             <ul>
-              <li><a href="services.html">What We Do</a></li>
-              <li><a href="contact.html">About Us</a></li>
-              <li><a href="services.html">IT Solutions</a></li>
-              <li><a href="team.html">Our Team</a></li>
-              <li><a href="project-details.html">Case Study</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
+              @foreach (App\Models\Informasi::get() as $item)
+                <li><a href="{{ $item->url }}">{{ $item->nama }}</a></li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -47,42 +44,19 @@
         <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid site-info-widget">
             <div class="wid-title">
-              <h3>Get In Touch</h3>
+              <h3>Kontak Kami</h3>
             </div>
             <div class="get-in-touch">
-              <div class="single-contact-info">
-                <div class="icon id1">
-                  <i class="fal fa-map-marker-alt"></i>
+              @foreach (App\Models\Contact::all() as $item)
+                <div class="single-contact-info">
+                  <div class="icon id1">
+                    {!! $item->icon !!}
+                  </div>
+                  <div class="contact-info">
+                    <span>{{ $item->address }}</span>
+                  </div>
                 </div>
-                <div class="contact-info">
-                  <span>94 Roa Malaka, West Jakarta City, UK</span>
-                </div>
-              </div>
-              <div class="single-contact-info">
-                <div class="icon id2">
-                  <i class="fal fa-phone"></i>
-                </div>
-                <div class="contact-info">
-                  <span>+91-768728658</span>
-                </div>
-              </div>
-              <div class="single-contact-info">
-                <div class="icon id3">
-                  <i class="fal fa-envelope"></i>
-                </div>
-                <div class="contact-info">
-                  <span>info@example.com</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="newsletter_widget">
-              <div class="newsletter_box">
-                <form action="#">
-                  <input type="email" placeholder="Enter email address" required>
-                  <button class="submit-btn" type="submit"><i class="fas fa-envelope-open"></i></button>
-                </form>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>

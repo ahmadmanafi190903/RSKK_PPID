@@ -10,6 +10,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\InformasiPublikController;
 use App\Http\Controllers\InformasiPublikDetailController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SubmenuController;
 
 //user
@@ -72,6 +73,11 @@ Route::middleware(['auth'])->group(function () {
     // Email
     Route::get('/email', [EmailController::class, 'index'])->middleware('role:super_admin,admin');
     Route::get('/email/{permohonanInformasi}/send', [EmailController::class, 'send'])->middleware('role:super_admin,admin');
+
+    //rating
+    Route::get('/rating', [RatingController::class, 'index'])->middleware('role:super_admin');
+    Route::post('/rating/{rating}/post', [RatingController::class, 'post'])->middleware('role:super_admin');
+    Route::post('/rating/{rating}/notpost', [RatingController::class, 'notpost'])->middleware('role:super_admin');
 
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');

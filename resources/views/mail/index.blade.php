@@ -2,8 +2,8 @@
   # Hallo {{ $nama }}
 
   <p>
-    Kami ingin menginformasikan bahwa permohonan informasi yang Anda ajukan telah kami terima dengan baik. Untuk bukti
-    penerimaan, bisa klik button di bawah ini.
+    Kami ingin menginformasikan bahwa permohonan informasi yang Anda ajukan telah kami setujui. Untuk bukti
+    penerimaan, bisa klik tombol di bawah ini.
   </p>
 
 
@@ -11,6 +11,6 @@
     Dapatkan Informasi
   </x-mail::button>
 
-  Thanks,<br>
+  Terimakasih,<br>
   {{ config('app.name') }}
 </x-mail::message>

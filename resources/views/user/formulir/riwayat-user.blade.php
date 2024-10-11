@@ -169,9 +169,9 @@
                       @elseif ($item->status_id == 1)
                         <div class="mb-3">
                           <h5 class="mb-0">Permohonan Diterima</h5>
-                          @if ($item->id_mendapatkan_salinan_informasi == 1 && $item->file_acc_permohonan == null)
+                          @if ($item->mendapatkan_salinan_informasi_id == 4 && $item->file_acc_permohonan == null)
                             <p>Mohon menunggu untuk pembuatan file PDF</p>
-                          @elseif ($item->id_mendapatkan_salinan_informasi == 1 && $item->file_acc_permohonan)
+                          @elseif ($item->mendapatkan_salinan_informasi_id == 4 && $item->file_acc_permohonan)
                             @if (App\Models\Rating::where('permohonan_informasi_id', $item->id)->first())
                               <p>Terima kasih sudah memberikan ulasan</p>
                             @else
@@ -225,9 +225,9 @@
                                 </div>
                               </div>
                             @endif
-                          @elseif ($item->id_mendapatkan_salinan_informasi == 2 && $item->file_acc_permohonan == null)
+                          @elseif ($item->mendapatkan_salinan_informasi_id == 5 && $item->file_acc_permohonan == null)
                             <p>Mohon menunggu untuk pembuatan file PDF</p>
-                          @elseif ($item->id_mendapatkan_salinan_informasi == 2 && $item->file_acc_permohonan)
+                          @elseif ($item->mendapatkan_salinan_informasi_id == 5 && $item->file_acc_permohonan)
                             @if ($item->status_pengiriman)
                               <p>File sudah dikirim ke alamat email anda.</p>
                             @else

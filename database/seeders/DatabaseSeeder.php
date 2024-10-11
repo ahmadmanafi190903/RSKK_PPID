@@ -2,13 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\InformasiPublik;
 use App\Models\InformasiPublikDetail;
-use App\Models\Kategori;
-use App\Models\KategoriInformasi;
 use App\Models\Rating;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +31,12 @@ class DatabaseSeeder extends Seeder
             ReferencesSeeder::class,
             PengajuanKeberatanSeeder::class,
             PermohonanInformasiSeeder::class,
+            CardSeeder::class,
+            VideoSeeder::class,
+            ContactSeeder::class,
+            InformasiSeeder::class,
+            BeritaSeeder::class,
+            InfoFormSeeder::class,
         ]);
 
         InformasiPublik::factory(50)->create();

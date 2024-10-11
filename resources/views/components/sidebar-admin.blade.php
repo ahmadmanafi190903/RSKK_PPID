@@ -78,6 +78,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="/rating" class="nav-link">
+            <i class="nav-icon fas fa-star"></i>
+            <p>
+              Rating
+            </p>
+          </a>
+        </li>
         <li class="nav-header">PENGGUNA</li>
         <li class="nav-item">
           <a href="/pengguna" class="nav-link">

@@ -53,7 +53,7 @@
     </div>
   @endif
 
-  @include('components.preloader')
+  {{-- @include('components.preloader') --}}
 
   @include('components.top-bar')
 

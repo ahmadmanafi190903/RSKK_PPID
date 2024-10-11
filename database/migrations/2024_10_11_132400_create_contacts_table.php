@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ratings', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->integer('star');
-            $table->string('comment');
-            $table->foreignId('permohonan_informasi_id')->constrained(
-                table: 'permohonan_informasi', indexName: 'rating'
-            );
-            $table->integer('status_post')->default(1);
+            $table->string('icon');
+            $table->string('address');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('contacts');
     }
 };

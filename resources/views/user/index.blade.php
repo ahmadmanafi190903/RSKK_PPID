@@ -5,58 +5,25 @@
 
   <section class="our-service-wrapper section-padding">
     <div class="container">
-      {{-- <div class="col-12 col-xl-6 offset-xl-3 text-center">
+      <div class="col-12 col-xl-6 offset-xl-3 text-center">
 				<div class="section-title">
-					<span>Our Feature</span>
-					<h2>We Help you Build and Grow Business</h2>
+					<span>RSUD KK</span>
+					<h2>Informasi Publik</h2>
 				</div>
-			</div> --}}
+			</div>
       <div class="row ps-xl-5 pe-xl-5">
-        <div class="col-xl-3 col-md-6 col-12">
-          <div class="single-service-box">
-            <div class="icon">
-              <img src="assets/img/icons/solution.svg" alt="">
-
+        @foreach ($cards as $item )
+          <div class="col-xl-3 col-md-6 col-12">
+            <div class="single-service-box">
+              <div class="icon">
+                <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" width="72">
+              </div>
+              <h4><a href="{{ $item->url }}">{{ $item->judul }}</a></h4>
+              <p>{{ $item->deskripsi }}</p>
+              <a href="{{ $item->url }}" class="read-more-link">Selengkapnya</a>
             </div>
-            <h4><a href="/informasi-publik/1">Informasi Publik Berkala</a></h4>
-            <p>Informasi yang rutin diterbitkan oleh RSUD Kesehatan Kerja Provinsi Jawa Barat. Termasuk laporan tahunan,
-              rencana strategis, dan kegiatan rutin lainnya.</p>
-            <a href="/informasi-publik/1" class="read-more-link">Selengkapnya</a>
           </div>
-        </div>
-        <div class="col-xl-3 col-md-6 col-12">
-          <div class="single-service-box">
-            <div class="icon">
-              <img src="assets/img/icons/coding.svg" alt="">
-            </div>
-            <h4><a href="/informasi-publik/3">Informasi Publik Setiap Saat</a></h4>
-            <p>Informasi yang selalu tersedia dan dapat diakses oleh masyarakat, seperti peraturan, prosedur pelayanan,
-              dan tarif layanan kesehatan.</p>
-            <a href="/informasi-publik/3" class="read-more-link">Selengkapnya</a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6 col-12">
-          <div class="single-service-box">
-            <div class="icon">
-              <img src="assets/img/icons/ux-design.svg" alt="">
-            </div>
-            <h4><a href="#">Informasi Publik dikecualikan</a></h4>
-            <p>Informasi yang tidak dapat disebarluaskan secara umum sesuai dengan ketentuan perundang-undangan, seperti
-              data pasien dan informasi yang bersifat rahasia.</p>
-            <a href="#" class="read-more-link">Selengkapnya</a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6 col-12">
-          <div class="single-service-box">
-            <div class="icon">
-              <img src="assets/img/icons/database.svg" alt="">
-            </div>
-            <h4><a href="/informasi-publik/2">Informasi Serta Merta</a></h4>
-            <p> Informasi yang harus segera disampaikan kepada masyarakat, terutama dalam situasi darurat atau bencana
-              yang memerlukan tindakan segera.</p>
-            <a href="/informasi-publik/2" class="read-more-link">Selengkapnya</a>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
@@ -69,29 +36,32 @@
             <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'thumbnail')->latest()->first()->image }}" alt="" width="600">
             <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'thumbnail')->latest()->skip(1)->first()->image }}" alt="" width="380">
             <div class="video-play-btn">
-              <a href="https://www.youtube.com/watch?v=K02pM-yQLGE" class="popup-video play-video"><i
+              <a href="{{ $video->url }}" class="popup-video play-video"><i
                   class="fas fa-play"></i></a>
             </div>
           </div>
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
           <div class="section-title">
-            <h2>Mitra Anda dalam Inovasi Pelayanan Publik</h2>
+            <span>RSUD KK</span>
+            <h2>Layanan Informasi yang Mudah dan Transparan</h2>
             <p>RSUD Kesehatan Kerja Provinsi Jawa Barat berkomitmen untuk memberikan layanan yang inovatif dan mudah
               diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk
               meningkatkan transparansi dan kualitas layanan.</p>
           </div>
 
           <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <div class="info-icon-item">
-                <img src="assets/img/icons/experiance.svg" alt="">
-                <h3>Form Permohonan Informasi</h3>
-                <p>Ajukan permohonan informasi publik yang Anda butuhkan dengan mudah dan cepat.</p>
-                <a href="/permohonan" class="theme-btn mt-30">Ajukan Permohonan</a>
+            @foreach ($infoForms as $item)
+              <div class="col-md-6 col-sm-6">
+                <div class="info-icon-item">
+                  <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" width="72">
+                  <h3>{{ $item->judul }}</h3>
+                  <p>{{ $item->deskripsi }}</p>
+                  <a href="{{ $item->url }}" class="theme-btn mt-30">{{ $item->nama_button }}</a>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
+            @endforeach
+            {{-- <div class="col-md-6 col-sm-6">
               <div class="info-icon-item">
                 <img src="assets/img/icons/settings.svg" alt="">
                 <h3>Form Permohonan Keberatan Informasi</h3>
@@ -99,7 +69,7 @@
                   keberatan Anda melalui form ini.</p>
                 <a href="/pengajuan" class="theme-btn mt-30">Ajukan Keberatan</a>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -118,7 +88,8 @@
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
           <div class="section-title">
-            <h2>Pejebat Pengelolaan Informasi dan Dokumentasi </h2>
+            <span>RSUK KK</span>
+            <h2>Pertanyaan yang sering ditanyakan</h2>
           </div>
           <div class="faq-accordion">
             <div class="accordion" id="accordion">
@@ -347,6 +318,7 @@
     <div class="container">
       <div class="col-12 col-xl-8 offset-xl-2 text-center">
         <div class="section-title">
+          <span>RSUD KK</span>
           <h2>Rating</h2>
         </div>
       </div>
@@ -527,81 +499,30 @@
       <div class="row">
         <div class="col-12 text-center">
           <div class="section-title">
+            <span>RSUD KK</span>
             <h2>Berita</h2>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-xl-4 col-md-6">
-          <div class="single-blog-item">
-            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/RSKK-Jabar.jpg')">
-              <div class="post-cat">
-                <a href="news.html">App Design</a>
-              </div>
-            </div>
-            <div class="content">
-              <h3><a href="news-details.html">Technology allows profit to serve the community</a></h3>
-              <p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
-                enjoy the view of the ocean</p>
-
-              <div class="post-meta d-flex align-items-center">
-                <div class="post-date">
-                  <i class="fal fa-calendar-alt"></i>Dec 6, 2021
-                </div>
-                <div class="post-author">
-                  <i class="fal fa-user-alt"></i> by <a href="#">admin</a>
+        @foreach ($news as $item)
+          <div class="col-xl-4 col-md-6">
+            <div class="single-blog-item">
+              <div class="post-featured-thumb bg-cover" style="background-image: url('/storage/{{ $item->image }}')"></div>
+              <div class="content">
+                <h3><a href="{{ $item->url }}">{{ $item->judul }}</a></h3>
+                <p>{{ $item->deskripsi }}</p>
+                <div class="post-meta d-flex align-items-center">
+                  <div class="post-date">
+                    <i class="fal fa-calendar-alt"></i>
+                    {{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-xl-4 col-md-6">
-          <div class="single-blog-item">
-            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/RSKK-Jabar.jpg')">
-              <div class="post-cat">
-                <a href="news.html">Web Development</a>
-              </div>
-            </div>
-            <div class="content">
-              <h3><a href="news-details.html">Tips to Lowering Freight Shipping Costs</a></h3>
-              <p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
-                enjoy the view of the ocean</p>
-
-              <div class="post-meta d-flex align-items-center">
-                <div class="post-date">
-                  <i class="fal fa-calendar-alt"></i>Jan 25, 2023
-                </div>
-                <div class="post-author">
-                  <i class="fal fa-user-alt"></i> by <a href="#">admin</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-md-6">
-          <div class="single-blog-item">
-            <div class="post-featured-thumb bg-cover" style="background-image: url('assets/img/RSKK-Jabar.jpg')">
-              <div class="post-cat">
-                <a href="news.html">IT Services</a>
-              </div>
-            </div>
-            <div class="content">
-              <h3><a href="news-details.html">10 Best IT Technology Solution Agency 2023</a></h3>
-              <p>We're going to be pulling up to the hotel in just a few minutes. Please sit back and
-                enjoy the view of the ocean</p>
-
-              <div class="post-meta d-flex align-items-center">
-                <div class="post-date">
-                  <i class="fal fa-calendar-alt"></i>Feb 14, 2023
-                </div>
-                <div class="post-author">
-                  <i class="fal fa-user-alt"></i> by <a href="#">admin</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
