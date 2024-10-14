@@ -18,7 +18,7 @@ class InformasiPublikController extends Controller
     public function index()
     {
         $information_public = InformasiPublik::latest()->paginate(5);
-        return view('admin.informasipublik.index', compact('information_public'));
+        return view('admin.menuUtama.informasiPublik.index', compact('information_public'));
     }
 
     /**
@@ -28,7 +28,7 @@ class InformasiPublikController extends Controller
     {
         $categories = Reference::where('slug', 'informasi')->get();
         $storages = Reference::where('slug', 'penyimpanan')->get();
-        return view('admin.informasipublik.create', compact(['categories', 'storages']));
+        return view('admin.menuUtama.informasiPublik.create', compact(['categories', 'storages']));
     }
 
     /**
@@ -82,7 +82,7 @@ class InformasiPublikController extends Controller
     {
         $categories = Reference::where('slug', 'informasi')->get();
         $storages = Reference::where('slug', 'penyimpanan')->get();
-        return view('admin.informasipublik.edit', compact(['informasiPublik','categories', 'storages']));
+        return view('admin.menuUtama.informasiPublik.edit', compact(['informasiPublik','categories', 'storages']));
     }
 
     /**

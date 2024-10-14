@@ -1,7 +1,6 @@
 <section class="hero-wrapper hero-1 text-center text-md-start">
   <div class="hero-slider-active">
-    {{-- @dd(App\Models\BackgroundImage::where('slug', 'banner')->latest()->get()) --}}
-    @foreach (App\Models\BackgroundImage::where('slug', 'banner')->latest()->get() as $item)
+    @foreach (App\Models\BackgroundImage::where('slug', 'banner')->take(3)->latest()->get() as $item)
       <div class="single-slide">
         <div class="slide-bg bg-cover wow zoomIn" style="background-image: url('/storage/{{ $item->image }}' );">
         </div>

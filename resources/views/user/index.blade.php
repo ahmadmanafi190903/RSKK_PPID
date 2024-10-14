@@ -93,7 +93,7 @@
           </div>
           <div class="faq-accordion">
             <div class="accordion" id="accordion">
-              @foreach (App\Models\QuestAnswar::all() as $key => $item)
+              @foreach (App\Models\QuestAnswer::all() as $key => $item)
                 <div class="accordion-item">
                   <h4 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

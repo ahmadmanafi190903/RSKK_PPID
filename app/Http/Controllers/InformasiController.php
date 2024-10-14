@@ -12,7 +12,8 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        //
+        $informations = Informasi::latest()->get();
+        return view('admin.properties.informasi.index', compact('informations'));
     }
 
     /**
@@ -20,7 +21,7 @@ class InformasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.properties.informasi.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class InformasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'url' => 'required',
+        ], $this->feedback_validate);
+
+        Informasi::create($validatedData);
+
+        return redirect('/informasi')->with('success', 'Informasi baru telah ditambahkan!');
     }
 
     /**
@@ -44,7 +52,9 @@ class InformasiController extends Controller
      */
     public function edit(Informasi $informasi)
     {
-        //
+        return view('admin.properties.informasi.edit', [
+            'item' => $informasi
+        ]);
     }
 
     /**
@@ -52,7 +62,14 @@ class InformasiController extends Controller
      */
     public function update(Request $request, Informasi $informasi)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'url' => 'required'
+        ], $this->feedback_validate);
+
+        $informasi->update($validatedData);
+
+        return redirect('/informasi')->with('success', 'Informasi telah diperbarui!');
     }
 
     /**
@@ -60,6 +77,7 @@ class InformasiController extends Controller
      */
     public function destroy(Informasi $informasi)
     {
-        //
+        $informasi->delete();
+        return redirect('/informasi')->with('success', 'Informasi telah dihapus!');
     }
 }

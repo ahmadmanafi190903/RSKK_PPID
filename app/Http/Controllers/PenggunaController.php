@@ -13,7 +13,7 @@ class PenggunaController extends Controller
     public function index()
     {
         $users = User::latest()->get();
-        return view('admin.pengguna.index', ['users' => $users]);
+        return view('admin.menuUtama.pengguna.index', compact('users'));
     }
 
     /**

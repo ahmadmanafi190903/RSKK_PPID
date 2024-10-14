@@ -64,7 +64,7 @@
               <p>Jumlah Informasi Publik</p>
             </div>
             <div class="icon">
-              <i class="nav-icon fas fa-triangle"></i>
+              <i class="nav-icon fas fa-file-user"></i>
             </div>
             <a href="/informasi_publik" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>

@@ -1,17 +1,25 @@
 <?php
 
-use App\Http\Controllers\BackgroundImageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BackgroundImageController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PermohonanInformasiController;
 use App\Http\Controllers\PengajuanKeberatanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\InfoFormController;
+use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\InformasiPublikController;
 use App\Http\Controllers\InformasiPublikDetailController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\QuestAnswerController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\SubmenuController;
+use App\Http\Controllers\VideoController;
 
 //user
 Route::get('/',[DashboardController::class, 'home']);
@@ -74,10 +82,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/email', [EmailController::class, 'index'])->middleware('role:super_admin,admin');
     Route::get('/email/{permohonanInformasi}/send', [EmailController::class, 'send'])->middleware('role:super_admin,admin');
 
-    //rating
+    // rating
     Route::get('/rating', [RatingController::class, 'index'])->middleware('role:super_admin');
     Route::post('/rating/{rating}/post', [RatingController::class, 'post'])->middleware('role:super_admin');
     Route::post('/rating/{rating}/notpost', [RatingController::class, 'notpost'])->middleware('role:super_admin');
+
+    // berita
+    Route::get('/berita', [BeritaController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/berita/create', [BeritaController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/berita', [BeritaController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/berita/{berita}', [BeritaController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/berita/{berita}', [BeritaController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->middleware('role:super_admin');
 
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');
@@ -91,13 +107,73 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->middleware('role:super_admin');
 
     // submenu
-    Route::get('/submenu', [SubmenuController::class, 'index'])->middleware('role:super_admin');
-    Route::get('/submenu/create', [SubmenuController::class, 'create'])->middleware('role:super_admin');
+    Route::get('/submenu/{menuId}', [SubmenuController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/submenu/{menuId}/create', [SubmenuController::class, 'create'])->middleware('role:super_admin');
     Route::post('/submenu', [SubmenuController::class, 'store'])->middleware('role:super_admin');
     Route::delete('/submenu/{submenu}', [SubmenuController::class, 'destroy'])->middleware('role:super_admin');
     Route::get('/submenu/{submenu}/edit', [SubmenuController::class, 'edit'])->middleware('role:super_admin');
     Route::patch('/submenu/{submenu}', [SubmenuController::class, 'update'])->middleware('role:super_admin');
 
     // image
-    Route::get('/image/{slug}',[BackgroundImageController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/image_video',[BackgroundImageController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/image/{slug}/create',[BackgroundImageController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/image',[BackgroundImageController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/image/{slug}/{backgroundImage}/edit',[BackgroundImageController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/image/{backgroundImage}',[BackgroundImageController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/image/{backgroundImage}',[BackgroundImageController::class, 'destroy'])->middleware('role:super_admin');
+
+    // video
+    Route::get('/video/create', [VideoController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/video', [VideoController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/video/{video}/edit', [VideoController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/video/{video}', [VideoController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/video/{video}', [VideoController::class, 'destroy'])->middleware('role:super_admin');
+
+    // cards
+    Route::get('/cards', [CardController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/cards/create', [CardController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/cards', [CardController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/cards/{card}/edit', [CardController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/cards/{card}', [CardController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware('role:super_admin');
+
+    // info forms
+    Route::get('/info_forms', [InfoFormController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/info_forms/create', [InfoFormController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/info_forms', [InfoFormController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/info_forms/{infoForm}/edit', [InfoFormController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/info_forms/{infoForm}', [InfoFormController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/info_forms/{infoForm}', [InfoFormController::class, 'destroy'])->middleware('role:super_admin');
+
+    // quest answare
+    Route::get('/quest_answer', [QuestAnswerController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/quest_answer/create', [QuestAnswerController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/quest_answer', [QuestAnswerController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/quest_answer/{questAnswer}/edit', [QuestAnswerController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/quest_answer/{questAnswer}', [QuestAnswerController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/quest_answer/{questAnswer}', [QuestAnswerController::class, 'destroy'])->middleware('role:super_admin');
+
+    // informasi
+    Route::get('/informasi', [InformasiController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/informasi/create', [InformasiController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/informasi', [InformasiController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/informasi/{informasi}/edit', [InformasiController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/informasi/{informasi}', [InformasiController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/informasi/{informasi}', [InformasiController::class, 'destroy'])->middleware('role:super_admin');
+
+    // sosmed
+    Route::get('/sosmed', [SosmedController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/sosmed/create', [SosmedController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/sosmed', [SosmedController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/sosmed/{sosmed}/edit', [SosmedController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/sosmed/{sosmed}', [SosmedController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/sosmed/{sosmed}', [SosmedController::class, 'destroy'])->middleware('role:super_admin');
+
+    // contact
+    Route::get('/kontak', [ContactController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/kontak/create', [ContactController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/kontak', [ContactController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/kontak/{contact}/edit', [ContactController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/kontak/{contact}', [ContactController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/kontak/{contact}', [ContactController::class, 'destroy'])->middleware('role:super_admin');
 });

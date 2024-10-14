@@ -18,7 +18,7 @@ class PengajuanKeberatanController extends Controller
     public function index()
     {
         $submission = PengajuanKeberatan::latest()->paginate(5);
-        return view('admin.pengajuankeberatan.index', compact('submission'));
+        return view('admin.menuUtama.pengajuanKeberatan.index', compact('submission'));
     }
     
     /**
@@ -76,7 +76,7 @@ class PengajuanKeberatanController extends Controller
             ]);
             $pengajuanKeberatan->refresh();
         }
-        return view('admin.pengajuankeberatan.show', [
+        return view('admin.menuUtama.pengajuanKeberatan.show', [
             'item' => $pengajuanKeberatan
         ]);
     }
@@ -105,7 +105,7 @@ class PengajuanKeberatanController extends Controller
     public function edit(PengajuanKeberatan $pengajuanKeberatan)
     {
         $reason = Reference::where('slug', 'pengajuan')->get();
-        return view('admin.pengajuankeberatan.edit', compact('reason', 'pengajuanKeberatan'));
+        return view('admin.menuUtama.pengajuanKeberatan.edit', compact('reason', 'pengajuanKeberatan'));
     }
 
     /**

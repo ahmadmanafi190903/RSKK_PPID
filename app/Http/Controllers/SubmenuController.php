@@ -11,19 +11,20 @@ class SubmenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $menuId)
     {
-        $submenus = Submenu::with('menu')->latest()->get();
-        return view('admin.submenu.index', ['submenus' => $submenus]);
+        $submenus = Submenu::with('menu')->latest()->get()->where('menu_id', $menuId);
+        $menu = Menu::select(['id', 'nama'])->find($menuId);
+        // dd($menu);
+        return view('admin.properties.menu.submenu.index', compact('submenus', 'menu'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $menuId)
     {
-        $menus = Menu::all();
-        return view('admin.submenu.create', ['menus' => $menus]);
+        return view('admin.properties.menu.submenu.create', compact('menuId'));
     }
 
     /**
@@ -44,7 +45,7 @@ class SubmenuController extends Controller
             'menu_id' => $request->menu_id,
         ]);
 
-        return redirect('/submenu')->with('success', 'Sub Menu Berhasil Dibuat.');
+        return redirect('/submenu/' . $request->menu_id)->with('success', 'Sub Menu Berhasil Dibuat.');
     }
 
     /**
@@ -60,10 +61,8 @@ class SubmenuController extends Controller
      */
     public function edit(Submenu $submenu)
     {
-        $menus = Menu::all();
-        return view('admin.submenu.edit', [
-            'submenu' => $submenu,
-            'menus' => $menus,
+        return view('admin.properties.menu.submenu.edit', [
+            'item' => $submenu
         ]);
     }
 
@@ -75,24 +74,23 @@ class SubmenuController extends Controller
         $request->validate([
             'nama' => 'required|max:255',
             'url' => 'nullable|max:255',
-            'menu_id' => 'required',
         ],$this->feedback_validate);
 
         $submenu->update([
             'nama' => $request->nama,
             'url' => $request->url,
-            'menu_id' => $request->menu_id,
+            'menu_id' => $submenu->menu_id,
         ]);
 
-        return redirect('/submenu')->with('success', 'Sub Menu Berhasil Diubah.');
+        return redirect('/submenu/' . $submenu->menu_id)->with('success', 'Sub Menu Berhasil Diubah.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( Submenu $submenu)
+    public function destroy(Submenu $submenu)
     {
         $submenu->delete();
-        return redirect('/submenu')->with('success', 'Data berhasil dihapus');
+        return redirect('/submenu/' . $submenu->menu_id)->with('success', 'Data berhasil dihapus');
     }
 }

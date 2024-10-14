@@ -17,7 +17,7 @@ class InformasiPublikDetailController extends Controller
     {
         $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->latest()->paginate(10);
         $infoPublik = InformasiPublik::select('ringkasan_informasi')->where('id', $informasiPublikId)->first();
-        return view('admin.informasipublikdetail.index', compact('details', 'informasiPublikId', 'infoPublik'));
+        return view('admin.menuUtama.informasiPublik.informasiPublikDetail.index', compact('details', 'informasiPublikId', 'infoPublik'));
     }
 
     /**
@@ -25,7 +25,7 @@ class InformasiPublikDetailController extends Controller
      */
     public function create(string $informasiPublikId)
     {
-        return view('admin.informasipublikdetail.create', compact('informasiPublikId'));
+        return view('admin.menuUtama.informasiPublik.informasiPublikDetail.create', compact('informasiPublikId'));
     }
 
     /**
@@ -69,7 +69,7 @@ class InformasiPublikDetailController extends Controller
      */
     public function edit(string $informasiPublikId, InformasiPublikDetail $informasiPublikDetail)
     {
-        return view('admin.informasipublikdetail.edit', compact('informasiPublikId','informasiPublikDetail'));
+        return view('admin.menuUtama.informasiPublik.informasiPublikDetail.edit', compact('informasiPublikId','informasiPublikDetail'));
     }
 
     /**

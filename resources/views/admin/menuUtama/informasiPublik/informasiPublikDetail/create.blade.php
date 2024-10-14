@@ -16,13 +16,13 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/informasi_publik/{{ $informasipublikid }}/detail" method="post" enctype="multipart/form-data">
+      <form action="/informasi_publik/{{ $informasiPublikId }}/detail" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-body table-responsive p-3">
-                <input type="hidden" value="{{ $informasipublikid }}" name="informasi_publik_id">
+                <input type="hidden" value="{{ $informasiPublikId }}" name="informasi_publik_id">
                 <div class="mb-4">
                   <label for="tahun">
                     <h5 class="mb-0">Tahun</h5>
@@ -80,7 +80,7 @@
                   @enderror
                 </div>
                 
-                <a href="/informasi_publik/{{ $informasipublikid }}/detail" class="btn btn-secondary">kembali</a>
+                <a href="/informasi_publik/{{ $informasiPublikId }}/detail" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Buat</button>
               </div>
             </div>

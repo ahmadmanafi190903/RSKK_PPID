@@ -12,7 +12,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::latest()->get();
+        return view('admin.properties.contact.index', compact('contacts'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.properties.contact.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $validatedData = $request->validate([
+        'address' => 'required',
+        'icon' => 'required',
+    ], $this->feedback_validate);
+
+    Contact::create($validatedData);
+
+    return redirect('/kontak')->with('success', 'Kontak baru berhasil dibuat.');
     }
 
     /**
@@ -44,7 +52,9 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('admin.properties.contact.edit', [
+            'item' => $contact
+        ]);
     }
 
     /**
@@ -52,7 +62,14 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $validatedData = $request->validate([
+            'address' => 'required',
+            'icon' => 'required',
+        ], $this->feedback_validate);
+
+        $contact->update($validatedData);
+
+        return redirect('/kontak')->with('success', 'Kontak berhasil diubah.');
     }
 
     /**
@@ -60,6 +77,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect('/kontak')->with('success', 'Kontak berhasil dihapus.');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\sosmed;
+use App\Models\Sosmed;
 use Illuminate\Http\Request;
 
 class SosmedController extends Controller
@@ -12,7 +12,8 @@ class SosmedController extends Controller
      */
     public function index()
     {
-        //
+        $sosmeds = Sosmed::latest()->get();
+        return view('admin.properties.sosmed.index', compact('sosmeds'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SosmedController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.properties.sosmed.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class SosmedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $validatedData = $request->validate([
+        'nama' => 'required|string|max:255',
+        'link' => 'required|url',
+        'icon' => 'required',
+    ], $this->feedback_validate);
+
+    Sosmed::create($validatedData);
+
+    return redirect('/sosmed')->with('success', 'Sosial media baru berhasil ditambahkan!');
     }
 
     /**
@@ -44,7 +53,9 @@ class SosmedController extends Controller
      */
     public function edit(sosmed $sosmed)
     {
-        //
+        return view('admin.properties.sosmed.edit', [
+            'item' => $sosmed
+        ]);
     }
 
     /**
@@ -52,7 +63,15 @@ class SosmedController extends Controller
      */
     public function update(Request $request, sosmed $sosmed)
     {
-        //
+    $validatedData = $request->validate([
+        'nama' => 'required|string|max:255',
+        'link' => 'required|url',
+        'icon' => 'required',
+    ], $this->feedback_validate);
+
+    $sosmed->update($validatedData);
+
+    return redirect('/sosmed')->with('success', 'Sosial media berhasil diupdate!');
     }
 
     /**
@@ -60,6 +79,7 @@ class SosmedController extends Controller
      */
     public function destroy(sosmed $sosmed)
     {
-        //
+        $sosmed->delete();
+        return redirect('/sosmed')->with('success', 'Sosial media berhasil dihapus!');
     }
 }

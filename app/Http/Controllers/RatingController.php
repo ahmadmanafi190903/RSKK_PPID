@@ -11,7 +11,7 @@ class RatingController extends Controller
     {
         $ratings = Rating::latest()->paginate(5);
         // dd($rating);
-        return view('admin.rating.index', compact('ratings'));
+        return view('admin.menuUtama.rating.index', compact('ratings'));
     }
 
     public function post(Rating $rating)

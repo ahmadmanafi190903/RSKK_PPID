@@ -11,7 +11,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="/dist/img/33.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="/assets/img/pp_rating.webp" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -64,7 +64,7 @@
         </li>
         <li class="nav-item">
           <a href="/informasi_publik" class="nav-link">
-            <i class="nav-icon fas fa-triangle"></i>
+            <i class="nav-icon fas fa-file-user"></i>
             <p>
               Informasi Publik
             </p>
@@ -72,7 +72,7 @@
         </li>
         <li class="nav-item">
           <a href="/email" class="nav-link">
-            <i class="nav-icon fas fa-mail-bulk"></i>
+            <i class="nav-icon far fa-envelope-open-text"></i>
             <p>
               Kirim Email
             </p>
@@ -86,7 +86,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-header">PENGGUNA</li>
+        {{-- <li class="nav-header">PENGGUNA</li> --}}
         <li class="nav-item">
           <a href="/pengguna" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
@@ -95,49 +95,63 @@
             </p>
           </a>
         </li>
-        <li class="nav-header">KONFIGURASI</li>
+        <li class="nav-header">PROPERTIES</li>
         <li class="nav-item">
           <a href="/menu" class="nav-link">
-            <i class="nav-icon fas fa-bars"></i>
+            <i class="nav-icon fas fa-home"></i>
             <p>Menu</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/submenu" class="nav-link">
-            <i class="nav-icon fas fa-bars"></i>
-            <p>Sub Menu</p>
+          <a href="/image_video" class="nav-link">
+            <i class="nav-icon fas fa-photo-video"></i>
+            <p>Image dan Video</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/image/logo" class="nav-link">
-            <i class="nav-icon fas fa-bars"></i>
-            <p>Image Logo</p>
+          <a href="/cards" class="nav-link">
+            <i class="nav-icon fas fa-credit-card-blank"></i>
+            <p>Cards</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/image" class="nav-link">
-            <i class="nav-icon fas fa-bars"></i>
-            <p>Image Carousel</p>
+          <a href="/cards" class="nav-link">
+            <i class="nav-icon fas fa-poll-people"></i>
+            <p>Info Layanan</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/image" class="nav-link">
-            <i class="nav-icon fas fa-bars"></i>
-            <p>Image Thumbnail</p>
+          <a href="/quest_answer" class="nav-link">
+            <i class="nav-icon fas fa-question-square"></i>
+            <p>Pertanyaan Jawaban</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/image" class="nav-link">
-            <i class="nav-icon fas fa-bars"></i>
-            <p>Image Q&A</p>
+          <a href="/informasi" class="nav-link">
+            <i class="nav-icon fas fa-info-circle"></i>
+            <p>Informasi</p>
           </a>
         </li>
-        {{-- <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
-            <p>Pemohon</p>
+        <li class="nav-item">
+          <a href="/sosmed" class="nav-link">
+            <i class="nav-icon fas fa-thumbs-up"></i>
+            <p>Sosial Media</p>
           </a>
-        </li> --}}
+        </li>
+        <li class="nav-item">
+          <a href="/kontak" class="nav-link">
+            <i class="nav-icon fas fa-phone-alt"></i>
+            <p>Kontak</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/berita" class="nav-link">
+            <i class="nav-icon fas fa-newspaper"></i>
+            <p>
+              Berita
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

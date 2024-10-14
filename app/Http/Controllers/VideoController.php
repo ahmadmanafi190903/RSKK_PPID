@@ -20,7 +20,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.properties.imageVideo.video.create');
     }
 
     /**
@@ -28,7 +28,15 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'url' => 'required|url'
+        ], $this->feedback_validate);
+
+        Video::create([
+            'url' => $request->url
+        ]);
+
+        return redirect('/image_video')->with('success', 'Video berhasil ditambahkan.');
     }
 
     /**
@@ -44,7 +52,9 @@ class VideoController extends Controller
      */
     public function edit(Video $video)
     {
-        //
+        return view('admin.properties.imagevideo.video.edit', [
+            'item' => $video
+        ]);
     }
 
     /**
@@ -52,7 +62,15 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-        //
+        $request->validate([
+            'url' => 'required|url'
+        ], $this->feedback_validate);
+
+        $video->update([
+            'url' => $request->url
+        ]);
+
+        return redirect('/image_video')->with('success', 'Video berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +78,7 @@ class VideoController extends Controller
      */
     public function destroy(Video $video)
     {
-        //
+        $video->delete();
+        return redirect('/image_video')->with('success', 'Video berhasil dihapus.');
     }
 }

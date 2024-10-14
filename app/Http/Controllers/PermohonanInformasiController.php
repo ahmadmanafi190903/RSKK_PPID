@@ -23,7 +23,7 @@ class PermohonanInformasiController extends Controller
     public function index()
     {
         $information = PermohonanInformasi::latest()->paginate(5);
-        return view('admin.permohonaninformasi.index', compact('information'));
+        return view('admin.menuUtama.permohonanInformasi.index', compact('information'));
     }
 
     /**
@@ -92,7 +92,7 @@ class PermohonanInformasiController extends Controller
             ]);
             $permohonanInformasi->refresh();
         }
-        return view('admin.permohonaninformasi.show', ['item' => $permohonanInformasi]);
+        return view('admin.menuUtama.permohonanInformasi.show', ['item' => $permohonanInformasi]);
     }
 
     public function reject(Request $request, PermohonanInformasi $permohonanInformasi)
@@ -142,7 +142,7 @@ class PermohonanInformasiController extends Controller
     {
         $getInformation = Reference::where('slug', 'memperoleh')->get();
         $copyInformation = Reference::where('slug', 'mendapat')->get();
-       return view('admin.permohonaninformasi.edit', compact('getInformation', 'copyInformation', 'permohonanInformasi'));
+       return view('admin.menuUtama.permohonanInformasi.edit', compact('getInformation', 'copyInformation', 'permohonanInformasi'));
     }
 
     /**

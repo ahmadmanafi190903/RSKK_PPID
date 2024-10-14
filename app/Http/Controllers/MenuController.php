@@ -13,7 +13,7 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::latest()->get();
-        return view('admin.menu.index', ['menus' => $menus]);
+        return view('admin.properties.menu.index', compact('menus'));
     }
 
     /**
@@ -21,7 +21,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('admin.menu.create');
+        return view('admin.properties.menu.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        return view('admin.menu.edit', ['menu' => $menu]);
+        return view('admin.properties.menu.edit', compact('menu'));
     }
 
     /**
@@ -81,7 +81,6 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        // @dd($menu->child->count());
         if($menu->child->count() > 0){
             return redirect('/menu')->with('failed', 'Tidak bisa dihapus, karena masih ada submenu');
         } else {

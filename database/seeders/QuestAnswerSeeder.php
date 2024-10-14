@@ -6,14 +6,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class QuestAnswarSeeder extends Seeder
+class QuestAnswerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('quest_answars')->insert([
+        DB::table('quest_answers')->insert([
             [
                 'judul' => 'Apa itu ppid?',
                 'deskripsi' => 'PPID atau Pejabat Pengelola Informasi dan Dokumentasi adalah pejabat yang bertanggung jawab dalam

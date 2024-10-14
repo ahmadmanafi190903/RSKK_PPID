@@ -7,9 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <h1 class="m-0">Sub Menu</h1>
+            <h1 class="m-0">Sosial Media</h1>
             @if (Auth::user()->role == 'super_admin')
-              <a href="/submenu/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/sosmed/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -23,8 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Submenu</h3>
-
+              <h3 class="card-title">Data Sosial Media</h3>
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control float-right" id="searchInput"
@@ -41,35 +40,41 @@
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-center">
                 <thead>
-                  <tr>
-                    <th class="align-middle">no</th>
+                  <tr class="text-center">
+                    <th class="align-middle">No</th>
                     <th class="align-middle">Nama</th>
-                    <th class="align-middle">URL</th>
-                    <th class="align-middle">Ke Menu</th>
-                    <th class="align-middle">Aksi</th>
+                    <th class="align-middle">Icon</th>
+                    <th class="align-middle">Link</th>
+                    @if (Auth::user()->role == 'super_admin')
+                      <th class="align-middle">Action</th>
+                    @endif
                   </tr>
                 </thead>
                 <tbody id="contentArea">
-                  @foreach ($submenus as $item)
+                  @foreach ($sosmeds as $item)
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
                       <td class="align-middle">{{ $item->nama }}</td>
-                      <td class="align-middle">{{ $item->url }}</td>
-                      <td class="align-middle">{{ $item->menu->nama }}</td>
                       <td class="align-middle">
-                        <div>
-                          @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                            <a href="/submenu/{{ $item->id }}/edit"
-                              class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                            <form action="/submenu/{{ $item->id }}" method="post">
-                              @csrf
-                              @method('delete')
-                              <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
-                                  class="nav-icon fas fa-trash"></i></button>
-                            </form>
-                          @endif
-                        </div>
+                        <div class="btn btn-primary disabled">{!! $item->icon !!}</div>
+                      </td>
+                      <td class="align-middle">
+                        <a href="{{ $item->link }}" class="btn btn-primary" target="_black"><i class="fas fa-link"></i></a>
+                      </td>
+                      <td class="align-middle">
+                        @if (Auth::user()->role == 'super_admin')
+                          <a href="/sosmed/{{ $item->id }}/edit" class="btn btn-warning my-1">
+                            <i class="nav-icon fas fa-pencil"></i>
+                          </a>
+                          <form action="/sosmed/{{ $item->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger"
+                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                              <i class="nav-icon fas fa-trash"></i>
+                            </button>
+                          </form>
+                        @endif
                       </td>
                     </tr>
                   @endforeach
@@ -78,14 +83,10 @@
             </div>
             <!-- /.card-body -->
           </div>
-          
-          {{-- {{ $information->links('pagination::bootstrap-5') }} --}}
           <!-- /.card -->
         </div>
       </div>
     </section>
     <!-- /.content -->
   </div>
-
-  
 @endsection

@@ -7,10 +7,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <h1 class="m-0">Image</h1>
-            {{-- @if (Auth::user()->role == 'super_admin')
-              <a href="/menu/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
-            @endif --}}
+            <h1 class="m-0">Informasi</h1>
+            @if (Auth::user()->role == 'super_admin')
+              <a href="/informasi/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+            @endif
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -23,8 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Background Image</h3>
-
+              <h3 class="card-title">Data Informasi</h3>
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control float-right" id="searchInput"
@@ -41,48 +40,47 @@
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-center">
                 <thead>
-                  <tr>
-                    <th class="align-middle">no</th>
-                    <th class="align-middle">image</th>
-                    <th class="align-middle">Aksi</th>
+                  <tr class="text-center">
+                    <th class="align-middle">No</th>
+                    <th class="align-middle">Nama</th>
+                    <th class="align-middle">Url</th>
+                    @if (Auth::user()->role == 'super_admin')
+                      <th class="align-middle">Action</th>
+                    @endif
                   </tr>
                 </thead>
                 <tbody id="contentArea">
-                  {{-- @foreach ($menus as $item)
+                  @foreach ($informations as $item)
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
                       <td class="align-middle">{{ $item->nama }}</td>
                       <td class="align-middle">{{ $item->url }}</td>
                       <td class="align-middle">
-                        <div>
-                          @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                            <a href="/menu/{{ $item->id }}/edit"
-                              class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                            <form action="/menu/{{ $item->id }}" method="post">
-                              @csrf
-                              @method('delete')
-                              <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
-                                  class="nav-icon fas fa-trash"></i></button>
-                            </form>
-                          @endif
-                        </div>
+                        @if (Auth::user()->role == 'super_admin')
+                          <a href="/informasi/{{ $item->id }}/edit" class="btn btn-warning my-1">
+                            <i class="nav-icon fas fa-pencil"></i>
+                          </a>
+                          <form action="/informasi/{{ $item->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger"
+                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                              <i class="nav-icon fas fa-trash"></i>
+                            </button>
+                          </form>
+                        @endif
                       </td>
                     </tr>
-                  @endforeach --}}
+                  @endforeach
                 </tbody>
               </table>
             </div>
             <!-- /.card-body -->
           </div>
-          
-          {{-- {{ $information->links('pagination::bootstrap-5') }} --}}
           <!-- /.card -->
         </div>
       </div>
     </section>
     <!-- /.content -->
   </div>
-
-  
 @endsection

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             // KategoriSeeder::class,
             MenuSeeder::class,
             SubmenuSeeder::class,
-            QuestAnswarSeeder::class,
+            QuestAnswerSeeder::class,
             SosmedSeeder::class,
             BackgroundImageSeeder::class,
             ReferencesSeeder::class,
