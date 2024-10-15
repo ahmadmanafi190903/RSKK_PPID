@@ -10,7 +10,7 @@ use App\Http\Controllers\PengajuanKeberatanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
-use App\Http\Controllers\InfoFormController;
+use App\Http\Controllers\InfoServiceController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\InformasiPublikController;
 use App\Http\Controllers\InformasiPublikDetailController;
@@ -137,13 +137,13 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/cards/{card}', [CardController::class, 'update'])->middleware('role:super_admin');
     Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware('role:super_admin');
 
-    // info forms
-    Route::get('/info_forms', [InfoFormController::class, 'index'])->middleware('role:super_admin');
-    Route::get('/info_forms/create', [InfoFormController::class, 'create'])->middleware('role:super_admin');
-    Route::post('/info_forms', [InfoFormController::class, 'store'])->middleware('role:super_admin');
-    Route::get('/info_forms/{infoForm}/edit', [InfoFormController::class, 'edit'])->middleware('role:super_admin');
-    Route::patch('/info_forms/{infoForm}', [InfoFormController::class, 'update'])->middleware('role:super_admin');
-    Route::delete('/info_forms/{infoForm}', [InfoFormController::class, 'destroy'])->middleware('role:super_admin');
+    // info services
+    Route::get('/info_services', [InfoServiceController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/info_services/create', [InfoServiceController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/info_services', [InfoServiceController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/info_services/{infoService}/edit', [InfoServiceController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/info_services/{infoService}', [InfoServiceController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/info_services/{infoService}', [InfoServiceController::class, 'destroy'])->middleware('role:super_admin');
 
     // quest answare
     Route::get('/quest_answer', [QuestAnswerController::class, 'index'])->middleware('role:super_admin');

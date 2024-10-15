@@ -16,7 +16,7 @@
           <div class="col-xl-3 col-md-6 col-12">
             <div class="single-service-box">
               <div class="icon">
-                <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" width="72">
+                <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" height="100">
               </div>
               <h4><a href="{{ $item->url }}">{{ $item->judul }}</a></h4>
               <p>{{ $item->deskripsi }}</p>
@@ -51,10 +51,10 @@
           </div>
 
           <div class="row">
-            @foreach ($infoForms as $item)
+            @foreach ($infoServices as $item)
               <div class="col-md-6 col-sm-6">
                 <div class="info-icon-item">
-                  <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" width="72">
+                  <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" height="100">
                   <h3>{{ $item->judul }}</h3>
                   <p>{{ $item->deskripsi }}</p>
                   <a href="{{ $item->url }}" class="theme-btn mt-30">{{ $item->nama_button }}</a>

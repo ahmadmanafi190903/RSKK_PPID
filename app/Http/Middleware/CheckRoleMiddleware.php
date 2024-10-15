@@ -20,6 +20,6 @@ class CheckRoleMiddleware
             return $next($request);
         }
 
-        return response()->json('tidak boleh');
+        return response()->view('admin.error.403', [], 403);
     }
 }

@@ -115,7 +115,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="/cards" class="nav-link">
+          <a href="/info_services" class="nav-link">
             <i class="nav-icon fas fa-poll-people"></i>
             <p>Info Layanan</p>
           </a>
