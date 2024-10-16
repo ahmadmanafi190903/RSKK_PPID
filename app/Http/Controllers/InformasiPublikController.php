@@ -17,7 +17,11 @@ class InformasiPublikController extends Controller
      */
     public function index()
     {
-        $information_public = InformasiPublik::latest()->paginate(5);
+        $information_public = InformasiPublik::latest();
+        if (request('cari')) {
+            $information_public = $information_public->where('ringkasan_informasi', 'like', '%' . request('cari') . '%');
+        }
+        $information_public = $information_public->paginate(5);
         return view('admin.menuUtama.informasiPublik.index', compact('information_public'));
     }
 

@@ -13,7 +13,12 @@ class SubmenuController extends Controller
      */
     public function index(string $menuId)
     {
-        $submenus = Submenu::with('menu')->latest()->get()->where('menu_id', $menuId);
+        $submenus = Submenu::with('menu')->where('menu_id', $menuId);
+        if (request('cari')) {
+            $submenus = $submenus->where('nama', 'like', '%' . request('cari') . '%');
+        }
+        $submenus = $submenus->latest()->get();
+
         $menu = Menu::select(['id', 'nama'])->find($menuId);
         // dd($menu);
         return view('admin.properties.menu.submenu.index', compact('submenus', 'menu'));

@@ -10,6 +10,7 @@ use App\Http\Controllers\PengajuanKeberatanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\InfoBannerController;
 use App\Http\Controllers\InfoServiceController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\InformasiPublikController;
@@ -87,14 +88,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/rating/{rating}/post', [RatingController::class, 'post'])->middleware('role:super_admin');
     Route::post('/rating/{rating}/notpost', [RatingController::class, 'notpost'])->middleware('role:super_admin');
 
-    // berita
-    Route::get('/berita', [BeritaController::class, 'index'])->middleware('role:super_admin');
-    Route::get('/berita/create', [BeritaController::class, 'create'])->middleware('role:super_admin');
-    Route::post('/berita', [BeritaController::class, 'store'])->middleware('role:super_admin');
-    Route::get('/berita/{berita}', [BeritaController::class, 'edit'])->middleware('role:super_admin');
-    Route::patch('/berita/{berita}', [BeritaController::class, 'update'])->middleware('role:super_admin');
-    Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->middleware('role:super_admin');
-
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');
 
@@ -107,12 +100,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->middleware('role:super_admin');
 
     // submenu
-    Route::get('/submenu/{menuId}', [SubmenuController::class, 'index'])->middleware('role:super_admin');
-    Route::get('/submenu/{menuId}/create', [SubmenuController::class, 'create'])->middleware('role:super_admin');
-    Route::post('/submenu', [SubmenuController::class, 'store'])->middleware('role:super_admin');
-    Route::delete('/submenu/{submenu}', [SubmenuController::class, 'destroy'])->middleware('role:super_admin');
-    Route::get('/submenu/{submenu}/edit', [SubmenuController::class, 'edit'])->middleware('role:super_admin');
-    Route::patch('/submenu/{submenu}', [SubmenuController::class, 'update'])->middleware('role:super_admin');
+    Route::get('/menu/submenu/{menuId}', [SubmenuController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/menu/submenu/{menuId}/create', [SubmenuController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/menu/submenu', [SubmenuController::class, 'store'])->middleware('role:super_admin');
+    Route::delete('/menu/submenu/{submenu}', [SubmenuController::class, 'destroy'])->middleware('role:super_admin');
+    Route::get('/menu/submenu/{submenu}/edit', [SubmenuController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/menu/submenu/{submenu}', [SubmenuController::class, 'update'])->middleware('role:super_admin');
 
     // image
     Route::get('/image_video',[BackgroundImageController::class, 'index'])->middleware('role:super_admin');
@@ -137,6 +130,14 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/cards/{card}', [CardController::class, 'update'])->middleware('role:super_admin');
     Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware('role:super_admin');
 
+    // info banners
+    Route::get('/info_banners', [InfoBannerController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/info_banners/create', [InfoBannerController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/info_banners', [InfoBannerController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/info_banners/{infoBanner}/edit', [InfoBannerController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/info_banners/{infoBanner}', [InfoBannerController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/info_banners/{infoBanner}', [InfoBannerController::class, 'destroy'])->middleware('role:super_admin');
+
     // info services
     Route::get('/info_services', [InfoServiceController::class, 'index'])->middleware('role:super_admin');
     Route::get('/info_services/create', [InfoServiceController::class, 'create'])->middleware('role:super_admin');
@@ -153,6 +154,14 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/quest_answer/{questAnswer}', [QuestAnswerController::class, 'update'])->middleware('role:super_admin');
     Route::delete('/quest_answer/{questAnswer}', [QuestAnswerController::class, 'destroy'])->middleware('role:super_admin');
 
+    // berita
+    Route::get('/berita', [BeritaController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/berita/create', [BeritaController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/berita', [BeritaController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/berita/{berita}', [BeritaController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/berita/{berita}', [BeritaController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->middleware('role:super_admin');
+    
     // informasi
     Route::get('/informasi', [InformasiController::class, 'index'])->middleware('role:super_admin');
     Route::get('/informasi/create', [InformasiController::class, 'create'])->middleware('role:super_admin');

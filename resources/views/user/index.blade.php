@@ -33,8 +33,9 @@
       <div class="row">
         <div class="col-xl-6 col-12">
           <div class="about-images-video-popup mb-5 mb-md-0">
-            <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'thumbnail')->latest()->first()->image }}" alt="" width="600">
-            <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'thumbnail')->latest()->skip(1)->first()->image }}" alt="" width="380">
+            @foreach ($thumbnail as $index => $item)
+              <img src="/storage/{{ $item->image }}" alt="{{ $item->image }}" width="{{ $index == 0 ? '600' : '380' }}">
+            @endforeach
             <div class="video-play-btn">
               <a href="{{ $video->url }}" class="popup-video play-video"><i
                   class="fas fa-play"></i></a>
@@ -49,7 +50,6 @@
               diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk
               meningkatkan transparansi dan kualitas layanan.</p>
           </div>
-
           <div class="row">
             @foreach ($infoServices as $item)
               <div class="col-md-6 col-sm-6">
@@ -83,7 +83,7 @@
       <div class="row">
         <div class="col-xl-6 col-12 mb-5 mb-xl-0">
           <div class="faq-img">
-            <img src="/storage/{{ App\Models\BackgroundImage::where('slug', 'q&a')->latest()->first()->image }}" alt="q&a">
+            <img src="/storage/{{ $questAnswers->image }}" alt="q&a">
           </div>
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
@@ -93,7 +93,7 @@
           </div>
           <div class="faq-accordion">
             <div class="accordion" id="accordion">
-              @foreach (App\Models\QuestAnswer::all() as $key => $item)
+              @foreach ($quest as $key => $item)
                 <div class="accordion-item">
                   <h4 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

@@ -26,7 +26,7 @@ class SosmedSeeder extends Seeder
             ],
             [
                 'nama' => 'Instagram',
-                'link' => 'https://www.instagram.com/p/C66OXZaROVV/?igsh=MWFidGx4ejhwdWk5dQ==' ,
+                'link' => 'https://www.instagram.com/rskk_jabar/' ,
                 'icon' => '<i class="fab fa-instagram"></i>' 
             ],
             [

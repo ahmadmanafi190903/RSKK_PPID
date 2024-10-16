@@ -12,7 +12,11 @@ class SosmedController extends Controller
      */
     public function index()
     {
-        $sosmeds = Sosmed::latest()->get();
+        $sosmeds = Sosmed::latest();
+        if(request('cari')){
+            $sosmeds = $sosmeds->where('nama', 'like', '%' . request('cari') . '%');
+        }
+        $sosmeds = $sosmeds->get();
         return view('admin.properties.sosmed.index', compact('sosmeds'));
     }
 

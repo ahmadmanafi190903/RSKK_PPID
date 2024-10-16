@@ -5,17 +5,6 @@
       <div class="row justify-content-between">
 
         <div class="col-sm-6 col-xl-3">
-          <div class="about-quantech pe-md-5 pe-xl-0">
-            <a href="index.html">
-              <img src="{{ '/storage/' . App\Models\BackgroundImage::where('slug', 'logo')->latest()->first()->image }}" alt="quantech">
-            </a>
-            <p>PPID, memastikan
-              keterbukaan informasi Jembatan antara pemerintah dan masyarakat Kelola data dan dokumentasi dengan
-              transparan Patuhi UU Keterbukaan Informasi Publik Akses informasi publik menjadi lebih mudah.</p>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3">
           <div class="single-footer-wid ps-xl-5">
             <div class="wid-title">
               <h3>Informasi</h3>
@@ -61,6 +50,17 @@
           </div>
         </div>
 
+        <div class="col-sm-6 col-xl-3">
+          <div class="single-footer-wid site-info-widget">
+            <div class="wid-title">
+              <h3>Lokasi</h3>
+            </div>
+            <div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3544569347328!2d107.82366707481009!3d-6.967444893033135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c5a437bca979%3A0x2bc91d56650228c!2sRSUD%20KESEHATAN%20KERJA%20PROVINSI%20JAWA%20BARAT%2FRSKK!5e0!3m2!1sen!2sid!4v1729052018726!5m2!1sen!2sid" class="w-100" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@
         <div class="row">
           <div class="col-md-6 col-12">
             <div class="copy-rights">
-              <p>&copy;2024 <strong>RSUD</strong> Kesehatan Kerja</p>
+              <p>Copyright &copy; {{ date('Y') }} <strong>RSUD</strong> Kesehatan Kerja</p>
             </div>
           </div>
           <div class="col-md-6 mt-2 mt-md-0 col-12 text-md-end">

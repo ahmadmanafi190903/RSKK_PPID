@@ -14,8 +14,12 @@ class InfoServiceController extends Controller
      */
     public function index()
     {
-        $infoService = InfoService::latest()->get();
-        return view('admin.properties.infoServices.index', compact('infoService'));
+        $infoServices = InfoService::latest();
+        if (request('cari')) {
+            $infoServices = InfoService::where('judul', 'like', '%' . request('cari') . '%');
+        }
+        $infoServices = $infoServices->get();
+        return view('admin.properties.infoServices.index', compact('infoServices'));
     }
 
     /**

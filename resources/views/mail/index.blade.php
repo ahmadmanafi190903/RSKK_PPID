@@ -11,6 +11,6 @@
     Dapatkan Informasi
   </x-mail::button>
 
-  Terimakasih,<br>
+  Terima kasih,<br>
   {{ config('app.name') }}
 </x-mail::message>

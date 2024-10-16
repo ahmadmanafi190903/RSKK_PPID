@@ -1,4 +1,3 @@
 <footer class="main-footer">
-  <strong>Copyright &copy; 2024-2025</strong>
-  Fikri | Ahmad | Randi
+  <p>Copyright &copy; {{ date('Y') }} <strong>RSUD</strong> Kesehatan Kerja</p>
 </footer>

@@ -12,7 +12,11 @@ class QuestAnswerController extends Controller
      */
     public function index()
     {
-        $questAnswer = QuestAnswer::latest()->get();
+        $questAnswer = QuestAnswer::latest();
+        if(request('cari')){
+            $questAnswer = $questAnswer->where('judul', 'like', '%' . request('cari') . '%');
+        }
+        $questAnswer = $questAnswer->get();
         return view('admin.properties.q&a.index', compact('questAnswer'));
     }
 

@@ -4,7 +4,7 @@
       <div class="col-lg-3 col-sm-5 col-md-4 col-6 pr-lg-5">
         <div class="logo">
           <a href="#">
-            <img src="{{ '/storage/' . App\Models\BackgroundImage::where('slug', 'logo')->latest()->first()->image }}" alt="Logo" width="100">
+            <img src="{{ '/storage/' . App\Models\BackgroundImage::where('slug', 'logo')->latest()->first()->image }}" alt="Logo" height="50">
           </a>
         </div>
       </div>
@@ -55,7 +55,7 @@
             </nav>
             
 
-            <div class="action-bar text-white">
+            {{-- <div class="action-bar text-white">
               <div class="single-info-element">
                 <div class="icon">
                   <i class="fal fa-map-marked-alt"></i>
@@ -82,7 +82,7 @@
                 </div>
               </div>
               <a href="/login" class="theme-btn mt-4">login</a>
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="overlay"></div>

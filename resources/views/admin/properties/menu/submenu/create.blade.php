@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/submenu" method="post">
+      <form action="/menu/submenu" method="post">
         @csrf
         <div class="row">
           <div class="col-12 col-md-6">
@@ -49,7 +49,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/submenu/{{ $menuId }}" class="btn btn-secondary">kembali</a>
+                <a href="/menu/submenu/{{ $menuId }}" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Buat</button>
               </div>
             </div>

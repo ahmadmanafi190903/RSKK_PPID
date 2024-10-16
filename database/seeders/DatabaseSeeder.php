@@ -17,12 +17,8 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            // MemperolehInformasiSeeder::class,
-            // MendapatkanSalinanInformasiSeeder::class,
             StatusSeeder::class,
-            // AlasanPengajuanSeeder::class,
             UserSeeder::class,
-            // KategoriSeeder::class,
             MenuSeeder::class,
             SubmenuSeeder::class,
             QuestAnswerSeeder::class,
@@ -37,6 +33,7 @@ class DatabaseSeeder extends Seeder
             InformasiSeeder::class,
             BeritaSeeder::class,
             InfoServiceSeeder::class,
+            InfoBannerSeeder::class
         ]);
 
         InformasiPublik::factory(50)->create();

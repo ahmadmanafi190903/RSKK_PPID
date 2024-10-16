@@ -34,7 +34,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="imageInput" name="image" onchange="showIframe()">
-                        <label class="custom-file-label" for="image">{{ $item->image }}</label>
+                        <label class="custom-file-label" for="image">Pilih file</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text">Upload {{ ucfirst($slug) }}</span>

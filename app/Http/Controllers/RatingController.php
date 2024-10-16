@@ -9,8 +9,13 @@ class RatingController extends Controller
 {
     public function index()
     {
-        $ratings = Rating::latest()->paginate(5);
-        // dd($rating);
+        $ratings = Rating::latest();
+        if (request('cari')) {
+            $ratings = $ratings->whereHas('pemohon', function($query) {
+                $query->where('nama', 'like', '%' . request('cari') . '%');
+            });
+        }
+        $ratings = $ratings->paginate(5);
         return view('admin.menuUtama.rating.index', compact('ratings'));
     }
 

@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\Mail;
 class EmailController extends Controller
 {
     public function index()
-    {
-        $informations = PermohonanInformasi::where('status_id', 1)->latest()->paginate(5); 
+    {;
+        $informations = PermohonanInformasi::latest()
+            ->where('status_id', 1)
+            ->whereNotNull('file_acc_permohonan');
+        if (request('cari')) {
+            $informations = $informations->where('nama', 'like', '%' . request('cari') . '%'); 
+        }
+        $informations = $informations->paginate(5); 
         return view('admin.menuUtama.email.index', compact('informations'));
     }
 

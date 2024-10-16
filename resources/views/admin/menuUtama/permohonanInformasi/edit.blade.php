@@ -93,7 +93,7 @@
                   <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="imageInput" name="file_ktp">
-                      <label class="custom-file-label" for="link">{{ $permohonanInformasi->file_ktp }}</label>
+                      <label class="custom-file-label" for="link">Pilih file</label>
                     </div>
                     <div class="input-group-append">
                       <span class="input-group-text">Upload</span>

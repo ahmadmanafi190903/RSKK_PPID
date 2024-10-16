@@ -16,7 +16,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" placeholder="Masukan Nama Lengkap" name="nama" required
+                <input type="text" id="name" placeholder="Masukan Nama Lengkap" name="nama" 
                   value="{{ isset($applicant->nama) ? $applicant->nama : '' }}{{ old('nama') }}">
                 @error('nama')
                   <div class="alert alert-danger">{{ $message }}</div>
@@ -26,7 +26,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="email">Alamat Email</label>
-                <input type="email" id="email" placeholder="Masukan Alamat Email" name="email" required
+                <input type="email" id="email" placeholder="Masukan Alamat Email" name="email" 
                   value="{{ isset($applicant->email) ? $applicant->email : '' }}{{ old('email') }}">
                 @error('email')
                   <div class="alert alert-danger">{{ $message }}</div>
@@ -36,7 +36,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="phone">No Telepon</label>
-                <input type="text" id="phone" placeholder="Masuk no telepon" name="no_telepon" required
+                <input type="text" id="phone" placeholder="Masuk no telepon" name="no_telepon" 
                   value="{{ isset($applicant->no_telepon) ? $applicant->no_telepon : '' }}{{ old('no_telepon') }}"
                   oninput="inputPhone()">
                 @error('no_telepon')
@@ -47,7 +47,7 @@
             <div class="col-md-6 col-12">
               <div class="single-personal-info">
                 <label for="work">Pekerjaan</label>
-                <input type="text" id="work" placeholder="Masukan Pekerjaan" name="pekerjaan" required
+                <input type="text" id="work" placeholder="Masukan Pekerjaan" name="pekerjaan" 
                   value="{{ isset($applicant->pekerjaan) ? $applicant->pekerjaan : '' }}{{ old('pekerjaan') }}">
                 @error('pekerjaan')
                   <div class="alert alert-danger">{{ $message }}</div>
@@ -57,7 +57,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-0">
                 <label for="address">Alamat</label>
-                <textarea id="address" placeholder="Masukan Alamat" name="alamat" required>{{ isset($applicant->alamat) ? $applicant->alamat : '' }}{{ old('alamat') }}</textarea>
+                <textarea id="address" placeholder="Masukan Alamat" name="alamat" >{{ isset($applicant->alamat) ? $applicant->alamat : '' }}{{ old('alamat') }}</textarea>
                 @error('alamat')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -91,7 +91,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-0">
                 <label for="information1">Tujuan Penggunaan Informasi</label>
-                <textarea id="information1" placeholder="Masukan Tujuan Penggunaan Informasi" name="tujuan_penggunaan_informasi" required>{{ old('tujuan_penggunaan_informasi') }}</textarea>
+                <textarea id="information1" placeholder="Masukan Tujuan Penggunaan Informasi" name="tujuan_penggunaan_informasi" >{{ old('tujuan_penggunaan_informasi') }}</textarea>
                 @error('tujuan_penggunaan_informasi')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -100,7 +100,7 @@
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-5">
                 <label for="information2">Alasan Pengajuan Keberatan</label>
-                <select id="kuasa" name="alasan_pengajuan_id" required>
+                <select id="kuasa" name="alasan_pengajuan_id" >
                   <option></option>
                   @foreach ($reason as $item)
                     <option value="{{ $item->id }}" {{ old('alasan_pengajuan_id') == $item->id ? 'selected' : '' }}>

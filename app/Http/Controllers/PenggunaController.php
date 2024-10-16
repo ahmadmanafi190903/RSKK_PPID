@@ -12,7 +12,12 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->get();
+        $users = User::latest();
+        if (request('cari')) {
+            $users = $users->where('name', 'like', '%' . request('cari') . '%');
+        } else {
+            $users = $users->paginate(5);
+        }
         return view('admin.menuUtama.pengguna.index', compact('users'));
     }
 

@@ -22,7 +22,12 @@ class PermohonanInformasiController extends Controller
      */
     public function index()
     {
-        $information = PermohonanInformasi::latest()->paginate(5);
+        $information = PermohonanInformasi::latest();
+        if(request('cari')){
+            $information = $information->where('nama', 'like', '%'.request('cari').'%');
+        }
+        $information = $information->paginate(5);
+
         return view('admin.menuUtama.permohonanInformasi.index', compact('information'));
     }
 

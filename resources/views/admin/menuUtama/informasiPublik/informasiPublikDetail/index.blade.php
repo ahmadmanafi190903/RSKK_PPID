@@ -25,15 +25,17 @@
             <div class="card-header">
               <h3 class="card-title">Data Informasi Publik Detail</h3>
               <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" id="searchInput"
-                    placeholder="Cari">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+                <form>
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="cari" class="form-control float-right" id="searchInput"
+                      placeholder="Cari informasi" value="{{ request('cari') }}">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <!-- /.card-header -->

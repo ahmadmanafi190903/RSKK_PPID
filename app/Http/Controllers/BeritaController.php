@@ -14,7 +14,11 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $news = Berita::latest()->paginate(5);
+        $news = Berita::latest();
+        if(request('cari')){
+            $news = $news->where('judul', 'like', '%' . request('cari') . '%');
+        }
+        $news = $news->paginate(5);
         return view('admin.properties.berita.index', compact('news'));
     }
 

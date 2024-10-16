@@ -15,7 +15,11 @@ class InformasiPublikDetailController extends Controller
      */
     public function index(string $informasiPublikId)
     {
-        $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->latest()->paginate(10);
+        if(request('cari')){
+            $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->where('informasi', 'like', '%' . request('cari') . '%')->latest()->paginate(10);
+        } else {
+            $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->latest()->paginate(10);
+        }
         $infoPublik = InformasiPublik::select('ringkasan_informasi')->where('id', $informasiPublikId)->first();
         return view('admin.menuUtama.informasiPublik.informasiPublikDetail.index', compact('details', 'informasiPublikId', 'infoPublik'));
     }

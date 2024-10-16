@@ -123,7 +123,7 @@
                 @endif
               @elseif ($item->status_id == 1)
                 @if ($item->file_acc_permohonan == null)
-                  <div class="card-body table-responsive p-3">
+                  <div class="table-responsive">
                     <div>
                       <form action="/permohonan_informasi/{{ $item->id }}/upload" method="post"
                         enctype="multipart/form-data">
@@ -131,7 +131,7 @@
                         @method('patch')
                         <div>
                           <h5 class="mb-2">File</h5>
-                          <div class="input-group">
+                          <div class="input-group mb-2">
                             <div id="iframeContainer" style="display: none;"> 
                               <iframe src="" frameborder="0" id="previewImage"></iframe>
                             </div>
@@ -144,10 +144,10 @@
                                 <span class="input-group-text">Upload PDF</span>
                               </div>
                             </div>
+                            @error('file_acc_permohonan')
+                              <div class="alert alert-danger w-100">{{ $message }}</div>
+                            @enderror
                           </div>
-                          @error('file_acc_permohonan')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Kirim</button>
                       </form>
@@ -172,7 +172,7 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <iframe id="pdfViewer" src="{{ asset('storage/' . $item->file_acc_permohonan) }}" frameborder="0"
+                        <iframe id="pdfViewer" src="{{ asset('storage/' . $item->file_acc_permohonan) }}#toolbar=0" frameborder="0"
                           style="width: 100%; height: 600px;"></iframe>
                       </div>
                       <!-- /.modal-content -->

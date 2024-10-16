@@ -38,7 +38,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="imageInput" name="icon" onchange="showIframe()">
-                        <label class="custom-file-label" for="icon">{{ $item->icon }}</label>
+                        <label class="custom-file-label" for="icon">Pilih file</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text">Upload icon</span>

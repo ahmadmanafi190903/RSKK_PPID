@@ -26,15 +26,17 @@
               <h3 class="card-title">Data Menu</h3>
 
               <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" id="searchInput"
-                    placeholder="Cari">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+                <form>
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="cari" class="form-control float-right" id="searchInput"
+                      placeholder="Cari nama" value="{{ request('cari') }}">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <!-- /.card-header -->
@@ -56,7 +58,7 @@
                       <td class="align-middle">{{ $item->url }}</td>
                       <td class="align-middle">
                         @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                          <a href="/submenu/{{ $item->id }}" class="btn btn-primary">
+                          <a href="/menu/submenu/{{ $item->id }}" class="btn btn-primary">
                             <i class="nav-icon fas fa-eye"></i>
                           </a>
                           <a href="/menu/{{ $item->id }}/edit"

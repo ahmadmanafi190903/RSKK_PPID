@@ -12,7 +12,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::latest()->get();
+        $contacts = Contact::latest();
+        if(request('cari')){
+            $contacts = $contacts->where('address', 'like', '%' . request('cari') . '%');
+        }
+        $contacts = $contacts->get();
         return view('admin.properties.contact.index', compact('contacts'));
     }
 

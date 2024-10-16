@@ -12,7 +12,11 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        $informations = Informasi::latest()->get();
+        $informations = Informasi::latest();
+        if(request('cari')){
+            $informations = $informations->where('nama', 'like', '%' . request('cari') . '%');
+        }
+        $informations = $informations->get();
         return view('admin.properties.informasi.index', compact('informations'));
     }
 

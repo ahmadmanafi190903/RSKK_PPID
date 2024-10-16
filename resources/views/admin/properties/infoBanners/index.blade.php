@@ -7,9 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <h1 class="m-0">Pertanyaan dan Jawaban</h1>
+            <h1 class="m-0">Informasi Banner</h1>
             @if (Auth::user()->role == 'super_admin')
-              <a href="/quest_answer/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/info_banners/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Pertanyaan dan Jawaban</h3>
+              <h3 class="card-title">Data Informasi Banner</h3>
               <div class="card-tools">
                 <form>
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -44,25 +44,33 @@
                 <thead>
                   <tr class="text-center">
                     <th class="align-middle">No</th>
+                    <th class="align-middle">Nama button</th>
                     <th class="align-middle">Judul</th>
                     <th class="align-middle">Deskripsi</th>
+                    <th class="align-middle">Url</th>
                     @if (Auth::user()->role == 'super_admin')
                       <th class="align-middle">Action</th>
                     @endif
                   </tr>
                 </thead>
                 <tbody id="contentArea">
-                  @foreach ($questAnswer as $item)
+                  @foreach ($infoBanners as $item)
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
+                      <td class="align-middle">{{ $item->nama_button }}</td>
                       <td class="align-middle">{{ $item->judul }}</td>
-                      <td class="text-left align-middle">{{ $item->deskripsi }}</td>
+                      <td class="align-middle">{{ $item->deskripsi }}</td>
+                      <td class="align-middle">
+                        <a href="{{ $item->url }}" class="btn btn-primary" target="_black">
+                          <i class="fas fa-link"></i>
+                        </a>
+                      </td>
                       <td class="align-middle">
                         @if (Auth::user()->role == 'super_admin')
-                          <a href="/quest_answer/{{ $item->id }}/edit" class="btn btn-warning my-1">
+                          <a href="/info_banners/{{ $item->id }}/edit" class="btn btn-warning my-1">
                             <i class="nav-icon fas fa-pencil"></i>
                           </a>
-                          <form action="/quest_answer/{{ $item->id }}" method="post">
+                          <form action="/info_banners/{{ $item->id }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"

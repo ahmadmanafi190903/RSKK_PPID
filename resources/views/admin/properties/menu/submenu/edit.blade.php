@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/submenu/{{ $item->id }}" method="post">
+      <form action="/menu/submenu/{{ $item->id }}" method="post">
         @method('patch')
         @csrf
         <div class="row">
@@ -49,7 +49,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/submenu" class="btn btn-secondary">kembali</a>
+                <a href="/menu/submenu" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Ubah</button>
               </div>
             </div>

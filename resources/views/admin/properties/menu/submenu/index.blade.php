@@ -9,7 +9,7 @@
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Sub Menu</h1>
             @if (Auth::user()->role == 'super_admin')
-              <a href="/submenu/{{ $menu->id }}/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/menu/submenu/{{ $menu->id }}/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -24,17 +24,18 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Submenu</h3>
-
               <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" id="searchInput"
-                    placeholder="Cari">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+                <form >
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="cari" class="form-control float-right" id="searchInput"
+                      placeholder="Cari nama" value="{{ request('cari') }}">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <!-- /.card-header -->
@@ -60,10 +61,10 @@
                       <td class="align-middle">
                         <div>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                            <a href="/submenu/{{ $item->id }}/edit"
+                            <a href="/menu/submenu/{{ $item->id }}/edit"
                               class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i>
                             </a>
-                            <form action="/submenu/{{ $item->id }}" method="post">
+                            <form action="/menu/submenu/{{ $item->id }}" method="post">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"

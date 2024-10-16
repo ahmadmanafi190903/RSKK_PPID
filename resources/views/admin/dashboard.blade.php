@@ -68,9 +68,9 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>{{ $ratings->count() }}</h3>
+              <h3>{{ $averageRating }}</h3>
 
-              <p>Jumlah Rating</p>
+              <p>Rata rata Rating</p>
             </div>
             <div class="icon">
               <i class="fas fa-star"></i>

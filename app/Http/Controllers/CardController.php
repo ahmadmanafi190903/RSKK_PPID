@@ -14,7 +14,11 @@ class CardController extends Controller
      */
     public function index()
     {
-        $cards = Card::latest()->get();
+        $cards = Card::latest();
+        if(request('cari')){
+            $cards = $cards->where('judul', 'like', '%' . request('cari') . '%');
+        }
+        $cards = $cards->get();
         return view('admin.properties.cards.index', compact('cards'));
     }
 

@@ -15,19 +15,19 @@ class InformasiSeeder extends Seeder
     {
         $data = [
             [
-                'nama' => 'Tentang Kami',
+                'nama' => 'Layanan Kesehatan',
                 'url' => '#',
             ],
             [
-                'nama' => 'Solusi IT',
+                'nama' => 'Layanan Penunjang',
                 'url' => '#',
             ],
             [
-                'nama' => 'Tim Kami',
+                'nama' => 'Informasi Jadwal Dokter',
                 'url' => '#',
             ],
             [
-                'nama' => 'Layanan Kami',
+                'nama' => 'Informasi Tarif Layanan',
                 'url' => '#',
             ],
         ];

@@ -16,7 +16,7 @@ class ContactSeeder extends Seeder
         $data = [
             [
                 'icon' => '<i class="fal fa-map-marker-alt"></i>',
-                'address' => '94 Roa Malaka, West Jakarta City, UK',
+                'address' => 'Jl. Raya Rancaekek KM 27 No. 612 Desa Nanjungmekar Kecamatan Rancaekek Kabupaten Bandung',
             ],
             [
                 'icon' => '<i class="fal fa-phone"></i>',

@@ -17,7 +17,11 @@ class PengajuanKeberatanController extends Controller
      */
     public function index()
     {
-        $submission = PengajuanKeberatan::latest()->paginate(5);
+        $submission = PengajuanKeberatan::latest();
+        if (request('cari')) {
+            $submission = $submission->where('nama', 'like', '%' . request('cari') . '%');
+        }
+        $submission = $submission->paginate(5);
         return view('admin.menuUtama.pengajuanKeberatan.index', compact('submission'));
     }
     

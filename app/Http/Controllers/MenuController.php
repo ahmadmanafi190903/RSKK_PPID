@@ -12,7 +12,12 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::latest()->get();
+        if (request('cari')) {
+            $menus = Menu::latest()->where('nama', 'like', '%' . request('cari') . '%')->get();
+        } else {
+            $menus = Menu::latest()->get();
+        }
+
         return view('admin.properties.menu.index', compact('menus'));
     }
 
