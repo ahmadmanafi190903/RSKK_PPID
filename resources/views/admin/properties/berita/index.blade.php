@@ -9,7 +9,7 @@
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Berita</h1>
             @if (Auth::user()->role == 'super_admin')
-              <a href="/berita/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/news/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -69,10 +69,10 @@
                       </td>
                       <td class="align-middle">
                         @if (Auth::user()->role == 'super_admin')
-                          <a href="berita/{{ $item->id }}" class="btn btn-warning my-1">
+                          <a href="/news/{{ $item->id }}" class="btn btn-warning my-1">
                             <i class="nav-icon fas fa-pencil"></i>
                           </a>
-                          <form action="berita/{{ $item->id }}" method="post">
+                          <form action="/news/{{ $item->id }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"

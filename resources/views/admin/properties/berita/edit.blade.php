@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/berita/{{ $item->id }}" method="post" enctype="multipart/form-data">
+      <form action="/news/{{ $item->id }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('patch')
       <div class="row">
@@ -76,7 +76,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/berita" class="btn btn-secondary">kembali</a>
+                <a href="/news" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Ubah</button>
               </div>
             </div>

@@ -55,7 +55,7 @@ class BeritaController extends Controller
             'image' => $file_path
         ]);
 
-        return redirect('/berita')->with('success', 'Berita berhasil ditambahkan');
+        return redirect('/news')->with('success', 'Berita berhasil ditambahkan');
     }
 
     /**
@@ -106,7 +106,7 @@ class BeritaController extends Controller
             'image' => $file_path
         ]);
 
-        return redirect('/berita')->with('success', 'Berita berhasil ditambahkan');
+        return redirect('/news')->with('success', 'Berita berhasil ditambahkan');
     }
 
     /**
@@ -119,6 +119,6 @@ class BeritaController extends Controller
             Storage::disk('public')->delete($file_name);
         }
         $berita->delete();
-        return redirect('/berita')->with('success', 'Berita berhasil dihapus');
+        return redirect('/news')->with('success', 'Berita berhasil dihapus');
     }
 }

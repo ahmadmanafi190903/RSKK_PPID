@@ -15,6 +15,7 @@ use App\Http\Controllers\InfoServiceController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\InformasiPublikController;
 use App\Http\Controllers\InformasiPublikDetailController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\QuestAnswerController;
 use App\Http\Controllers\RatingController;
@@ -155,12 +156,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/quest_answer/{questAnswer}', [QuestAnswerController::class, 'destroy'])->middleware('role:super_admin');
 
     // berita
-    Route::get('/berita', [BeritaController::class, 'index'])->middleware('role:super_admin');
-    Route::get('/berita/create', [BeritaController::class, 'create'])->middleware('role:super_admin');
-    Route::post('/berita', [BeritaController::class, 'store'])->middleware('role:super_admin');
-    Route::get('/berita/{berita}', [BeritaController::class, 'edit'])->middleware('role:super_admin');
-    Route::patch('/berita/{berita}', [BeritaController::class, 'update'])->middleware('role:super_admin');
-    Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->middleware('role:super_admin');
+    Route::get('/news', [BeritaController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/news/create', [BeritaController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/news', [BeritaController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/news/{berita}', [BeritaController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/news/{berita}', [BeritaController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/news/{berita}', [BeritaController::class, 'destroy'])->middleware('role:super_admin');
     
     // informasi
     Route::get('/informasi', [InformasiController::class, 'index'])->middleware('role:super_admin');
@@ -185,4 +186,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kontak/{contact}/edit', [ContactController::class, 'edit'])->middleware('role:super_admin');
     Route::patch('/kontak/{contact}', [ContactController::class, 'update'])->middleware('role:super_admin');
     Route::delete('/kontak/{contact}', [ContactController::class, 'destroy'])->middleware('role:super_admin');
+
+    // lokasi 
+    Route::get('/lokasi', [LokasiController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/lokasi/create', [LokasiController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/lokasi', [LokasiController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/lokasi/{lokasi}/edit', [LokasiController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/lokasi/{lokasi}', [LokasiController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/lokasi/{lokasi}', [LokasiController::class, 'destroy'])->middleware('role:super_admin');
 });

@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="/berita" method="post" enctype="multipart/form-data">
+      <form action="/news" method="post" enctype="multipart/form-data">
       @csrf
       @method('post')
       <div class="row">
@@ -78,7 +78,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                <a href="/berita" class="btn btn-secondary">kembali</a>
+                <a href="/news" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Buat</button>
               </div>
             </div>

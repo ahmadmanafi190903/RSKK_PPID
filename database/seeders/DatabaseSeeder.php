@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
             InformasiSeeder::class,
             BeritaSeeder::class,
             InfoServiceSeeder::class,
-            InfoBannerSeeder::class
+            InfoBannerSeeder::class,
+            LokasiSeeder::class
         ]);
 
         InformasiPublik::factory(50)->create();
