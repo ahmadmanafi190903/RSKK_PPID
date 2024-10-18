@@ -131,12 +131,15 @@ class InformasiPublikController extends Controller
     }
 
 
-    public function information(string $id)
+    public function information(string $slug, string $number)
     {
-        $informations = InformasiPublik::where('kategori_informasi_id', $id)
-            ->latest()
-            ->paginate(10);
-        return view('user.informasipublik.index', compact('informations'));
+        $reference = Reference::where('slug', $slug)->where('number', $number)->first();
+        if (!$reference) {
+            return redirect()->back();
+        }
+        
+        $informations = InformasiPublik::where('kategori_informasi_id', $reference->id)->latest()->paginate(10);
+        return view('user.informasipublik.index', compact('informations', 'slug'));
     }
 
     public function detail(string $id)

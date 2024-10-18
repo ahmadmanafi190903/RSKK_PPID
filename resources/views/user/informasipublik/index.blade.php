@@ -45,7 +45,7 @@
               </td>
               <td class="align-middle border">{{ $item->penyimpanan->nama }}</td>
               <td class="align-middle border">
-                <a href="/informasi-publik/{{ $item->id }}/details" class="btn btn-info">
+                <a href="/informasi-publik/{{ $slug }}/{{ $item->id }}/details" class="btn btn-info">
                   <i class="nav-icon fas fa-download"></i>
                 </a>
                 {{-- <a href="/storage/{{ $item->link }}" class="btn btn-info" target="_black">

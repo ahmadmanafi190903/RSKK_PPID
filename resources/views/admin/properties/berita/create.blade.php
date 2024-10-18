@@ -17,9 +17,9 @@
     <!-- Main content -->
     <section class="content">
       <form action="/news" method="post" enctype="multipart/form-data">
-      @csrf
-      @method('post')
-      <div class="row">
+        @csrf
+        @method('post')
+        <div class="row">
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-header">
@@ -39,7 +39,8 @@
                     </div>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="imageInput" name="image" onchange="showIframe()">
+                        <input type="file" class="custom-file-input" id="imageInput" name="image"
+                          onchange="showIframe()">
                         <label class="custom-file-label" for="image">Pilih file</label>
                       </div>
                       <div class="input-group-append">
@@ -55,7 +56,8 @@
                   <label for="judul">
                     <h5 class="mb-0">Judul</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" id="judul" name="judul" value="{{ old('judul') }}">
+                  <input class="w-100 form-control" type="text" id="judul" name="judul"
+                    value="{{ old('judul') }}">
                   @error('judul')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -69,11 +71,33 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <h4>Berita</h4>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-3">
+                <div class="mb-4">
+                  <label for="deskripsi_detail">
+                    <h5 class="mb-0">Detail Deskripisi</h5>
+                  </label>
+                  <textarea class="w-100 form-control" name="deskripsi_detail" cols="30" id="deskripsi_detail">{{ old('deskripsi_detail') }}</textarea>
+                  @error('deskripsi_detail')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
                 <div class="mb-4">
                   <label for="url">
                     <h5 class="mb-0">Url</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" id="url" name="url" value="{{ old('url') }}">
+                  <input class="w-100 form-control" type="text" id="url" name="url"
+                    value="{{ old('url') }}">
                   @error('url')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror

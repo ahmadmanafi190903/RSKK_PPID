@@ -50,7 +50,7 @@ class SubmenuController extends Controller
             'menu_id' => $request->menu_id,
         ]);
 
-        return redirect('/submenu/' . $request->menu_id)->with('success', 'Sub Menu Berhasil Dibuat.');
+        return redirect('/menu/submenu/' . $request->menu_id)->with('success', 'Sub Menu Berhasil Dibuat.');
     }
 
     /**
@@ -87,7 +87,7 @@ class SubmenuController extends Controller
             'menu_id' => $submenu->menu_id,
         ]);
 
-        return redirect('/submenu/' . $submenu->menu_id)->with('success', 'Sub Menu Berhasil Diubah.');
+        return redirect('/menu/submenu/' . $submenu->menu_id)->with('success', 'Sub Menu Berhasil Diubah.');
     }
 
     /**
@@ -96,6 +96,6 @@ class SubmenuController extends Controller
     public function destroy(Submenu $submenu)
     {
         $submenu->delete();
-        return redirect('/submenu/' . $submenu->menu_id)->with('success', 'Data berhasil dihapus');
+        return redirect('/menu/submenu/' . $submenu->menu_id)->with('success', 'Data berhasil dihapus');
     }
 }

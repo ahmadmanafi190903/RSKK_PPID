@@ -54,7 +54,9 @@
                   @foreach ($lokasi as $item)
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
-                      <td class="align-middle">{{ $item->lokasi }}</td>
+                      <td class="align-middle">
+                        <iframe src="{{ $item->lokasi }}" class="w-100" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </td>
                       <td class="align-middle">
                         @if (Auth::user()->role == 'super_admin')
                           <a href="/lokasi/{{ $item->id }}/edit" class="btn btn-warning my-1">

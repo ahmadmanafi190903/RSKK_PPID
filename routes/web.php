@@ -35,10 +35,10 @@ Route::get('/riwayat', [PermohonanInformasiController::class, 'riwayat'])->name(
 Route::get('/pengajuan', [PengajuanKeberatanController::class, 'create']);
 Route::post('/pengajuan/create', [PengajuanKeberatanController::class, 'store']);
 
+Route::get('/informasi-publik/{slug}/{id}', [InformasiPublikController::class, 'information']);
+// Route::get('/informasi-publik/{id}', [InformasiPublikController::class, 'information']);
 
-Route::get('/informasi-publik/{id}', [InformasiPublikController::class, 'information']);
-
-Route::get('/informasi-publik/{id}/details', [InformasiPublikController::class, 'detail']);
+Route::get('/informasi-publik/informasi/{id}/details', [InformasiPublikController::class, 'detail']);
 
 //admin
 Route::middleware(['auth'])->group(function () {
