@@ -36,9 +36,9 @@ Route::get('/pengajuan', [PengajuanKeberatanController::class, 'create']);
 Route::post('/pengajuan/create', [PengajuanKeberatanController::class, 'store']);
 
 Route::get('/informasi-publik/{slug}/{id}', [InformasiPublikController::class, 'information']);
-// Route::get('/informasi-publik/{id}', [InformasiPublikController::class, 'information']);
-
 Route::get('/informasi-publik/informasi/{id}/details', [InformasiPublikController::class, 'detail']);
+
+Route::get('/berita/{berita}', [BeritaController::class, 'detail']);
 
 //admin
 Route::middleware(['auth'])->group(function () {
@@ -158,6 +158,7 @@ Route::middleware(['auth'])->group(function () {
     // berita
     Route::get('/news', [BeritaController::class, 'index'])->middleware('role:super_admin');
     Route::get('/news/create', [BeritaController::class, 'create'])->middleware('role:super_admin');
+    Route::get('/news/{berita}/detail', [BeritaController::class, 'show'])->middleware('role:super_admin');
     Route::post('/news', [BeritaController::class, 'store'])->middleware('role:super_admin');
     Route::get('/news/{berita}', [BeritaController::class, 'edit'])->middleware('role:super_admin');
     Route::patch('/news/{berita}', [BeritaController::class, 'update'])->middleware('role:super_admin');

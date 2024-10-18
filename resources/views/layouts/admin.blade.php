@@ -28,6 +28,9 @@
   <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+  {{-- trix editor --}}
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -150,6 +153,11 @@
         $(this).closest('.toast').fadeOut();
       });
     });
+  </script>
+
+  {{-- Hapus toobar file --}}
+  <script>
+    
   </script>
 
 </body>

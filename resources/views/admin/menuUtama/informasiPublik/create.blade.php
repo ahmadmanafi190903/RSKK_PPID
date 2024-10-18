@@ -58,7 +58,6 @@
           <div class="col-12 col-md-6">
             <div class="card">
               <div class="card-body table-responsive p-3">
-                
                 <div class="mb-4">
                   <label for="pekerjaan">
                     <h5 class="mb-0">Apakah Informasi berbentuk cetak?</h5>

@@ -56,7 +56,7 @@
                 <div class="info-icon-item">
                   <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" height="100">
                   <h3>{{ $item->judul }}</h3>
-                  <p>{{ $item->deskripsi }}</p>
+                  <p>{{ Str::limit($item->deskripsi, 10) }}</p>
                   <a href="{{ $item->url }}" class="theme-btn mt-30">{{ $item->nama_button }}</a>
                 </div>
               </div>
@@ -509,7 +509,9 @@
         @foreach ($news as $item)
           <div class="col-xl-4 col-md-6">
             <div class="single-blog-item">
-              <div class="post-featured-thumb bg-cover" style="background-image: url('/storage/{{ $item->image }}')"></div>
+              <a href="{{ $item->url }}">
+                <div class="post-featured-thumb bg-cover" style="background-image: url('/storage/{{ $item->image }}')"></div>
+              </a>
               <div class="content">
                 <h3><a href="{{ $item->url }}">{{ $item->judul }}</a></h3>
                 <p>{{ $item->deskripsi }}</p>

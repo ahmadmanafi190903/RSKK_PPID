@@ -38,9 +38,9 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
-            'url' => 'required',
+            'deskripsi_detail' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
-        ], $this->feedback_validate);
+        ], $this->feedback_validate);        
 
         $image = $request->file('image');
         $file_org =  $image->getClientOriginalName();
@@ -48,12 +48,16 @@ class BeritaController extends Controller
         $file_name = $random_name . '-' . $file_org;
         $file_path = $image->storeAs('image', $file_name, 'public');
 
-        Berita::create([
+        $berita = Berita::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'url' => $request->url,
+            'deskripsi_detail' => $request->deskripsi_detail,
+            'url' => '',
             'image' => $file_path
         ]);
+
+        $berita->url = '/berita/' . $berita->id;
+        $berita->save();
 
         return redirect('/news')->with('success', 'Berita berhasil ditambahkan');
     }
@@ -63,7 +67,7 @@ class BeritaController extends Controller
      */
     public function show(Berita $berita)
     {
-        //
+        return view('admin.properties.berita.show', ['item'=>$berita]);
     }
 
     /**
@@ -84,7 +88,7 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
-            'url' => 'required',
+            'deskripsi_detail' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048'
         ], $this->feedback_validate);
 
@@ -102,7 +106,8 @@ class BeritaController extends Controller
         $berita->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'url' => $request->url,
+            'deskripsi_detail' => $request->deskripsi_detail,
+            'url' => $berita->url,
             'image' => $file_path
         ]);
 
@@ -120,5 +125,12 @@ class BeritaController extends Controller
         }
         $berita->delete();
         return redirect('/news')->with('success', 'Berita berhasil dihapus');
+    }
+
+
+
+    public function detail(Berita $berita)
+    {
+        return view('user.berita.index', ['item' => $berita]);
     }
 }

@@ -24,7 +24,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Informasi Publik</h3>
-
               <div class="card-tools">
                 <form>
                   <div class="input-group input-group-sm" style="width: 150px;">

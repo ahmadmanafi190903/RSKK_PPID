@@ -55,8 +55,8 @@
             </nav>
             
 
-            {{-- <div class="action-bar text-white">
-              <div class="single-info-element">
+            <div class="action-bar text-white">
+              {{-- <div class="single-info-element">
                 <div class="icon">
                   <i class="fal fa-map-marked-alt"></i>
                 </div>
@@ -80,9 +80,9 @@
                 <div class="text">
                   <a href="tel:987-098-098-09" style="color: white !important">(022)7798778</a>
                 </div>
-              </div>
+              </div> --}}
               <a href="/login" class="theme-btn mt-4">login</a>
-            </div> --}}
+            </div>
           </div>
         </div>
         <div class="overlay"></div>

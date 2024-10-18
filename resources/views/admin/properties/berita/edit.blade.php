@@ -17,16 +17,16 @@
     <!-- Main content -->
     <section class="content">
       <form action="/news/{{ $item->id }}" method="post" enctype="multipart/form-data">
-      @csrf
-      @method('patch')
-      <div class="row">
-          <div class="col-12 col-md-6">
+        @csrf
+        @method('patch')
+        <div class="row">
+          <div class="col-12 col-md-4">
             <div class="card">
-              <div class="card-header">
+              {{-- <div class="card-header">
                 <div class="card-title">
                   <h4>Berita</h4>
                 </div>
-              </div>
+              </div> --}}
               <!-- /.card-header -->
               <div class="card-body table-responsive p-3">
                 <div class="mb-4">
@@ -34,10 +34,11 @@
                     <h5 class="mb-0">Image</h5>
                   </label>
                   <div class="input-group mb-2">
-                    <img src="/storage/{{ $item->image }}" class="w-100 mb-2" id="previewImage">
+                    <img src="/storage/{{ $item->image }}" class="w-100" id="previewImage">
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="imageInput" name="image" onchange="showIframe()">
+                        <input type="file" class="custom-file-input" id="imageInput" name="image"
+                          onchange="showIframe()">
                         <label class="custom-file-label" for="image">Pilih file</label>
                       </div>
                       <div class="input-group-append">
@@ -53,7 +54,8 @@
                   <label for="judul">
                     <h5 class="mb-0">Judul</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" id="judul" name="judul" value="{{ old('judul') ?? $item->judul}} ">
+                  <input class="w-100 form-control" type="text" id="judul" name="judul"
+                    value="{{ old('judul') ?? $item->judul }}">
                   @error('judul')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -62,17 +64,31 @@
                   <label for="deskripsi">
                     <h5 class="mb-0">Deskripsi</h5>
                   </label>
-                  <textarea class="w-100 form-control" name="deskripsi" cols="30" id="deskripsi">{{ old('deskripsi') ?? $item->deskripsi}}</textarea>
+                  <textarea class="w-100 form-control" name="deskripsi" cols="30" id="deskripsi">{{ old('deskripsi') ?? $item->deskripsi }}</textarea>
                   @error('deskripsi')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-8">
+            <div class="card">
+              {{-- <div class="card-header">
+                <div class="card-title">
+                  <h4>Berita</h4>
+                </div>
+              </div> --}}
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-3">
                 <div class="mb-4">
-                  <label for="url">
-                    <h5 class="mb-0">Url</h5>
+                  <label for="deskripsi_detail">
+                    <h5 class="mb-0">Detail Deskripisi</h5>
                   </label>
-                  <input class="w-100 form-control" type="text" id="url" name="url" value="{{ old('url') ?? $item->url}}">
-                  @error('url')
+                  {{-- <textarea class="w-100 form-control" name="deskripsi_detail" cols="30" id="deskripsi_detail">{{ old('deskripsi_detail') }}</textarea> --}}
+                  <input id="deskripsi_detail" type="hidden" name="deskripsi_detail">
+                  <trix-editor input="deskripsi_detail">{!! old('deskripsi_detail') ?? $item->deskripsi_detail !!}</trix-editor>
+                  @error('deskripsi_detail')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>

@@ -47,7 +47,6 @@
                     <th class="align-middle">Image</th>
                     <th class="align-middle">Judul</th>
                     <th class="align-middle">Deskripsi</th>
-                    <th class="align-middle">Deskripsi Detail</th>
                     <th class="align-middle">Url</th>
                     @if (Auth::user()->role == 'super_admin')
                       <th class="align-middle">Action</th>
@@ -63,13 +62,13 @@
                       </td>
                       <td class="align-middle">{{ $item->judul }}</td>
                       <td class="align-middle">{{ $item->deskripsi }}</td>
-                      <td class="align-middle">{{ $item->deskripsi_detail }}</td>
                       <td class="align-middle">
                         <a href="{{ $item->url }}" class="btn btn-primary" target="_black">
                           <i class="nav-icon fas fa-download"></i>
                         </a>
                       </td>
                       <td class="align-middle">
+                        <a href="/news/{{ $item->id }}/detail" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
                         @if (Auth::user()->role == 'super_admin')
                           <a href="/news/{{ $item->id }}" class="btn btn-warning my-1">
                             <i class="nav-icon fas fa-pencil"></i>

@@ -133,7 +133,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="/news" class="nav-link {{ request()->is('berita') || request()->is('berita/*') ? 'active' : '' }}">
+          <a href="/news" class="nav-link {{ request()->is('news') || request()->is('news/*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-newspaper"></i>
             <p>
               Berita
