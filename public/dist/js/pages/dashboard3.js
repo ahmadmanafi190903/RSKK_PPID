@@ -11,22 +11,22 @@ $(function () {
   var mode = 'index'
   var intersect = true
 
-  var $salesChart = $('#sales-chart')
+  var $grafikPermohonanPengajuan = $('#grafikPermohonanPengajuan')
   // eslint-disable-next-line no-unused-vars
-  var salesChart = new Chart($salesChart, {
+  var grafikPermohonanPengajuan = new Chart($grafikPermohonanPengajuan, {
     type: 'bar',
     data: {
-      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'],
       datasets: [
         {
           backgroundColor: '#007bff',
           borderColor: '#007bff',
-          data: [1000, 2000, 3000, 2500, 2700, 2500, 3000]
+          data: [10, 20, 30, 25, 27, 25, 30, ]
         },
         {
-          backgroundColor: '#ced4da',
-          borderColor: '#ced4da',
-          data: [700, 1700, 2700, 2000, 1800, 1500, 2000]
+          backgroundColor: '#28a745',
+          borderColor: '#28a745',
+          data: [7, 17, 27, 20, 18, 15, 20]
         }
       ]
     },
@@ -62,7 +62,7 @@ $(function () {
                 value += 'k'
               }
 
-              return '$' + value
+              return value
             }
           }, ticksStyle)
         }],
@@ -77,33 +77,25 @@ $(function () {
     }
   })
 
-  var $visitorsChart = $('#visitors-chart')
+  // Misalkan data diambil dari server dan disertakan dalam variabel JavaScript
+  var dataGrafik = {
+    labels: ['BERKALA', 'SERTA MERTA', 'SETIAP SAAT', 'DIKECUALIKAN'],
+    values: [10, 12, 14, 19]
+  };
+
+  var $grafikInformasiPublik = $('#grafikInformasiPublik')
   // eslint-disable-next-line no-unused-vars
-  var visitorsChart = new Chart($visitorsChart, {
+  var grafikInformasiPublik = new Chart($grafikInformasiPublik, {
+    type: 'bar',
     data: {
-      labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
-      datasets: [{
-        type: 'line',
-        data: [100, 120, 170, 167, 180, 177, 160],
-        backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        pointBorderColor: '#007bff',
-        pointBackgroundColor: '#007bff',
-        fill: false
-        // pointHoverBackgroundColor: '#007bff',
-        // pointHoverBorderColor    : '#007bff'
-      },
-      {
-        type: 'line',
-        data: [60, 80, 70, 67, 80, 77, 100],
-        backgroundColor: 'tansparent',
-        borderColor: '#ced4da',
-        pointBorderColor: '#ced4da',
-        pointBackgroundColor: '#ced4da',
-        fill: false
-        // pointHoverBackgroundColor: '#ced4da',
-        // pointHoverBorderColor    : '#ced4da'
-      }]
+      labels: dataGrafik.labels, // Menggunakan data dari variabel
+      datasets: [
+        {
+          backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'], // Tambahkan warna berbeda untuk setiap label
+          borderColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+          data: dataGrafik.values // Menggunakan data dari variabel
+        },
+      ]
     },
     options: {
       maintainAspectRatio: false,
@@ -129,7 +121,16 @@ $(function () {
           },
           ticks: $.extend({
             beginAtZero: true,
-            suggestedMax: 200
+
+            // Include a dollar sign in the ticks
+            callback: function (value) {
+              if (value >= 1000) {
+                value /= 1000
+                value += 'k'
+              }
+
+              return value
+            }
           }, ticksStyle)
         }],
         xAxes: [{
@@ -142,6 +143,7 @@ $(function () {
       }
     }
   })
+  
 })
 
 // lgtm [js/unused-local-variable]

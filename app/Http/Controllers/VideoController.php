@@ -52,7 +52,7 @@ class VideoController extends Controller
      */
     public function edit(Video $video)
     {
-        return view('admin.properties.imagevideo.video.edit', [
+        return view('admin.properties.imageVideo.video.edit', [
             'item' => $video
         ]);
     }

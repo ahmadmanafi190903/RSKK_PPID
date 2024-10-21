@@ -56,7 +56,11 @@
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
                       <td class="align-middle">{{ $item->nama }}</td>
-                      <td class="align-middle">{{ $item->url }}</td>
+                      <td class="align-middle">
+                        <a href="{{ $item->url }}" class="btn btn-primary" target="_black">
+                          <i class="fas fa-link"></i>
+                        </a>
+                      </td>
                       <td class="align-middle">
                         @if (Auth::user()->role == 'super_admin')
                           <a href="/informasi/{{ $item->id }}/edit" class="btn btn-warning my-1">

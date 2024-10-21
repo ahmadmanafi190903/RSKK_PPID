@@ -56,7 +56,7 @@
                 <div class="info-icon-item">
                   <img src="/storage/{{ $item->icon }}" alt="{{ $item->judul }}" height="100">
                   <h3>{{ $item->judul }}</h3>
-                  <p>{{ Str::limit($item->deskripsi, 10) }}</p>
+                  <p>{{ $item->deskripsi }}</p>
                   <a href="{{ $item->url }}" class="theme-btn mt-30">{{ $item->nama_button }}</a>
                 </div>
               </div>

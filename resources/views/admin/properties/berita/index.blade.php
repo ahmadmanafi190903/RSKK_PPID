@@ -64,7 +64,7 @@
                       <td class="align-middle">{{ $item->deskripsi }}</td>
                       <td class="align-middle">
                         <a href="{{ $item->url }}" class="btn btn-primary" target="_black">
-                          <i class="nav-icon fas fa-download"></i>
+                          <i class="fas fa-link"></i>
                         </a>
                       </td>
                       <td class="align-middle">

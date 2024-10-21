@@ -18,12 +18,39 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $information = PermohonanInformasi::all();
+        $information = PermohonanInformasi::get();
         $submission = PengajuanKeberatan::all();
-        $public = InformasiPublik::all();
-        $totalRatings = Rating::sum('star');
+        $public = InformasiPublik::get();
+        $ratings = Rating::latest()->get();
+        $totalRatings = $ratings->sum('star');
         $averageRating = round($totalRatings / Rating::count(), 2);
-        return view('admin.dashboard', compact('information', 'submission', 'public', 'averageRating'));
+        $newComments = $ratings->take(4);
+        $dikirim = $information->where('status_id', 2)->count();
+        $proses = $information->where('status_id', 3)->count();
+        $ditolak = $information->where('status_id', 0)->count();
+        $diterima = $information->where('status_id', 1)->count();
+
+        $data = InformasiPublik::get();
+
+        $berkala = $data->where('kategori_informasi_id', 13)->count();
+        $serta_merta = $data->where('kategori_informasi_id', 14)->count();
+        $setiap_saat = $data->where('kategori_informasi_id', 15)->count();
+        $dikecualikan = $data->where('kategori_informasi_id', 16)->count();
+
+        $dataInformasiPublik = [
+            'berkala' => $berkala,    
+            'serta_merta' => $serta_merta,    
+            'setiap_saat' => $setiap_saat,    
+            'dikecualikan' => $dikecualikan    
+        ];
+
+        return view('admin.dashboard', compact('information', 'submission', 'public', 'averageRating', 'newComments', 'dikirim', 
+            'proses', 'ditolak', 'diterima', 'dataInformasiPublik'));
+    }
+
+    public function getData()
+    {
+        
     }
 
     public function home()

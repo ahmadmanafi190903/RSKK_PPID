@@ -111,7 +111,7 @@ class BeritaController extends Controller
             'image' => $file_path
         ]);
 
-        return redirect('/news')->with('success', 'Berita berhasil ditambahkan');
+        return redirect('/news')->with('success', 'Berita berhasil diubah');
     }
 
     /**

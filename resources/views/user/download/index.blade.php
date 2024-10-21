@@ -7,8 +7,9 @@
     </div>
     <div class="col-12 col-lg-6 offset-lg-3 mb-5">
       <div class="main-sidebar">
-        <embed src="/storage/{{ $information->file_acc_permohonan }}#toolbar=0" id="fileFrame" type="application/pdf" class="w-100"
-          height="500">
+        {{-- <embed src="/storage/{{ $information->file_acc_permohonan }}#toolbar=0" id="fileFrame" type="application/pdf" class="w-100"
+          height="500" style="pointer-events: none"> --}}
+          <iframe src="/storage/{{ $information->file_acc_permohonan }}#toolbar=0" id="fileFrame" frameborder="0" style="pointer-events: none" class="w-100" height="500"></iframe>
         <div class="d-flex gap-3 mt-5">
           @if ($rating)
             <button class="btn btn-primary w-100" onclick="downloadFile()">Unduh</button>
