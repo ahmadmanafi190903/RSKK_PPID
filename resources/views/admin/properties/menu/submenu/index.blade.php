@@ -57,7 +57,9 @@
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
                       <td class="align-middle">{{ $item->nama }}</td>
-                      <td class="align-middle">{{ $item->url }}</td>
+                      <td class="align-middle">
+                        <a href="{{ $item->url }}" target="black" class="btn btn-primary"><i class="fas fa-link"></i></a>
+                      </td>
                       <td class="align-middle">
                         <div>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')

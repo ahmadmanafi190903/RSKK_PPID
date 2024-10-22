@@ -14,6 +14,8 @@ abstract class Controller
         'email' => ':attribute harus berupa email yang valid.',
         'digits' => ':attribute harus :digits digit.',
         'image' => ':attribute harus berupa file jpg, png, jpeg, atau pdf.',
-        'url' => ':attribute harus berupa URL yang valid.'
+        'url' => ':attribute harus berupa URL yang valid.',
+        'unique' => ':attribute sudah terdaftar',
+        'in' => ':attribute tidak valid'
     ];
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\QuestAnswerController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\VideoController;
@@ -91,6 +92,21 @@ Route::middleware(['auth'])->group(function () {
 
     // pengguna
     Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/pengguna/create', [PenggunaController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/pengguna', [PenggunaController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/pengguna/{user}/edit', [PenggunaController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/pengguna/{user}', [PenggunaController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/pengguna/{user}', [PenggunaController::class, 'destroy'])->middleware('role:super_admin');
+    Route::get('/pengguna/{user}/password', [PenggunaController::class, 'password'])->middleware('role:super_admin');
+    Route::patch('/pengguna/{user}/password', [PenggunaController::class, 'updatePassword'])->middleware('role:super_admin');
+
+    // references
+    Route::get('/references', [ReferenceController::class, 'index'])->middleware('role:super_admin');
+    Route::get('/references/{slug}/create', [ReferenceController::class, 'create'])->middleware('role:super_admin');
+    Route::post('/references', [ReferenceController::class, 'store'])->middleware('role:super_admin');
+    Route::get('/references/{slug}/{reference}/edit', [ReferenceController::class, 'edit'])->middleware('role:super_admin');
+    Route::patch('/references/{reference}', [ReferenceController::class, 'update'])->middleware('role:super_admin');
+    Route::delete('/references/{reference}', [ReferenceController::class, 'destroy'])->middleware('role:super_admin');
 
     // menus
     Route::get('/menu', [MenuController::class, 'index'])->middleware('role:super_admin');

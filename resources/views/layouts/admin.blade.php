@@ -50,7 +50,7 @@
   @if (session('failed'))
     <div class="toasts-top-right fixed">
       <div class="toast bg-danger fade show" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header"><strong class="mr-auto"> <i class="nav-icon fas fa-check mr-2"></i>
+        <div class="toast-header"><strong class="mr-auto"> <i class="nav-icon fas fa-times"></i> 
             {{ session('failed') }}</strong><button data-dismiss="toast" type="button" class="ml-2 mb-1 close"
             aria-label="Close"><span aria-hidden="true">×</span></button></div>
       </div>
@@ -120,30 +120,6 @@
     $(function() {
       bsCustomFileInput.init();
     });
-  </script>
-
-  {{-- ubah foto ketika di update dan ifrmae --}}
-  <script>
-    const imageInput = document.getElementById('imageInput');
-    const previewImage = document.getElementById('previewImage');
-
-    imageInput.addEventListener('change', function(event) {
-      console.log(event.target.files[0])
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-          previewImage.src = e.target.result;
-        };
-
-        reader.readAsDataURL(file);
-      }
-    });
-
-    function showIframe() {
-      document.getElementById('iframeContainer').style.display = 'block';
-    }
   </script>
 
   {{-- tutup success --}}

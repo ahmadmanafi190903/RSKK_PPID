@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Sosmed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -67,7 +68,7 @@ class BeritaController extends Controller
      */
     public function show(Berita $berita)
     {
-        return view('admin.properties.berita.show', ['item'=>$berita]);
+        return view('admin.properties.berita.show', ['item' => $berita]);
     }
 
     /**
@@ -131,6 +132,13 @@ class BeritaController extends Controller
 
     public function detail(Berita $berita)
     {
-        return view('user.berita.index', ['item' => $berita]);
+        $berita->increment('views');
+        $beritaPopular = Berita::orderBy('views', 'desc')->take(5)->get();
+        $sosmed = Sosmed::all();
+        return view('user.berita.index', [
+            'item' => $berita,
+            'sosmed' => $sosmed,
+            'beritaPopular' => $beritaPopular
+        ]);
     }
 }

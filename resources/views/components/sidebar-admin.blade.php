@@ -97,6 +97,12 @@
         </li>
         <li class="nav-header">PROPERTIES</li>
         <li class="nav-item">
+          <a href="/references" class="nav-link {{ request()->is('references') || request()->is('references/*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-database"></i>
+            <p>References</p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="/menu" class="nav-link {{ request()->is('menu') || request()->is('menu/*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-bars"></i>
             <p>Menu</p>

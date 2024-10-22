@@ -58,7 +58,7 @@
                     <tr>
                       <td class="align-middle">{{ $loop->iteration }}</td>
                       <td class="align-middle">
-                        <img src="/storage/{{ $item->image }}" alt="{{ $item->image }}" class="w-100">
+                        <img src="/storage/{{ $item->image }}" alt="{{ $item->image }}"  width="150">
                       </td>
                       <td class="align-middle">{{ $item->judul }}</td>
                       <td class="align-middle">{{ $item->deskripsi }}</td>

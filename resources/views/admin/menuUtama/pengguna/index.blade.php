@@ -9,7 +9,7 @@
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Pengguna</h1>
             @if (Auth::user()->role == 'super_admin')
-              <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
+              <a href="/pengguna/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
             @endif
           </div>
         </div><!-- /.row -->
@@ -61,16 +61,15 @@
                     <td class="text-center align-middle text-wrap">{{ $user->role }}</td>
                     @if ($user->role != 'super_admin')
                       <td>
-                        <div class="">
-                          <a href="#" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
-                          <form action="#" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger"
-                              onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
-                              class="nav-icon fas fa-trash"></i></button></button>
-                          </form>
-                        </div>
+                        <a href="/pengguna/{{ $user->id }}/password" class="btn btn-info my-1"><i class="fas fa-key"></i></a>
+                        <a href="/pengguna/{{ $user->id }}/edit" class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
+                        <form action="/pengguna/{{ $user->id }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
+                            class="nav-icon fas fa-trash"></i></button></button>
+                        </form>
                       </td>
                     @else
                       <td></td>
@@ -88,34 +87,5 @@
       </div>
     </section>
     <!-- /.content -->
-  </div>
-
-
-  <div class="modal fade" id="addUser">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Tambah Pengguna Baru</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="#" method="post">
-          <div class="modal-body">
-            @csrf
-            <textarea name="pesan_ditolak" id="pesan_ditolak" class="form-control mb-2" placeholder="Masukkan alasan pesan ditolak"></textarea>
-            @error('pesan_ditolak')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Tambah</button>
-          </div>
-        </form>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
   </div>
 @endsection

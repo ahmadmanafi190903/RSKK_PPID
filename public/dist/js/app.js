@@ -33,3 +33,37 @@ function inputNip() {
     }
   });
 }
+
+// ubah foto ketika di update dan ifrmae
+const imageInput = document.getElementById('imageInput');
+const previewImage = document.getElementById('previewImage');
+
+imageInput.addEventListener('change', function (event) {
+  console.log(event.target.files[0])
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      previewImage.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+function showIframe() {
+  document.getElementById('iframeContainer').style.display = 'block';
+}
+
+// show password
+function showPassword() {
+  document.getElementById('lihatpassword').addEventListener('change', function() {
+    let passwordInput = document.getElementById('password');
+    if (this.checked) {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
+}

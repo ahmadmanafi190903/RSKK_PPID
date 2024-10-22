@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->text('deskripsi_detail');
             $table->string('url');
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }
