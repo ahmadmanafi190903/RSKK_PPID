@@ -76,23 +76,28 @@
                       </td>
                       <td class="align-middle">
                         <div class="">
-                          <a href="/permohonan_informasi/{{ $item->id }}" class="btn btn-primary">
-                            @if ($item->status_id == 2)
-                              <i class="nav-icon fas fa-arrow-right"></i>
-                            @else
-                              <i class="nav-icon fas fa-eye"></i>
-                            @endif
-                          </a>
                           @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
+                            <a href="/permohonan_informasi/{{ $item->id }}" class="btn btn-primary">
+                              @if ($item->status_id == 2)
+                                <i class="nav-icon fas fa-arrow-right"></i>
+                              @else
+                                <i class="nav-icon fas fa-eye"></i>
+                              @endif
+                            </a>
                             <a href="/permohonan_informasi/{{ $item->id }}/edit"
                               class="btn btn-warning my-1"><i class="nav-icon fas fa-pencil"></i></a>
                             <form action="/permohonan_informasi/{{ $item->id }}" method="post">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
-                                  class="nav-icon fas fa-trash"></i></button>
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                <i class="nav-icon fas fa-trash"></i>
+                              </button>
                             </form>
+                          @else
+                            <a href="/permohonan_informasi/{{ $item->id }}" class="btn btn-primary">
+                              <i class="nav-icon fas fa-eye"></i>
+                            </a>
                           @endif
                         </div>
                       </td>

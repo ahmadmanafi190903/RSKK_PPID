@@ -8,6 +8,7 @@ use App\Models\PermohonanInformasi;
 use App\Models\AlasanPengajuan;
 use App\Events\PengajuanKeberatanEvent;
 use App\Models\Reference;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class PengajuanKeberatanController extends Controller
@@ -74,7 +75,7 @@ class PengajuanKeberatanController extends Controller
      */
     public function show(PengajuanKeberatan $pengajuanKeberatan)
     {
-        if ($pengajuanKeberatan->status_id == 2) {
+        if ($pengajuanKeberatan->status_id == 2 && Auth::user()->role != 'operator') {
             $pengajuanKeberatan->update([
                 'status_id' => '3'
             ]);

@@ -13,6 +13,7 @@ use App\Events\PermohonanInformasiEvent;
 use App\Models\Rating;
 use App\Models\Reference;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Auth;
 use ParagonIE\Sodium\Compat;
 
 class PermohonanInformasiController extends Controller
@@ -90,8 +91,8 @@ class PermohonanInformasiController extends Controller
      */
     public function show(PermohonanInformasi $permohonanInformasi)
     {
-        $id = PermohonanInformasi::find($permohonanInformasi->id);
-        if ($permohonanInformasi->status_id == 2) {
+        if ($permohonanInformasi->status_id == 2 && Auth::user()->role != 'operator') {
+            $id = PermohonanInformasi::find($permohonanInformasi->id);
             $id->update([
                 'status_id' => '3'
             ]);

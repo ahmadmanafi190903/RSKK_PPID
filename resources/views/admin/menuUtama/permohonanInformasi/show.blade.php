@@ -89,7 +89,9 @@
                 <h5 class="mb-0">Tanggal Permohonan</h5>
                 <p>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</p>
               </div>
-              @if ($item->status_id == 3)
+              @if($item->status_id == 2)
+                <div class="alert alert-warning text-uppercase text-center">Status belum dibuka</div>
+              @elseif ($item->status_id == 3)
                 <div class="alert alert-primary text-uppercase text-center">Status {{ $item->status->status }}</div>
               @elseif ($item->status_id == 0)
                 <div class="alert alert-danger text-uppercase text-center">Status {{ $item->status->status }}</div>
@@ -110,8 +112,8 @@
                     @csrf
                     @method('patch')
                     <button type="submit" class="btn btn-success"
-                      onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">Terima<i
-                        class="nav-icon fas fa-check"></i></button>
+                      onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">
+                      Terima<i class="nav-icon fas fa-check"></i></button>
                   </form>
                 @endif
               @elseif($item->status_id == 0)
