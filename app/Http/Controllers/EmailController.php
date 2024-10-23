@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AcceptPengajuan;
 use App\Mail\Information;
+use App\Mail\RejectPengajuan;
+use App\Models\PengajuanKeberatan;
 use App\Models\PermohonanInformasi;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,13 +23,35 @@ class EmailController extends Controller
         return view('admin.menuUtama.email.index', compact('informations'));
     }
 
-    public function send(PermohonanInformasi $permohonanInformasi){
-
+    public function send(PermohonanInformasi $permohonanInformasi)
+    {
         $data = $permohonanInformasi;
         $data->update([
             'status_pengiriman' => true
         ]);
         Mail::to($data->email)->send(new Information($data));
+        return redirect()->back()->with('success', 'berhasil dikirim');
+    }
+
+    public function rejectPengajuan(PengajuanKeberatan $pengajuanKeberatan)
+    {
+        $data = $pengajuanKeberatan;
+        $pengajuanKeberatan->update([
+            'status_pengiriman' => 1
+        ]);
+
+        Mail::to($pengajuanKeberatan->email)->send(new RejectPengajuan($data));
+        return redirect()->back()->with('success', 'berhasil dikirim');
+    }
+
+    public function acceptPengajuan(PengajuanKeberatan $pengajuanKeberatan)
+    {
+        $data = $pengajuanKeberatan;
+        $pengajuanKeberatan->update([
+            'status_pengiriman' => 1
+        ]);
+
+        Mail::to($pengajuanKeberatan->email)->send(new AcceptPengajuan($data));
         return redirect()->back()->with('success', 'berhasil dikirim');
     }
 }

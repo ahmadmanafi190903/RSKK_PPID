@@ -113,7 +113,8 @@
                     @method('patch')
                     <button type="submit" class="btn btn-success"
                       onclick="return confirm('Apakah anda yakin ingin menerima permohonan ini?')">
-                      Terima<i class="nav-icon fas fa-check"></i></button>
+                      Terima<i class="nav-icon fas fa-check"></i>
+                    </button>
                   </form>
                 @endif
               @elseif($item->status_id == 0)

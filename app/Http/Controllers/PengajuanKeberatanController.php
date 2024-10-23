@@ -10,6 +10,7 @@ use App\Events\PengajuanKeberatanEvent;
 use App\Models\Reference;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Str;
 
 class PengajuanKeberatanController extends Controller
 {
@@ -88,8 +89,10 @@ class PengajuanKeberatanController extends Controller
 
     public function reject(Request $request, PengajuanKeberatan $pengajuanKeberatan)
     {
+        // dd($request);
         $pengajuanKeberatan->update([
-            'status_id' => '0'
+            'pesan_ditolak' => $request->pesan_ditolak,
+            'status_id' => 0,
         ]);
 
         return redirect('/pengajuan_keberatan/' . $pengajuanKeberatan->id)->with('success', 'Pengajuan keberatan berhasil ditolak');
@@ -99,6 +102,25 @@ class PengajuanKeberatanController extends Controller
     {
         $pengajuanKeberatan->update([
             'status_id' => '1',
+        ]);
+
+        return redirect('/pengajuan_keberatan/' . $pengajuanKeberatan->id)->with('success', 'Pengajuan keberatan berhasil diterima');
+    }
+
+    public function upload(Request $request, PengajuanKeberatan $pengajuanKeberatan)
+    {
+        $request->validate([
+            'file_acc_pengajuan' => 'required|file|mimes:jpg,png,jpeg,pdf|max:2048',
+        ],$this->feedback_validate);
+
+        $file = $request->file('file_acc_pengajuan');
+        $file_org =  $file->getClientOriginalName();
+        $randomName = Str::random(5);
+        $file_name = $randomName . '-' . $file_org;
+        $file_path = $file->storeAs('file_acc', $file_name, 'public');
+
+        $pengajuanKeberatan->update([
+            'file_acc_pengajuan' => $file_path
         ]);
 
         return redirect('/pengajuan_keberatan/' . $pengajuanKeberatan->id)->with('success', 'Pengajuan keberatan berhasil diterima');
@@ -148,5 +170,15 @@ class PengajuanKeberatanController extends Controller
     {
         $pengajuanKeberatan->delete();
         return redirect('/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil dihapus');
+    }
+
+    public function download(string $id)
+    {
+        $information = PengajuanKeberatan::where('id', $id)->select(['id','file_acc_pengajuan'])->first();
+        // $rating = Rating::where('permohonan_informasi_id', $information->id)->first();
+        return view('user.download.pengajuan', [
+            'information' => $information,
+            // 'rating' => $rating
+        ]);
     }
 }

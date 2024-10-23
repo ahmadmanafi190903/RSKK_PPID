@@ -246,7 +246,7 @@ class PermohonanInformasiController extends Controller
     {
         $information = PermohonanInformasi::where('id', $id)->select(['id','file_acc_permohonan'])->first();
         $rating = Rating::where('permohonan_informasi_id', $information->id)->first();
-        return view('user.download.index', [
+        return view('user.download.permohonan', [
             'information' => $information,
             'rating' => $rating
         ]);
@@ -267,4 +267,6 @@ class PermohonanInformasiController extends Controller
 
         return redirect()->back()->with('success', 'Terima kasih atas ulasannya');
     }
+
+    
 }

@@ -25,6 +25,9 @@ return new class extends Migration
             $table->foreignId('status_id')->default(2)->constrained(
                 table: 'status', indexName: 'pengajuan_status'
             );
+            $table->text('pesan_ditolak')->nullable();
+            $table->string('file_acc_pengajuan')->nullable();
+            $table->boolean('status_pengiriman')->default(0);
             $table->timestamps();
         });
     }

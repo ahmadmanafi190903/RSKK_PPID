@@ -23,10 +23,12 @@ use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\VideoController;
+use App\Models\PengajuanKeberatan;
 
 //user
 Route::get('/',[DashboardController::class, 'home']);
 Route::get('/permohonan-informasi/{permohonaninformasi}/download', [PermohonanInformasiController::class, 'download']);
+Route::get('/pengajuan-keberatan/{pengajuanKeberatan}/download', [PengajuanKeberatanController::class, 'download']);
 Route::post('/rating', [PermohonanInformasiController::class, 'rating']);
 
 Route::get('/permohonan', [PermohonanInformasiController::class, 'create']);
@@ -60,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pengajuan_keberatan/{pengajuanKeberatan}', [PengajuanKeberatanController::class, 'show'])->middleware('role:super_admin,admin,operator');
     Route::patch('/pengajuan_keberatan/{pengajuanKeberatan}/tolak', [PengajuanKeberatanController::class, 'reject'])->middleware('role:super_admin,admin');
     Route::patch('/pengajuan_keberatan/{pengajuanKeberatan}/terima', [PengajuanKeberatanController::class, 'accept'])->middleware('role:super_admin,admin');
-    // Route::patch('/pengajuan_keberatan/{pengajuanKeberatan}/upload', [PengajuanKeberatanController::class, 'upload'])->middleware('role:super_admin,admin');
+    Route::patch('/pengajuan_keberatan/{pengajuanKeberatan}/upload', [PengajuanKeberatanController::class, 'upload'])->middleware('role:super_admin,admin');
     Route::get('/pengajuan_keberatan/{pengajuanKeberatan}/edit', [PengajuanKeberatanController::class, 'edit'])->middleware('role:super_admin,admin');
     Route::patch('/pengajuan_keberatan/{pengajuanKeberatan}', [PengajuanKeberatanController::class, 'update'])->middleware('role:super_admin,admin');
     Route::delete('/pengajuan_keberatan/{pengajuanKeberatan}', [PengajuanKeberatanController::class, 'destroy'])->middleware('role:super_admin,admin');
@@ -84,6 +86,8 @@ Route::middleware(['auth'])->group(function () {
     // Email
     Route::get('/email', [EmailController::class, 'index'])->middleware('role:super_admin,admin');
     Route::get('/email/{permohonanInformasi}/send', [EmailController::class, 'send'])->middleware('role:super_admin,admin');
+    Route::get('/email/{pengajuanKeberatan}/send/ditolak', [EmailController::class, 'rejectPengajuan'])->middleware('role:super_admin,admin');
+    Route::get('/email/{pengajuanKeberatan}/send/diterima', [EmailController::class, 'acceptPengajuan'])->middleware('role:super_admin,admin');
 
     // rating
     Route::get('/rating', [RatingController::class, 'index'])->middleware('role:super_admin');
