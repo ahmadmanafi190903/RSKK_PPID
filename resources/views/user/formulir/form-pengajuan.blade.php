@@ -89,15 +89,6 @@
               </div>
             </div> --}}
             <div class="col-md-12 col-12">
-              <div class="single-personal-info mb-0">
-                <label for="information1">Tujuan Penggunaan Informasi</label>
-                <textarea id="information1" placeholder="Masukan Tujuan Penggunaan Informasi" name="tujuan_penggunaan_informasi" >{{ old('tujuan_penggunaan_informasi') }}</textarea>
-                @error('tujuan_penggunaan_informasi')
-                  <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-              </div>
-            </div>
-            <div class="col-md-12 col-12">
               <div class="single-personal-info mb-5">
                 <label for="information2">Alasan Pengajuan Keberatan</label>
                 <select id="kuasa" name="alasan_pengajuan_id" >
@@ -112,6 +103,16 @@
                 @enderror
               </div>
             </div>
+            <div class="col-md-12 col-12">
+              <div class="single-personal-info mb-0">
+                <label for="information1">Tujuan Penggunaan Informasi</label>
+                <textarea id="information1" placeholder="Masukan Tujuan Penggunaan Informasi" name="tujuan_penggunaan_informasi" >{{ old('tujuan_penggunaan_informasi') }}</textarea>
+                @error('tujuan_penggunaan_informasi')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+              </div>
+            </div>
+            
             {{-- <div class="col-12">
               <div class="single-personal-info">
                 <label for="kuasa">Kuasa</label>
@@ -214,6 +215,17 @@
               </div>
 
             </div> --}}
+            <div class="col-md-6 col-12">
+              <div class="input-group mb-3">
+                <div class="mt-2"></div>
+                <input type="text" name="captcha" class="form-control @error('captcha') is-invalid @enderror" placeholder="Please Insert Captch">
+                <img src="{{ captcha_src('math') }}" alt="captcha">
+                @error('captcha') 
+                  <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
+                @enderror 
+              </div>
+            </div>
+            
             <div class="col-md-12 col-12 text-center">
               <input class="submit-btn mb-5" type="submit" value="Kirim">
             </div>

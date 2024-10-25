@@ -129,16 +129,51 @@ class BeritaController extends Controller
     }
 
 
+    public function indexUser()
+    {
+        if (request('search')) {
+            $berita = Berita::where('judul', 'like', '%' . request('search') . '%')->latest()->paginate(5);
+        } else {
+            $berita = Berita::latest()->paginate(5);
+        }
+        // dd($berita);
+        $beritaPopular = Berita::orderBy('views', 'desc')->take(5)->get();
+        $sosmed = Sosmed::all();
+        return view('user.berita.index', [
+            'sosmed' => $sosmed,
+            'beritaPopular' => $beritaPopular,
+            'berita' => $berita,
+        ]);
+    }
+
 
     public function detail(Berita $berita)
     {
         $berita->increment('views');
         $beritaPopular = Berita::orderBy('views', 'desc')->take(5)->get();
         $sosmed = Sosmed::all();
-        return view('user.berita.index', [
+        return view('user.berita.show', [
             'item' => $berita,
             'sosmed' => $sosmed,
-            'beritaPopular' => $beritaPopular
+            'beritaPopular' => $beritaPopular,
         ]);
     }
+
+
+    // public function search(Request $request)
+    // {
+    //     // dd($request);
+    //     $searching = Berita::where('judul', 'like', '%' . request('search') . '%')->latest()->paginate(10);
+    //     if ($searching->isEmpty()) {
+    //         return redirect('/');
+    //     }
+
+    //     $beritaPopular = Berita::orderBy('views', 'desc')->take(5)->get();
+    //     $sosmed = Sosmed::all();
+    //     return view('user.berita.search', [
+    //         'sosmed' => $sosmed,
+    //         'beritaPopular' => $beritaPopular,
+    //         'searching' => $searching
+    //     ]);
+    // }
 }

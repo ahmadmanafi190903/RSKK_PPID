@@ -84,6 +84,34 @@
         </div>
         <!-- end 4 card -->
 
+        {{-- filter tahun --}}
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <form>
+              <div class="form-group">
+                <label>Filter berdasarkan tahun:</label>
+                <div class="input-group input-group-lg">
+                  <select class="custom-select" name="year">
+                    @php
+                      $currentYear = date('Y');
+                      $startYear = 2000;
+                    @endphp
+                    <option value=""></option>
+                    @for ($year = $currentYear; $year >= $startYear; $year--)
+                      <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
+                    @endfor
+                  </select>
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-lg btn-default">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <div class="row">
           {{-- layout kiri --}}
           <div class="col-lg-6">
@@ -91,8 +119,8 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Grafik Permohonan dan Pengajuan</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title">Grafik Permohonan dan Pengajuan {{ date('Y') }}</h3>
+                  {{-- <a href="javascript:void(0);">View Report</a> --}}
                 </div>
               </div>
               <div class="card-body">
@@ -110,6 +138,20 @@
                     <i class="fas fa-square text-success"></i> Pengajuan
                   </span>
                 </div>
+              </div>
+            </div>
+
+            {{-- grafik permohonan informasi berdasarkan salinan --}}
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Permohonan Informasi berdasarkan salinan</h3>
+                  {{-- <a href="javascript:void(0);">View Report</a> --}}
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="permohonanSalinan"
+                  style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
               </div>
             </div>
 
@@ -170,7 +212,7 @@
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Grafik Informasi Publik</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  {{-- <a href="javascript:void(0);">View Report</a> --}}
                 </div>
               </div>
               <div class="card-body">
@@ -180,10 +222,12 @@
                 </div>
 
                 <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> Berkala
-                  </span>
-                  <span class="mr-2">
+                  @foreach ($referencesInformasi as $item)
+                    <span class="mr-2">
+                      <i class="fas fa-square" style="color: #ff0000"></i> {{ $item->nama }}
+                    </span>
+                  @endforeach
+                  {{-- <span class="mr-2">
                     <i class="fas fa-square text-success"></i> Serta Merta
                   </span>
                   <span class="mr-2">
@@ -191,7 +235,7 @@
                   </span>
                   <span class="mr-2">
                     <i class="fas fa-square text-danger"></i> Dikeculaikan
-                  </span>
+                  </span> --}}
                 </div>
               </div>
             </div>
@@ -241,4 +285,210 @@
 
 
   </div>
+@endsection
+
+@section('grafic')
+  <script>
+    $(function() {
+      'use strict'
+
+      var ticksStyle = {
+        fontColor: '#495057',
+        fontStyle: 'bold'
+      }
+
+      var mode = 'index'
+      var intersect = true
+
+      // grafik permohonan dan pengajuan 
+      var dataGrafik = {
+        dataPermohonan: [
+          @for ($i = 1; $i <= 12; $i++)
+            '{{ $arrayPermohonanInformasiMonth[$i] }}',
+          @endfor
+        ],
+        dataPengajuan: [
+          @for ($i = 1; $i <= 12; $i++)
+            '{{ $arrayPengajuanKeberatanMonth[$i] }}',
+          @endfor
+        ]
+      }
+
+      var $grafikPermohonanPengajuan = $('#grafikPermohonanPengajuan')
+      var grafikPermohonanPengajuan = new Chart($grafikPermohonanPengajuan, {
+        type: 'bar',
+        data: {
+          labels: ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES'],
+          datasets: [{
+              backgroundColor: '#007bff',
+              borderColor: '#007bff',
+              data: dataGrafik.dataPermohonan
+            },
+            {
+              backgroundColor: '#28a745',
+              borderColor: '#28a745',
+              data: dataGrafik.dataPengajuan
+            }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            mode: mode,
+            intersect: intersect
+          },
+          hover: {
+            mode: mode,
+            intersect: intersect
+          },
+          legend: {
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              // display: false,
+              gridLines: {
+                display: true,
+                lineWidth: '4px',
+                color: 'rgba(0, 0, 0, .2)',
+                zeroLineColor: 'transparent'
+              },
+              ticks: $.extend({
+                beginAtZero: true,
+
+                // Include a dollar sign in the ticks
+                callback: function(value) {
+                  if (value >= 1000) {
+                    value /= 1000
+                    value += 'k'
+                  }
+
+                  return value
+                }
+              }, ticksStyle)
+            }],
+            xAxes: [{
+              display: true,
+              gridLines: {
+                display: false
+              },
+              ticks: ticksStyle
+            }]
+          }
+        }
+      })
+      // end grafik permohonan dan pengajuan 
+
+
+      // grafik informasi publik 
+      var dataGrafik = {
+        labels: [
+          @foreach ($referencesInformasi as $item)
+            '{{ $item->nama }}',
+          @endforeach
+        ],
+        values: [
+          @for ($i = 0; $i < $referencesInformasiCount; $i++)
+            '{{ $arrayInformasiPublik[$i] }}',
+          @endfor
+        ]
+      };
+
+      var $grafikInformasiPublik = $('#grafikInformasiPublik')
+      var grafikInformasiPublik = new Chart($grafikInformasiPublik, {
+        type: 'bar',
+        data: {
+          labels: dataGrafik.labels, // Menggunakan data dari variabel
+          datasets: [{
+            backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6c757d', '#343a40',
+              '#f8f9fa', '#e83e8c', '#fd7e14'
+            ],
+            borderColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6c757d', '#343a40',
+              '#f8f9fa', '#e83e8c', '#fd7e14'
+            ],
+            data: dataGrafik.values // Menggunakan data dari variabel
+          }, ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            mode: mode,
+            intersect: intersect
+          },
+          hover: {
+            mode: mode,
+            intersect: intersect
+          },
+          legend: {
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              // display: false,
+              gridLines: {
+                display: true,
+                lineWidth: '4px',
+                color: 'rgba(0, 0, 0, .2)',
+                zeroLineColor: 'transparent'
+              },
+              ticks: $.extend({
+                beginAtZero: true,
+
+                // Include a dollar sign in the ticks
+                callback: function(value) {
+                  if (value >= 1000) {
+                    value /= 1000
+                    value += 'k'
+                  }
+
+                  return value
+                }
+              }, ticksStyle)
+            }],
+            xAxes: [{
+              display: true,
+              gridLines: {
+                display: false
+              },
+              ticks: ticksStyle
+            }]
+          }
+        }
+      })
+      // end grafik informasi publik
+
+
+      // grafik pie salinan permohonan
+      var donutData = {
+        labels: [
+          'Mengambil Langsung',
+          'Email'
+        ],
+        datasets: [{
+          data: [
+            @for ($i = 0; $i < $referencesMedapatCount; $i++)
+              '{{ $arrayPermohonanSalinan[$i] }}',
+            @endfor
+          ],
+          backgroundColor: ['#f39c12', '#00c0ef', '#f56954', '#00a65a', '#3c8dbc', '#d2d6de'],
+        }]
+      }
+
+      var pieChartCanvas = $('#permohonanSalinan').get(0).getContext('2d')
+      var pieData = donutData;
+      var pieOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+      }
+
+      new Chart(pieChartCanvas, {
+        type: 'pie',
+        data: pieData,
+        options: pieOptions
+      })
+
+      // end grafik pie salinan permohonan
+
+    })
+  </script>
 @endsection

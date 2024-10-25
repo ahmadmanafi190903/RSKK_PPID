@@ -59,6 +59,7 @@ class PermohonanInformasiController extends Controller
             'alasan_penggunaan_informasi' => 'required',
             'memperoleh_informasi_id' => 'required',
             'mendapatkan_salinan_informasi_id' => 'required',
+            'captcha' => 'required|captcha',
         ],$this->feedback_validate);
 
         $ktp = $request->file('file_ktp');

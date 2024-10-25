@@ -4,10 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
 {
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function authenticate(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'nip' => ['required'],
+            'password' => ['required'],
+            'captcha' => 'required|captcha',
+        ]);
+
+        $credentials = $request->only(['nip', 'password']);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+        }
+ 
+        return back()->withErrors([
+            'nip' => 'NIP atau password anda salah',
+        ])->onlyInput('nip');
+    }
+
+    public function logout(Request $request) : RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
+
+
     /**
      * Display a listing of the resource.
      */

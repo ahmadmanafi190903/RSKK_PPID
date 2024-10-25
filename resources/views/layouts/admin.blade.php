@@ -110,7 +110,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="/dist/js/pages/dashboard3.js"></script>
+
   <script src="/dist/js/app.js"></script>
   <!-- bs-custom-file-input -->
   <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
@@ -131,6 +131,8 @@
       });
     });
   </script>
+
+  @yield('grafic')
 
 </body>
 

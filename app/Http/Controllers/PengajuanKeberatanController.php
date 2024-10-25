@@ -56,6 +56,7 @@ class PengajuanKeberatanController extends Controller
         'alamat' => 'required|max:255',
         'alasan_pengajuan_id' => 'required',
         'tujuan_penggunaan_informasi' => 'required',
+        'captcha' => 'required|captcha',
     ],$this->feedback_validate);
 
     PengajuanKeberatan::create([

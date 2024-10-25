@@ -41,7 +41,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <form action="{{ route('logout') }}" method="post" class="">
+      <form action="{{ Route('logout') }}" method="post">
         @csrf
         <button type="submit" class="nav-link bg-transparent border-0"
           onclick="return confirm('Apakah anda yakin ingin logout?')">

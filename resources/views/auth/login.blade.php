@@ -22,7 +22,7 @@
       <a href="#" class="h1">Login</a>
     </div>
     <div class="card-body">
-      <form action="{{ route('login') }}" method="post">
+      <form action="/login" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="NIP" inputmode="numeric" name="nip" id="nip" oninput="inputNip()" value="{{ old('nip') }}">
@@ -33,9 +33,9 @@
           </div>
         </div>
         @error('nip')
-        <div>
-          <span class="text-danger">{{ $message }}</span>
-        </div>
+          <div>
+            <span class="text-danger w-100">{{ $message }}</span>
+          </div>
         @enderror
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Masukan Password" name="password" >
@@ -44,6 +44,14 @@
               <span class="fas fa-lock"></span>
             </div>
           </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="mt-2"></div>
+          <input type="text" name="captcha" class="form-control @error('captcha') is-invalid @enderror" placeholder="Please Insert Captch">
+          <img src="{{ captcha_src('math') }}" alt="captcha">
+          @error('captcha') 
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror 
         </div>
         <div class="row">
           <div class="col-8">

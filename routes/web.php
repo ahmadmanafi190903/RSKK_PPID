@@ -24,6 +24,9 @@ use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\VideoController;
 use App\Models\PengajuanKeberatan;
+use Illuminate\Support\Facades\Auth;
+
+// Auth::routes(['register' => false]);
 
 //user
 Route::get('/',[DashboardController::class, 'home']);
@@ -41,7 +44,14 @@ Route::post('/pengajuan/create', [PengajuanKeberatanController::class, 'store'])
 Route::get('/informasi-publik/{slug}/{id}', [InformasiPublikController::class, 'information']);
 Route::get('/informasi-publik/informasi/{id}/details', [InformasiPublikController::class, 'detail']);
 
+Route::get('/berita', [BeritaController::class, 'indexUser']);
 Route::get('/berita/{berita}', [BeritaController::class, 'detail']);
+
+// guest
+Route::middleware(['guest'])->group(function() {
+    Route::get('/login', [PenggunaController::class, 'login'])->name('login');
+    Route::post('/login', [PenggunaController::class, 'authenticate']);
+});
 
 //admin
 Route::middleware(['auth'])->group(function () {
@@ -215,4 +225,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lokasi/{lokasi}/edit', [LokasiController::class, 'edit'])->middleware('role:super_admin');
     Route::patch('/lokasi/{lokasi}', [LokasiController::class, 'update'])->middleware('role:super_admin');
     Route::delete('/lokasi/{lokasi}', [LokasiController::class, 'destroy'])->middleware('role:super_admin');
+
+    // logout
+    Route::post('/logout', [PenggunaController::class, 'logout'])->name('logout');
 });

@@ -135,6 +135,16 @@
                 @enderror
               </div>
             </div>
+            <div class="col-md-6 col-12">
+              <div class="input-group mb-3">
+                <div class="mt-2"></div>
+                <input type="text" name="captcha" class="form-control @error('captcha') is-invalid @enderror" placeholder="Please Insert Captch">
+                <img src="{{ captcha_src('math') }}" alt="captcha">
+                @error('captcha') 
+                  <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
+                @enderror 
+              </div>
+            </div>
             <div class="col-md-12 col-12 text-center">
               <button class="submit-btn mb-5 mt-4" type="submit">Kirim</button>
             </div>

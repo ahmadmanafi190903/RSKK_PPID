@@ -12,14 +12,20 @@ use App\Models\PengajuanKeberatan;
 use App\Models\InformasiPublik;
 use App\Models\QuestAnswer;
 use App\Models\Rating;
+use App\Models\Reference;
 use App\Models\Video;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $information = PermohonanInformasi::get();
-        $submission = PengajuanKeberatan::all();
+        // if (request('year')) {
+        //     $information = PermohonanInformasi::whereYear('created_at', request('year'))->get()->count();
+        //     dd($information);
+        // }
+        $submission = PengajuanKeberatan::get();
         $public = InformasiPublik::get();
         $ratings = Rating::latest()->get();
         $totalRatings = $ratings->sum('star');
@@ -30,27 +36,37 @@ class DashboardController extends Controller
         $ditolak = $information->where('status_id', 0)->count();
         $diterima = $information->where('status_id', 1)->count();
 
-        $data = InformasiPublik::get();
+        // permohonan dan pengajuan grafik
+        for ($i = 1; $i <= 12; $i++) { 
+            $permohonanInforamsiMonth = PermohonanInformasi::whereMonth('created_at', $i)->whereYear('created_at', date('Y'))->get()->count();
+            $arrayPermohonanInformasiMonth[$i] = $permohonanInforamsiMonth;
+        }
+        for ($i = 1; $i <= 12; $i++) { 
+            $pengajuanKeberatanMonth = PengajuanKeberatan::whereMonth('created_at', $i)->whereYear('created_at', date('Y'))->get()->count();
+            $arrayPengajuanKeberatanMonth[$i] = $pengajuanKeberatanMonth; 
+        }
 
-        $berkala = $data->where('kategori_informasi_id', 13)->count();
-        $serta_merta = $data->where('kategori_informasi_id', 14)->count();
-        $setiap_saat = $data->where('kategori_informasi_id', 15)->count();
-        $dikecualikan = $data->where('kategori_informasi_id', 16)->count();
+        // informasi publik grafik
+        $referencesInfo = Reference::where('slug', 'informasi');
+        $referencesInformasi = $referencesInfo->get();
+        $referencesInformasiCount = $referencesInfo->count();
+        for ($i=0; $i < $referencesInformasiCount; $i++) { 
+            $InformasiPublikCount = $public->where('kategori_informasi_id', $referencesInformasi->skip($i)->first()->id)->count();
+            $arrayInformasiPublik[$i] = $InformasiPublikCount;
+        }
 
-        $dataInformasiPublik = [
-            'berkala' => $berkala,    
-            'serta_merta' => $serta_merta,    
-            'setiap_saat' => $setiap_saat,    
-            'dikecualikan' => $dikecualikan    
-        ];
+        // permohonan informasi berdasarkan salinan
+        $referencesDapat = Reference::where('slug', 'mendapat');
+        $referencesMedapat = $referencesDapat->get();
+        $referencesMedapatCount = $referencesDapat->count();
+        for ($i=0; $i < $referencesMedapatCount; $i++) { 
+            $permohonanSalinanCount = $information->where('mendapatkan_salinan_informasi_id', $referencesMedapat->skip($i)->first()->id)->count();
+            $arrayPermohonanSalinan[$i] = $permohonanSalinanCount;  
+        }
 
         return view('admin.dashboard', compact('information', 'submission', 'public', 'averageRating', 'newComments', 'dikirim', 
-            'proses', 'ditolak', 'diterima', 'dataInformasiPublik'));
-    }
-
-    public function getData()
-    {
-        
+            'proses', 'ditolak', 'diterima', 'referencesInformasi', 'arrayInformasiPublik', 'referencesInformasiCount',
+            'arrayPermohonanInformasiMonth', 'arrayPengajuanKeberatanMonth', 'referencesMedapatCount','arrayPermohonanSalinan'));
     }
 
     public function home()
