@@ -10,7 +10,7 @@
   <!-- ======== Page title ============ -->
   <title>{{ config('app.name') }}</title>
   <!-- ========== Favicon Icon ========== -->
-  <link rel="shortcut icon" href="/assets/img/icons/logo-RSKK-2.ico">
+  <link rel="shortcut icon" href="/storage/{{App\Models\BackgroundImage::where('slug','logo')->latest()->first()->image}}">
   <!-- ===========  All Stylesheet ================= -->
   <!--  Icon css plugins -->
   <link rel="stylesheet" href="/assets/css/icons.css">
