@@ -16,11 +16,15 @@ class EmailController extends Controller
         $informations = PermohonanInformasi::latest()
             ->where('status_id', 1)
             ->whereNotNull('file_acc_permohonan');
+        $submissions = PengajuanKeberatan::latest()
+            ->whereIn('status_id', [0, 1]);
         if (request('cari')) {
             $informations = $informations->where('nama', 'like', '%' . request('cari') . '%'); 
+            $submissions = $submissions->where('nama', 'like', '%' . request('cari') . '%'); 
         }
         $informations = $informations->paginate(5); 
-        return view('admin.menuUtama.email.index', compact('informations'));
+        $submissions = $submissions->paginate(5); 
+        return view('admin.menuUtama.email.index', compact('informations', 'submissions'));
     }
 
     public function send(PermohonanInformasi $permohonanInformasi)

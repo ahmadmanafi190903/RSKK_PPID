@@ -28,7 +28,8 @@ class Information extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->data['informasi_yang_dibutuhkan'],
+            // subject: $this->data['informasi_yang_dibutuhkan'],
+            subject: 'Permohonan Diterima',
         );
     }
 

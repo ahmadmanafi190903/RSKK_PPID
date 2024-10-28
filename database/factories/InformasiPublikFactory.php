@@ -26,6 +26,7 @@ class InformasiPublikFactory extends Factory
             'bentuk_informasi_digital' => $this->faker->boolean,
             'waktu_penyimpanan_id' => $this->faker->numberBetween(17, 22),
             'kategori_informasi_id' => $this->faker->numberBetween(13, 16),
+            'created_at' => $this->faker->dateTimeBetween('-5 years', now()),
         ];
     }
 }

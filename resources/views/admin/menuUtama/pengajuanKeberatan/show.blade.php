@@ -143,7 +143,7 @@
                               @enderror
                             </div>
                           </div>
-                          <button type="submit" class="btn btn-primary">Kirim</button>
+                          <button type="submit" class="btn btn-primary">Upload</button>
                         </form>
                       </div>
                     </div>

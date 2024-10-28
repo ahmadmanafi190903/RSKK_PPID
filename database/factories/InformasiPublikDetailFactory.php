@@ -22,6 +22,7 @@ class InformasiPublikDetailFactory extends Factory
             'tahun' => $this->faker->year,
             'informasi_publik_id' => InformasiPublik::factory(),
             'link' => $this->faker->url,
+            'created_at' => $this->faker->dateTimeBetween('-5 years', now()),
         ];
     }
 }

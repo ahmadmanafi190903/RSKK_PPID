@@ -53,6 +53,26 @@
     </div>
   @endif
 
+  {{-- alert succes dan langsung cek permohonan --}}
+  @if (session('successCek'))
+    <div class="position-fixed top-50 start-50 translate-middle p-2 text-center" style="z-index: 1050;">
+      <div class="alert alert-success fade show" role="alert">
+        <div class="m-3">
+          <img src="/assets/img/check.png" alt="check" width="200">
+        </div>
+        <div class="m-3">
+          <strong>{{ session('successCek') }}</strong>
+        </div>
+        <div class="m-3">
+          <form action="/riwayat">
+            <input type="hidden" value="{{ session('email') }}" name="email">
+            <button type="submit" class="btn btn-success btn-lg">Cek</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  @endif
+
   @include('components.preloader')
 
   {{-- @include('components.top-bar') --}}

@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\InformasiPublik;
 use App\Models\InformasiPublikDetail;
+use App\Models\PengajuanKeberatan;
+use App\Models\PermohonanInformasi;
 use App\Models\Rating;
 
 class DatabaseSeeder extends Seeder
@@ -37,9 +39,11 @@ class DatabaseSeeder extends Seeder
             LokasiSeeder::class
         ]);
 
-        InformasiPublik::factory(50)->create();
-        InformasiPublikDetail::factory(250)->recycle(InformasiPublik::all())->create();
+        InformasiPublik::factory(250)->create();
+        InformasiPublikDetail::factory(500)->recycle(InformasiPublik::all())->create();
         Rating::factory()->count(2)->create();
+        PermohonanInformasi::factory(1000)->create();
+        PengajuanKeberatan::factory(500)->create();
         // InformasiPublikDetail::factory()->count(100)->create();
     }
 }

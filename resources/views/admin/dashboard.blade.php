@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 
 @section('content')
@@ -17,6 +18,69 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        {{-- filter tanggal --}}
+        <form>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="form-group">
+                <label>Filter berdasarkan tahun:</label>
+                <div class="input-group input-group-lg">
+                  <select class="custom-select" name="year">
+                    @php
+                      $currentYear = date('Y');
+                      $startYear = 2000;
+                    @endphp
+                    <option value=""></option>
+                    @for ($year = $currentYear; $year >= $startYear; $year--)
+                      <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
+                    @endfor
+                  </select>
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-lg btn-default">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="form-group">
+                <label>Filter berdasarkan bulan:</label>
+                <div class="input-group input-group-lg">
+                  <select class="custom-select" name="month">
+                    @php
+                      $months = [
+                        1 => 'Januari', 
+                        2 => 'Februari', 
+                        3 => 'Maret', 
+                        4 => 'April',
+                        5 => 'Mei', 
+                        6 => 'Juni', 
+                        7 => 'Juli', 
+                        8 => 'Agustus',
+                        9 => 'September', 
+                        10 => 'Oktober', 
+                        11 => 'November', 
+                        12 => 'Desember'
+                      ];
+                    @endphp
+                    <option value=""></option>
+                    @foreach ($months as $monthNumber => $item)
+                      <option value="{{ $monthNumber }}" {{ request('month') == $monthNumber ? 'selected' : '' }}>{{ $item }}</option>
+                    @endforeach
+                  </select>
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-lg btn-default">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        {{-- end filter tanggal --}}
+        
         <!-- 4 card -->
         <div class="row">
           <div class="col-lg-3 col-6">
@@ -84,34 +148,7 @@
         </div>
         <!-- end 4 card -->
 
-        {{-- filter tahun --}}
-        <div class="row">
-          <div class="col-12 col-lg-6">
-            <form>
-              <div class="form-group">
-                <label>Filter berdasarkan tahun:</label>
-                <div class="input-group input-group-lg">
-                  <select class="custom-select" name="year">
-                    @php
-                      $currentYear = date('Y');
-                      $startYear = 2000;
-                    @endphp
-                    <option value=""></option>
-                    @for ($year = $currentYear; $year >= $startYear; $year--)
-                      <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
-                    @endfor
-                  </select>
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-lg btn-default">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
+        
         <div class="row">
           {{-- layout kiri --}}
           <div class="col-lg-6">
@@ -119,7 +156,7 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Grafik Permohonan dan Pengajuan {{ date('Y') }}</h3>
+                  <h3 class="card-title">Grafik Permohonan dan Pengajuan {{ request('year') ?? date('Y') }}</h3>
                   {{-- <a href="javascript:void(0);">View Report</a> --}}
                 </div>
               </div>
@@ -145,7 +182,7 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Permohonan Informasi berdasarkan salinan</h3>
+                  <h3 class="card-title">Persentase(%) Permohonan Informasi berdasarkan salinan {{ request('year') ?? date('Y') }}</h3>
                   {{-- <a href="javascript:void(0);">View Report</a> --}}
                 </div>
               </div>
@@ -162,8 +199,8 @@
                 <span class="info-box-icon"><i class="fas fa-lock-alt"></i></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Belum Dibuka</span>
-                  <span class="info-box-number">{{ $dikirim }}</span>
+                  <span class="info-box-text">Belum dibuka</span>
+                  <span class="info-box-text">Permohonan <strong>{{ $sendPer }}</strong> - Pengajuan <strong>{{ $sendPeng }}</strong></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -174,7 +211,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Proses</span>
-                  <span class="info-box-number">{{ $proses }}</span>
+                  <span class="info-box-text">Permohonan <strong>{{ $processPer }}</strong> - pengajuan <strong>{{ $processPeng }}</strong></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -185,7 +222,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Tolak</span>
-                  <span class="info-box-number">{{ $ditolak }}</span>
+                  <span class="info-box-text">Permohonan <strong>{{ $rejectPer }}</strong> - pengajuan <strong>{{ $rejectPeng }}</strong></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -196,7 +233,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Terima</span>
-                  <span class="info-box-number">{{ $diterima }}</span>
+                  <span class="info-box-text">Permohonan <strong>{{ $acceptPer }}</strong> - pengajuan <strong>{{ $acceptPeng }}</strong></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -211,7 +248,7 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Grafik Informasi Publik</h3>
+                  <h3 class="card-title">Grafik Informasi Publik {{ request('year') ?? ''}}</h3>
                   {{-- <a href="javascript:void(0);">View Report</a> --}}
                 </div>
               </div>
@@ -222,9 +259,14 @@
                 </div>
 
                 <div class="d-flex flex-row justify-content-end">
-                  @foreach ($referencesInformasi as $item)
+                  @php
+                    $months = ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6c757d', '#343a40',
+                      '#f8f9fa', '#e83e8c', '#fd7e14'
+                    ];
+                  @endphp
+                  @foreach ($referencesInformasi as $key => $item)
                     <span class="mr-2">
-                      <i class="fas fa-square" style="color: #ff0000"></i> {{ $item->nama }}
+                      <i class="fas fa-square" style="color: {{ $months[$key] }}"></i> {{ $item->nama }}
                     </span>
                   @endforeach
                   {{-- <span class="mr-2">
@@ -244,14 +286,14 @@
             <div class="card">
               <div class="card-header border-0">
                 <h3 class="card-title">Ulasan Terbaru</h3>
-                <div class="card-tools">
+                {{-- <div class="card-tools">
                   <a href="#" class="btn btn-tool btn-sm">
                     <i class="fas fa-download"></i>
                   </a>
                   <a href="#" class="btn btn-tool btn-sm">
                     <i class="fas fa-bars"></i>
                   </a>
-                </div>
+                </div> --}}
               </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
@@ -470,7 +512,9 @@
               '{{ $arrayPermohonanSalinan[$i] }}',
             @endfor
           ],
-          backgroundColor: ['#f39c12', '#00c0ef', '#f56954', '#00a65a', '#3c8dbc', '#d2d6de'],
+          backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#17a2b8', '#6c757d', '#343a40',
+              '#f8f9fa', '#e83e8c', '#fd7e14'
+            ],
         }]
       }
 
@@ -492,3 +536,4 @@
     })
   </script>
 @endsection
+

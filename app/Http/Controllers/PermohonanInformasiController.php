@@ -82,7 +82,10 @@ class PermohonanInformasiController extends Controller
             'mendapatkan_salinan_informasi_id' => $request->mendapatkan_salinan_informasi_id
         ]);
 
-        return redirect('/')->with('success', 'Permohonan berhasil dikirim');
+        return redirect('/')->with([
+            'successCek' => 'Permohonan berhasil dikirim',
+            'email' => $request->email
+        ]);
 
         // PermohonanInformasiEvent::dispatch( $request->all() );
     }

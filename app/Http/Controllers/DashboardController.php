@@ -20,31 +20,86 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $information = PermohonanInformasi::get();
-        // if (request('year')) {
-        //     $information = PermohonanInformasi::whereYear('created_at', request('year'))->get()->count();
-        //     dd($information);
-        // }
-        $submission = PengajuanKeberatan::get();
-        $public = InformasiPublik::get();
-        $ratings = Rating::latest()->get();
+        // permohonan informasi
+        $information = PermohonanInformasi::when(request('year'), function ($query) {
+            $query->whereYear('created_at', request('year'));
+        })->when(request('month'), function ($query) {
+            $query->whereMonth('created_at', request('month'));
+        })->get();
+
+        // pengajuan keberatan
+        $submission = PengajuanKeberatan::when(request('year'), function ($query) {
+            $query->whereYear('created_at', request('year'));
+        })->when(request('month'), function ($query) {
+            $query->whereMonth('created_at', request('month'));
+        })->get();
+        
+        // informasi publik
+        $public = InformasiPublik::when(request('year'), function ($query) {
+            $query->whereYear('created_at', request('year'));
+        })->when(request('month'), function ($query) {
+            $query->whereMonth('created_at', request('month'));
+        })->get();
+
+        // rata rata
+        $ratings = Rating::when(request('year'), function ($query) {
+            $query->whereYear('created_at', request('year'));
+        })->when(request('month'), function ($query) {
+            $query->whereMonth('created_at', request('month'));
+        })->latest()->get();
         $totalRatings = $ratings->sum('star');
         $averageRating = round($totalRatings / Rating::count(), 2);
+
+        // ulasan terbaru
         $newComments = $ratings->take(4);
-        $dikirim = $information->where('status_id', 2)->count();
-        $proses = $information->where('status_id', 3)->count();
-        $ditolak = $information->where('status_id', 0)->count();
-        $diterima = $information->where('status_id', 1)->count();
+
+        // jumlah data status pada permohonan dan pengajuan
+        $sendPer = $information->where('status_id', 2)->count();
+        $processPer = $information->where('status_id', 3)->count();
+        $rejectPer = $information->where('status_id', 0)->count();
+        $acceptPer = $information->where('status_id', 1)->count();
+
+        $sendPeng = $submission->where('status_id', 2)->count();
+        $processPeng = $submission->where('status_id', 3)->count();
+        $rejectPeng = $submission->where('status_id', 0)->count();
+        $acceptPeng = $submission->where('status_id', 1)->count();
 
         // permohonan dan pengajuan grafik
-        for ($i = 1; $i <= 12; $i++) { 
-            $permohonanInforamsiMonth = PermohonanInformasi::whereMonth('created_at', $i)->whereYear('created_at', date('Y'))->get()->count();
-            $arrayPermohonanInformasiMonth[$i] = $permohonanInforamsiMonth;
+        $year = request('year', date('Y'));
+        if (request('month')) {
+            for ($i = 1; $i <= 12; $i++) {
+                $month = 0;
+                // permohonan informasi
+                if (request('month') == $i) {
+                    $month = request('month');
+                }
+                $permohonanInforamsiMonth = PermohonanInformasi::whereMonth('created_at', $month)
+                    ->whereYear('created_at', $year)
+                    ->count();
+                $arrayPermohonanInformasiMonth[$i] = $permohonanInforamsiMonth;
+
+                // pengajuan keberatan grafik
+                $pengajuanKeberatanMonth = PengajuanKeberatan::whereMonth('created_at', $month)
+                    ->whereYear('created_at', $year)
+                    ->count();
+                $arrayPengajuanKeberatanMonth[$i] = $pengajuanKeberatanMonth; 
+            }
+        } else {
+            for ($i = 1; $i <= 12; $i++) {
+                // permohonan informasi grafik
+                $permohonanInforamsiMonth = PermohonanInformasi::whereMonth('created_at', $i)
+                    ->whereYear('created_at', $year)
+                    ->count();
+                $arrayPermohonanInformasiMonth[$i] = $permohonanInforamsiMonth;
+
+                // pengajuan keberatan grafik
+                $pengajuanKeberatanMonth = PengajuanKeberatan::whereMonth('created_at', $i)
+                    ->whereYear('created_at', $year)
+                    ->count();
+                $arrayPengajuanKeberatanMonth[$i] = $pengajuanKeberatanMonth; 
+            }
         }
-        for ($i = 1; $i <= 12; $i++) { 
-            $pengajuanKeberatanMonth = PengajuanKeberatan::whereMonth('created_at', $i)->whereYear('created_at', date('Y'))->get()->count();
-            $arrayPengajuanKeberatanMonth[$i] = $pengajuanKeberatanMonth; 
-        }
+
 
         // informasi publik grafik
         $referencesInfo = Reference::where('slug', 'informasi');
@@ -61,11 +116,16 @@ class DashboardController extends Controller
         $referencesMedapatCount = $referencesDapat->count();
         for ($i=0; $i < $referencesMedapatCount; $i++) { 
             $permohonanSalinanCount = $information->where('mendapatkan_salinan_informasi_id', $referencesMedapat->skip($i)->first()->id)->count();
-            $arrayPermohonanSalinan[$i] = $permohonanSalinanCount;  
+            
+            if ($information->count() > 0) {
+                $arrayPermohonanSalinan[$i] = round($permohonanSalinanCount / $information->count() * 100, 2);
+            } else {
+                $arrayPermohonanSalinan[$i] = 0;
+            }
         }
 
-        return view('admin.dashboard', compact('information', 'submission', 'public', 'averageRating', 'newComments', 'dikirim', 
-            'proses', 'ditolak', 'diterima', 'referencesInformasi', 'arrayInformasiPublik', 'referencesInformasiCount',
+        return view('admin.dashboard', compact('information', 'submission', 'public', 'averageRating', 'newComments', 'sendPer', 
+            'processPer', 'rejectPer', 'acceptPer', 'sendPeng', 'processPeng', 'rejectPeng', 'acceptPeng','referencesInformasi', 'arrayInformasiPublik', 'referencesInformasiCount',
             'arrayPermohonanInformasiMonth', 'arrayPengajuanKeberatanMonth', 'referencesMedapatCount','arrayPermohonanSalinan'));
     }
 

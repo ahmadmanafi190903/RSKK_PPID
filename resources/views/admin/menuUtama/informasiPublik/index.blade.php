@@ -51,9 +51,7 @@
                     <th class="align-middle">Bentuk Informasi Digital</th>
                     <th class="align-middle">Jangka Waktu</th>
                     <th class="align-middle">Kategori Informasi</th>
-                    @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'operator')
-                      <th class="align-middle">Action</th>
-                    @endif
+                    <th class="align-middle">Action</th>
                   </tr>
                 </thead>
                 <tbody id="contentArea">
