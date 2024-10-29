@@ -48,12 +48,14 @@ class CardController extends Controller
         $file_name = $random_name . '-' . $file_org;
         $file_path = $icon->storeAs('icons', $file_name, 'public');
 
-        Card::create([
-            'icon' => $file_path,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'url' => $request->url,
-        ]);
+        Card::create(array_merge($request->except('icon'), ['icon' => $file_path]));
+
+        // Card::create([
+        //     'icon' => $file_path,
+        //     'judul' => $request->judul,
+        //     'deskripsi' => $request->deskripsi,
+        //     'url' => $request->url,
+        // ]);
 
         return redirect('/cards')->with('success', 'Card berhasil ditambahkan!');
     }
@@ -99,12 +101,7 @@ class CardController extends Controller
             $file_path = $card->icon;
         }
 
-        $card->update([
-            'icon' => $file_path,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'url' => $request->url
-        ]);
+        $card->update(array_merge($request->except('icon'), ['icon' => $file_path]));
 
         return redirect('/cards')->with('success', 'Card berhasil diupdate!');
     }

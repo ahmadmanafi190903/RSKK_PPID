@@ -44,11 +44,7 @@ class SubmenuController extends Controller
             'menu_id' => 'required',
         ],$this->feedback_validate);
 
-        Submenu::create([
-            'nama' => $request->nama,
-            'url' => $request->url,
-            'menu_id' => $request->menu_id,
-        ]);
+        Submenu::create($request->all());
 
         return redirect('/menu/submenu/' . $request->menu_id)->with('success', 'Sub Menu Berhasil Dibuat.');
     }
@@ -81,11 +77,7 @@ class SubmenuController extends Controller
             'url' => 'nullable|max:255',
         ],$this->feedback_validate);
 
-        $submenu->update([
-            'nama' => $request->nama,
-            'url' => $request->url,
-            'menu_id' => $submenu->menu_id,
-        ]);
+        $submenu->update(array_merge($request->all(), ['menu_id' => $submenu->menu_id]));
 
         return redirect('/menu/submenu/' . $submenu->menu_id)->with('success', 'Sub Menu Berhasil Diubah.');
     }

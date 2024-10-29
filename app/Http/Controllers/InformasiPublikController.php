@@ -49,24 +49,9 @@ class InformasiPublikController extends Controller
             'bentuk_informasi_digital' => 'required|max:255',
             'waktu_penyimpanan_id' => 'required',
             'kategori_informasi_id' => 'required',
-            // 'link' => 'required|file|mimes:jpg,png,jpeg,pdf|max:2048',
         ], $this->feedback_validate );
 
-        // $link = $request->file('link');
-        // $file_org =  $link->getClientOriginalName();
-        // $randomName = Str::random(5);
-        // $file_name = $randomName . '-' . $file_org;
-        // $file_path = $link->storeAs('link', $file_name, 'public');
-
-        InformasiPublik::create([
-            'ringkasan_informasi' => $request->ringkasan_informasi,
-            'pejabat_penguasa_informasi' => $request->pejabat_penguasa_informasi,
-            'penanggung_jawab_informasi' => $request->penanggung_jawab_informasi,
-            'bentuk_informasi_cetak' => $request->bentuk_informasi_cetak,
-            'bentuk_informasi_digital' => $request->bentuk_informasi_digital,
-            'waktu_penyimpanan_id' => $request->waktu_penyimpanan_id,
-            'kategori_informasi_id' => $request->kategori_informasi_id,
-        ]);
+        InformasiPublik::create($request->all());
 
         return redirect('/informasi_publik')->with('success', 'Informasi publik berhasil dibuat');
     }
@@ -104,15 +89,7 @@ class InformasiPublikController extends Controller
             'kategori_informasi_id' => 'required',
         ], $this->feedback_validate );
 
-        $informasiPublik->update([
-            'ringkasan_informasi' => $request->ringkasan_informasi,
-            'pejabat_penguasa_informasi' => $request->pejabat_penguasa_informasi,
-            'penanggung_jawab_informasi' => $request->penanggung_jawab_informasi,
-            'bentuk_informasi_cetak' => $request->bentuk_informasi_cetak,
-            'bentuk_informasi_digital' => $request->bentuk_informasi_digital,
-            'waktu_penyimpanan_id' => $request->waktu_penyimpanan_id,
-            'kategori_informasi_id' => $request->kategori_informasi_id,
-        ]);
+        $informasiPublik->update($request->all());
 
         return redirect('/informasi_publik')->with('success', 'Informasi publik berhasil diubah');
     }

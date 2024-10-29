@@ -72,7 +72,7 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email',
             'nip' => 'required|numeric|unique:users,nip|digits:13',
@@ -80,13 +80,8 @@ class PenggunaController extends Controller
             'password' => 'required|min:8',
         ], $this->feedback_validate);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'nip' => $request->nip,
-            'role' => $request->role,
-            'password' => Hash::make($request->password)
-        ]);
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
 
         return redirect('/pengguna')->with('success', 'Pengguna baru berhasil ditambahkan');
     }
@@ -114,20 +109,14 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'nip' => 'required|numeric|digits:13|unique:users,nip,' . $user->id,
             'role' => 'required|in:admin,operator'
         ], $this->feedback_validate);
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'nip' => $request->nip,
-            'role' => $request->role,
-            'password' => $user->password
-        ]);
+        $user->update(array_merge($data, ['password' => $user->password]));
 
         return redirect('/pengguna')->with('success', 'Pengguna baru berhasil ditambahkan');
     }
@@ -150,15 +139,9 @@ class PenggunaController extends Controller
     {
         $request->validate([
             'password' => 'required|min:8'
-        ]);
-
-        $user->update([
-            'name' => $user->name,
-            'email' => $user->email,
-            'nip' => $user->nip,
-            'role' => $user->role,
-            'password' => Hash::make($request->password)
         ], $this->feedback_validate);
+
+        $user->update(['password' => Hash::make($request->password)]);
 
         return redirect('/pengguna')->with('success', 'Pengguna berhasil mengubah password');
     }

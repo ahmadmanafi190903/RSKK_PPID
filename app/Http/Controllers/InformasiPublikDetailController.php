@@ -15,11 +15,11 @@ class InformasiPublikDetailController extends Controller
      */
     public function index(string $informasiPublikId)
     {
-        if(request('cari')){
-            $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->where('informasi', 'like', '%' . request('cari') . '%')->latest()->paginate(10);
-        } else {
-            $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)->latest()->paginate(10);
-        }
+        $details = InformasiPublikDetail::where('informasi_publik_id', $informasiPublikId)
+            ->when(request('cari'), function ($query) {
+                $query->where('informasi', 'like', '%' . request('cari') . '%');
+            })->latest()->paginate(10);
+
         $infoPublik = InformasiPublik::select('ringkasan_informasi')->where('id', $informasiPublikId)->first();
         return view('admin.menuUtama.informasiPublik.informasiPublikDetail.index', compact('details', 'informasiPublikId', 'infoPublik'));
     }
@@ -50,12 +50,7 @@ class InformasiPublikDetailController extends Controller
         $file_name = $random_name . '-' . $file_org;
         $file_path = $link->storeAs('pdf', $file_name, 'public');
 
-        InformasiPublikDetail::create([
-            'informasi' => $request->informasi,
-            'tahun' => $request->tahun,
-            'informasi_publik_id' => $request->informasi_publik_id,
-            'link' => $file_path,
-        ]);
+        InformasiPublikDetail::create(array_merge($request->except('link'), ['link' => $file_path]));
 
         return redirect('/informasi_publik/' . $request->informasi_publik_id . '/detail')->with('success', 'Informasi publik detail berhasil dibuat');
     }
@@ -99,12 +94,7 @@ class InformasiPublikDetailController extends Controller
             $file_path = $informasiPublikDetail->link;
         }
 
-        $informasiPublikDetail->update([
-            'informasi' => $request->informasi,
-            'tahun' => $request->tahun,
-            'informasi_publik_id' => $request->informasi_publik_id,
-            'link' => $file_path,
-        ]);
+        $informasiPublikDetail->update(array_merge($request->except('link'), ['link' => $file_path]));
 
         return redirect('/informasi_publik/' . $request->informasi_publik_id . '/detail')->with('success', 'Informasi publik detail berhasil diubah');
     }

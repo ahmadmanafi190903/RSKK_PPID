@@ -33,14 +33,8 @@ class PengajuanKeberatanController extends Controller
     public function create()
     {
         $reason = Reference::where('slug', 'pengajuan')->get();
-        if (request('pemohon')) {
-            $dekripsi = Crypt::decrypt(request('pemohon'));
-            $applicant = PermohonanInformasi::where('id', $dekripsi)->first();
-            return view('user.formulir.form-pengajuan', compact('reason', 'applicant'));
-        } else {
-            $applicant = [];
-            return view('user.formulir.form-pengajuan', compact('reason', 'applicant'));
-        }
+        $applicant = request('pemohon') ? PermohonanInformasi::where('id', Crypt::decrypt(request('pemohon')))->first() : [];
+        return view('user.formulir.form-pengajuan', compact('reason', 'applicant'));
     }
 
     /**
@@ -48,28 +42,21 @@ class PengajuanKeberatanController extends Controller
      */
     public function store(Request $request)
     {
-    $request->validate([
-        'nama' => 'required|max:255',
-        'email' => 'required|email:rfc,dns|max:255',
-        'no_telepon' => 'required|numeric',
-        'pekerjaan' => 'required|max:255',
-        'alamat' => 'required|max:255',
-        'alasan_pengajuan_id' => 'required',
-        'tujuan_penggunaan_informasi' => 'required',
-        'captcha' => 'required|captcha',
-    ],$this->feedback_validate);
+        $request->validate([
+            'nama' => 'required|max:255',
+            'email' => 'required|email:rfc,dns|max:255',
+            'no_telepon' => 'required|numeric',
+            'pekerjaan' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'alasan_pengajuan_id' => 'required',
+            'tujuan_penggunaan_informasi' => 'required',
+            'captcha' => 'required|captcha',
+        ],$this->feedback_validate);
 
-    PengajuanKeberatan::create([
-        'nama' => $request->nama,
-        'email' => $request->email,
-        'no_telepon' => $request->no_telepon,
-        'pekerjaan' => $request->pekerjaan,
-        'alamat' => $request->alamat,
-        'alasan_pengajuan_id' => $request->alasan_pengajuan_id,
-        'tujuan_penggunaan_informasi' => $request->tujuan_penggunaan_informasi,
-    ]);
+        $data = $request->except('captcha');
+        PengajuanKeberatan::create($data);
 
-    return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim');
+        return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim');
     }
 
     /**
@@ -141,7 +128,7 @@ class PengajuanKeberatanController extends Controller
      */
     public function update(Request $request, PengajuanKeberatan $pengajuanKeberatan)
     {
-        $request->validate([
+        $data = $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email:dns,rfc|max:255',
             'no_telepon' => 'required|numeric',
@@ -151,15 +138,7 @@ class PengajuanKeberatanController extends Controller
             'tujuan_penggunaan_informasi' => 'required|max:255',
         ],$this->feedback_validate);
 
-        $pengajuanKeberatan->update([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'no_telepon' => $request->no_telepon,
-            'pekerjaan' => $request->pekerjaan,
-            'alamat' => $request->alamat,
-            'alasan_pengajuan_id' => $request->alasan_pengajuan_id,
-            'tujuan_penggunaan_informasi' => $request->tujuan_penggunaan_informasi,
-        ]);
+        $pengajuanKeberatan->update($data);
 
         return redirect('/pengajuan_keberatan')->with('success', 'Pengajuan keberatan berhasil diupdate');
     }
@@ -176,10 +155,6 @@ class PengajuanKeberatanController extends Controller
     public function download(string $id)
     {
         $information = PengajuanKeberatan::where('id', $id)->select(['id','file_acc_pengajuan'])->first();
-        // $rating = Rating::where('permohonan_informasi_id', $information->id)->first();
-        return view('user.download.pengajuan', [
-            'information' => $information,
-            // 'rating' => $rating
-        ]);
+        return view('user.download.pengajuan', compact('information'));
     }
 }

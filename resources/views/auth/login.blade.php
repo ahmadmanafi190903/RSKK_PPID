@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login Admin</title>
+  <title>Login</title>
 
   <link rel="shortcut icon" href="/storage/{{App\Models\BackgroundImage::where('slug','logo')->latest()->first()->image}}">
   <!-- Google Font: Source Sans Pro -->

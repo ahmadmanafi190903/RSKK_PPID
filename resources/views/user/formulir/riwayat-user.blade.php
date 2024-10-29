@@ -248,6 +248,7 @@
           <img class="mb-5" src="{{ asset('assets/img/404.png') }}" alt="not found">
           <h2>Oops! data yang anda cari tidak ditemukan</h2>
         </div> --}}
+        {{ $information->links('pagination::bootstrap-5') }}
       @endif
     </div>
   </div>

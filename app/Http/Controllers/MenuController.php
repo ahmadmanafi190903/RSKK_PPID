@@ -39,10 +39,7 @@ class MenuController extends Controller
             'url' => 'nullable|max:255',
         ],$this->feedback_validate);
 
-        Menu::create([
-            'nama' => $request->nama,
-            'url' => $request->url,
-        ]);
+        Menu::create($request->all());
 
         return redirect('/menu')->with('success', 'Menu Berhasil Dibuat.');
     }
@@ -73,10 +70,7 @@ class MenuController extends Controller
             'url' => 'nullable|max:255',
         ],$this->feedback_validate);
 
-        $menu->update([
-            'nama' => $request->nama,
-            'url' => $request->url,
-        ]);
+        $menu->update($request->all());
 
         return redirect('/menu')->with('success', 'Menu Berhasil Diubah.');
     }

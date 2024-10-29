@@ -49,13 +49,7 @@ class InfoServiceController extends Controller
         $file_name = $random_name . '-' . $file_org;
         $file_path = $icon->storeAs('icons', $file_name, 'public');
 
-        InfoService::create([
-            'icon' => $file_path,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'url' => $request->url,
-            'nama_button' => $request->nama_button,
-        ]);
+        InfoService::create(array_merge($request->except('icon'), ['icon' => $file_path]));
 
         return redirect('/info_services')->with('success', 'Data info layanan berhasil ditambahkan.');
     }
@@ -102,12 +96,7 @@ class InfoServiceController extends Controller
             $file_path = $infoService->icon;
         }
 
-        $infoService->update([
-            'icon' => $file_path,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'url' => $request->url
-        ]);
+        $infoService->update(array_merge($request->except('icon'), ['icon' => $file_path]));
 
         return redirect('/info_services')->with('success', 'Data info layanan berhasil diubah.');
     }

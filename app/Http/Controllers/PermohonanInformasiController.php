@@ -68,26 +68,12 @@ class PermohonanInformasiController extends Controller
         $file_name = $randomName . '-' . $file_org;
         $file_path = $ktp->storeAs('ktp', $file_name, 'public');
 
-        PermohonanInformasi::create([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'no_telepon' => $request->no_telepon,
-            'pekerjaan' => $request->pekerjaan,
-            'alamat' => $request->alamat,
-            'nik' => $request->nik,
-            'file_ktp' => $file_path,
-            'informasi_yang_dibutuhkan' => $request->informasi_yang_dibutuhkan,
-            'alasan_penggunaan_informasi' => $request->alasan_penggunaan_informasi,
-            'memperoleh_informasi_id' => $request->memperoleh_informasi_id,
-            'mendapatkan_salinan_informasi_id' => $request->mendapatkan_salinan_informasi_id
-        ]);
+        PermohonanInformasi::create(array_merge($request->except(['file_ktp', 'captcha']), ['file_ktp' => $file_path]));
 
         return redirect('/')->with([
             'successCek' => 'Permohonan berhasil dikirim',
             'email' => $request->email
         ]);
-
-        // PermohonanInformasiEvent::dispatch( $request->all() );
     }
     
     /**
@@ -185,19 +171,7 @@ class PermohonanInformasiController extends Controller
             $file_path = $permohonanInformasi->file_ktp;
         }
 
-        $permohonanInformasi->update([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'no_telepon' => $request->no_telepon,
-            'pekerjaan' => $request->pekerjaan,
-            'alamat' => $request->alamat,
-            'nik' => $request->nik,
-            'informasi_yang_dibutuhkan' => $request->informasi_yang_dibutuhkan,
-            'alasan_penggunaan_informasi' => $request->alasan_penggunaan_informasi,
-            'memperoleh_informasi_id' => $request->memperoleh_informasi_id,
-            'mendapatkan_salinan_informasi_id' => $request->mendapatkan_salinan_informasi_id,
-            'file_ktp' => $file_path
-        ]);
+        $permohonanInformasi->update(array_merge($request->except('file_ktp'), ['file_ktp' => $file_path]));
 
         return redirect('/permohonan_informasi')->with('success', 'Data berhasil diubah');
     }
@@ -219,7 +193,7 @@ class PermohonanInformasiController extends Controller
     {
         $information = [];
         if (request('email')) {
-            $information = PermohonanInformasi::where('email', request('email'))->latest()->get();
+            $information = PermohonanInformasi::where('email', request('email'))->latest()->paginate(5);
         }
   
         return view('user.formulir.riwayat-user', compact('information'));
@@ -227,9 +201,7 @@ class PermohonanInformasiController extends Controller
 
     public function form(string $id)
     {
-        return view('user.verifikasidata.index', [
-            'id' => $id
-        ]);
+        return view('user.verifikasidata.index', compact('id'));
     }
 
     public function get(Request $request, PermohonanInformasi $permohonanInformasi)
@@ -250,10 +222,7 @@ class PermohonanInformasiController extends Controller
     {
         $information = PermohonanInformasi::where('id', $id)->select(['id','file_acc_permohonan'])->first();
         $rating = Rating::where('permohonan_informasi_id', $information->id)->first();
-        return view('user.download.permohonan', [
-            'information' => $information,
-            'rating' => $rating
-        ]);
+        return view('user.download.permohonan', compact('information', 'rating'));
     }
 
     public function rating(Request $request, Rating $rating)
@@ -263,14 +232,8 @@ class PermohonanInformasiController extends Controller
             'comment' => 'required|max:255'
         ], $this->feedback_validate);
 
-        $rating->create([
-            'star' => $request->star,
-            'comment' => $request->comment,
-            'permohonan_informasi_id' => $request->id
-        ]);
+        $rating->create(array_merge($request->except('id'), ['permohonan_informasi_id' => $request->id]));
 
         return redirect()->back()->with('success', 'Terima kasih atas ulasannya');
-    }
-
-    
+    }    
 }
