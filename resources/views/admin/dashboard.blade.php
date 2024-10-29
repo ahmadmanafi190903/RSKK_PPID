@@ -249,7 +249,6 @@
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Grafik Informasi Publik {{ request('year') ?? ''}}</h3>
-                  {{-- <a href="javascript:void(0);">View Report</a> --}}
                 </div>
               </div>
               <div class="card-body">
@@ -269,15 +268,6 @@
                       <i class="fas fa-square" style="color: {{ $months[$key] }}"></i> {{ $item->nama }}
                     </span>
                   @endforeach
-                  {{-- <span class="mr-2">
-                    <i class="fas fa-square text-success"></i> Serta Merta
-                  </span>
-                  <span class="mr-2">
-                    <i class="fas fa-square text-warning"></i> Setiap Saat
-                  </span>
-                  <span class="mr-2">
-                    <i class="fas fa-square text-danger"></i> Dikeculaikan
-                  </span> --}}
                 </div>
               </div>
             </div>
@@ -286,14 +276,6 @@
             <div class="card">
               <div class="card-header border-0">
                 <h3 class="card-title">Ulasan Terbaru</h3>
-                {{-- <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div> --}}
               </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
@@ -324,8 +306,6 @@
         </div>
       </div>
     </section>
-
-
   </div>
 @endsection
 

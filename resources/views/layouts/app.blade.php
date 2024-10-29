@@ -75,8 +75,6 @@
 
   @include('components.preloader')
 
-  {{-- @include('components.top-bar') --}}
-
   @include('components.nav')
 
   @yield('content')

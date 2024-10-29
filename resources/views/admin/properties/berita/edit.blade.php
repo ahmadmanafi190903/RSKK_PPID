@@ -22,11 +22,6 @@
         <div class="row">
           <div class="col-12 col-md-4">
             <div class="card">
-              {{-- <div class="card-header">
-                <div class="card-title">
-                  <h4>Berita</h4>
-                </div>
-              </div> --}}
               <!-- /.card-header -->
               <div class="card-body table-responsive p-3">
                 <div class="mb-4">
@@ -74,18 +69,12 @@
           </div>
           <div class="col-12 col-md-8">
             <div class="card">
-              {{-- <div class="card-header">
-                <div class="card-title">
-                  <h4>Berita</h4>
-                </div>
-              </div> --}}
               <!-- /.card-header -->
               <div class="card-body table-responsive p-3">
                 <div class="mb-4">
                   <label for="deskripsi_detail">
                     <h5 class="mb-0">Detail Deskripisi</h5>
                   </label>
-                  {{-- <textarea class="w-100 form-control" name="deskripsi_detail" cols="30" id="deskripsi_detail">{{ old('deskripsi_detail') }}</textarea> --}}
                   <input id="deskripsi_detail" type="hidden" name="deskripsi_detail">
                   <trix-editor input="deskripsi_detail">{!! old('deskripsi_detail') ?? $item->deskripsi_detail !!}</trix-editor>
                   @error('deskripsi_detail')

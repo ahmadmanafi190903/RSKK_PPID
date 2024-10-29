@@ -63,31 +63,6 @@
                 @enderror
               </div>
             </div>
-            {{-- <div class="col-md-6 col-12">
-              <div class="single-personal-info mb-0">
-                <input type="text" placeholder="Masukan desa">
-              </div>
-            </div>
-            <div class="col-md-6 col-12">
-              <div class="single-personal-info mb-0">
-                <input type="text" placeholder="Masukan kecamatan">
-              </div>
-            </div>
-            <div class="col-md-6 col-12">
-              <div class="single-personal-info mb-0">
-                <input type="text" placeholder="Masukan kabupaten">
-              </div>
-            </div>
-            <div class="col-md-6 col-12">
-              <div class="single-personal-info">
-                <input type="text" placeholder="Masukan Provinsi">
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="single-personal-info">
-                <input type="text" inputmode="numeric" placeholder="Masukan kode POS">
-              </div>
-            </div> --}}
             <div class="col-md-12 col-12">
               <div class="single-personal-info mb-5">
                 <label for="information2">Alasan Pengajuan Keberatan</label>
@@ -95,7 +70,8 @@
                   <option></option>
                   @foreach ($reason as $item)
                     <option value="{{ $item->id }}" {{ old('alasan_pengajuan_id') == $item->id ? 'selected' : '' }}>
-                      {{ $item->nama }}</option>
+                      {{ $item->nama }}
+                    </option>
                   @endforeach
                 </select>
                 @error('alasan_pengajuan_id')
@@ -112,109 +88,6 @@
                 @enderror
               </div>
             </div>
-            
-            {{-- <div class="col-12">
-              <div class="single-personal-info">
-                <label for="kuasa">Kuasa</label>
-                <select id="kuasa" onchange="toggleForm()">
-                  <option selected>-- Pilih salah satu menu --</option>
-                  <option value="1">Permohonan tidak dikuasai</option>
-                  <option value="2">Permohonan dikuasai kepada</option>
-                </select>
-              </div>
-            </div> --}}
-            {{-- <div id="hiddenForm" class="col-12" style="display: none;">
-              <h3>Identitas Kuasa Pemohon</h3>
-              <div class="row">
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <label for="name">Nama Lengkap</label>
-                    <input type="text" id="name" placeholder="Masukan Nama Lengkap">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <label for="email">Alamat Email</label>
-                    <input type="email" id="email" placeholder="Masukan Alamat Email">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <label for="phone">No Telepon</label>
-                    <input type="text" id="phone" placeholder="Masuk no telepon">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <label for="work">Pekerjaan</label>
-                    <input type="text" id="work" placeholder="Masukan Pekerjaan">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info mb-0">
-                    <input type="text" placeholder="Masukan desa">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info mb-0">
-                    <input type="text" placeholder="Masukan kecamatan">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info mb-0">
-                    <input type="text" placeholder="Masukan kabupaten">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <input type="text" placeholder="Masukan Provinsi">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="single-personal-info">
-                    <input type="text" inputmode="numeric" placeholder="Masukan kode POS">
-                  </div>
-                </div>
-                <div class="col-md-12 col-12">
-                  <div class="single-personal-info mb-0">
-                    <label for="address">Alamat</label>
-                    <textarea id="address" placeholder="Masukan Alamat"></textarea>
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info mb-0">
-                    <input type="text" placeholder="Masukan desa">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info mb-0">
-                    <input type="text" placeholder="Masukan kecamatan">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info mb-0">
-                    <input type="text" placeholder="Masukan kabupaten">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <input type="text" placeholder="Masukan Provinsi">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="single-personal-info">
-                    <input type="text" inputmode="numeric" placeholder="Masukan kode POS">
-                  </div>
-                </div>
-                <div class="col-md-6 col-12">
-                  <div class="single-personal-info">
-                    <label for="formFile" class="form-label">Upload Surat kuasa(pdf)</label>
-                    <input class="form-control" type="file" id="formFile">
-                  </div>
-                </div>
-              </div>
-
-            </div> --}}
             <div class="col-md-6 col-12">
               <div class="input-group mb-3">
                 <div class="mt-2"></div>
@@ -225,7 +98,6 @@
                 @enderror 
               </div>
             </div>
-            
             <div class="col-md-12 col-12 text-center">
               <input class="submit-btn mb-5" type="submit" value="Kirim">
             </div>

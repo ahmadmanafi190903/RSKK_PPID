@@ -83,8 +83,8 @@
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
-                                  class="nav-icon fas fa-trash"></i></button>
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                <i class="nav-icon fas fa-trash"></i></button>
                             </form>
                           @endif
                         </div>

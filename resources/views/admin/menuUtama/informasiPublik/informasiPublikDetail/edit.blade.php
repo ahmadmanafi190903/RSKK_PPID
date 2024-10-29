@@ -80,7 +80,6 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-                
                 <a href="/informasi_publik/{{ $informasiPublikId }}/detail" class="btn btn-secondary">kembali</a>
                 <button type="submit" class="btn btn-primary">Ubah</button>
               </div>

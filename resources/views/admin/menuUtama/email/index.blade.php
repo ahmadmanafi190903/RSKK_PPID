@@ -8,9 +8,6 @@
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Email</h1>
-            {{-- @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-              <a href="/email/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
-            @endif --}}
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -24,7 +21,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Email Permohonan</h3>
-
               <div class="card-tools">
                 <form>
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -83,13 +79,11 @@
             </div>
             <!-- /.card-body -->
           </div>
-
           {{ $informations->links('pagination::bootstrap-5') }}
 
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Email Pengajuan</h3>
-
               <div class="card-tools">
                 <form>
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -145,11 +139,9 @@
               </table>
             </div>
             <!-- /.card-body -->
-          </div>
-
-          
+          </div>       
           {{ $submissions->links('pagination::bootstrap-5') }}
-          <!-- /.card -->
+          
         </div>
       </div>
     </section>

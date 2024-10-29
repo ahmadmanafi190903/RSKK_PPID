@@ -196,7 +196,7 @@
     <!-- /.content -->
   </div>
 
-
+  {{-- Modal --}}
   <div class="modal fade" id="tolak">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">

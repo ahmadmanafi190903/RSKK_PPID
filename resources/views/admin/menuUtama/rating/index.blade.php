@@ -8,9 +8,6 @@
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Rating</h1>
-            {{-- @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-              <a href="/email/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
-            @endif --}}
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

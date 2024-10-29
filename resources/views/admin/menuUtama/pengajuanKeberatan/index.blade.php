@@ -84,8 +84,8 @@
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i
-                                  class="nav-icon fas fa-trash"></i></button>
+                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                <i class="nav-icon fas fa-trash"></i></button>
                             </form>
                           @endif
                         </div>
@@ -94,29 +94,6 @@
                   @endforeach
                 </tbody>
               </table>
-              <script>
-                $(document).ready(function() {
-                  console.log("jQuery siap");
-                  function searchTable() {
-                    console.log("Fungsi pencarian dipanggil");
-                    var value = $("#searchInput").val().toLowerCase();
-                    $("#contentArea tr").each(function() {
-                      var rowText = $(this).text().toLowerCase();
-                      $(this).toggle(rowText.indexOf(value) > -1);
-                    });
-                  }
-
-                  $("#searchInput").on("input", function() {
-                    console.log("Input berubah");
-                    searchTable();
-                  });
-
-                  $("#searchButton").on("click", function() {
-                    console.log("Tombol diklik");
-                    searchTable();
-                  });
-                });
-              </script>
             </div>
             <!-- /.card-body -->
           </div>

@@ -5,9 +5,7 @@
   <div class="section-title text-center pt-5">
     <h2>Riwayat Permohonan Informasi</h2>
   </div>
-
   <div class="col-12 col-lg-6 offset-lg-3 pt-5 mt-5 mb-5 ">
-
     <div class="main-sidebar">
       <div class="single-sidebar-widget ">
         <div class="text-center">
@@ -36,7 +34,6 @@
             </h2>
             <div id="collapse{{ $key }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="row">
-
                 <div class="col-12 col-md-6">
                   <div class="card">
                     <div class="card-header">
@@ -77,7 +74,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="col-12 col-md-6">
                   <div class="card">
                     <div class="card-header">
@@ -85,7 +81,6 @@
                         <h4>Detail Permohonan</h4>
                       </div>
                     </div>
-
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-3">
                       <div class="mb-3">
@@ -108,7 +103,6 @@
                         <h5 class="mb-0">Tanggal Permohonan</h5>
                         <p>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</p>
                       </div>
-
                       @if ($item->status_id == 2)
                         <div class="alert alert-secondary text-uppercase text-center">Status {{ $item->status->status }}
                         </div>
@@ -122,7 +116,6 @@
                         <div class="alert alert-success text-uppercase text-center">Status {{ $item->status->status }}
                         </div>
                       @endif
-
                       <div class="ms-3">
                         <ul class="timeline-list">
                           <li class="circle active">
@@ -156,7 +149,6 @@
                           </li>
                         </ul>
                       </div>
-
                       @if ($item->status_id == 0)
                         <div class="mb-3">
                           <h5 class="mb-0">Alasan Ditolak</h5>
@@ -243,11 +235,6 @@
             </div>
           </div>
         @endforeach
-        {{-- @elseif($information == null)
-        <div class="error-content text-center">
-          <img class="mb-5" src="{{ asset('assets/img/404.png') }}" alt="not found">
-          <h2>Oops! data yang anda cari tidak ditemukan</h2>
-        </div> --}}
         {{ $information->links('pagination::bootstrap-5') }}
       @endif
     </div>

@@ -6,7 +6,6 @@
     penerimaan, bisa klik tombol di bawah ini.
   </p>
 
-
   <x-mail::button :url="config('app.url') . '/pengajuan-keberatan/' . $id . '/download'" color="success">
     Dapatkan Informasi
   </x-mail::button>

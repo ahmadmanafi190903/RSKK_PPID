@@ -5,7 +5,6 @@
     <div class="row pt-5">
       <div class="col-12 text-center">
         <div class="section-title">
-          {{-- <h2>Informasi {{ $informations->first()->kategori->kategori  ?? '' }}</h2> --}}
           <h2>Detail Informasi {{ $information->informasi->nama ?? '' }}</h2>
         </div>
       </div>

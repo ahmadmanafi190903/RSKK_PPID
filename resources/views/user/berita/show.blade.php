@@ -11,8 +11,9 @@
               <div class="post-content">
                 <h1><strong>{{ $item->judul }}</strong></h1>
                 <div class="post-meta">
-                  <span><i
-                      class="fal fa-calendar-alt"></i>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}</span>
+                  <span>
+                    <i class="fal fa-calendar-alt"></i>{{ $item->created_at->locale('id')->translatedFormat('H:i, l, d F Y') }}
+                  </span>
                 </div>
                 <img class="w-100" src="/storage/{{ $item->image }}" alt="{{ $item->image }}">
                 <p>{!! $item->deskripsi_detail !!}</p>

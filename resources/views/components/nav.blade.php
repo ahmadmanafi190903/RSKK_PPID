@@ -53,34 +53,8 @@
                 @endforeach
               </ul>
             </nav>
-            
-
+          
             <div class="action-bar text-white">
-              {{-- <div class="single-info-element">
-                <div class="icon">
-                  <i class="fal fa-map-marked-alt"></i>
-                </div>
-                <div class="text">
-                  <a href="https://maps.app.goo.gl/W9ruT9ZWGBh6242R6" target="_blank" style="color: white !important">Jl.Rancaekek
-                    No.Km.27</a>
-                </div>
-              </div>
-              <div class="single-info-element">
-                <div class="icon">
-                  <i class="fal fa-envelope"></i>
-                </div>
-                <div class="text">
-                  <a href="mailto:info@example.com" style="color: white !important">rskk@jabarprov.go.id</a>
-                </div>
-              </div>
-              <div class="call-us">
-                <div class="icon text-white">
-                  <i class="fal fa-phone-volume"></i>
-                </div>
-                <div class="text">
-                  <a href="tel:987-098-098-09" style="color: white !important">(022)7798778</a>
-                </div>
-              </div> --}}
               <a href="/login" class="theme-btn mt-4">login</a>
             </div>
           </div>

@@ -51,7 +51,6 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
                 </div>
-
               </div>
             </div>
           </div>

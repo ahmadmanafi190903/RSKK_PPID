@@ -13,43 +13,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    {{-- <div class="modal fade" id="rating" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="ModalLabel">Berikan ulasan</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="/rating" method="post">
-            @csrf
-            <div class="modal-body text-center">
-              <div class="rating">
-                <span class="star" style="font-size: 36px; cursor: pointer;" onclick="setRating(1)">&#9733;</span>
-                <span class="star" style="font-size: 36px; cursor: pointer;" onclick="setRating(2)">&#9733;</span>
-                <span class="star" style="font-size: 36px; cursor: pointer;" onclick="setRating(3)">&#9733;</span>
-                <span class="star" style="font-size: 36px; cursor: pointer;" onclick="setRating(4)">&#9733;</span>
-                <span class="star" style="font-size: 36px; cursor: pointer;" onclick="setRating(5)">&#9733;</span>
-              </div>
-              <input type="hidden" id="ratingValue" value="{{ old('star') }}" name="star" name="star">
-              @error('star')
-                <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-              <textarea id="reviewText" rows="4" class="form-control mt-3" placeholder="Tulis ulasan Anda di sini..."
-                name="comment">{{ old('comment') }}</textarea>
-              @error('comment')
-                <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-              <input type="hidden" name="id" value="{{ $information->id }}">
-            </div>
-            <div class="modal-footer">
-              <button type="sumbit" class="btn btn-primary">Posting</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> --}}
   @else
     <div class="section-title text-center pt-5">
       <img src="{{ asset('assets/img/404.png') }}" alt="not found">

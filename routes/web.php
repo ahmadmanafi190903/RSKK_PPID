@@ -23,10 +23,6 @@ use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\VideoController;
-use App\Models\PengajuanKeberatan;
-use Illuminate\Support\Facades\Auth;
-
-// Auth::routes(['register' => false]);
 
 //user
 Route::get('/',[DashboardController::class, 'home']);

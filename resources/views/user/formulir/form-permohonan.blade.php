@@ -13,7 +13,6 @@
           <h2>Formulir Permohonan Informasi</h2>
         </div>
       </div>
-
       <div class="col-12 col-lg-12">
         <div class="contact-form">
           <form action="/permohonan/create" method="POST" class="row" id="contact-form" enctype="multipart/form-data">

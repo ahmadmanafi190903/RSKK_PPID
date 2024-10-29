@@ -82,16 +82,6 @@
     </section>
     <!-- /.content -->
   </div>
-  <script>
-    document.getElementById('lihatpassword').addEventListener('change', function() {
-      let passwordInput = document.getElementById('password');
-      if (this.checked) {
-        passwordInput.type = 'text';
-      } else {
-        passwordInput.type = 'password';
-      }
-    });
-  </script>
 @endsection
 
 
