@@ -29,7 +29,7 @@ class AcceptPengajuan extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Pengajuan Diterima',
+            subject: 'Pengajuan yang anda ajukan kami . . . . .',
         );
     }
 

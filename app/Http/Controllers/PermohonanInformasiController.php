@@ -10,10 +10,13 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Events\PermohonanInformasiEvent;
+use App\Mail\NotifMengambil;
+use App\Mail\NotifTolakPermohonan;
 use App\Models\Rating;
 use App\Models\Reference;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use ParagonIE\Sodium\Compat;
 
 class PermohonanInformasiController extends Controller
@@ -93,14 +96,20 @@ class PermohonanInformasiController extends Controller
 
     public function reject(Request $request, PermohonanInformasi $permohonanInformasi)
     {
+        $data = $permohonanInformasi;
         $request->validate([
             'pesan_ditolak' => 'required',
         ],$this->feedback_validate);
+
+        // dd($request);
 
         $permohonanInformasi->update([
             'status_id' => '0',
             'pesan_ditolak' => $request->pesan_ditolak
         ]);
+
+        Mail::to($permohonanInformasi->email)->send(new NotifTolakPermohonan($data, $request));
+
         return redirect('/permohonan_informasi/'.$permohonanInformasi->id)->with('success', 'Permohonan berhasil ditolak');
     }
     public function accept(PermohonanInformasi $permohonanInformasi)
@@ -124,9 +133,16 @@ class PermohonanInformasiController extends Controller
         $file_name = $randomName . '-' . $file_org;
         $file_path = $file->storeAs('file_acc', $file_name, 'public');
 
+        // dd($permohonanInformasi->mendapatkan_salinan_informasi_id);
+
         $permohonanInformasi->update([
             'file_acc_permohonan' => $file_path
         ]);
+
+        if ($permohonanInformasi->mendapatkan_salinan_informasi_id == 4) {
+            $data = $permohonanInformasi;
+            Mail::to($permohonanInformasi->email)->send(new NotifMengambil($data));
+        }
 
         return redirect('/permohonan_informasi/'.$permohonanInformasi->id)->with('success', 'File berhasil diupload');
     }

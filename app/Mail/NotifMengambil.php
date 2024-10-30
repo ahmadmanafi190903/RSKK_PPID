@@ -9,12 +9,11 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RejectPengajuan extends Mailable
+class NotifMengambil extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $data;
-
     /**
      * Create a new message instance.
      */
@@ -29,7 +28,7 @@ class RejectPengajuan extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Pengajuan yang anda ajukan kami . . . . .',
+            subject: 'Permohonan yang anda ajukan kami . . . . .',
         );
     }
 
@@ -39,10 +38,10 @@ class RejectPengajuan extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.rejectPengajuan',
+            markdown: 'mail.notifMengambil',
             with:[
                 'nama' => $this->data['nama'],
-                'pesan_ditolak' => $this->data['pesan_ditolak'],
+                'email' => $this->data['email'],
             ]
         );
     }

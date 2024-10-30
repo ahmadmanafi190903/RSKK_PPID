@@ -9,18 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RejectPengajuan extends Mailable
+class NotifTolakPermohonan extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $data;
-
+    public $request;
     /**
      * Create a new message instance.
      */
-    public function __construct($data)
+    public function __construct($data, $request)
     {
         $this->data = $data;
+        $this->request = $request;
     }
 
     /**
@@ -29,7 +30,7 @@ class RejectPengajuan extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Pengajuan yang anda ajukan kami . . . . .',
+            subject: 'Permohonan yang anda ajukan kami . . . . .',
         );
     }
 
@@ -39,10 +40,11 @@ class RejectPengajuan extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.rejectPengajuan',
+            markdown: 'mail.notifTolakPermohonan',
             with:[
                 'nama' => $this->data['nama'],
-                'pesan_ditolak' => $this->data['pesan_ditolak'],
+                'pesan_ditolak' => $this->request['pesan_ditolak'],
+                'email' => $this->data['email'],
             ]
         );
     }
