@@ -61,7 +61,7 @@
                   @enderror
                 </div>
                 <a href="/sosmed" class="btn btn-secondary">kembali</a>
-                <button type="submit" class="btn btn-primary">Buat</button>
+                <button type="submit" class="btn btn-primary">Ubah</button>
               </div>
             </div>
           </div>

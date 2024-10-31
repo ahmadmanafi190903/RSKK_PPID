@@ -152,19 +152,31 @@
                             @enderror
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
                       </form>
                     </div>
                   </div>
                 @else
-                  <div>
-                    <h5 class="mb-0">File</h5>
-                    <button type="button" class="btn btn-info" data-toggle="modal"
-                      data-target="#modal-xl{{ $item->id }}">
-                      Klik Disini <i class="nav-icon fas fa-download"></i>
-                    </button>
+                  <h5 class="mb-0">File</h5>
+                  <div class="d-flex">
+                    <div>
+                      <button type="button" class="btn btn-info" data-toggle="modal"
+                        data-target="#modal-xl{{ $item->id }}">
+                        Klik Disini <i class="nav-icon fas fa-download"></i>
+                      </button>
+                    </div>
+                    @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
+                      <div>
+                        <a href="/email/{{ $item->id }}/send" class="btn btn-primary ml-1">
+                          @if ($item->status_pengiriman == 0)
+                            Kirim Email
+                          @else
+                            Kirim Email lagi
+                          @endif
+                        </a>
+                      </div>
+                    @endif
                   </div>
-
                   {{-- modal --}}
                   <div class="modal fade" id="modal-xl{{ $item->id }}">
                     <div class="modal-dialog modal-xl">

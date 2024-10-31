@@ -8,6 +8,7 @@
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
             <h1 class="m-0">Menu</h1>
+            <a href="/menu/create" class="btn btn-primary"><i class="nav-icon fas fa-plus"></i></a>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

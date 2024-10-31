@@ -20,7 +20,7 @@ class SubmenuController extends Controller
         $submenus = $submenus->latest()->get();
 
         $menu = Menu::select(['id', 'nama'])->find($menuId);
-        // dd($menu);
+        
         return view('admin.properties.menu.submenu.index', compact('submenus', 'menu'));
     }
 

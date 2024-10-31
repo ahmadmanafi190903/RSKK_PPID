@@ -84,8 +84,8 @@
                 </div>
               @endif
 
-              @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
-                @if ($item->status_id == 3)
+              @if ($item->status_id == 3)
+                @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
                   <form action="/pengajuan_keberatan/{{ $item->id }}/tolak" method="post" class="d-inline">
                     @csrf
                     @method('patch')
@@ -100,12 +100,14 @@
                       onclick="return confirm('Apakah anda yakin ingin menerima pengajuan ini?')">Terima <i
                         class="nav-icon fas fa-check"></i></button>
                   </form>
-                @elseif ($item->status_id == 0)
-                  @if ($item->pesan_ditolak)
-                    <div>
-                      <h5 class="mb-0">Alasan Ditolak</h5>
-                      <p>{{ $item->pesan_ditolak }}</p>
-                    </div>
+                @endif
+              @elseif ($item->status_id == 0)
+                @if ($item->pesan_ditolak)
+                  <div>
+                    <h5 class="mb-0">Alasan Ditolak</h5>
+                    <p>{{ $item->pesan_ditolak }}</p>
+                  </div>
+                  @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
                     <a href="/email/{{ $item->id }}/send/ditolak" class="btn btn-primary my-1">
                       @if ($item->status_pengiriman == 0)
                         Kirim Email
@@ -114,8 +116,10 @@
                       @endif
                     </a>
                   @endif
-                @elseif ($item->status_id == 1)
-                  @if ($item->file_acc_pengajuan == null)
+                @endif
+              @elseif ($item->status_id == 1)
+                @if ($item->file_acc_pengajuan == null)
+                  @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
                     <div class="table-responsive">
                       <div>
                         <form action="/pengajuan_keberatan/{{ $item->id }}/upload" method="post"
@@ -147,33 +151,35 @@
                         </form>
                       </div>
                     </div>
-                  @else
-                    <div>
-                      <h5 class="mb-0">File</h5>
-                      <div class="d-flex">
-                        <div>
-                          <button type="button" class="btn btn-info" data-toggle="modal"
-                            data-target="#modal-xl{{ $item->id }}">
-                            Klik Disini <i class="nav-icon fas fa-download"></i>
-                          </button>
-                          {{-- modal --}}
-                          <div class="modal fade" id="modal-xl{{ $item->id }}">
-                            <div class="modal-dialog modal-xl">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  {{-- <h4 class="modal-title">Extra Large Modal</h4> --}}
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <iframe id="pdfViewer" src="{{ asset('storage/' . $item->file_acc_pengajuan) }}#toolbar=0"
-                                  frameborder="0" style="width: 100%; height: 600px;"></iframe>
+                  @endif
+                @else
+                  <div>
+                    <h5 class="mb-0">File</h5>
+                    <div class="d-flex">
+                      <div>
+                        <button type="button" class="btn btn-info" data-toggle="modal"
+                          data-target="#modal-xl{{ $item->id }}">
+                          Klik Disini <i class="nav-icon fas fa-download"></i>
+                        </button>
+                        {{-- modal --}}
+                        <div class="modal fade" id="modal-xl{{ $item->id }}">
+                          <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                {{-- <h4 class="modal-title">Extra Large Modal</h4> --}}
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
                               </div>
-                              <!-- /.modal-content -->
+                              <iframe id="pdfViewer" src="{{ asset('storage/' . $item->file_acc_pengajuan) }}#toolbar=0"
+                                frameborder="0" style="width: 100%; height: 600px;"></iframe>
                             </div>
-                            <!-- /.modal-dialog -->
+                            <!-- /.modal-content -->
                           </div>
+                          <!-- /.modal-dialog -->
                         </div>
+                      </div>
+                      @if (Auth::user()->role == 'super_admin' || Auth::user()->role == 'admin')
                         <div>
                           <a href="/email/{{ $item->id }}/send/diterima" class="btn btn-primary ml-1">
                             @if ($item->status_pengiriman == 0)
@@ -183,11 +189,12 @@
                             @endif
                           </a>
                         </div>
-                      </div>
+                      @endif
                     </div>
-                  @endif
+                  </div>
                 @endif
               @endif
+
             </div>
           </div>
         </div>

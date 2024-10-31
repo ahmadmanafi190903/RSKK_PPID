@@ -165,8 +165,10 @@
                             <p>Mohon menunggu untuk pembuatan file PDF</p>
                           @elseif ($item->mendapatkan_salinan_informasi_id == 4 && $item->file_acc_permohonan)
                             @if (App\Models\Rating::where('permohonan_informasi_id', $item->id)->first())
+                              <p>Silahkan ambil permohonan di RSUD Kesehatan Kerja</p>
                               <p>Terima kasih sudah memberikan ulasan</p>
                             @else
+                              <p>Silahkan ambil permohonan di RSUD Kesehatan Kerja</p>
                               <p>Berikan rating sebelum mengambil</p>
                               <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
                                 data-bs-target="#rating">

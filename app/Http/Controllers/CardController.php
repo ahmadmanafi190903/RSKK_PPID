@@ -84,7 +84,7 @@ class CardController extends Controller
     public function update(Request $request, Card $card)
     {
         $request->validate([
-            'icon' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'icon' => 'image|mimes:jpg,jpeg,png|max:2048',
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
             'url' => 'required|max:255',

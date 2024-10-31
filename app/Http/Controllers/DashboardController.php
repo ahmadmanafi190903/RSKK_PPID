@@ -51,7 +51,7 @@ class DashboardController extends Controller
         $averageRating = round($totalRatings / Rating::count(), 2);
 
         // ulasan terbaru
-        $newComments = $ratings->take(4);
+        $newComments = $ratings->take(10);
 
         // jumlah data status pada permohonan dan pengajuan
         $sendPer = $information->where('status_id', 2)->count();
@@ -125,8 +125,8 @@ class DashboardController extends Controller
         }
 
         return view('admin.dashboard', compact('information', 'submission', 'public', 'averageRating', 'newComments', 'sendPer', 
-            'processPer', 'rejectPer', 'acceptPer', 'sendPeng', 'processPeng', 'rejectPeng', 'acceptPeng','referencesInformasi', 'arrayInformasiPublik', 'referencesInformasiCount',
-            'arrayPermohonanInformasiMonth', 'arrayPengajuanKeberatanMonth', 'referencesMedapatCount','arrayPermohonanSalinan'));
+            'processPer', 'rejectPer', 'acceptPer', 'sendPeng', 'processPeng', 'rejectPeng', 'acceptPeng','referencesInformasi', 'arrayInformasiPublik', 
+            'referencesInformasiCount', 'arrayPermohonanInformasiMonth', 'arrayPengajuanKeberatanMonth', 'referencesMedapatCount','arrayPermohonanSalinan'));
     }
 
     public function home()
