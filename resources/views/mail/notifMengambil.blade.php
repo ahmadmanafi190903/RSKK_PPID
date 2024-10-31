@@ -2,7 +2,7 @@
   # Hallo {{ $nama }}
 
   <p>
-    Kami ingin menginformasikan bahwa pengajuan keberatan yang Anda ajukan telah kami setujui.
+    Terima kasih atas permohonan Anda. Permohonan tersebut telah kami proses, dan Anda dapat melihat detailnya dengan menekan tombol di bawah ini.
   </p>
 
   <x-mail::button :url="config('app.url') . '/riwayat?email=' . $email" color="success">

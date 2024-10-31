@@ -43,7 +43,6 @@ class NotifTolakPermohonan extends Mailable
             markdown: 'mail.notifTolakPermohonan',
             with:[
                 'nama' => $this->data['nama'],
-                'pesan_ditolak' => $this->request['pesan_ditolak'],
                 'email' => $this->data['email'],
             ]
         );

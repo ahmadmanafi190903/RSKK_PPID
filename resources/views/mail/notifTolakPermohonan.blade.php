@@ -2,9 +2,7 @@
   # Hallo {{ $nama }}
 
   <p>
-    Terima kasih atas permohonan informasi yang telah Anda ajukan. Setelah melalui proses pemeriksaan, kami informasikan bahwa permohonan Anda tidak dapat kami setujui karena alasan berikut:
-    <br>
-    {{ $pesan_ditolak }}
+    Terima kasih atas permohonan Anda. Permohonan tersebut telah kami proses, dan Anda dapat melihat detailnya dengan menekan tombol di bawah ini.
   </p>
 
   <x-mail::button :url="config('app.url') . '/riwayat?email=' . $email" color="success">
