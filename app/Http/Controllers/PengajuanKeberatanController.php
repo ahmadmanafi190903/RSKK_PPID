@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PengajuanKeberatan;
 use App\Models\PermohonanInformasi;
-use App\Models\AlasanPengajuan;
-use App\Events\PengajuanKeberatanEvent;
 use App\Models\Reference;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -56,7 +54,7 @@ class PengajuanKeberatanController extends Controller
         $data = $request->except('captcha');
         PengajuanKeberatan::create($data);
 
-        return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim');
+        return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim, balasan akan dikirim melalui email');
     }
 
     /**
