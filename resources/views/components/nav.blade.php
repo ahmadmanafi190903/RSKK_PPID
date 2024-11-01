@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="header-right-element">
-          <a href="/login" class="theme-btn">Log In</a>
+          <a href="/login" class="login-btn">Log In</a>
         </div>
       </div>
       <div class="d-block d-lg-none col-sm-1 col-md-8 col-6">

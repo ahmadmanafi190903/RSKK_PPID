@@ -2653,7 +2653,8 @@ nav .breadcrumb li {
   border-radius: 4px;
 }
 
-.theme-btn {
+.theme-btn, .login-btn {
+  border-radius: 4px;
   padding: 18px 38px;
   font-size: 16px;
   font-weight: 600;
@@ -2663,6 +2664,10 @@ nav .breadcrumb li {
   transition: all .4s ease-in-out;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.login-btn:hover{
+  text-decoration: underline;
 }
 
 .theme-btn.btn-radius {
@@ -3039,6 +3044,7 @@ nav .breadcrumb li {
  ------------------------------------*/
 header {
   position: relative;
+  background-color: var(--colorblue2);
   z-index: 99;
 }
 
@@ -3051,7 +3057,7 @@ header.header-1.sticky {
   top: 0 !important;
   width: 100%;
   position: fixed !important;
-  background: #fff;
+  background: var(--colorblue2);
   -webkit-animation: sticky .8s ease-in-out;
           animation: sticky .8s ease-in-out;
   -webkit-box-shadow: 0 13px 35px -12px rgba(35, 35, 35, 0.15);
@@ -3112,7 +3118,7 @@ header.header-1 .main-menu ul > li > a {
   display: inline-block;
   font-weight: 600;
   text-transform: capitalize;
-  color: #0D0D0F;
+  color: whitesmoke;
   line-height: 1;
   padding: 38px 19px;
   overflow: hidden;
@@ -3132,7 +3138,8 @@ header.header-1 .main-menu ul > li > a span {
 }
 
 header.header-1 .main-menu ul > li:hover > a {
-  color: var(--colorblue2);
+  color: var(--colorblue1);
+  text-decoration: underline;
 }
 
 header.header-1 .main-menu ul > li:hover > ul {

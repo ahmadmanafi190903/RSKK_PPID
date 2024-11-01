@@ -54,7 +54,7 @@ class PengajuanKeberatanController extends Controller
         $data = $request->except('captcha');
         PengajuanKeberatan::create($data);
 
-        return redirect('/')->with('success', 'Pengajuan keberatan berhasil dikirim, balasan akan dikirim melalui email');
+        return redirect('/')->with('success', 'Pengajuan keberatan anda berhasil dikirim, balasan akan dikirim melalui email');
     }
 
     /**

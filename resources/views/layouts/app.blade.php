@@ -29,7 +29,7 @@
   <!--  main style css file -->
   <link rel="stylesheet" href="/assets/css/style.css">
   <!-- template main style css file -->
-  {{-- <link rel="stylesheet" href="style.css"> --}}
+  <link rel="stylesheet" href="/assets/css/all.css">
 
 
 </head>
@@ -38,36 +38,24 @@
 
   {{-- alert success --}}
   @if (session('success'))
-    <div class="position-fixed top-50 start-50 translate-middle p-2 text-center" style="z-index: 1050;">
-      <div class="alert alert-success fade show" role="alert">
-        <div class="m-3">
-          <img src="/assets/img/check.png" alt="check" width="200">
-        </div>
-        <div class="m-3">
-          <strong>{{ session('success') }}</strong>
-        </div>
-        <div class="m-3">
-          <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="alert" aria-label="Close">OK</button>
-        </div>
-      </div>
-    </div>
-  @endif
-
-  {{-- alert succes dan langsung cek permohonan --}}
-  @if (session('successCek'))
-    <div class="position-fixed top-50 start-50 translate-middle p-2 text-center" style="z-index: 1050;">
-      <div class="alert alert-success fade show" role="alert">
-        <div class="m-3">
-          <img src="/assets/img/check.png" alt="check" width="200">
-        </div>
-        <div class="m-3">
-          <strong>{{ session('successCek') }}</strong>
-        </div>
-        <div class="m-3">
-          <form action="/riwayat">
-            <input type="hidden" value="{{ session('email') }}" name="email">
-            <button type="submit" class="btn btn-success btn-lg">Cek</button>
-          </form>
+    <div class="container position-fixed top-50 start-50 translate-middle p-2 text-center" style="z-index: 1050;">
+      <div class="alert fade show" role="alert">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="success-message">
+              <img src="/assets/img/success.png" alt="check">
+              <h2>Berhasil!</h2>
+              <p>{{ session('success') }}</p>
+              @if (session('email'))
+                <form action="/riwayat">
+                  <input type="hidden" value="{{ session('email') }}" name="email">
+                  <button type="submit" class="btn btn-success">Cek Status</button>
+                </form>
+              @else
+                <button class="btn btn-success" data-bs-dismiss="alert" aria-label="Close">Tutup</button>
+              @endif
+            </div>
+          </div>
         </div>
       </div>
     </div>
