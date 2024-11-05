@@ -7,7 +7,7 @@
     <div class="container">
       <div class="col-12 col-xl-6 offset-xl-3 text-center">
 				<div class="section-title">
-					<span>RSUD KK</span>
+					<span>{{ config('app.name') }}</span>
 					<h2>Informasi Publik</h2>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
           <div class="section-title">
-            <span>RSUD KK</span>
+            <span>{{ config('app.name') }}</span>
             <h2>Layanan Informasi yang Mudah dan Transparan</h2>
             <p>RSUD Kesehatan Kerja Provinsi Jawa Barat berkomitmen untuk memberikan layanan yang inovatif dan mudah
               diakses bagi masyarakat. Kami mendukung kebutuhan informasi publik dengan solusi teknologi modern untuk
@@ -79,7 +79,7 @@
         </div>
         <div class="col-xl-6 col-12 ps-xl-5">
           <div class="section-title">
-            <span>RSUK KK</span>
+            <span>{{ config('app.name') }}</span>
             <h2>Pertanyaan yang sering ditanyakan</h2>
           </div>
           <div class="faq-accordion">
@@ -110,7 +110,7 @@
     <div class="container">
       <div class="col-12 col-xl-8 offset-xl-2 text-center">
         <div class="section-title">
-          <span>RSUD KK</span>
+          <span>{{ config('app.name') }}</span>
           <h2>Rating</h2>
         </div>
       </div>
@@ -141,7 +141,7 @@
       <div class="row">
         <div class="col-12 text-center">
           <div class="section-title">
-            <span>RSUD KK</span>
+            <span>{{ config('app.name') }}</span>
             <h2>Berita</h2>
           </div>
         </div>

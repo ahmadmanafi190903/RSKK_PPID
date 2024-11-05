@@ -74,7 +74,7 @@ class PermohonanInformasiController extends Controller
         PermohonanInformasi::create(array_merge($request->except(['file_ktp', 'captcha']), ['file_ktp' => $file_path]));
 
         return redirect('/')->with([
-            'success' => 'Permohonan informasi anda berhasil dikirim',
+            'success' => 'Permohonan informasi anda berhasil terkirim',
             'email' => $request->email
         ]);
     }
